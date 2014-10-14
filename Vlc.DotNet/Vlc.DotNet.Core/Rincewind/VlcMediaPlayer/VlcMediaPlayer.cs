@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using Vlc.DotNet.Core.Interops;
+using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
+
+namespace Vlc.DotNet.Core.Rincewind
+{
+    public sealed partial class VlcMediaPlayer : IDisposable
+    {
+        internal VlcRincewindManager Manager { get; private set; }
+
+        private IntPtr myMediaPlayer;
+        private object myObjectLocker = new object();
+        private Dictionary<EventTypes, Delegate> myRegisteredEvents = new Dictionary<EventTypes, Delegate>();
+
+        internal Collection<VlcMedia> Medias { get; private set; }
+
+        public VlcMediaPlayer(DirectoryInfo vlcLibDirectory)
+            : this(VlcRincewindManager.GetInstance(vlcLibDirectory))
+        {
+        }
+        internal VlcMediaPlayer(VlcRincewindManager manager)
+        {
+            Medias = new Collection<VlcMedia>();
+            Manager = manager;
+            myMediaPlayer = manager.CreateMediaPlayer(manager.VlcInstance);
+            RegisterEvents();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (myMediaPlayer == IntPtr.Zero)
+                return;
+            if (IsPlaying())
+                Stop();
+            foreach (var media in Medias)
+                media.Dispose();
+
+            UnregisterEvents();
+            Manager.ReleaseMediaPlayer(myMediaPlayer);
+            myMediaPlayer = IntPtr.Zero;
+        }
+
+        ~VlcMediaPlayer()
+        {
+            Dispose(false);
+        }
+
+        public VlcMedia SetMedia(FileInfo file, params string[] options)
+        {
+            return SetMedia(new VlcMedia(this, file, options));
+        }
+
+        public VlcMedia SetMedia(Uri uri, params string[] options)
+        {
+            return SetMedia(new VlcMedia(this, uri, options));
+        }
+
+        public VlcMedia SetMedia(VlcMedia media)
+        {
+            Manager.SetMediaToMediaPlayer(myMediaPlayer, media.MediaInstance);
+            return media;
+        }
+
+        public void Play()
+        {
+            Manager.Play(myMediaPlayer);
+        }
+
+        public void Stop()
+        {
+            Manager.Stop(myMediaPlayer);
+        }
+
+        public bool IsPlaying()
+        {
+            return Manager.IsPlaying(myMediaPlayer);
+        }
+
+        private void RegisterEvents()
+        {
+            var eventManager = Manager.GetMediaPlayerEventManager(myMediaPlayer);
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerBackward, myOnMediaPlayerBackwardInternalEventCallback = new EventCallback(OnMediaPlayerBackwardInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerBuffering, myOnMediaPlayerBufferingInternalEventCallback = new EventCallback(OnMediaPlayerBufferingInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerEncounteredError, myOnMediaPlayerEncounteredErrorInternalEventCallback = new EventCallback(OnMediaPlayerEncounteredErrorInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerEndReached, myOnMediaPlayerEndReachedInternalEventCallback = new EventCallback(OnMediaPlayerEndReachedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerForward, myOnMediaPlayerForwardInternalEventCallback = new EventCallback(OnMediaPlayerForwardInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerLengthChanged, myOnMediaPlayerLengthChangedInternalEventCallback = new EventCallback(OnMediaPlayerLengthChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerMediaChanged, myOnMediaPlayerMediaChangedInternalEventCallback = new EventCallback(OnMediaPlayerMediaChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerOpening, myOnMediaPlayerOpeningInternalEventCallback = new EventCallback(OnMediaPlayerOpeningInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerPausableChanged, myOnMediaPlayerPausableChangedInternalEventCallback = new EventCallback(OnMediaPlayerPausableChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerPaused, myOnMediaPlayerPausedInternalEventCallback = new EventCallback(OnMediaPlayerPausedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerPlaying, myOnMediaPlayerPlayingInternalEventCallback = new EventCallback(OnMediaPlayerPlayingInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerPositionChanged, myOnMediaPlayerPositionChangedInternalEventCallback = new EventCallback(OnMediaPlayerPositionChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerScrambledChanged, myOnMediaPlayerScrambledChangedInternalEventCallback = new EventCallback(OnMediaPlayerScrambledChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerSeekableChanged, myOnMediaPlayerSeekableChangedInternalEventCallback = new EventCallback(OnMediaPlayerSeekableChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerSnapshotTaken, myOnMediaPlayerSnapshotTakenInternalEventCallback = new EventCallback(OnMediaPlayerSnapshotTakenInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerStopped, myOnMediaPlayerStoppedInternalEventCallback = new EventCallback(OnMediaPlayerStoppedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerTimeChanged, myOnMediaPlayerTimeChangedInternalEventCallback = new EventCallback(OnMediaPlayerTimeChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerTitleChanged, myOnMediaPlayerTitleChangedInternalEventCallback = new EventCallback(OnMediaPlayerTitleChangedInternal));
+            Manager.AttachEvent(eventManager, EventTypes.MediaPlayerVout, myOnMediaPlayerVideoOutChangedInternalEventCallback = new EventCallback(OnMediaPlayerVideoOutChangedInternal));
+        }
+
+        private void UnregisterEvents()
+        {
+            var eventManager = Manager.GetMediaPlayerEventManager(myMediaPlayer);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerBackward, myOnMediaPlayerBackwardInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerBuffering, myOnMediaPlayerBufferingInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerEncounteredError, myOnMediaPlayerEncounteredErrorInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerEndReached, myOnMediaPlayerEndReachedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerForward, myOnMediaPlayerForwardInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerLengthChanged, myOnMediaPlayerLengthChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerMediaChanged, myOnMediaPlayerMediaChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerOpening, myOnMediaPlayerOpeningInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerPausableChanged, myOnMediaPlayerPausableChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerPaused, myOnMediaPlayerPausedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerPlaying, myOnMediaPlayerPlayingInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerPositionChanged, myOnMediaPlayerPositionChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerScrambledChanged, myOnMediaPlayerScrambledChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerSeekableChanged, myOnMediaPlayerSeekableChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerSnapshotTaken, myOnMediaPlayerSnapshotTakenInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerStopped, myOnMediaPlayerStoppedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerTimeChanged, myOnMediaPlayerTimeChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerTitleChanged, myOnMediaPlayerTitleChangedInternalEventCallback);
+            Manager.DetachEvent(eventManager, EventTypes.MediaPlayerVout, myOnMediaPlayerVideoOutChangedInternalEventCallback);
+        }
+
+        public IntPtr VideoHostHandle
+        {
+            get
+            {
+                return IntPtr.Zero;
+            }
+            set
+            {
+                Manager.SetMediaPlayerVideoHostHandle(myMediaPlayer, value);
+            }
+        }
+    }
+}
