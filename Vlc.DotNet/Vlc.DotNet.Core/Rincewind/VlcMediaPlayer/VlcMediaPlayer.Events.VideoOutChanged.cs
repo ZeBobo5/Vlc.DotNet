@@ -4,15 +4,14 @@ using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Rincewind
 {
-    public partial class VlcMediaPlayer
+    public sealed partial class VlcMediaPlayer
     {
-        public event EventHandler<VlcMediaPlayerVideoOutChangedEventArgs> VideoOutChanged;
-
         private EventCallback myOnMediaPlayerVideoOutChangedInternalEventCallback;
+        public event EventHandler<VlcMediaPlayerVideoOutChangedEventArgs> VideoOutChanged;
 
         private void OnMediaPlayerVideoOutChangedInternal(IntPtr ptr)
         {
-            var args = (VlcEventArg)Marshal.PtrToStructure(ptr, typeof(VlcEventArg));
+            var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
             OnMediaPlayerVideoOutChanged(args.MediaPlayerVideoOutChanged.NewCount);
         }
 

@@ -3,11 +3,10 @@ using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Rincewind
 {
-    public partial class VlcMediaPlayer
+    public sealed partial class VlcMediaPlayer
     {
-        public event EventHandler<VlcMediaPlayerBackwardEventArgs> Backward;
-
         private EventCallback myOnMediaPlayerBackwardInternalEventCallback;
+        public event EventHandler<VlcMediaPlayerBackwardEventArgs> Backward;
 
         private void OnMediaPlayerBackwardInternal(IntPtr ptr)
         {

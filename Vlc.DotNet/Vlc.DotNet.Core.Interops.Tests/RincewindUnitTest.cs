@@ -3,8 +3,6 @@ using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
-using Vlc.DotNet.Core;
-using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Interops.Tests
 {

@@ -5,11 +5,11 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public class VlcMediaMetaChangedEventArgs : EventArgs
     {
-        public MediaMetadatas MetaType { get; private set; }
-
         public VlcMediaMetaChangedEventArgs(MediaMetadatas metaType)
         {
             MetaType = metaType;
         }
+
+        public MediaMetadatas MetaType { get; private set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Vlc.DotNet.Forms
 {
     public partial class VlcRincewindControl : Control, ISupportInitialize
     {
-        private object myEventSyncLocker = new object();
+        private readonly object myEventSyncLocker = new object();
         private VlcMediaPlayer myVlcMediaPlayer;
 
         [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
@@ -25,6 +25,8 @@ namespace Vlc.DotNet.Forms
                 return myVlcMediaPlayer.IsPlaying();
             }
         }
+
+        public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
 
         public VlcRincewindControl()
         {
@@ -53,11 +55,25 @@ namespace Vlc.DotNet.Forms
         {
             if (DesignMode || myVlcMediaPlayer != null)
                 return;
-            if (VlcLibDirectory == null)
-                throw new Exception("'VlcLibDirectory' property must be set.");
+            if (VlcLibDirectory == null && (VlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
+            {
+                throw new Exception("'VlcLibDirectory' must be set.");
+            }
             myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
             myVlcMediaPlayer.VideoHostHandle = Handle;
             RegisterEvents();
+        }
+
+        public DirectoryInfo OnVlcLibDirectoryNeeded()
+        {
+            var del = VlcLibDirectoryNeeded;
+            if (del != null)
+            {
+                var args = new VlcLibDirectoryNeededEventArgs();
+                del(this, args);
+                return args.VlcLibDirectory;
+            }
+            return null;
         }
 
         public void Play()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Vlc.DotNet.Forms.Samples
@@ -13,7 +14,7 @@ namespace Vlc.DotNet.Forms.Samples
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Samples());
+            Application.Run(new Sample());
         }
     }
 }

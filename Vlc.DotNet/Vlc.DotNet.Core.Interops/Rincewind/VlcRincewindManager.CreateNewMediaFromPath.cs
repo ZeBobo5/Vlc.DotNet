@@ -9,6 +9,8 @@ namespace Vlc.DotNet.Core.Interops
     {
         public IntPtr CreateNewMediaFromPath(IntPtr instance, string mrl)
         {
+            if (instance == IntPtr.Zero)
+                throw new ArgumentException("No instance initialized.");
             var handle = GCHandle.Alloc(Encoding.UTF8.GetBytes(mrl), GCHandleType.Pinned);
             var result = GetInteropDelegate<CreateNewMediaFromPath>().Invoke(instance, handle.AddrOfPinnedObject());
             handle.Free();

@@ -6,8 +6,7 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public sealed partial class VlcMedia : IDisposable
     {
-        internal IntPtr MediaInstance { get; private set; }
-        private VlcMediaPlayer myVlcMediaPlayer;
+        private readonly VlcMediaPlayer myVlcMediaPlayer;
 
         public VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
         {
@@ -17,6 +16,7 @@ namespace Vlc.DotNet.Core.Rincewind
             myVlcMediaPlayer.Medias.Add(this);
             RegisterEvents();
         }
+
         public VlcMedia(VlcMediaPlayer player, Uri uri, params string[] options)
         {
             MediaInstance = player.Manager.CreateNewMediaFromLocation(player.Manager.VlcInstance, uri.ToString());
@@ -25,12 +25,30 @@ namespace Vlc.DotNet.Core.Rincewind
             myVlcMediaPlayer.Medias.Add(this);
             RegisterEvents();
         }
+
         internal VlcMedia(VlcMediaPlayer player, IntPtr ptr)
         {
             MediaInstance = ptr;
             myVlcMediaPlayer = player;
             myVlcMediaPlayer.Medias.Add(this);
             RegisterEvents();
+        }
+
+        internal IntPtr MediaInstance { get; private set; }
+
+        public string Mrl
+        {
+            get { return myVlcMediaPlayer.Manager.GetMediaMrl(MediaInstance); }
+        }
+
+        public MediaStates State
+        {
+            get { return myVlcMediaPlayer.Manager.GetMediaState(MediaInstance); }
+        }
+
+        public TimeSpan Duration
+        {
+            get { return new TimeSpan(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance)); }
         }
 
         public void Dispose()
@@ -65,25 +83,39 @@ namespace Vlc.DotNet.Core.Rincewind
         private void RegisterEvents()
         {
             var eventManager = myVlcMediaPlayer.Manager.GetMediaEventManager(MediaInstance);
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaDurationChanged, myOnMediaDurationChangedInternalEventCallback = new EventCallback(OnMediaDurationChangedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaFreed, myOnMediaFreedInternalEventCallback = new EventCallback(OnMediaFreedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaMetaChanged, myOnMediaMetaChangedInternalEventCallback = new EventCallback(OnMediaMetaChangedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaParsedChanged, myOnMediaParsedChangedInternalEventCallback = new EventCallback(OnMediaParsedChangedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaStateChanged, myOnMediaStateChangedInternalEventCallback = new EventCallback(OnMediaStateChangedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaSubItemAdded, myOnMediaSubItemAddedInternalEventCallback = new EventCallback(OnMediaSubItemAddedInternal));
-            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaSubItemTreeAdded, myOnMediaSubItemTreeAddedInternalEventCallback = new EventCallback(OnMediaSubItemTreeAddedInternal));
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaDurationChanged,
+                myOnMediaDurationChangedInternalEventCallback = OnMediaDurationChangedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaFreed,
+                myOnMediaFreedInternalEventCallback = OnMediaFreedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaMetaChanged,
+                myOnMediaMetaChangedInternalEventCallback = OnMediaMetaChangedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaParsedChanged,
+                myOnMediaParsedChangedInternalEventCallback = OnMediaParsedChangedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaStateChanged,
+                myOnMediaStateChangedInternalEventCallback = OnMediaStateChangedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaSubItemAdded,
+                myOnMediaSubItemAddedInternalEventCallback = OnMediaSubItemAddedInternal);
+            myVlcMediaPlayer.Manager.AttachEvent(eventManager, EventTypes.MediaSubItemTreeAdded,
+                myOnMediaSubItemTreeAddedInternalEventCallback = OnMediaSubItemTreeAddedInternal);
         }
 
         private void UnregisterEvents()
         {
             var eventManager = myVlcMediaPlayer.Manager.GetMediaEventManager(MediaInstance);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaDurationChanged, myOnMediaDurationChangedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaFreed, myOnMediaFreedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaMetaChanged, myOnMediaMetaChangedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaParsedChanged, myOnMediaParsedChangedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaStateChanged, myOnMediaStateChangedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemAdded, myOnMediaSubItemAddedInternalEventCallback);
-            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemTreeAdded, myOnMediaSubItemTreeAddedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaDurationChanged,
+                myOnMediaDurationChangedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaFreed,
+                myOnMediaFreedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaMetaChanged,
+                myOnMediaMetaChangedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaParsedChanged,
+                myOnMediaParsedChangedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaStateChanged,
+                myOnMediaStateChangedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemAdded,
+                myOnMediaSubItemAddedInternalEventCallback);
+            myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemTreeAdded,
+                myOnMediaSubItemTreeAddedInternalEventCallback);
         }
     }
 }

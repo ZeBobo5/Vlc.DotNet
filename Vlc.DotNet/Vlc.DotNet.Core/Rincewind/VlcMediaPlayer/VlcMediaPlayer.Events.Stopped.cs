@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Rincewind
 {
-    public partial class VlcMediaPlayer
+    public sealed partial class VlcMediaPlayer
     {
-        public event EventHandler<VlcMediaPlayerStoppedEventArgs> Stopped;
-
         private EventCallback myOnMediaPlayerStoppedInternalEventCallback;
+        public event EventHandler<VlcMediaPlayerStoppedEventArgs> Stopped;
 
         private void OnMediaPlayerStoppedInternal(IntPtr ptr)
         {

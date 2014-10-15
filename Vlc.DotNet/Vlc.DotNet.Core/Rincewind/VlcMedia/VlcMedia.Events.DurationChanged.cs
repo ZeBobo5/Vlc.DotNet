@@ -6,13 +6,12 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public partial class VlcMedia
     {
-        public event EventHandler<VlcMediaDurationChangedEventArgs> DurationChanged;
-
         private EventCallback myOnMediaDurationChangedInternalEventCallback;
+        public event EventHandler<VlcMediaDurationChangedEventArgs> DurationChanged;
 
         private void OnMediaDurationChangedInternal(IntPtr ptr)
         {
-            var args = (VlcEventArg)Marshal.PtrToStructure(ptr, typeof(VlcEventArg));
+            var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
             OnMediaDurationChanged(args.MediaDurationChanged.NewDuration);
         }
 

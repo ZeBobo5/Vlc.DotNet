@@ -4,15 +4,14 @@ using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Rincewind
 {
-    public partial class VlcMediaPlayer
+    public sealed partial class VlcMediaPlayer
     {
-        public event EventHandler<VlcMediaPlayerTitleChangedEventArgs> TitleChanged;
-
         private EventCallback myOnMediaPlayerTitleChangedInternalEventCallback;
+        public event EventHandler<VlcMediaPlayerTitleChangedEventArgs> TitleChanged;
 
         private void OnMediaPlayerTitleChangedInternal(IntPtr ptr)
         {
-            var args = (VlcEventArg)Marshal.PtrToStructure(ptr, typeof(VlcEventArg));
+            var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
             var fileName = Marshal.PtrToStringAnsi(args.MediaPlayerTitleChanged.NewTitle);
             OnMediaPlayerTitleChanged(fileName);
         }

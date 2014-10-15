@@ -17,39 +17,21 @@
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - CLR 2 - .Net 3.5|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug - CLR 2 - .Net 3.5\</OutputPath>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops.Tests\Debug - .Net 3.5\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - CLR 2 - .Net 3.5|x64'">
-    <OutputPath>bin\x64\Release - CLR 2 - .Net 3.5\</OutputPath>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops.Tests\Release - .Net 3.5\</OutputPath>
     <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - CLR 2 - .Net 3.5|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - CLR 2 - .Net 3.5|x86'">
-    <OutputPath>bin\x86\Release - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -79,10 +61,6 @@
     <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 2 - .Net 3.5.csproj">
       <Project>{721245bc-9a7d-48e0-a8bf-580d2661d5fa}</Project>
       <Name>Vlc.DotNet.Core.Interops - CLR 2 - .Net 3.5</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core - CLR 2 - .Net 3.5.csproj">
-      <Project>{3dc694f8-ee9e-4780-9ee8-a84941002609}</Project>
-      <Name>Vlc.DotNet.Core - CLR 2 - .Net 3.5</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

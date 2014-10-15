@@ -13,47 +13,29 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - CLR 4 - .Net 4.5|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET45</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - CLR 4 - .Net 4.5|x64' ">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET45</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - CLR 4 - .Net 4.5|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET45</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - CLR 4 - .Net 4.5|x86' ">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET45</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops\Debug - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4;NET45</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops\Release - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;CLR4;NET45</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -85,18 +67,26 @@
     <Compile Include="Rincewind\VlcRincewindManager.Free.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetCompiler.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetLastErrorMessage.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaDuration.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetMediaEventManager.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetMediaFromMediaPlayer.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaMeta.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaMrl.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetMediaPlayerEventManager.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaState.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.IsParsedMedia.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.IsPlaying.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.ParseMedia.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.ParseMediaAsync.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.Play.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ReleaseInstance.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ReleaseMedia.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ReleaseMediaPlayer.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.SaveMediaMetas.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.SetMediaMeta.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.SetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.SetMediaToMediaPlayer.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.Stop.cs" />
-    <Compile Include="Signatures\Common\libvlc.h\libvlc_get_version.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_callback_t.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_clearerr.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_errmsg.cs" />
@@ -105,6 +95,7 @@
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_event_type_name.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_free.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_get_compiler.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_get_version.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_log_level.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_new.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_release.cs" />
@@ -113,9 +104,18 @@
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_add_option.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_add_option_flag.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_event_manager.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_duration.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_meta.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_mrl.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_state.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_is_parsed.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_new_location.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_new_path.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_parse.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_parse_async.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_release.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_save_meta.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_set_meta.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_meta_t.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_state_t.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_track_type_t.cs" />

@@ -5,11 +5,11 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public class VlcMediaStateChangedEventArgs : EventArgs
     {
-        public MediaStates State { get; private set; }
-
         public VlcMediaStateChangedEventArgs(MediaStates state)
         {
             State = state;
         }
+
+        public MediaStates State { get; private set; }
     }
 }

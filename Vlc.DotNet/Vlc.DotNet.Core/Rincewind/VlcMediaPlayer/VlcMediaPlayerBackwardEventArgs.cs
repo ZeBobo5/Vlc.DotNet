@@ -4,8 +4,5 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public sealed class VlcMediaPlayerBackwardEventArgs : EventArgs
     {
-        public VlcMediaPlayerBackwardEventArgs()
-        {
-        }
     }
 }

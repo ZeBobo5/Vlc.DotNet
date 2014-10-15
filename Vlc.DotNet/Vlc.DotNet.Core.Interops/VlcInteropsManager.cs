@@ -12,18 +12,6 @@ namespace Vlc.DotNet.Core.Interops
         private IntPtr myLibVlcDllHandle;
         private IntPtr myLibVlcCoreDllHandle;
 
-        public VlcVersions VlcVersion
-        {
-            get
-            {
-#if !NET20
-                return VlcVersions.GetVersion(GetInteropDelegate<Signatures.Common.GetVersion>().Invoke().ToStringAnsi());
-#else
-                return VlcVersions.GetVersion(IntPtrExtensions.ToStringAnsi(GetInteropDelegate<Signatures.Common.GetVersion>().Invoke()));
-#endif
-            }
-        }
-
         public VlcInteropsManager(DirectoryInfo dynamicLinkLibrariesPath)
         {
             if (!dynamicLinkLibrariesPath.Exists)

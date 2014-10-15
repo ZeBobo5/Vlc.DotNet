@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Vlc.DotNet.Core.Interops.Signatures.Rincewind;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcRincewindManager : VlcInteropsManager
     {
         private IntPtr myVlcInstance;
-        private object myStaticLocker = new object();
-        private static Dictionary<DirectoryInfo, VlcRincewindManager> myAllInstance = new Dictionary<DirectoryInfo, VlcRincewindManager>();
+        private readonly object myStaticLocker = new object();
+        private static readonly Dictionary<DirectoryInfo, VlcRincewindManager> myAllInstance = new Dictionary<DirectoryInfo, VlcRincewindManager>();
 
-        internal VlcRincewindManager(DirectoryInfo dynamicLinkLibrariesPath)
-            : base(dynamicLinkLibrariesPath)
+        public VlcVersions VlcVersion
         {
+            get
+            {
+#if !NET20
+                return VlcVersions.GetVersion(GetInteropDelegate<GetVersion>().Invoke().ToStringAnsi());
+#else
+                return VlcVersions.GetVersion(IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetVersion>().Invoke()));
+#endif
+            }
         }
 
         public IntPtr VlcInstance
@@ -28,6 +36,11 @@ namespace Vlc.DotNet.Core.Interops
                     return myVlcInstance;
                 }
             }
+        }
+
+        internal VlcRincewindManager(DirectoryInfo dynamicLinkLibrariesPath)
+            : base(dynamicLinkLibrariesPath)
+        {
         }
 
         public override void Dispose(bool disposing)

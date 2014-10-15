@@ -13,47 +13,29 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - CLR 2 - .Net 3.5|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - CLR 2 - .Net 3.5|x86'">
-    <OutputPath>bin\x86\Release - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - CLR 2 - .Net 3.5|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - CLR 2 - .Net 3.5|x64'">
-    <OutputPath>bin\x64\Release - CLR 2 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops\Debug - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Core.Interops\Release - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,6 +49,15 @@
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.AddOptionFlagToMedia.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaDuration.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaState.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.IsParsedMedia.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.ParseMediaAsync.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.ParseMedia.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.SaveMediaMetas.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.SetMediaMeta.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaMeta.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.GetMediaMrl.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.AddOptionToMedia.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.CreateMediaPlayer.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.CloneMedia.cs" />
@@ -91,7 +82,7 @@
     <Compile Include="Rincewind\VlcRincewindManager.GetLastErrorMessage.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.GetCompiler.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.CreateNewInstance.cs" />
-    <Compile Include="Signatures\Common\libvlc.h\libvlc_get_version.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_get_version.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_log_level.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_callback_t.cs" />
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_clearerr.cs" />
@@ -105,6 +96,15 @@
     <Compile Include="Signatures\Rincewind\libvlc.h\libvlc_new.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_events.h\libvlc_event_t.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_events.h\libvlc_event_e.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_duration.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_parse_async.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_parse.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_state.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_is_parsed.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_save_meta.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_set_meta.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_meta.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_get_mrl.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_event_manager.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_add_option_flag.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media.h\libvlc_media_add_option.cs" />

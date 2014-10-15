@@ -6,13 +6,12 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public partial class VlcMedia
     {
-        public event EventHandler<VlcMediaMetaChangedEventArgs> MetaChanged;
-
         private EventCallback myOnMediaMetaChangedInternalEventCallback;
+        public event EventHandler<VlcMediaMetaChangedEventArgs> MetaChanged;
 
         private void OnMediaMetaChangedInternal(IntPtr ptr)
         {
-            var args = (VlcEventArg)Marshal.PtrToStructure(ptr, typeof(VlcEventArg));
+            var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
             OnMediaMetaChanged(args.MediaMetaChanged.MetaType);
         }
 

@@ -6,13 +6,12 @@ namespace Vlc.DotNet.Core.Rincewind
 {
     public partial class VlcMedia
     {
-        public event EventHandler<VlcMediaSubItemTreeAddedEventArgs> SubItemTreeAdded;
-
         private EventCallback myOnMediaSubItemTreeAddedInternalEventCallback;
+        public event EventHandler<VlcMediaSubItemTreeAddedEventArgs> SubItemTreeAdded;
 
         private void OnMediaSubItemTreeAddedInternal(IntPtr ptr)
         {
-            var args = (VlcEventArg)Marshal.PtrToStructure(ptr, typeof(VlcEventArg));
+            var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
             OnMediaSubItemTreeAdded(new VlcMedia(myVlcMediaPlayer, args.MediaSubItemTreeAdded.MediaInstance));
         }
 

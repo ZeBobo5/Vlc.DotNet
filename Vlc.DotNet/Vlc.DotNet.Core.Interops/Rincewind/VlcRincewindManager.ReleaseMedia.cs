@@ -8,7 +8,7 @@ namespace Vlc.DotNet.Core.Interops
         public void ReleaseMedia(IntPtr mediaInstance)
         {
             if (mediaInstance == IntPtr.Zero)
-                return;
+                throw new ArgumentException("Media instance is not initialized.");
             GetInteropDelegate<ReleaseMedia>().Invoke(mediaInstance);
             mediaInstance = IntPtr.Zero;
         }

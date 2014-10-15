@@ -7,6 +7,8 @@ namespace Vlc.DotNet.Core.Interops
     {
         public void ReleaseInstance(IntPtr instance)
         {
+            if (instance == IntPtr.Zero)
+                return;
             GetInteropDelegate<ReleaseInstance>().Invoke(instance);
             instance = IntPtr.Zero;
         }
