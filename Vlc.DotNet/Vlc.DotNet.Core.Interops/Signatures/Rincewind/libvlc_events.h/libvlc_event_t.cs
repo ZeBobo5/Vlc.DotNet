@@ -9,91 +9,191 @@ namespace Vlc.DotNet.Core.Interops.Signatures.Rincewind
         [FieldOffset(0)]
         public EventTypes type;
 
+#if X86
         [FieldOffset(4)]
+#else
+        [FieldOffset(8)]
+#endif
         public IntPtr p_obj;
 
         #region Media Descriptor
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaMetaChanged MediaMetaChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaSubitemAdded MediaSubItemAdded;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaDurationChanged MediaDurationChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaParsedChanged MediaParsedChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaFreed MediaFreed;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaStateChanged MediaStateChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaSubItemTreeAdded MediaSubItemTreeAdded;
 
         #endregion
 
         #region Media Instance
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerBuffering MediaPlayerBuffering;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerPositionChanged MediaPlayerPositionChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerTimeChanged MediaPlayerTimeChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerTitleChanged MediaPlayerTitleChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerSeekableChanged MediaPlayerSeekableChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerPausableChanged MediaPlayerPausableChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerScrambledChanged MediaPlayerScrambledChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerVideoOutChanged MediaPlayerVideoOutChanged;
 
         #endregion
 
         #region Media List
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaListItemAdded MediaListItemAdded;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaListWillAddItem MediaListWillAddItem;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaListItemDeleted MediaListItemDeleted;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaListWillDeleteItem MediaListWillDeleteItem;
 
         #endregion
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaListPlayerNextItemSet MediaListPlayerNextItemSet;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerSnapshotTaken MediaPlayerSnapshotTaken;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerLengthChanged MediaPlayerLengthChanged;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public VlmMediaEvent VlmMediaEvent;
 
+#if X86
         [FieldOffset(8)]
+#else
+        [FieldOffset(16)]
+#endif
         public MediaPlayerMediaChanged MediaPlayerMediaChanged;
     }
 

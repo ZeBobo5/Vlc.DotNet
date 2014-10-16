@@ -8,47 +8,23 @@ using Vlc.DotNet.Forms.TypeEditors;
 
 namespace Vlc.DotNet.Forms
 {
-    public partial class VlcRincewindControl : Control, ISupportInitialize
+    public partial class VlcRincewindControl : Control, ISupportInitialize, IWin32Window
     {
-        private readonly object myEventSyncLocker = new object();
         private VlcMediaPlayer myVlcMediaPlayer;
+        private readonly object myEventSyncLocker = new object();
 
-        [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
+        [Editor(typeof (DirectoryEditor), typeof (UITypeEditor))]
         public DirectoryInfo VlcLibDirectory { get; set; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public bool IsPlaying
         {
-            get
-            {
-                return myVlcMediaPlayer.IsPlaying();
-            }
-        }
-
-        public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
-
-        public VlcRincewindControl()
-        {
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            lock(myEventSyncLocker)
-            {
-                if (myVlcMediaPlayer != null)
-                {
-                    UnregisterEvents();
-                    myVlcMediaPlayer.Dispose();
-                    base.Dispose(disposing);
-                    GC.SuppressFinalize(this);
-                }
-            }
+            get { return myVlcMediaPlayer.IsPlaying(); }
         }
 
         public void BeginInit()
         {
-
         }
 
         public void EndInit()
@@ -62,6 +38,22 @@ namespace Vlc.DotNet.Forms
             myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
             myVlcMediaPlayer.VideoHostHandle = Handle;
             RegisterEvents();
+        }
+
+        public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
+
+        protected override void Dispose(bool disposing)
+        {
+            lock (myEventSyncLocker)
+            {
+                if (myVlcMediaPlayer != null)
+                {
+                    UnregisterEvents();
+                    myVlcMediaPlayer.Dispose();
+                    base.Dispose(disposing);
+                    GC.SuppressFinalize(this);
+                }
+            }
         }
 
         public DirectoryInfo OnVlcLibDirectoryNeeded()

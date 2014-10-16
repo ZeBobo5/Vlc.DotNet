@@ -20,31 +20,58 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Debug - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Debug - x64 - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X64</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Release - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Release - x64 - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35;X64</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Debug - x86 - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X86</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf\Release - x86 - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35;X86</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Vlc.DotNet.Core\Properties\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VlcControlBase.cs" />
+    <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
+    <Compile Include="VlcRincewindControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 2 - .Net 3.5.csproj">
@@ -54,6 +81,10 @@
     <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core - CLR 2 - .Net 3.5.csproj">
       <Project>{3dc694f8-ee9e-4780-9ee8-a84941002609}</Project>
       <Name>Vlc.DotNet.Core - CLR 2 - .Net 3.5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vlc.DotNet.Forms\Vlc.DotNet.Forms - CLR 2 - .Net 3.5.csproj">
+      <Project>{6c003397-dccf-43cf-b82d-7b50d4ad70fb}</Project>
+      <Name>Vlc.DotNet.Forms - CLR 2 - .Net 3.5</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

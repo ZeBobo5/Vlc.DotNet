@@ -12,6 +12,15 @@ namespace Vlc.DotNet.Core.Rincewind
         private void OnMediaPlayerMediaChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
+
+            foreach (var vlcMedia in Medias)
+            {
+                if (vlcMedia.MediaInstance == args.MediaPlayerMediaChanged.MediaInstance)
+                {
+                    OnMediaPlayerMediaChanged(vlcMedia);
+                    return;
+                }
+            }
             OnMediaPlayerMediaChanged(new VlcMedia(this, args.MediaPlayerMediaChanged.MediaInstance));
         }
 

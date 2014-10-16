@@ -259,4 +259,6 @@ msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release
 :end
 
 msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Debug
+pause
 msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release
+pause

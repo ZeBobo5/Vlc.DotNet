@@ -37,5 +37,15 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>If the function succeeds, the return value is nonzero.</returns>
         [DllImport("kernel32", SetLastError = true)]
         public static extern bool CloseHandle(IntPtr handle);
+
+        /// <summary>
+        /// Changes the parent window of the specified child window.
+        /// </summary>
+        /// <param name="hWndChild">A handle to the child window.</param>
+        /// <param name="hWndNewParent">A handle to the new parent window. If this parameter is NULL, the desktop window becomes the new parent window. If this parameter is HWND_MESSAGE, the child window becomes a message-only window.</param>
+        /// <returns>If the function succeeds, the return value is a handle to the previous parent window. If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
     }
 }

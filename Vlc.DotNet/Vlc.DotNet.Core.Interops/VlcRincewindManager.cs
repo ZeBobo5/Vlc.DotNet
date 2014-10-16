@@ -52,7 +52,7 @@ namespace Vlc.DotNet.Core.Interops
             }
             if (myAllInstance.ContainsValue(this))
             {
-                foreach (var kv in myAllInstance)
+                foreach (var kv in new Dictionary<DirectoryInfo, VlcRincewindManager>(myAllInstance))
                 {
                     if(kv.Value == this)
                         myAllInstance.Remove(kv.Key);

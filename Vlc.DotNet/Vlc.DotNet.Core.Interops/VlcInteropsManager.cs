@@ -9,6 +9,7 @@ namespace Vlc.DotNet.Core.Interops
     public abstract class VlcInteropsManager : IDisposable
     {
         private readonly Dictionary<string, Delegate> myInteropDelegates = new Dictionary<string, Delegate>();
+        private IntPtr myLibGccDllHandle;
         private IntPtr myLibVlcDllHandle;
         private IntPtr myLibVlcCoreDllHandle;
 
@@ -17,17 +18,24 @@ namespace Vlc.DotNet.Core.Interops
             if (!dynamicLinkLibrariesPath.Exists)
                 throw new DirectoryNotFoundException();
 
+            var libGccDllPath = Path.Combine(dynamicLinkLibrariesPath.FullName, "libgcc_s_seh-1.dll");
+            if (File.Exists(libGccDllPath))
+            {
+                myLibGccDllHandle = Win32Interops.LoadLibrary(libGccDllPath);
+                if (myLibGccDllHandle == IntPtr.Zero)
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+
             var libVlcCoreDllPath = Path.Combine(dynamicLinkLibrariesPath.FullName, "libvlccore.dll");
             if (!File.Exists(libVlcCoreDllPath))
                 throw new FileNotFoundException();
+            myLibVlcCoreDllHandle = Win32Interops.LoadLibrary(libVlcCoreDllPath);
+            if (myLibVlcCoreDllHandle == IntPtr.Zero)
+                throw new Win32Exception(Marshal.GetLastWin32Error());
 
             var libVlcDllPath = Path.Combine(dynamicLinkLibrariesPath.FullName, "libvlc.dll");
             if (!File.Exists(libVlcDllPath))
                 throw new FileNotFoundException();
-
-            myLibVlcCoreDllHandle = Win32Interops.LoadLibrary(libVlcCoreDllPath);
-            if (myLibVlcCoreDllHandle == IntPtr.Zero)
-                throw new Win32Exception(Marshal.GetLastWin32Error());
             myLibVlcDllHandle = Win32Interops.LoadLibrary(libVlcDllPath);
             if (myLibVlcDllHandle == IntPtr.Zero)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -75,6 +83,11 @@ namespace Vlc.DotNet.Core.Interops
             {
                 Win32Interops.FreeLibrary(myLibVlcCoreDllHandle);
                 myLibVlcCoreDllHandle = IntPtr.Zero;
+            }
+            if (myLibGccDllHandle != IntPtr.Zero)
+            {
+                Win32Interops.FreeLibrary(myLibGccDllHandle);
+                myLibGccDllHandle = IntPtr.Zero;
             }
         }
 

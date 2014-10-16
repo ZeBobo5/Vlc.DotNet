@@ -4,13 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0E3E165-908F-4848-81DE-9CD1FCC05013}</ProjectGuid>
+    <ProjectGuid>{A9D84192-A212-4EF1-BD69-39649E587A6F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vlc.DotNet.Forms.Samples</RootNamespace>
-    <AssemblyName>Vlc.DotNet.Forms.Samples</AssemblyName>
+    <RootNamespace>Vlc.DotNet.Wpf.Samples</RootNamespace>
+    <AssemblyName>Vlc.DotNet.Wpf.Samples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -18,8 +20,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Forms.Samples\Debug - x64 - .Net 4.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET45;X64</DefineConstants>
+    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf.Samples\Debug - x64 - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X64</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -28,75 +30,92 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Forms.Samples\Release - x64 - .Net 4.5\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET45;X64</DefineConstants>
+    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf.Samples\Release - x64 - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35;X64</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Forms.Samples\Debug - x86 - .Net 4.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET45;X86</DefineConstants>
+    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf.Samples\Debug - x86 - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X86</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Forms.Samples\Release - x86 - .Net 4.5\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET45;X86</DefineConstants>
+    <OutputPath>..\..\..\Vlc.DotNet - Build Output\Vlc.DotNet.Wpf.Samples\Release - x86 - .Net 4.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35;X86</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlExtensions.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample.cs">
-      <SubType>form</SubType>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Sample.Designer.cs">
-      <DependentUpon>Sample.cs</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Sample.resx">
-      <DependentUpon>Sample.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.5.csproj">
       <Project>{47e251ae-a5ee-4526-bdc1-3c008936e80a}</Project>
-      <Name>Vlc.DotNet.Forms.Samples - CLR 4 - .Net 4.5</Name>
+      <Name>Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.5</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Vlc.DotNet.Core\Vlc.DotNet.Core - CLR 4 - .Net 4.5.csproj">
       <Project>{24860783-a729-4a14-98c0-9a34bf138bdb}</Project>
@@ -105,6 +124,10 @@
     <ProjectReference Include="..\..\Vlc.DotNet.Forms\Vlc.DotNet.Forms - CLR 4 - .Net 4.5.csproj">
       <Project>{914de831-4dfa-44f6-96c1-27cf3b89a2cd}</Project>
       <Name>Vlc.DotNet.Forms - CLR 4 - .Net 4.5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf - CLR 4 - .Net 4.5.csproj">
+      <Project>{b1725e81-aac1-42fc-836d-e0a7cfebb1e7}</Project>
+      <Name>Vlc.DotNet.Wpf - CLR 4 - .Net 4.5</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
