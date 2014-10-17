@@ -13,10 +13,10 @@ namespace Vlc.DotNet.Wpf.Samples
         public MainWindow()
         {
             InitializeComponent();
-            myRincewindControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedLibDirectory;
+            myRincewindControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
         }
 
-        private void OnVlcControlNeedLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
+        private void OnVlcControlNeedsLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
         {
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
@@ -30,7 +30,7 @@ namespace Vlc.DotNet.Wpf.Samples
 
         private void OnPlayButtonClick(object sender, RoutedEventArgs e)
         {
-            myRincewindControl.MediaPlayer.Play(new FileInfo(@"D:\# Perso\Vidéos\Game of Thrones S04E10 FASTSUB VOSTFR 720p HTDV x264 - LIBFT.mkv"));
+            myRincewindControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
         }
     }
 }
