@@ -1,4 +1,4 @@
-﻿namespace Vlc.DotNet.Core.Interops.Signatures.Rincewind.libvlc.h
+﻿namespace Vlc.DotNet.Core.Interops.Signatures.Rincewind
 {
     public enum LogLevels 
         : int

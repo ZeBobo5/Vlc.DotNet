@@ -91,6 +91,7 @@
     <Compile Include="VlcControlBase.cs" />
     <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
     <Compile Include="VlcRincewindControl.cs" />
+    <Compile Include="VlcTheLuggageControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -74,6 +74,12 @@
     <Compile Include="VlcRincewindControl.Events.cs">
       <SubType>component</SubType>
     </Compile>
+    <Compile Include="VlcTheLuggageControl.cs">
+      <SubType>component</SubType>
+    </Compile>
+    <Compile Include="VlcTheLuggageControl.Events.cs">
+      <SubType>component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.0.csproj">

@@ -89,6 +89,12 @@
     <Compile Include="VlcRincewindControl.Events.cs">
       <SubType>component</SubType>
     </Compile>
+    <Compile Include="VlcTheLuggageControl.cs">
+      <SubType>component</SubType>
+    </Compile>
+    <Compile Include="VlcTheLuggageControl.Events.cs">
+      <SubType>component</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
