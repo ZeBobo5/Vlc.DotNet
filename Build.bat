@@ -258,7 +258,7 @@ msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release
 
 :end
 
-msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Debug
-pause
-msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release
-pause
+msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Debug;Platform=x86
+msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release;Platform=x86
+msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Debug;Platform="Any CPU"
+msbuild Vlc.DotNet\Vlc.DotNet.sln /t:Rebuild /p:Configuration=Release;Platform="Any CPU"
