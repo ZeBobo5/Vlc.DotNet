@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Rincewind
         private void OnMediaPlayerLengthChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaPlayerLengthChanged(args.MediaPlayerLengthChanged.NewLength);
+            OnMediaPlayerLengthChanged(args.MediaPlayerLengthChanged.NewLength * 10000);
         }
 
         public void OnMediaPlayerLengthChanged(float newLength)

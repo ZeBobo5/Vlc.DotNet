@@ -108,10 +108,21 @@ namespace Vlc.DotNet.Forms
             Play();
         }
 
+        public void Pause()
+        {
+            EndInit();
+            myVlcMediaPlayer.Pause();
+        }
+
         public void Stop()
         {
             EndInit();
             myVlcMediaPlayer.Stop();
+        }
+
+        public VlcMedia GetCurrentMedia()
+        {
+            return myVlcMediaPlayer.GetMedia();
         }
     }
 }

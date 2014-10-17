@@ -73,9 +73,25 @@ namespace Vlc.DotNet.Core.Rincewind
             return media;
         }
 
+        public VlcMedia GetMedia()
+        {
+            var mediaPtr = Manager.GetMediaFromMediaPlayer(myMediaPlayer);
+            foreach (var vlcMedia in Medias)
+            {
+                if (vlcMedia.MediaInstance == mediaPtr)
+                    return vlcMedia;
+            }
+            return new VlcMedia(this, mediaPtr);
+        }
+
         public void Play()
         {
             Manager.Play(myMediaPlayer);
+        }
+
+        public void Pause()
+        {
+            Manager.Pause(myMediaPlayer);
         }
 
         public void Stop()

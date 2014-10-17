@@ -48,7 +48,7 @@ namespace Vlc.DotNet.Core.Rincewind
 
         public TimeSpan Duration
         {
-            get { return new TimeSpan(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance)); }
+            get { return new TimeSpan(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance) * 10000); }
         }
 
         public void Dispose()

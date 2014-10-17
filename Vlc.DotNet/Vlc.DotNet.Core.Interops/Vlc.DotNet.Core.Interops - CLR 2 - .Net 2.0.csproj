@@ -90,6 +90,7 @@
     <Compile Include="Rincewind\VlcRincewindManager.IsPlaying.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ParseMedia.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ParseMediaAsync.cs" />
+    <Compile Include="Rincewind\VlcRincewindManager.Pause.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.Play.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ReleaseInstance.cs" />
     <Compile Include="Rincewind\VlcRincewindManager.ReleaseMedia.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_is_playing.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_new.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_new_from_media.cs" />
+    <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_pause.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_play.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_release.cs" />
     <Compile Include="Signatures\Rincewind\libvlc_media_player.h\libvlc_media_player_set_hwnd.cs" />

@@ -22,11 +22,78 @@ namespace Vlc.DotNet.Forms.Samples
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\Vlc\x86\Rincewind\"));
             else
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\Vlc\x64\Rincewind\"));
+
+            if (!e.VlcLibDirectory.Exists)
+            {
+                var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+                folderBrowserDialog.Description = "Select Vlc libraries folder.";
+                folderBrowserDialog.RootFolder = Environment.SpecialFolder.Desktop;
+                folderBrowserDialog.ShowNewFolderButton = true;
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    e.VlcLibDirectory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OnButtonPlayClicked(object sender, EventArgs e)
         {
-            vlcRincewindControl1.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
+            myVlcRincewindControl.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
         }
+
+        private void OnButtonStopClicked(object sender, EventArgs e)
+        {
+            myVlcRincewindControl.Stop();
+        }
+
+        private void OnButtonPauseClicked(object sender, EventArgs e)
+        {
+            myVlcRincewindControl.Pause();
+        }
+
+        private void OnVlcMediaLengthChanged(object sender, Core.Rincewind.VlcMediaPlayerLengthChangedEventArgs e)
+        {
+#if !NET20
+            myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long) e.NewLength).Ticks).ToString("T"));
+#endif
+        }
+
+        private void OnVlcPositionChanged(object sender, Core.Rincewind.VlcMediaPlayerPositionChangedEventArgs e)
+        {
+            var position = myVlcRincewindControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
+#if !NET20
+            myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)position).ToString("T"));
+#else
+            ControlExtensions.InvokeIfRequired(myLblVlcPosition, c => c.Text = new DateTime((long)position).ToString("T"));
+#endif
+        }
+
+        private void OnVlcPaused(object sender, Core.Rincewind.VlcMediaPlayerPausedEventArgs e)
+        {
+#if !NET20
+            myLblState.InvokeIfRequired(l => l.Text = "Paused");
+#else
+            ControlExtensions.InvokeIfRequired(myLblState, c => c.Text = "Paused");
+#endif
+        }
+
+        private void OnVlcStopped(object sender, Core.Rincewind.VlcMediaPlayerStoppedEventArgs e)
+        {
+#if !NET20
+            myLblState.InvokeIfRequired(l => l.Text = "Stopped");
+#else
+            ControlExtensions.InvokeIfRequired(myLblState, c => c.Text = "Stopped");
+#endif
+        }
+
+        private void OnVlcPlaying(object sender, Core.Rincewind.VlcMediaPlayerPlayingEventArgs e)
+        {
+#if !NET20
+            myLblState.InvokeIfRequired(l => l.Text = "Playing");
+#else
+            ControlExtensions.InvokeIfRequired(myLblState, c => c.Text = "Playing");
+#endif
+        }
+
     }
 }
