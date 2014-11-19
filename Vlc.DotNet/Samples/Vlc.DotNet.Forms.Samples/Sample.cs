@@ -55,6 +55,8 @@ namespace Vlc.DotNet.Forms.Samples
         {
 #if !NET20
             myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long) e.NewLength).Ticks).ToString("T"));
+#else
+            ControlExtensions.InvokeIfRequired(myLblMediaLength, l => l.Text = new DateTime(new TimeSpan((long)e.NewLength).Ticks).ToString("T"));
 #endif
         }
 

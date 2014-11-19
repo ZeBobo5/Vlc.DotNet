@@ -159,3 +159,4 @@ $RECYCLE.BIN/
 *.sln.ide
 *.exe.config
 Vlc.DotNet - Build Output/
+plugins.dat
