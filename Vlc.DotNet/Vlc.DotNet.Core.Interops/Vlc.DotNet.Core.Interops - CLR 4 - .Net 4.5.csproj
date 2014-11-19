@@ -132,6 +132,7 @@
     <Compile Include="VlcManager.Free.cs" />
     <Compile Include="VlcManager.GetChangeset.cs" />
     <Compile Include="VlcManager.GetCompiler.cs" />
+    <Compile Include="VlcManager.GetEventTypeName.cs" />
     <Compile Include="VlcManager.GetLastErrorMessage.cs" />
     <Compile Include="VlcManager.GetMediaDuration.cs" />
     <Compile Include="VlcManager.GetMediaEventManager.cs" />
