@@ -78,6 +78,7 @@
     <Compile Include="Signatures\libvlc.h\libvlc_event_detach.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_event_type_name.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_free.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_compiler.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_version.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_log_level.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="VlcManager.cs" />
     <Compile Include="VlcManager.DetachEvent.cs" />
     <Compile Include="VlcManager.Free.cs" />
+    <Compile Include="VlcManager.GetChangeset.cs" />
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetLastErrorMessage.cs" />
     <Compile Include="VlcManager.GetMediaDuration.cs" />
