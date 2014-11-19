@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.myVlcRincewindControl = new Vlc.DotNet.Forms.VlcRincewindControl();
+            this.myVlcRincewindControl = new Vlc.DotNet.Forms.VlcControl();
             this.myBtnPlay = new System.Windows.Forms.Button();
             this.myBtnStop = new System.Windows.Forms.Button();
             this.myLblMediaLength = new System.Windows.Forms.Label();
@@ -53,11 +53,11 @@
             this.myVlcRincewindControl.Text = "vlcRincewindControl1";
             this.myVlcRincewindControl.VlcLibDirectory = null;
             this.myVlcRincewindControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
-            this.myVlcRincewindControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.Rincewind.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
-            this.myVlcRincewindControl.Paused += new System.EventHandler<Vlc.DotNet.Core.Rincewind.VlcMediaPlayerPausedEventArgs>(this.OnVlcPaused);
-            this.myVlcRincewindControl.Playing += new System.EventHandler<Vlc.DotNet.Core.Rincewind.VlcMediaPlayerPlayingEventArgs>(this.OnVlcPlaying);
-            this.myVlcRincewindControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.Rincewind.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
-            this.myVlcRincewindControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.Rincewind.VlcMediaPlayerStoppedEventArgs>(this.OnVlcStopped);
+            this.myVlcRincewindControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
+            this.myVlcRincewindControl.Paused += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPausedEventArgs>(this.OnVlcPaused);
+            this.myVlcRincewindControl.Playing += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs>(this.OnVlcPlaying);
+            this.myVlcRincewindControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
+            this.myVlcRincewindControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcStopped);
             // 
             // myBtnPlay
             // 
@@ -165,7 +165,7 @@
 
         #endregion
 
-        private VlcRincewindControl myVlcRincewindControl;
+        private VlcControl myVlcRincewindControl;
         private System.Windows.Forms.Button myBtnPlay;
         private System.Windows.Forms.Button myBtnStop;
         private System.Windows.Forms.Label myLblMediaLength;

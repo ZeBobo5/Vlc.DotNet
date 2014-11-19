@@ -69,10 +69,8 @@
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VlcControlBase.cs" />
+    <Compile Include="VlcControl.cs" />
     <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
-    <Compile Include="VlcRincewindControl.cs" />
-    <Compile Include="VlcTheLuggageControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Vlc.DotNet.pfx.snk">

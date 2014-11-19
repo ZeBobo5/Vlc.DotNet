@@ -13,7 +13,7 @@ namespace Vlc.DotNet.Wpf.Samples
         public MainWindow()
         {
             InitializeComponent();
-            myRincewindControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
+            myControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
         }
 
         private void OnVlcControlNeedsLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
@@ -30,7 +30,7 @@ namespace Vlc.DotNet.Wpf.Samples
 
         private void OnPlayButtonClick(object sender, RoutedEventArgs e)
         {
-            myRincewindControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
+            myControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
         }
     }
 }

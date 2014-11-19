@@ -82,19 +82,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeEditors\DirectoryEditor.cs" />
+    <Compile Include="VlcControl.cs">
+      <SubType>component</SubType>
+    </Compile>
+    <Compile Include="VlcControl.Events.cs">
+      <SubType>component</SubType>
+    </Compile>
     <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
-    <Compile Include="VlcRincewindControl.cs">
-      <SubType>component</SubType>
-    </Compile>
-    <Compile Include="VlcRincewindControl.Events.cs">
-      <SubType>component</SubType>
-    </Compile>
-    <Compile Include="VlcTheLuggageControl.cs">
-      <SubType>component</SubType>
-    </Compile>
-    <Compile Include="VlcTheLuggageControl.Events.cs">
-      <SubType>component</SubType>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

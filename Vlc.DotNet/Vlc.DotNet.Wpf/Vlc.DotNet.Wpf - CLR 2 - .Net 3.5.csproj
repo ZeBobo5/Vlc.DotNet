@@ -69,10 +69,8 @@
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VlcControlBase.cs" />
+    <Compile Include="VlcControl.cs" />
     <Compile Include="VlcLibDirectoryNeededEventArgs.cs" />
-    <Compile Include="VlcTheLuggageControl.cs" />
-    <Compile Include="VlcRincewindControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 2 - .Net 3.5.csproj">

@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <wpf:VlcRincewindControl Grid.Row="0" x:Name="myRincewindControl"/>
+        <wpf:VlcControl Grid.Row="0" x:Name="myControl"/>
         
         <Button Grid.Row="1" Click="OnPlayButtonClick">Play</Button>
     </Grid>

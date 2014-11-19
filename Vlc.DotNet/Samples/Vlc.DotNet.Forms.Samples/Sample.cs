@@ -51,14 +51,14 @@ namespace Vlc.DotNet.Forms.Samples
             myVlcRincewindControl.Pause();
         }
 
-        private void OnVlcMediaLengthChanged(object sender, Core.Rincewind.VlcMediaPlayerLengthChangedEventArgs e)
+        private void OnVlcMediaLengthChanged(object sender, Core.VlcMediaPlayerLengthChangedEventArgs e)
         {
 #if !NET20
             myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long) e.NewLength).Ticks).ToString("T"));
 #endif
         }
 
-        private void OnVlcPositionChanged(object sender, Core.Rincewind.VlcMediaPlayerPositionChangedEventArgs e)
+        private void OnVlcPositionChanged(object sender, Core.VlcMediaPlayerPositionChangedEventArgs e)
         {
             var position = myVlcRincewindControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
 #if !NET20
@@ -68,7 +68,7 @@ namespace Vlc.DotNet.Forms.Samples
 #endif
         }
 
-        private void OnVlcPaused(object sender, Core.Rincewind.VlcMediaPlayerPausedEventArgs e)
+        private void OnVlcPaused(object sender, Core.VlcMediaPlayerPausedEventArgs e)
         {
 #if !NET20
             myLblState.InvokeIfRequired(l => l.Text = "Paused");
@@ -77,7 +77,7 @@ namespace Vlc.DotNet.Forms.Samples
 #endif
         }
 
-        private void OnVlcStopped(object sender, Core.Rincewind.VlcMediaPlayerStoppedEventArgs e)
+        private void OnVlcStopped(object sender, Core.VlcMediaPlayerStoppedEventArgs e)
         {
 #if !NET20
             myLblState.InvokeIfRequired(l => l.Text = "Stopped");
@@ -86,7 +86,7 @@ namespace Vlc.DotNet.Forms.Samples
 #endif
         }
 
-        private void OnVlcPlaying(object sender, Core.Rincewind.VlcMediaPlayerPlayingEventArgs e)
+        private void OnVlcPlaying(object sender, Core.VlcMediaPlayerPlayingEventArgs e)
         {
 #if !NET20
             myLblState.InvokeIfRequired(l => l.Text = "Playing");
