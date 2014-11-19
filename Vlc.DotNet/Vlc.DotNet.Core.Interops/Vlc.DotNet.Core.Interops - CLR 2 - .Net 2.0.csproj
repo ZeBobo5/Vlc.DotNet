@@ -63,9 +63,14 @@
     </Compile>
     <Compile Include="Extensions\IntPtrExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="FilterModuleDescription.cs" />
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_module_description_t.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_video_filter_list_get.cs" />
     <Compile Include="VlcManager.AddOptionFlagToMedia.cs" />
     <Compile Include="VlcManager.AddOptionToMedia.cs" />
     <Compile Include="VlcManager.AttachEvent.cs" />
@@ -78,6 +83,7 @@
     <Compile Include="VlcManager.CreateNewMediaFromPath.cs" />
     <Compile Include="VlcManager.DetachEvent.cs" />
     <Compile Include="VlcManager.Free.cs" />
+    <Compile Include="VlcManager.GetAudioFilterList.cs" />
     <Compile Include="VlcManager.GetChangeset.cs" />
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
@@ -89,6 +95,7 @@
     <Compile Include="VlcManager.GetMediaMrl.cs" />
     <Compile Include="VlcManager.GetMediaPlayerEventManager.cs" />
     <Compile Include="VlcManager.GetMediaState.cs" />
+    <Compile Include="VlcManager.GetVideoFilterList.cs" />
     <Compile Include="VlcManager.IsParsedMedia.cs" />
     <Compile Include="VlcManager.IsPlaying.cs" />
     <Compile Include="VlcManager.ParseMedia.cs" />
@@ -98,6 +105,7 @@
     <Compile Include="VlcManager.ReleaseInstance.cs" />
     <Compile Include="VlcManager.ReleaseMedia.cs" />
     <Compile Include="VlcManager.ReleaseMediaPlayer.cs" />
+    <Compile Include="VlcManager.ReleaseModuleDescriptionInstance.cs" />
     <Compile Include="VlcManager.SaveMediaMetas.cs" />
     <Compile Include="VlcManager.SetMediaMeta.cs" />
     <Compile Include="VlcManager.SetMediaPlayerVideoHostHandle.cs" />
