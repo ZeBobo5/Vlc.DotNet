@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
@@ -20,21 +21,6 @@ namespace Vlc.DotNet.Core.Interops
 #else
                 return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetVersion>().Invoke());
 #endif
-            }
-        }
-
-        public IntPtr VlcInstance
-        {
-            get
-            {
-                lock (myStaticLocker)
-                {
-                    if (myVlcInstance == IntPtr.Zero)
-                    {
-                        myVlcInstance = CreateNewInstance(null);
-                    }
-                    return myVlcInstance;
-                }
             }
         }
 
@@ -67,5 +53,36 @@ namespace Vlc.DotNet.Core.Interops
                 myAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
             return myAllInstance[dynamicLinkLibrariesPath];
         }
+
+
+        public IEnumerable<FilterModuleDescription> GetAudioFilters()
+        {
+            var result = new List<FilterModuleDescription>();
+            var module = GetAudioFilterList();
+            result.Add(new FilterModuleDescription(module));
+            while (module.NextModule != IntPtr.Zero)
+            {
+                Marshal.PtrToStructure(module.NextModule, module);
+                result.Add(new FilterModuleDescription(module));
+            }
+            ReleaseModuleDescriptionInstance(module);
+            return result;
+        }
+
+        public IEnumerable<FilterModuleDescription> GetVideoFilters()
+        {
+            var result = new List<FilterModuleDescription>();
+            var module = GetVideoFilterList();
+            result.Add(new FilterModuleDescription(module));
+            while (module.NextModule != IntPtr.Zero)
+            {
+                Marshal.PtrToStructure(module.NextModule, module);
+                result.Add(new FilterModuleDescription(module));
+            }
+            ReleaseModuleDescriptionInstance(module);
+            return result;
+        }
+
+
     }
 }

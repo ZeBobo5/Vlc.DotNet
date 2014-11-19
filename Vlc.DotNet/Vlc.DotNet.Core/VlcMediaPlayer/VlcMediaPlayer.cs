@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using Vlc.DotNet.Core.Interops;
@@ -19,7 +20,7 @@ namespace Vlc.DotNet.Core
         {
             Medias = new Collection<VlcMedia>();
             Manager = manager;
-            myMediaPlayer = manager.CreateMediaPlayer(manager.VlcInstance);
+            myMediaPlayer = manager.CreateMediaPlayer();
             RegisterEvents();
         }
 

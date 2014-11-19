@@ -10,7 +10,7 @@ namespace Vlc.DotNet.Core
 
         public VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
         {
-            MediaInstance = player.Manager.CreateNewMediaFromPath(player.Manager.VlcInstance, file.FullName);
+            MediaInstance = player.Manager.CreateNewMediaFromPath(file.FullName);
             player.Manager.AddOptionToMedia(MediaInstance, options);
             myVlcMediaPlayer = player;
             myVlcMediaPlayer.Medias.Add(this);
@@ -19,7 +19,7 @@ namespace Vlc.DotNet.Core
 
         public VlcMedia(VlcMediaPlayer player, Uri uri, params string[] options)
         {
-            MediaInstance = player.Manager.CreateNewMediaFromLocation(player.Manager.VlcInstance, uri.ToString());
+            MediaInstance = player.Manager.CreateNewMediaFromLocation(uri.ToString());
             player.Manager.AddOptionToMedia(MediaInstance, options);
             myVlcMediaPlayer = player;
             myVlcMediaPlayer.Medias.Add(this);
