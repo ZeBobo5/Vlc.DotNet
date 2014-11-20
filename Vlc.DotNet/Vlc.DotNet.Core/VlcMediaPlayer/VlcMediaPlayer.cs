@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
@@ -20,6 +21,7 @@ namespace Vlc.DotNet.Core
         {
             Medias = new Collection<VlcMedia>();
             Manager = manager;
+            Manager.CreateNewInstance(null);
             myMediaPlayer = manager.CreateMediaPlayer();
             RegisterEvents();
         }
@@ -103,6 +105,45 @@ namespace Vlc.DotNet.Core
         public bool IsPlaying()
         {
             return Manager.IsPlaying(myMediaPlayer);
+        }
+
+        public IEnumerable<FilterModuleDescription> GetAudioFilters()
+        {
+            //var module = Manager.GetAudioFilterList();
+            //var result = GetSubFilter(module);
+            //if (module.Name != IntPtr.Zero)
+            //    Manager.ReleaseModuleDescriptionInstance(module);
+            //return result;
+            return null;
+        }
+
+        private List<FilterModuleDescription> GetSubFilter(ModuleDescription module)
+        {
+            var result = new List<FilterModuleDescription>();
+            var filterModule = FilterModuleDescription.GetFilterModuleDescription(module);
+            if (filterModule == null)
+            {
+                return result;
+            }
+            result.Add(filterModule);
+            if (module.NextModule != IntPtr.Zero)
+            {
+                ModuleDescription nextModule = (ModuleDescription)Marshal.PtrToStructure(module.NextModule, typeof(ModuleDescription));
+                var data = GetSubFilter(nextModule);
+                if (data.Count > 0)
+                    result.AddRange(data);
+            }
+            return result;
+        }
+
+        public IEnumerable<FilterModuleDescription> GetVideoFilters()
+        {
+            var module = Manager.GetVideoFilterList();
+            ModuleDescription nextModule = (ModuleDescription)Marshal.PtrToStructure(module, typeof(ModuleDescription));
+            var result = GetSubFilter(nextModule);
+            if (module != IntPtr.Zero)
+                Manager.ReleaseModuleDescriptionInstance(module);
+            return result;
         }
 
         private void RegisterEvents()

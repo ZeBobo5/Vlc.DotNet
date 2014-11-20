@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops.Signatures
 {
@@ -7,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_module_description_list_release")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void ReleaseModuleDescription(ModuleDescription moduleDescription);
+    internal delegate void ReleaseModuleDescription(IntPtr moduleDescription);
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Vlc.DotNet.Forms.Samples
@@ -9,24 +10,38 @@ namespace Vlc.DotNet.Forms.Samples
         public static T InvokeIfRequired<T>(this T source, Action<T> action)
             where T : Control
         {
-            if (!source.InvokeRequired)
-                action(source);
-            else
-                source.Invoke(new Action(() => action(source)));
-            return source;
+            try
+            {
+                if (!source.InvokeRequired)
+                    action(source);
+                else
+                    source.Invoke(new Action(() => action(source)));
+                return source;
+            }
+            catch (Exception ex)
+            {
+                Debug.Write("Error on 'InvokeIfRequired': {0}", ex.Message);
+            }
         }
 #else
         delegate void InvokeIfRequiredDelegate(Control ctrl, Action<Control> action);
 
         public static void InvokeIfRequired(Control ctrl, Action<Control> action)
         {
-            if (ctrl.InvokeRequired)
+            try
             {
-                ctrl.Invoke(new InvokeIfRequiredDelegate(ControlExtensions.InvokeIfRequired), ctrl, action);
+                if (ctrl.InvokeRequired)
+                {
+                    ctrl.Invoke(new InvokeIfRequiredDelegate(ControlExtensions.InvokeIfRequired), ctrl, action);
+                }
+                else
+                {
+                    action(ctrl);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                action(ctrl);
+                Debug.Write("Error on 'InvokeIfRequired': {0}", ex.Message);
             }
         }
 #endif

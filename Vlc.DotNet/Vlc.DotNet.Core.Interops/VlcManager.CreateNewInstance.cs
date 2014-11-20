@@ -5,11 +5,11 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public IntPtr CreateNewInstance(string[] args)
+        public void CreateNewInstance(string[] args)
         {
             if (args == null)
                 args = new string[0];
-            return GetInteropDelegate<CreateNewInstance>().Invoke(args.Length, args);
+            myVlcInstance = GetInteropDelegate<CreateNewInstance>().Invoke(args.Length, args);
         }
     }
 }

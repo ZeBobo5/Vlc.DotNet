@@ -71,6 +71,7 @@ namespace Vlc.DotNet.Forms
         public void Play()
         {
             EndInit();
+            var filter = myVlcMediaPlayer.GetVideoFilters();
             myVlcMediaPlayer.Play();
         }
 

@@ -1,4 +1,5 @@
-﻿using Vlc.DotNet.Core.Interops.Signatures;
+﻿using System;
+using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
@@ -9,19 +10,27 @@ namespace Vlc.DotNet.Core.Interops
         public string LongName { get; private set; }
         public string Help { get; private set; }
 
-        internal FilterModuleDescription(ModuleDescription module)
+        private FilterModuleDescription()
         {
+        }
+
+        internal static FilterModuleDescription GetFilterModuleDescription(ModuleDescription module)
+        {
+            if (module.Name == IntPtr.Zero)
+                return null;
+            var result = new FilterModuleDescription();
 #if NET20
-            Name = IntPtrExtensions.ToStringAnsi(module.Name);
-            ShortName = IntPtrExtensions.ToStringAnsi(module.ShortName);
-            LongName = IntPtrExtensions.ToStringAnsi(module.LongName);
-            Help = IntPtrExtensions.ToStringAnsi(module.Help);
+            result.Name = IntPtrExtensions.ToStringAnsi(module.Name);
+            result.ShortName = IntPtrExtensions.ToStringAnsi(module.ShortName);
+            result.LongName = IntPtrExtensions.ToStringAnsi(module.LongName);
+            result.Help = IntPtrExtensions.ToStringAnsi(module.Help);
 #else
-            Name = module.Name.ToStringAnsi();
-            ShortName = module.ShortName.ToStringAnsi();
-            LongName = module.LongName.ToStringAnsi();
-            Help = module.Help.ToStringAnsi();
+            result.Name = module.Name.ToStringAnsi();
+            result.ShortName = module.ShortName.ToStringAnsi();
+            result.LongName = module.LongName.ToStringAnsi();
+            result.Help = module.Help.ToStringAnsi();
 #endif
+            return result;
         }
     }
 }

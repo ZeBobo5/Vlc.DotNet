@@ -5,7 +5,7 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public ModuleDescription GetVideoFilterList()
+        public IntPtr GetVideoFilterList()
         {
             return GetInteropDelegate<GetVideoFilterList>().Invoke(myVlcInstance);
         }

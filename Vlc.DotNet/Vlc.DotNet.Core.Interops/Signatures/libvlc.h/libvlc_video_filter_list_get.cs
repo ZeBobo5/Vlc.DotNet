@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_video_filter_list_get")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate ModuleDescription GetVideoFilterList(IntPtr instance);
+    internal delegate IntPtr GetVideoFilterList(IntPtr instance);
 }
