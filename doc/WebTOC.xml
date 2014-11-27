@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="350f1d53-97da-452c-9a61-6d12fb0fe076" Title="Vlc.DotNet.Core" Url="html/2545ebaf-fae6-d5f3-101d-d5716722d81f.htm">
+    <HelpTOCNode Id="2e2a0ff0-c6c2-4d58-ab2b-6a0bdd38f4e0" Title="VlcMedia Class" Url="html/11cdbd00-3c4d-c6d5-35c2-effce2dab8ac.htm">
+      <HelpTOCNode Id="1c1383ec-f0c4-4e4e-8cbb-95644ac4b10e" Title="VlcMedia Constructor " Url="html/eaf061ae-60d8-8b2e-f700-c3a64e0d2e76.htm">
+        <HelpTOCNode Title="VlcMedia Constructor (VlcMediaPlayer, FileInfo, String[])" Url="html/82208bc3-1231-bfb1-b757-44d094bbc8d1.htm" />
+        <HelpTOCNode Title="VlcMedia Constructor (VlcMediaPlayer, Uri, String[])" Url="html/98ac1055-5a3f-3f36-ade0-cf54d96a032b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a5d624a7-7ad8-41e4-bef6-fdde87bf0caa" Title="VlcMedia Methods" Url="html/3b95d030-b3b0-27fd-2922-782916b573dd.htm">
+        <HelpTOCNode Title="Clone Method " Url="html/b7326b64-7360-7290-975f-acbebddc6f55.htm" />
+        <HelpTOCNode Title="Dispose Method " Url="html/bd92fdb9-99b5-d3f4-1d82-bbe9599c20a2.htm" />
+        <HelpTOCNode Title="OnMediaDurationChanged Method " Url="html/415e4e4f-508e-529a-4af5-8b857942ca56.htm" />
+        <HelpTOCNode Title="OnMediaFreed Method " Url="html/c811b0ae-8284-5275-1fdc-e8d4209edcfa.htm" />
+        <HelpTOCNode Title="OnMediaMetaChanged Method " Url="html/3bc5bd56-a1d1-c4a3-9e56-810dee7bc6e4.htm" />
+        <HelpTOCNode Title="OnMediaParsedChanged Method " Url="html/ab153f8d-bf1f-a1c9-0a86-3baea41ad1c1.htm" />
+        <HelpTOCNode Title="OnMediaStateChanged Method " Url="html/411d3899-b321-9b73-78f6-559eb4296913.htm" />
+        <HelpTOCNode Title="OnMediaSubItemAdded Method " Url="html/3dc00371-fe2e-a850-600c-47f7998ae43c.htm" />
+        <HelpTOCNode Title="OnMediaSubItemTreeAdded Method " Url="html/63b7c462-0237-bdab-ab4f-08a159d0b56d.htm" />
+        <HelpTOCNode Title="Parse Method " Url="html/606ba6f6-1aa8-33d6-e8ba-19c05389a237.htm" />
+        <HelpTOCNode Title="ParseAsync Method " Url="html/9dbaa1bc-8ccb-d2ae-192b-f9bcbb6a88ba.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="38a32105-cce6-4a8a-a815-0ce48284228e" Title="VlcMedia Properties" Url="html/880824bc-63af-b663-d70d-b97d551afd45.htm">
+        <HelpTOCNode Title="Actors Property " Url="html/70200483-33e3-d910-3dc8-6c73759ce6eb.htm" />
+        <HelpTOCNode Title="Album Property " Url="html/471cb6fb-061d-ddff-ed49-3a2cd2c8ddde.htm" />
+        <HelpTOCNode Title="Artist Property " Url="html/de401245-46b3-97d9-6c56-6442cd3a94d5.htm" />
+        <HelpTOCNode Title="ArtworkURL Property " Url="html/baeb776f-afd5-7704-e408-6de076553fc9.htm" />
+        <HelpTOCNode Title="Copyright Property " Url="html/dc4adce5-30b6-449d-42ca-41da58adc9f6.htm" />
+        <HelpTOCNode Title="Date Property " Url="html/96e642d7-6146-01a4-e1ed-d62d0b64df3b.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/87f1654f-6f0e-cfea-4752-ec3a0b49accb.htm" />
+        <HelpTOCNode Title="Director Property " Url="html/ebbd96bf-84ac-8a74-ac71-7fd22e82bf92.htm" />
+        <HelpTOCNode Title="Duration Property " Url="html/eaa5a849-56d3-fe8b-a34b-6b5d01db588f.htm" />
+        <HelpTOCNode Title="EncodedBy Property " Url="html/77b747b1-6128-4989-73fa-98275647629f.htm" />
+        <HelpTOCNode Title="Episode Property " Url="html/7f3e7490-65ab-8875-273b-a88320b35d2d.htm" />
+        <HelpTOCNode Title="Genre Property " Url="html/ab3d2f9e-47f9-41da-ab77-22ac1649a494.htm" />
+        <HelpTOCNode Title="Language Property " Url="html/ccfaacc2-23ae-c5fc-a634-2eabcdfda5df.htm" />
+        <HelpTOCNode Title="Mrl Property " Url="html/81ec6f6c-b37d-f8fd-7789-22991a71e0e9.htm" />
+        <HelpTOCNode Title="NowPlaying Property " Url="html/78a057cc-7e87-c477-a893-f1b93754b277.htm" />
+        <HelpTOCNode Title="Publisher Property " Url="html/92e051a2-72fe-5d3b-361e-8b5b6afd2d1e.htm" />
+        <HelpTOCNode Title="Rating Property " Url="html/0ac1252f-1085-6df3-7af9-8ab7f8f70ce7.htm" />
+        <HelpTOCNode Title="Season Property " Url="html/7681b202-1719-af74-7a1d-9bfee07b7b36.htm" />
+        <HelpTOCNode Title="Setting Property " Url="html/f0260b31-7934-cb99-bebb-c5aa9728fb92.htm" />
+        <HelpTOCNode Title="ShowName Property " Url="html/5657c76a-8b5a-6785-a92f-543aa9f395f6.htm" />
+        <HelpTOCNode Title="State Property " Url="html/66db5c57-cfdc-9d9f-900c-013d0234385b.htm" />
+        <HelpTOCNode Title="Title Property " Url="html/f0208b75-3484-ccab-8a2f-36952957be68.htm" />
+        <HelpTOCNode Title="TrackID Property " Url="html/72229b71-4118-1760-6cdb-73cc70f12cee.htm" />
+        <HelpTOCNode Title="TrackNumber Property " Url="html/a71f9122-9f09-28c3-7017-b5fe45cee222.htm" />
+        <HelpTOCNode Title="TrackTotal Property " Url="html/fcc7c0c3-4508-e452-6754-c517a652d449.htm" />
+        <HelpTOCNode Title="URL Property " Url="html/6ebb220c-eb90-fcf6-681d-d6b93d5dc38e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e83bea15-e126-4276-91a5-213cd3d005ce" Title="VlcMedia Events" Url="html/b9c09aa1-70cf-de90-3087-10af0937696b.htm">
+        <HelpTOCNode Title="DurationChanged Event" Url="html/d5a285d2-22f0-f85e-ce0c-ea1fc8cd7408.htm" />
+        <HelpTOCNode Title="Freed Event" Url="html/e80ea440-7fe6-b820-64f8-f32bdcde3803.htm" />
+        <HelpTOCNode Title="MetaChanged Event" Url="html/c437eddd-bb47-5407-07e3-a5947e19759d.htm" />
+        <HelpTOCNode Title="ParsedChanged Event" Url="html/3a203ecf-7264-85c2-cc8a-4a3b27b35256.htm" />
+        <HelpTOCNode Title="StateChanged Event" Url="html/67fe86bf-c298-8f8e-1b32-09f73207650b.htm" />
+        <HelpTOCNode Title="SubItemAdded Event" Url="html/5f80abc5-aee3-4e2d-456c-eec321dc55d0.htm" />
+        <HelpTOCNode Title="SubItemTreeAdded Event" Url="html/7836a22c-fc93-7ea7-fde8-bed646012f66.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="aeb4e71c-ac38-48c2-b59f-f9c82d57e6df" Title="VlcMediaDurationChangedEventArgs Class" Url="html/98d63507-d11e-af1a-ab76-2d6d0152fd61.htm">
+      <HelpTOCNode Title="VlcMediaDurationChangedEventArgs Constructor " Url="html/01d2d005-2aeb-d2f9-601d-59c8719144ce.htm" />
+      <HelpTOCNode Title="VlcMediaDurationChangedEventArgs Methods" Url="html/fde98718-f042-76c6-a582-a675a6f1e092.htm" />
+      <HelpTOCNode Id="c5e3189c-0cda-4dce-8ef8-b836fed60619" Title="VlcMediaDurationChangedEventArgs Properties" Url="html/f7a71504-367e-454d-cf1d-53beb8211761.htm">
+        <HelpTOCNode Title="NewDuration Property " Url="html/b0dbac47-9436-5400-3ddf-7f3b33beb876.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a8154228-0f2c-4f09-adc3-43f1ae2cdba4" Title="VlcMediaFreedEventArgs Class" Url="html/624f3188-d43b-fedc-d048-bc7017d3f584.htm">
+      <HelpTOCNode Title="VlcMediaFreedEventArgs Constructor " Url="html/4928cd30-4526-e436-2401-35d8dcf25292.htm" />
+      <HelpTOCNode Title="VlcMediaFreedEventArgs Methods" Url="html/2c2ade64-21e3-a56f-748f-827fec670340.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="5112f410-3493-43fb-a82e-297db9169b2f" Title="VlcMediaMetaChangedEventArgs Class" Url="html/b41e54a7-6f91-9682-2e7f-0a874756a597.htm">
+      <HelpTOCNode Title="VlcMediaMetaChangedEventArgs Constructor " Url="html/e4ccdf99-ff59-d99a-ae61-bffdcf1530db.htm" />
+      <HelpTOCNode Title="VlcMediaMetaChangedEventArgs Methods" Url="html/cd641d9c-23cc-0fce-d2ec-89a7e6019ee4.htm" />
+      <HelpTOCNode Id="854b7b3e-7101-48c5-b111-dd3a45fcc9c6" Title="VlcMediaMetaChangedEventArgs Properties" Url="html/7b1bc0a4-367a-4ad6-4805-11b829001dad.htm">
+        <HelpTOCNode Title="MetaType Property " Url="html/d2941129-43b6-4fef-fbb3-a8140c4ecd13.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="23d7815f-8a3e-44dc-811d-f1ef075900a9" Title="VlcMediaParsedChangedEventArgs Class" Url="html/e4a7f3ac-8c23-1cf4-40af-33eafc731821.htm">
+      <HelpTOCNode Title="VlcMediaParsedChangedEventArgs Constructor " Url="html/8b5327ed-53a3-cf40-f11a-0682a1413704.htm" />
+      <HelpTOCNode Title="VlcMediaParsedChangedEventArgs Methods" Url="html/e75d18d6-2ef9-faff-a63c-d4bd94eb92a1.htm" />
+      <HelpTOCNode Id="460d4b7d-3b72-433f-83e5-d3acdf2e5d2c" Title="VlcMediaParsedChangedEventArgs Properties" Url="html/6e4b366d-eb76-d71d-5558-a44c7f1c515f.htm">
+        <HelpTOCNode Title="NewStatus Property " Url="html/bd302a14-f3f8-ed80-f3cf-346e3b6c1bee.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f20f1fe3-a086-46f3-8127-86ff1a19e1fb" Title="VlcMediaPlayer Class" Url="html/325d230e-876c-f9e8-861e-b8b352dc88f7.htm">
+      <HelpTOCNode Title="VlcMediaPlayer Constructor " Url="html/24ca6ebd-1c76-60c4-adde-74599510c845.htm" />
+      <HelpTOCNode Id="d86588d0-77d8-463c-bc4a-90fb65938f03" Title="VlcMediaPlayer Methods" Url="html/d5cf02f7-e14d-3795-3b5f-84abda250095.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/81cd48a7-d9d9-d5c1-0774-7d57efeef085.htm" />
+        <HelpTOCNode Title="GetAudioFilters Method " Url="html/194910e9-d3e3-e09b-53af-ee11e30b342b.htm" />
+        <HelpTOCNode Title="GetMedia Method " Url="html/043d793b-90b8-1860-c0da-edc74e46e23e.htm" />
+        <HelpTOCNode Title="GetVideoFilters Method " Url="html/63281297-8b2a-baee-e8ac-e2ff56686d08.htm" />
+        <HelpTOCNode Title="IsPlaying Method " Url="html/095a8f19-06a7-ccc3-8820-aa17a93fa045.htm" />
+        <HelpTOCNode Title="OnMediaPlayerBackward Method " Url="html/78699c8e-e0be-0fc4-3536-3e05aeebd8bc.htm" />
+        <HelpTOCNode Title="OnMediaPlayerBuffering Method " Url="html/927c1800-e1fd-826f-b7da-e8dd71ef892b.htm" />
+        <HelpTOCNode Title="OnMediaPlayerEncounteredError Method " Url="html/e9f39846-1263-8e44-a655-826ee22400b4.htm" />
+        <HelpTOCNode Title="OnMediaPlayerEndReached Method " Url="html/936a3185-7f43-4141-8b04-5a2a156a8ae7.htm" />
+        <HelpTOCNode Title="OnMediaPlayerForward Method " Url="html/205fe7af-feae-38d1-d180-557c405bbf6f.htm" />
+        <HelpTOCNode Title="OnMediaPlayerLengthChanged Method " Url="html/7ddce47a-9fb1-ffa7-ffd7-e2e93f17c2bf.htm" />
+        <HelpTOCNode Title="OnMediaPlayerMediaChanged Method " Url="html/5bdd8e6a-281f-ec4b-445e-2bf80b1cca29.htm" />
+        <HelpTOCNode Title="OnMediaPlayerOpening Method " Url="html/11605d9c-60e7-fce7-e31b-5ebd00ed4bdc.htm" />
+        <HelpTOCNode Title="OnMediaPlayerPausableChanged Method " Url="html/9711f50c-4c2a-3988-63a8-b06c4a8aa11a.htm" />
+        <HelpTOCNode Title="OnMediaPlayerPaused Method " Url="html/5c921657-bf48-c043-cf62-82a26770e3f0.htm" />
+        <HelpTOCNode Title="OnMediaPlayerPlaying Method " Url="html/fe9915c7-c482-0217-dd39-73e4cefb042b.htm" />
+        <HelpTOCNode Title="OnMediaPlayerPositionChanged Method " Url="html/c7e12f4c-157a-1e4d-55cb-eccbe6eec65a.htm" />
+        <HelpTOCNode Title="OnMediaPlayerScrambledChanged Method " Url="html/348988f0-5e9c-28f4-262f-d27f33841bed.htm" />
+        <HelpTOCNode Title="OnMediaPlayerSeekableChanged Method " Url="html/ee2c50a6-39d0-2f89-11b9-804096a07f5f.htm" />
+        <HelpTOCNode Title="OnMediaPlayerSnapshotTaken Method " Url="html/065cc6a2-03c2-b88a-0b44-5316846b47f3.htm" />
+        <HelpTOCNode Title="OnMediaPlayerStopped Method " Url="html/ae7f9e51-b61e-3a32-71fb-ca8e132b0265.htm" />
+        <HelpTOCNode Title="OnMediaPlayerTimeChanged Method " Url="html/84485a7d-0a62-034c-b829-7d72c6e8327b.htm" />
+        <HelpTOCNode Title="OnMediaPlayerTitleChanged Method " Url="html/d6da3248-66c5-6acf-81ad-060622c3bd35.htm" />
+        <HelpTOCNode Title="OnMediaPlayerVideoOutChanged Method " Url="html/9636c7f7-85c5-71b3-3a17-50fe68ef642f.htm" />
+        <HelpTOCNode Title="Pause Method " Url="html/d42d3370-72b1-9c86-cdaa-a75aba76b106.htm" />
+        <HelpTOCNode Title="Play Method " Url="html/7f9c3944-32f5-1d24-040f-5673c95fa64b.htm" />
+        <HelpTOCNode Id="634a86ad-dee5-47b6-b776-0322237bf736" Title="SetMedia Method " Url="html/7cd85d7e-2da3-e7a2-a4b0-99ca398ff4ea.htm">
+          <HelpTOCNode Title="SetMedia Method (VlcMedia)" Url="html/ecc32020-2e92-bbc7-19cd-c977b46cf779.htm" />
+          <HelpTOCNode Title="SetMedia Method (FileInfo, String[])" Url="html/1e8c2ff5-c1fb-49b0-5703-a9a015d45db9.htm" />
+          <HelpTOCNode Title="SetMedia Method (Uri, String[])" Url="html/3e3958c6-7675-b559-1dbd-cacf651a6f95.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Stop Method " Url="html/1e267b98-c0f8-4b53-c7e9-b7e4025c36ce.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c1bb2815-e185-41c5-ac3b-b063dd9f727e" Title="VlcMediaPlayer Properties" Url="html/eb25a820-5a07-78bc-0f92-5fc1f8cc98a5.htm">
+        <HelpTOCNode Title="VideoHostHandle Property " Url="html/dc28bd84-31f3-bf0d-1cc5-229381adfa72.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="11f7d47f-51a2-432e-af04-310cb74f5482" Title="VlcMediaPlayer Events" Url="html/0f5a3e46-1f30-5baf-28e8-cd2cf75737d3.htm">
+        <HelpTOCNode Title="Backward Event" Url="html/554b9754-6e51-2afa-8529-e7101557fdff.htm" />
+        <HelpTOCNode Title="Buffering Event" Url="html/9acabf36-908f-38f8-fecd-e821ec47aae4.htm" />
+        <HelpTOCNode Title="EncounteredError Event" Url="html/3206bf0a-41b5-2c14-d8ce-da7a0db61b86.htm" />
+        <HelpTOCNode Title="EndReached Event" Url="html/a894b758-9088-4899-ffa9-bfb2d7f023e8.htm" />
+        <HelpTOCNode Title="Forward Event" Url="html/ca0eda13-5e07-21e2-97a7-66df0d6e1a8d.htm" />
+        <HelpTOCNode Title="LengthChanged Event" Url="html/5806043c-8d5a-940a-c400-99e544a6cd3a.htm" />
+        <HelpTOCNode Title="MediaChanged Event" Url="html/b2650326-8d42-7e73-7e81-2891a488ccba.htm" />
+        <HelpTOCNode Title="Opening Event" Url="html/82f8c452-8f12-afd5-0f0a-37a49ee0d63b.htm" />
+        <HelpTOCNode Title="PausableChanged Event" Url="html/341a4773-6929-5113-218d-7baefee4b0cd.htm" />
+        <HelpTOCNode Title="Paused Event" Url="html/2ef0e49e-bd44-0300-1ece-1c95d625e15f.htm" />
+        <HelpTOCNode Title="Playing Event" Url="html/bb3d9c53-5720-3401-a785-0dbd40d30caa.htm" />
+        <HelpTOCNode Title="PositionChanged Event" Url="html/8c7f9d96-ebfb-cce7-81c8-2ce96d7bee91.htm" />
+        <HelpTOCNode Title="ScrambledChanged Event" Url="html/f84dc025-d9e5-31db-0d4b-6c747cfc7d68.htm" />
+        <HelpTOCNode Title="SeekableChanged Event" Url="html/c539dede-935c-4829-ca76-8265b9cff005.htm" />
+        <HelpTOCNode Title="SnapshotTaken Event" Url="html/a69fb1df-05c8-575e-8e60-6b13711cba8c.htm" />
+        <HelpTOCNode Title="Stopped Event" Url="html/909216dc-7428-54cc-20c2-4f4be74172da.htm" />
+        <HelpTOCNode Title="TimeChanged Event" Url="html/88e7ac14-f341-ade8-fe0f-745ee6a15909.htm" />
+        <HelpTOCNode Title="TitleChanged Event" Url="html/b802a632-1cd9-0221-ea93-867d51a4d8cb.htm" />
+        <HelpTOCNode Title="VideoOutChanged Event" Url="html/3f9ca3c4-27e1-9366-4710-f0d096f354a1.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4d9cf050-18f1-4a41-8b5e-394405cc4753" Title="VlcMediaPlayerBackwardEventArgs Class" Url="html/a49be18e-6494-5c96-86bb-9e04e4d69bc2.htm">
+      <HelpTOCNode Title="VlcMediaPlayerBackwardEventArgs Constructor " Url="html/8c2ccd2f-2c61-9256-1c3f-5462de481219.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerBackwardEventArgs Methods" Url="html/7f98e96f-8cd2-7edc-d03f-18d2bc6e0d90.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="46ca0435-e3d8-4275-a0e3-f95a43429c11" Title="VlcMediaPlayerBufferingEventArgs Class" Url="html/0e89fd58-a48a-b299-6bba-b78fd22aa4e5.htm">
+      <HelpTOCNode Title="VlcMediaPlayerBufferingEventArgs Constructor " Url="html/69aca079-ed79-307e-d170-2e8c43aab4b6.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerBufferingEventArgs Methods" Url="html/1803df11-2173-8987-74d8-f0e3b3fdc9a4.htm" />
+      <HelpTOCNode Id="e7038e2f-6fe3-4f26-b804-a611e3eb0a15" Title="VlcMediaPlayerBufferingEventArgs Properties" Url="html/1edf1d3c-311c-5ddc-ecdb-583c7a27e5bf.htm">
+        <HelpTOCNode Title="NewCache Property " Url="html/0b3a143d-7ea6-de15-941f-9ebe3a934e16.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ea8a8c4-0f9b-4636-97b8-ca51c7388db7" Title="VlcMediaPlayerEncounteredErrorEventArgs Class" Url="html/5726a159-3391-adcd-da71-754b204e34d9.htm">
+      <HelpTOCNode Title="VlcMediaPlayerEncounteredErrorEventArgs Constructor " Url="html/d0c896dc-a17b-b180-9009-74f11970d72f.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerEncounteredErrorEventArgs Methods" Url="html/90a208df-9df4-2240-ba0b-bc212326df25.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="4eb19d8c-34af-4ce2-a622-6f780ed2371b" Title="VlcMediaPlayerEndReachedEventArgs Class" Url="html/6394c59f-7817-9cab-b29e-eb4b0320402a.htm">
+      <HelpTOCNode Title="VlcMediaPlayerEndReachedEventArgs Constructor " Url="html/4aa45c6e-1178-6bd5-e4a7-994bf8ce81a0.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerEndReachedEventArgs Methods" Url="html/a4ec7619-2be3-1914-34ae-d2f0c32a5260.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="2a4bf4df-2d4e-49f9-b183-833bd9cf75e5" Title="VlcMediaPlayerForwardEventArgs Class" Url="html/c8af14a2-08da-f031-f7cc-c686c8dc0d88.htm">
+      <HelpTOCNode Title="VlcMediaPlayerForwardEventArgs Constructor " Url="html/69455140-66a3-3ecc-93a2-c8d77f9d8803.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerForwardEventArgs Methods" Url="html/31228888-f995-8f9e-6b19-b7efe53a9762.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="43e58252-a7b3-4701-b060-3a3c9471abbd" Title="VlcMediaPlayerLengthChangedEventArgs Class" Url="html/376b0440-ea6b-9945-adda-437cc9343fcf.htm">
+      <HelpTOCNode Title="VlcMediaPlayerLengthChangedEventArgs Constructor " Url="html/5e9546c3-1976-84ec-80f6-ac0a3d5b217f.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerLengthChangedEventArgs Methods" Url="html/1d828695-b518-fd7f-0104-53096d477099.htm" />
+      <HelpTOCNode Id="769c56fb-2fc1-49a6-95bb-5e40eb5d0bc6" Title="VlcMediaPlayerLengthChangedEventArgs Properties" Url="html/ca7936a3-63b2-850b-39b6-83ad61c7d896.htm">
+        <HelpTOCNode Title="NewLength Property " Url="html/fffb4d8a-2805-0b22-8dfc-4a96701bdb34.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="739bb892-6312-4dec-a0a0-9a80b05f728c" Title="VlcMediaPlayerMediaChangedEventArgs Class" Url="html/fcd0e082-15b4-b6b3-d2b0-152587a19534.htm">
+      <HelpTOCNode Title="VlcMediaPlayerMediaChangedEventArgs Constructor " Url="html/43788580-7709-76b8-dc11-35bc8b22eb04.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerMediaChangedEventArgs Methods" Url="html/2759fdf0-5e4e-2551-e667-4ff9301c3b08.htm" />
+      <HelpTOCNode Id="e82ef256-983f-4916-a935-7b6ca2dafbf0" Title="VlcMediaPlayerMediaChangedEventArgs Properties" Url="html/84833c8b-0aa4-f1ae-0658-0cc80ea65836.htm">
+        <HelpTOCNode Title="NewMedia Property " Url="html/d05652cf-69ca-8684-3c8f-feb115babdc8.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6169c22a-0a4b-49ea-9caf-a18c054ced0d" Title="VlcMediaPlayerOpeningEventArgs Class" Url="html/34f6fc4b-5c0d-6ac1-0690-1707b2085d5d.htm">
+      <HelpTOCNode Title="VlcMediaPlayerOpeningEventArgs Constructor " Url="html/3c1b9050-e0c6-b925-a6e8-5e5ed9dbc3ea.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerOpeningEventArgs Methods" Url="html/bf44d87e-e092-7287-4bed-f724fe5a372f.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="eba2feef-a62b-4ad7-9f1b-1b8ecd014608" Title="VlcMediaPlayerPausableChangedEventArgs Class" Url="html/ac3aef1d-dfd8-83de-f6db-03ba5a95ce58.htm">
+      <HelpTOCNode Title="VlcMediaPlayerPausableChangedEventArgs Constructor " Url="html/3da3456e-fab0-be09-0023-74ca269c3e18.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerPausableChangedEventArgs Methods" Url="html/e520127a-e3c4-01e2-a355-4b766dc72f3e.htm" />
+      <HelpTOCNode Id="6e3a32fe-b6e2-45f1-b306-bafe27744b37" Title="VlcMediaPlayerPausableChangedEventArgs Properties" Url="html/347662ad-b786-83f3-a00d-0b518b33b5c7.htm">
+        <HelpTOCNode Title="IsPaused Property " Url="html/c087343d-3de6-0710-ff0a-3bfa22540377.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="04c4460b-a644-4191-8b51-8006ff117124" Title="VlcMediaPlayerPausedEventArgs Class" Url="html/5fd1f598-0bed-fee8-50d6-16ba1b5febcd.htm">
+      <HelpTOCNode Title="VlcMediaPlayerPausedEventArgs Constructor " Url="html/6ee3161d-2ab4-4d96-0801-27c37c0da4d8.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerPausedEventArgs Methods" Url="html/87f24444-1af6-83c9-fc6b-10f8b243b96a.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="53515a9c-3ad5-449b-b83c-7755f804fa47" Title="VlcMediaPlayerPlayingEventArgs Class" Url="html/43a21f56-1ccc-29fd-6e76-db2d682ee49e.htm">
+      <HelpTOCNode Title="VlcMediaPlayerPlayingEventArgs Constructor " Url="html/34a9d14d-f0df-3103-b52f-f5f827e42807.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerPlayingEventArgs Methods" Url="html/c2b917b6-6dbe-4e86-b97d-2f31e3616825.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c22b68d9-4641-44a0-a26f-eeafdc65eae7" Title="VlcMediaPlayerPositionChangedEventArgs Class" Url="html/93eaa3c7-c16a-3be2-0ce0-a725b4b97233.htm">
+      <HelpTOCNode Title="VlcMediaPlayerPositionChangedEventArgs Constructor " Url="html/8fc660c7-a321-1197-74dd-6dde1d6dd447.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerPositionChangedEventArgs Methods" Url="html/f0ae20b3-1169-102c-d42c-6797286f3c1a.htm" />
+      <HelpTOCNode Id="f265cfb0-5601-4955-bec2-1fc33b9a7905" Title="VlcMediaPlayerPositionChangedEventArgs Properties" Url="html/d8e6707f-ef9b-1a61-9924-ba4693fab9de.htm">
+        <HelpTOCNode Title="NewPosition Property " Url="html/151ab628-57ab-3f12-9572-4981cf754b5c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9c329b62-c315-4dd6-92d1-15fbfc000099" Title="VlcMediaPlayerScrambledChangedEventArgs Class" Url="html/6a60babc-817d-8097-0608-5aac58f4b8a9.htm">
+      <HelpTOCNode Title="VlcMediaPlayerScrambledChangedEventArgs Constructor " Url="html/2fbf8c05-8be5-5163-9709-1a25dfdda9e1.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerScrambledChangedEventArgs Methods" Url="html/e6bde78b-132a-d4af-30fc-259f1aafb05f.htm" />
+      <HelpTOCNode Id="d38cf474-471d-479e-bcd2-a3d523b359f6" Title="VlcMediaPlayerScrambledChangedEventArgs Properties" Url="html/3504d7f8-3d85-80ad-1747-a310581f9478.htm">
+        <HelpTOCNode Title="NewScrambled Property " Url="html/ed23f158-3b1d-0c01-2c99-3bfd9dbdd92a.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="449d5a4f-429c-49e6-8ee4-bd200e1bd1c8" Title="VlcMediaPlayerSeekableChangedEventArgs Class" Url="html/2cf927d1-f549-d99d-3a1b-1e73906ff39c.htm">
+      <HelpTOCNode Title="VlcMediaPlayerSeekableChangedEventArgs Constructor " Url="html/eda55cbc-6dd0-338a-f181-d7e65c2397e3.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerSeekableChangedEventArgs Methods" Url="html/5ac7b3b2-cbba-64d6-2fa8-d44d32d06993.htm" />
+      <HelpTOCNode Id="46cef8d3-455f-4c9e-a3a4-af84b994ba23" Title="VlcMediaPlayerSeekableChangedEventArgs Properties" Url="html/f987035a-9dbf-e07b-94b6-43a5bcba622c.htm">
+        <HelpTOCNode Title="NewSeekable Property " Url="html/abb88c2f-1689-54e3-fe33-186f27d10d2c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8f557d88-ea3f-40aa-bab8-c5852ddb11b7" Title="VlcMediaPlayerSnapshotTakenEventArgs Class" Url="html/3b1932be-641b-7f68-6d12-21559c1ed108.htm">
+      <HelpTOCNode Title="VlcMediaPlayerSnapshotTakenEventArgs Constructor " Url="html/20676d8c-3585-8fe1-c378-ac278521dfd4.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerSnapshotTakenEventArgs Methods" Url="html/d2d3b7c0-9a73-efb3-9468-35ba0d0bddc5.htm" />
+      <HelpTOCNode Id="4db86d1e-61be-4798-b8e8-5ad8333cacfa" Title="VlcMediaPlayerSnapshotTakenEventArgs Properties" Url="html/ff31fb09-b450-6d90-16a6-22d6a8053311.htm">
+        <HelpTOCNode Title="FileName Property " Url="html/2fc527fc-42e5-7b8d-483a-b1a1c81a21e8.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f9d7c827-0311-46e6-9546-b6b977459721" Title="VlcMediaPlayerStoppedEventArgs Class" Url="html/d5828379-f34f-1ed5-5ad3-edd6e7b6feb8.htm">
+      <HelpTOCNode Title="VlcMediaPlayerStoppedEventArgs Constructor " Url="html/0c5dd5f8-d4f5-c41b-ef5f-901bb34c72aa.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerStoppedEventArgs Methods" Url="html/6f9a728c-d0a1-1171-36a4-aff95ab8456f.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="e93897c8-1332-4caf-a180-eb1bbfb65b1c" Title="VlcMediaPlayerTimeChangedEventArgs Class" Url="html/ddd6d60f-ee89-2a1f-b06b-a897a90c7935.htm">
+      <HelpTOCNode Title="VlcMediaPlayerTimeChangedEventArgs Constructor " Url="html/37819b2b-c9f8-bf6d-ed2c-dee43bba8fd0.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerTimeChangedEventArgs Methods" Url="html/8abe2a63-1d01-afd4-b388-e746e56f648b.htm" />
+      <HelpTOCNode Id="01e43e76-82f0-4b39-a1e7-2796121088c5" Title="VlcMediaPlayerTimeChangedEventArgs Properties" Url="html/77fef71f-33d5-653c-4ffc-d871974aa0f1.htm">
+        <HelpTOCNode Title="NewTime Property " Url="html/7c5399f9-7c4f-99d9-3a77-155e94007198.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e82ae22b-168a-4c58-8dd5-685e0897bcd8" Title="VlcMediaPlayerTitleChangedEventArgs Class" Url="html/cbfda705-3b77-3460-1859-425a3ad6211a.htm">
+      <HelpTOCNode Title="VlcMediaPlayerTitleChangedEventArgs Constructor " Url="html/e68bc2ce-ca96-4ca4-d60f-602fed776ad1.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerTitleChangedEventArgs Methods" Url="html/a5a61d62-1494-5de6-0e89-346fb6c36503.htm" />
+      <HelpTOCNode Id="5212ec4f-9ba7-49f1-8ba7-abe39cccd98d" Title="VlcMediaPlayerTitleChangedEventArgs Properties" Url="html/c726b058-d4c8-991d-783f-24339bc78d6f.htm">
+        <HelpTOCNode Title="NewTitle Property " Url="html/664ca574-91dd-d3df-3683-0fa962f30f98.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="09c1229b-274c-4643-a00b-d116132a307c" Title="VlcMediaPlayerVideoOutChangedEventArgs Class" Url="html/df47e651-e421-5a76-6153-300e3889417c.htm">
+      <HelpTOCNode Title="VlcMediaPlayerVideoOutChangedEventArgs Constructor " Url="html/2727f30f-2aec-c9d6-9797-68e8fd78edcc.htm" />
+      <HelpTOCNode Title="VlcMediaPlayerVideoOutChangedEventArgs Methods" Url="html/bf5634f4-8e68-02b8-eaea-38bc0661dc17.htm" />
+      <HelpTOCNode Id="fd1aaeeb-10fd-4666-931c-aa45b24c610a" Title="VlcMediaPlayerVideoOutChangedEventArgs Properties" Url="html/85a9d677-a7c9-9672-6e0c-26290ce7855e.htm">
+        <HelpTOCNode Title="NewCount Property " Url="html/1ef7b96d-3314-413c-ccdc-2c3bb0fc1b25.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="956be1f4-94a7-4500-93a8-cf96760ea1dd" Title="VlcMediaStateChangedEventArgs Class" Url="html/1dbbd4fb-f275-ac3a-7765-7b090f3902ea.htm">
+      <HelpTOCNode Title="VlcMediaStateChangedEventArgs Constructor " Url="html/048b9884-7cdc-0b90-fac9-7bb49eba68b5.htm" />
+      <HelpTOCNode Title="VlcMediaStateChangedEventArgs Methods" Url="html/e27e4dcc-4bac-a673-67ec-a56d6e18b36e.htm" />
+      <HelpTOCNode Id="d1f8b518-f22e-469d-b933-3cebbee6f7db" Title="VlcMediaStateChangedEventArgs Properties" Url="html/e33022bf-5f79-ca18-fb5a-5229338e4f5b.htm">
+        <HelpTOCNode Title="State Property " Url="html/12d522e9-ee12-9cbb-d7f5-d003de57f380.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="04e7c288-668c-4e30-bce0-1847a18f4433" Title="VlcMediaSubItemAddedEventArgs Class" Url="html/93df8f3a-669d-7794-0b44-18497722bdf3.htm">
+      <HelpTOCNode Title="VlcMediaSubItemAddedEventArgs Constructor " Url="html/320327e7-a75b-93bc-d8aa-1ad259b27142.htm" />
+      <HelpTOCNode Title="VlcMediaSubItemAddedEventArgs Methods" Url="html/84ab88b8-096d-7ed9-79bd-6fa419ef0806.htm" />
+      <HelpTOCNode Id="c29d574e-e399-41f2-aa27-65b9a305f945" Title="VlcMediaSubItemAddedEventArgs Properties" Url="html/6c183b7d-6277-9837-8066-b8a55a78c937.htm">
+        <HelpTOCNode Title="SubItemAdded Property " Url="html/4a3f8505-dfce-e51b-329d-200ebd942019.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8b328741-4798-49a6-9ff8-efd64e51b325" Title="VlcMediaSubItemTreeAddedEventArgs Class" Url="html/c93402ad-0d1f-f037-7b7e-2cf55847ff9f.htm">
+      <HelpTOCNode Title="VlcMediaSubItemTreeAddedEventArgs Constructor " Url="html/371d31bc-db8c-a7d7-58d6-c1204404359e.htm" />
+      <HelpTOCNode Title="VlcMediaSubItemTreeAddedEventArgs Methods" Url="html/f231b951-b08a-fec8-4b8c-b220323b5416.htm" />
+      <HelpTOCNode Id="ee6cd75f-a8e3-46c1-9fe3-99b8b54cc50b" Title="VlcMediaSubItemTreeAddedEventArgs Properties" Url="html/2ff98438-1e64-496d-4aa2-a6027327e041.htm">
+        <HelpTOCNode Title="SubItemTreeAdded Property " Url="html/922720e9-7a12-9083-8ad9-855d1d99763f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c58cbd59-c0c3-4adb-a5a8-3967ac0764ef" Title="Vlc.DotNet.Core.Interops" Url="html/df5c6d16-975d-5271-df53-9b43134c3de7.htm">
+    <HelpTOCNode Id="9b3486b7-d7d1-4546-acf0-f9d0fcc12c85" Title="FilterModuleDescription Class" Url="html/2a831563-2061-b2d9-3f6d-c39bc50e9589.htm">
+      <HelpTOCNode Title="FilterModuleDescription Methods" Url="html/3a6c58d2-c477-3e9f-515e-17e4196ef662.htm" />
+      <HelpTOCNode Id="3c30815b-7293-4a14-b24b-f9a14ee84a89" Title="FilterModuleDescription Properties" Url="html/ce402065-5250-03ab-0895-6441666a4a37.htm">
+        <HelpTOCNode Title="Help Property " Url="html/dbff9ab5-7223-aa83-560b-f8c6fba87ade.htm" />
+        <HelpTOCNode Title="LongName Property " Url="html/515f0b19-c21e-3625-50cd-7b6952a18ec9.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/c38eb6f7-fbeb-2be4-0fac-d54f7c8b26e2.htm" />
+        <HelpTOCNode Title="ShortName Property " Url="html/c0ac6ad7-4670-a55b-dbc0-0b8db0c78457.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b63f1a91-a6f0-4ee9-92a1-136261e5ffe6" Title="VlcInteropsManager Class" Url="html/02751709-fd82-d9ea-346b-7b412eab9c2f.htm">
+      <HelpTOCNode Title="VlcInteropsManager Constructor " Url="html/fb2ffbc7-8465-956e-fff5-509c815764eb.htm" />
+      <HelpTOCNode Id="dc4d6a9e-69e1-415c-8fd3-6468addd7890" Title="VlcInteropsManager Methods" Url="html/6316d572-ae86-6f10-c5a0-6f2e6ed65722.htm">
+        <HelpTOCNode Id="88fa2a68-8129-4c8a-93db-f95ae59c1477" Title="Dispose Method " Url="html/5ed4f70d-2829-111d-c650-4ec9cf90a1dd.htm">
+          <HelpTOCNode Title="Dispose Method " Url="html/9a19e70d-9bcf-4576-242c-e44f0ce1da69.htm" />
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/9da3a26f-85fb-db1c-0f56-e06e730b61ed.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Finalize Method " Url="html/52ebe1bb-9e97-d8e9-5658-ca6271a736fc.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7f8fa715-e08c-4e96-a87f-603790280858" Title="VlcManager Class" Url="html/917414c6-d650-0568-4257-f3881cc680bf.htm">
+      <HelpTOCNode Id="0b169977-58a8-44e3-b723-37b64b1dbd71" Title="VlcManager Methods" Url="html/3cc75810-50c4-1dec-b559-3effcae749fb.htm">
+        <HelpTOCNode Title="AddOptionFlagToMedia Method " Url="html/718b1c35-16eb-551e-7141-6fe1c31dde97.htm" />
+        <HelpTOCNode Id="8d84c5cf-c9f1-4d89-ac84-518ab7777a35" Title="AddOptionToMedia Method " Url="html/da684dfd-6e56-3456-2269-895c8110551a.htm">
+          <HelpTOCNode Title="AddOptionToMedia Method (IntPtr, String)" Url="html/39b15a72-3da0-3f19-5a43-79df01b139a8.htm" />
+          <HelpTOCNode Title="AddOptionToMedia Method (IntPtr, String[])" Url="html/a6306ab7-245f-88fe-6523-03f9be39e320.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="AttachEvent Method " Url="html/f4225dd3-86d7-3aea-58ce-9f8eedc7ee3e.htm" />
+        <HelpTOCNode Title="ClearLastErrorMessage Method " Url="html/8eeeebef-2afc-b0b2-7b18-fb0317329cae.htm" />
+        <HelpTOCNode Title="CloneMedia Method " Url="html/ec8d322a-2fc9-e2ca-650e-9d7cd9188e13.htm" />
+        <HelpTOCNode Title="CreateMediaPlayer Method " Url="html/17553435-8ec2-9f4d-0953-eed4fb3e5cc2.htm" />
+        <HelpTOCNode Title="CreateMediaPlayerFromMedia Method " Url="html/544bf2bf-10cc-d4e1-5996-3a80dbcaab6c.htm" />
+        <HelpTOCNode Title="CreateNewInstance Method " Url="html/07c58d26-68b7-fad5-8e02-1db362a241e4.htm" />
+        <HelpTOCNode Title="CreateNewMediaFromLocation Method " Url="html/5d9a62ef-b1ab-4242-23a3-953412a6f045.htm" />
+        <HelpTOCNode Title="CreateNewMediaFromPath Method " Url="html/75f3a057-d018-7fbc-afcc-681130cca9bd.htm" />
+        <HelpTOCNode Title="DetachEvent Method " Url="html/b0d9742b-7502-0a9d-fea1-cb1e5a4b350d.htm" />
+        <HelpTOCNode Id="08ef7602-8f2d-4f9e-9b7b-62e682bb2f81" Title="Dispose Method " Url="html/a8f3dbe8-831f-5ed6-715a-6aaea473b85d.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/e4b8ac7a-6535-2f2f-3865-c6c58d36d505.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Free Method " Url="html/de169a38-1114-4b33-ba07-e7a1aea047d4.htm" />
+        <HelpTOCNode Title="GetAudioFilterList Method " Url="html/f583baaf-6a67-7dc8-a2cf-22f57813da96.htm" />
+        <HelpTOCNode Title="GetChangeset Method " Url="html/c70e7e2a-5f82-9138-a1ef-5a5cc2920ed9.htm" />
+        <HelpTOCNode Title="GetCompiler Method " Url="html/a30f5d66-718e-eaae-33ee-f45df4bc54ba.htm" />
+        <HelpTOCNode Title="GetEventTypeName Method " Url="html/2505defa-a405-d600-2ba6-8aa358d44736.htm" />
+        <HelpTOCNode Title="GetInstance Method " Url="html/b2545a41-5b36-89b4-6c06-59568330039b.htm" />
+        <HelpTOCNode Title="GetLastErrorMessage Method " Url="html/09c99928-5ec5-b60e-37eb-8ab6c130fe3f.htm" />
+        <HelpTOCNode Title="GetMediaDuration Method " Url="html/50ea7468-cbef-4609-e21d-1761acaf53e6.htm" />
+        <HelpTOCNode Title="GetMediaEventManager Method " Url="html/4dfc0765-a450-6f1e-f3e6-25f2fd17fde5.htm" />
+        <HelpTOCNode Title="GetMediaFromMediaPlayer Method " Url="html/9aab389b-7a20-fb71-b778-9191f65335f3.htm" />
+        <HelpTOCNode Title="GetMediaMeta Method " Url="html/b1b24f42-8ced-929d-95a0-512418e2f6f5.htm" />
+        <HelpTOCNode Title="GetMediaMrl Method " Url="html/e3f8671a-aa4b-d49c-ec16-bb71c6acbc68.htm" />
+        <HelpTOCNode Title="GetMediaPlayerEventManager Method " Url="html/41541ade-ca3b-5c5b-c190-5b90c26af557.htm" />
+        <HelpTOCNode Title="GetMediaState Method " Url="html/9cc448ba-87ac-7519-3dbf-c6e1db43b926.htm" />
+        <HelpTOCNode Title="GetVideoFilterList Method " Url="html/20c412b9-0362-9c11-714b-3c19863c3471.htm" />
+        <HelpTOCNode Title="IsParsedMedia Method " Url="html/e43a080a-e0b4-6a5d-e714-31c13a5e826e.htm" />
+        <HelpTOCNode Title="IsPlaying Method " Url="html/735094eb-a982-0ad1-a9e2-66d76dd80097.htm" />
+        <HelpTOCNode Title="ParseMedia Method " Url="html/98beadb9-4a7f-cf8a-54e9-f80184b0b89a.htm" />
+        <HelpTOCNode Title="ParseMediaAsync Method " Url="html/0495213b-946a-8582-84d7-1e782d4562ae.htm" />
+        <HelpTOCNode Title="Pause Method " Url="html/7ad324f5-e8b6-c685-0719-e8bf00d3c7bb.htm" />
+        <HelpTOCNode Title="Play Method " Url="html/a3ad8f74-f53b-8879-fd25-c7e0b5fbb52d.htm" />
+        <HelpTOCNode Title="ReleaseInstance Method " Url="html/5839c62a-2e91-8328-5265-22688b595fc7.htm" />
+        <HelpTOCNode Title="ReleaseMedia Method " Url="html/6ee921a0-3397-1dda-a8c4-ae7cef608cae.htm" />
+        <HelpTOCNode Title="ReleaseMediaPlayer Method " Url="html/59d825f7-3929-be0b-a5d7-76b808c24a27.htm" />
+        <HelpTOCNode Title="ReleaseModuleDescriptionInstance Method " Url="html/b1a6ed36-1d09-aea3-0b50-472fda2ef6d6.htm" />
+        <HelpTOCNode Title="SaveMediaMetadatas Method " Url="html/62898bce-2310-d5f2-3d84-bd57cbd8cdbb.htm" />
+        <HelpTOCNode Title="SetMediaMeta Method " Url="html/92ff1c05-205d-31b9-0fe2-0cc164cc7599.htm" />
+        <HelpTOCNode Title="SetMediaPlayerVideoHostHandle Method " Url="html/28393dd2-b10f-eff1-5462-4ab609cde343.htm" />
+        <HelpTOCNode Title="SetMediaToMediaPlayer Method " Url="html/b791efef-6cd8-5215-03fb-04723d92bcdf.htm" />
+        <HelpTOCNode Title="Stop Method " Url="html/b8631d70-19b4-98f9-8044-66e938d2d966.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a8a2f62c-f3fa-461d-b829-77395b6ac0b9" Title="VlcManager Properties" Url="html/a7734978-34a6-adf4-282d-de6dd4f68a33.htm">
+        <HelpTOCNode Title="VlcVersion Property " Url="html/f0d35875-5cab-85e2-b56e-544d4a58d930.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="23ebe48f-7e4f-4539-94bf-fde7f5f58ef5" Title="Vlc.DotNet.Core.Interops.Signatures" Url="html/750fa756-704f-e1c0-d155-3c94487efb22.htm">
+    <HelpTOCNode Title="AttachEvent Delegate" Url="html/bdd40941-1d0b-2a3d-a47b-57c1bbeb4161.htm" />
+    <HelpTOCNode Title="DetachEvent Delegate" Url="html/c000645b-5830-f9d3-992b-37fff77a723f.htm" />
+    <HelpTOCNode Title="EventCallback Delegate" Url="html/1c53dfc7-70ce-e21a-f777-b44a8f7e6d18.htm" />
+    <HelpTOCNode Title="EventTypes Enumeration" Url="html/b9a98355-b4b9-3222-300e-a38b508a4898.htm" />
+    <HelpTOCNode Title="LogLevels Enumeration" Url="html/ec0b41de-637e-0b4a-107f-2a2c82eeecaa.htm" />
+    <HelpTOCNode Id="fe097b64-c157-4f24-8091-4475c295fca7" Title="MediaDurationChanged Structure" Url="html/e7641bb6-d2ee-f108-7723-f9a56ef25d58.htm">
+      <HelpTOCNode Id="474ad65e-8d9b-41c4-b6de-7ecae28fd230" Title="MediaDurationChanged Fields" Url="html/11b60794-19f7-ba86-b4d2-2de17356f4e8.htm">
+        <HelpTOCNode Title="NewDuration Field" Url="html/7c8d25fd-ec76-2210-9569-8e41fb3cd76b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaDurationChanged Methods" Url="html/7ab38301-6013-2794-f797-7d9c02fdd616.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="dcf52ce7-5477-4605-82d6-97f55952e05d" Title="MediaFreed Structure" Url="html/3ab6f683-0adc-81ea-9865-50bd92a75f95.htm">
+      <HelpTOCNode Id="fe86abf8-b7ee-465a-a633-2550ae0f0b5d" Title="MediaFreed Fields" Url="html/50f9102c-bc12-599f-891b-3d39cc56c26f.htm">
+        <HelpTOCNode Title="MediaInstance Field" Url="html/de507b74-df48-ab1c-92dd-5f5e8198d07f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaFreed Methods" Url="html/a2c83b5a-c2d9-9508-436e-83efe875c8cf.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="fcba7315-c86d-421e-8d9f-a38edf391088" Title="MediaListItemAdded Structure" Url="html/7caf298c-67b3-2ea3-ec8f-bcdcc1531f64.htm">
+      <HelpTOCNode Id="5c4a5b73-6717-48ce-b871-d1e5965e325d" Title="MediaListItemAdded Fields" Url="html/9a1c487d-4f0e-9321-744a-f550b718210e.htm">
+        <HelpTOCNode Title="Index Field" Url="html/cea14033-89bd-070d-a308-68050876a717.htm" />
+        <HelpTOCNode Title="MediaInstance Field" Url="html/8bac3943-326e-27d1-a51b-9bbe49266024.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaListItemAdded Methods" Url="html/6bc17e1b-8dfa-eb81-d1e3-13674d1eb87c.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="25cab06d-1ca3-4b73-9fa7-f8bb758d9837" Title="MediaListItemDeleted Structure" Url="html/bdc4dbbf-15e5-871b-27ee-2b965ec2615f.htm">
+      <HelpTOCNode Id="a6773687-8216-487e-83f1-5091ff49c616" Title="MediaListItemDeleted Fields" Url="html/614240c3-c74a-51dc-560c-7657fa42d6ef.htm">
+        <HelpTOCNode Title="Index Field" Url="html/003254c1-dd8f-ad35-9586-b302e6a6858a.htm" />
+        <HelpTOCNode Title="MediaInstance Field" Url="html/eff1be6b-64e3-bdda-517e-098d4cb3b95c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaListItemDeleted Methods" Url="html/107a11f4-2b85-d7b8-035b-fb72bc3e73fc.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="e4271a1e-cda2-4603-9c17-6aec9b39f230" Title="MediaListPlayerNextItemSet Structure" Url="html/839db886-d2f2-2475-c664-26e8d23b11bd.htm">
+      <HelpTOCNode Id="20b19244-4ba9-4146-a0c8-485cf40fb746" Title="MediaListPlayerNextItemSet Fields" Url="html/3a4f0bc2-f245-691c-6ffc-418ff9dca08f.htm">
+        <HelpTOCNode Title="MediaInstance Field" Url="html/356cf518-eff0-de1e-780a-0433d7646de5.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaListPlayerNextItemSet Methods" Url="html/7c5e56c7-4788-8d00-5f6b-4ae4195693ea.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="afb9f910-b857-40c1-bd83-912c3d11b03e" Title="MediaListWillAddItem Structure" Url="html/a84c90e0-32de-52b9-1d42-72b13d4ab174.htm">
+      <HelpTOCNode Id="050ba3f8-6078-4aad-bb0b-8125c7955dbf" Title="MediaListWillAddItem Fields" Url="html/04b37afc-b7b8-c58d-110e-515d47b0c7c9.htm">
+        <HelpTOCNode Title="Index Field" Url="html/69e5c5aa-b555-da52-cd52-b06369b4f1f2.htm" />
+        <HelpTOCNode Title="MediaInstance Field" Url="html/c1366c1c-e1eb-a28a-727f-2d145beac9d3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaListWillAddItem Methods" Url="html/f993a6b7-962c-43ee-be1d-9a8db571238b.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="7023348b-198d-476c-8044-5ebeca63f914" Title="MediaListWillDeleteItem Structure" Url="html/6deab80f-9d44-cb5e-46e7-522f13f283c4.htm">
+      <HelpTOCNode Id="9d202ecc-f39c-49dc-9c26-258ae5b04371" Title="MediaListWillDeleteItem Fields" Url="html/7377f164-b6e2-e1e3-7791-e76f1183ad68.htm">
+        <HelpTOCNode Title="Index Field" Url="html/33a1a643-5afd-2a10-0ee4-29d0234c236e.htm" />
+        <HelpTOCNode Title="MediaInstance Field" Url="html/472018cb-d375-28c1-02b4-10449f133ac0.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaListWillDeleteItem Methods" Url="html/f7a089a2-2ed2-e2de-105b-a79d243d349a.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="bd856108-7721-4a74-b286-2e9896b1e3ae" Title="MediaMetaChanged Structure" Url="html/3e33f71c-f3ce-22e2-955a-b98ec70e2aee.htm">
+      <HelpTOCNode Id="6c123c2c-f9b4-46f7-a45c-202c7a1ec362" Title="MediaMetaChanged Fields" Url="html/dc95deb5-13db-2fd2-87a7-7fed0852dc1e.htm">
+        <HelpTOCNode Title="MetaType Field" Url="html/0dec5324-34d7-3fd1-6c17-c3791ee815a1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaMetaChanged Methods" Url="html/3ceacc6a-4e70-bf72-d82e-7dec270288e1.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="MediaMetadatas Enumeration" Url="html/bf80b922-0907-f4c8-eec5-8ae5de8a922f.htm" />
+    <HelpTOCNode Id="46e3455d-18c2-4909-a4bb-591111188524" Title="MediaParsedChanged Structure" Url="html/c682ffe7-bfe1-569c-0a19-39bf2caf7338.htm">
+      <HelpTOCNode Id="5e07fbcc-9d64-45af-ad8d-9e3bde5a169d" Title="MediaParsedChanged Fields" Url="html/98286f6c-c5cc-2399-3fa0-42134713c0b9.htm">
+        <HelpTOCNode Title="NewStatus Field" Url="html/2f583246-80a7-7bf3-f9e6-d5ac016109bf.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaParsedChanged Methods" Url="html/b082ecd0-6657-af0a-19cd-5377bd739c9c.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="83eb2d1f-008d-414f-b6c3-53c92c9da6c0" Title="MediaPlayerBuffering Structure" Url="html/017c198a-ed09-5fba-f086-8aeb5bdf0131.htm">
+      <HelpTOCNode Id="b6d6e71f-70e4-42f4-b3ae-22145ab6ebe1" Title="MediaPlayerBuffering Fields" Url="html/3facca22-9fc7-1d0d-4d56-9fef3454bc11.htm">
+        <HelpTOCNode Title="NewCache Field" Url="html/314c0b5b-6e8e-f399-9d10-feba82c4ec35.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerBuffering Methods" Url="html/4ae8de14-b420-0796-82c7-5c84260385a1.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="5a721c88-0650-4ffa-b12f-f986e00af6db" Title="MediaPlayerLengthChanged Structure" Url="html/af2fd662-8291-2e78-ae20-d64c9db73dce.htm">
+      <HelpTOCNode Id="7db4b0e1-1f90-4c07-8410-d6f790862bd2" Title="MediaPlayerLengthChanged Fields" Url="html/59c8f103-30c5-dd03-0816-6c861e169e3b.htm">
+        <HelpTOCNode Title="NewLength Field" Url="html/6bcbfe7f-dad6-6506-42b5-116215f23149.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerLengthChanged Methods" Url="html/8d62d4df-3f1e-c2f3-1639-26583190b2b6.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="5a9d91a6-6d63-4f3b-87fc-81874598340b" Title="MediaPlayerMediaChanged Structure" Url="html/b9bd1a7b-0773-6291-ed94-6b5ded59451d.htm">
+      <HelpTOCNode Id="a2b1b222-7b47-4bef-a527-335eaa218b1f" Title="MediaPlayerMediaChanged Fields" Url="html/3a3efead-f8fb-90bb-d318-e07f8506fe8e.htm">
+        <HelpTOCNode Title="MediaInstance Field" Url="html/f83bd60f-048e-5d93-76c1-076d90a81b4e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerMediaChanged Methods" Url="html/7e985bd7-c914-b6a3-c703-124c636882ac.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c4d5bc24-e505-4942-bb57-63fd2eebdc8d" Title="MediaPlayerPausableChanged Structure" Url="html/0619343a-5e82-c040-b3fb-aeb36e725ead.htm">
+      <HelpTOCNode Id="c3039af9-7c35-4f09-a79d-a75aa8642892" Title="MediaPlayerPausableChanged Fields" Url="html/26cb883f-9e13-9cad-1156-8890306d3f69.htm">
+        <HelpTOCNode Title="NewPausable Field" Url="html/f11a1e09-b7e8-581a-f6fc-9d86031f95ba.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerPausableChanged Methods" Url="html/8a224ea6-6be0-a44d-eb76-ef41659c573c.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="09387b6e-74ea-42ea-ad7e-6193d714a7cd" Title="MediaPlayerPositionChanged Structure" Url="html/ecae4210-df0d-f2b2-6f4f-fc6bd875d310.htm">
+      <HelpTOCNode Id="122f3358-2d9c-439e-a7a7-561252b1f4c8" Title="MediaPlayerPositionChanged Fields" Url="html/a66c9117-ab32-6e27-4e32-79d4e07f3373.htm">
+        <HelpTOCNode Title="NewPosition Field" Url="html/b737d5a8-f885-8743-776b-0b1d11bab21f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerPositionChanged Methods" Url="html/00ac4cb4-0f3f-e54e-854d-cb479a924365.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f9651a9e-2a25-4597-8ae8-a9f3c33e240f" Title="MediaPlayerScrambledChanged Structure" Url="html/9de606dd-a1fc-1077-368f-9d7dafc94296.htm">
+      <HelpTOCNode Id="2e63fb60-7c88-42d8-9151-ffff8e2ce9d2" Title="MediaPlayerScrambledChanged Fields" Url="html/76c1a569-1b13-cfed-b753-5447c103df3e.htm">
+        <HelpTOCNode Title="NewScrambled Field" Url="html/c3c3528c-b9d8-6e87-00d5-b8af4ebdf5de.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerScrambledChanged Methods" Url="html/bd54e220-e408-663b-34fd-bbe8824e4dcc.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="12454006-7d52-4b49-a1d0-6abfa5df2f86" Title="MediaPlayerSeekableChanged Structure" Url="html/4f30df33-81f7-e96b-fcda-42db7a79c812.htm">
+      <HelpTOCNode Id="b59fefb8-16e9-4f3e-9d65-c48ce93ccfeb" Title="MediaPlayerSeekableChanged Fields" Url="html/8c622af6-e134-102a-7dfe-07025d65cb9a.htm">
+        <HelpTOCNode Title="NewSeekable Field" Url="html/7f07faaf-8bb8-e295-3d1a-101ef384bc98.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerSeekableChanged Methods" Url="html/4f58ebd4-3197-0f07-a61e-796b70665ae0.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f784f491-91bd-4d40-8ffa-74e7feef57c7" Title="MediaPlayerSnapshotTaken Structure" Url="html/221308b9-7b8f-7e12-c351-e3d2b5ea1389.htm">
+      <HelpTOCNode Id="dec491a7-e430-4be6-8446-2875b034146e" Title="MediaPlayerSnapshotTaken Fields" Url="html/8be5c91d-d727-fa57-7414-855cd1cdb661.htm">
+        <HelpTOCNode Title="pszFilename Field" Url="html/dcd8f495-da35-9188-5b0b-94763d822c23.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerSnapshotTaken Methods" Url="html/2ed89b34-4dab-0114-8eaf-0949ecb98086.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="43fb1d64-68f4-4dd3-a9c8-3017c1655cda" Title="MediaPlayerTimeChanged Structure" Url="html/282eb3e3-3b82-b1d1-e366-8b10abfaa4c7.htm">
+      <HelpTOCNode Id="0c2fdacf-76fa-4822-93c8-46d2ddd42115" Title="MediaPlayerTimeChanged Fields" Url="html/68b37007-33b3-686a-e40c-90f7a677ffe4.htm">
+        <HelpTOCNode Title="NewTime Field" Url="html/a041588a-4faf-6a88-7c43-d415fc9c747d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerTimeChanged Methods" Url="html/49560e24-7ff5-eb78-9503-fabef5ffcf12.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="8acd02c5-b392-4c42-b05e-fe4b505ffc8c" Title="MediaPlayerTitleChanged Structure" Url="html/84cda1b2-18fc-6abf-0fd4-6f55adbfefa1.htm">
+      <HelpTOCNode Id="994aa088-4c37-4d45-8892-06f31206238b" Title="MediaPlayerTitleChanged Fields" Url="html/ef99da59-3c47-5eac-fc27-ca5301cfce37.htm">
+        <HelpTOCNode Title="NewTitle Field" Url="html/6681a48b-c48b-cc80-f0f6-fa0d00fe8b45.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerTitleChanged Methods" Url="html/a1468391-bebe-5b6e-d37a-3200ab5c1e16.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f770ff66-44bc-4491-a976-fb277f24986c" Title="MediaPlayerVideoOutChanged Structure" Url="html/e7509689-bbec-9907-6b2f-ab4c3731106e.htm">
+      <HelpTOCNode Id="1a3a605b-4b79-4169-8eb3-27c6f0c0d0c3" Title="MediaPlayerVideoOutChanged Fields" Url="html/be1b6cf6-6aaa-9fef-a61b-dd2c97f3c6fd.htm">
+        <HelpTOCNode Title="NewCount Field" Url="html/3680358d-3145-26a0-3c5f-8847077caf5a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaPlayerVideoOutChanged Methods" Url="html/eee85290-84a2-d579-6af4-9e110ad6e9a8.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="3f0b3de6-0048-4272-95e3-37043dce2204" Title="MediaStateChanged Structure" Url="html/4199ea39-3014-334f-c7df-a769c063fa96.htm">
+      <HelpTOCNode Id="0585e86c-50e8-4f3e-ad4e-ea85c96ff0e0" Title="MediaStateChanged Fields" Url="html/e58538c2-f6df-97a6-75ad-e0bfc7b13085.htm">
+        <HelpTOCNode Title="NewState Field" Url="html/ef011276-2838-5cda-d020-6aab07c0a147.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaStateChanged Methods" Url="html/dac67720-0727-de69-4168-03f32a9d34b3.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="MediaStates Enumeration" Url="html/87afdfd4-3f4c-c72a-a314-19916cb0e38e.htm" />
+    <HelpTOCNode Id="f5f36ec5-0077-47ab-9e2a-8766e7ad2e8b" Title="MediaSubitemAdded Structure" Url="html/6b6430ed-9c1a-85cb-7071-6ade1b794c8b.htm">
+      <HelpTOCNode Id="e66e319a-c977-4e4c-85eb-034e593def40" Title="MediaSubitemAdded Fields" Url="html/92f9f5af-3f70-0cf8-9000-2d1c36da62e7.htm">
+        <HelpTOCNode Title="NewChild Field" Url="html/afc51132-9d7f-e726-d695-1304c02862b2.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaSubitemAdded Methods" Url="html/25a85824-36bb-9e50-fc97-cc0669ed9993.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="198dc162-0086-4fcd-87e7-0e9637587325" Title="MediaSubItemTreeAdded Structure" Url="html/a41f9cf0-b060-712f-9e9f-1538d9f95ca8.htm">
+      <HelpTOCNode Id="5378c273-84ca-48bd-9614-47f3598998d8" Title="MediaSubItemTreeAdded Fields" Url="html/3910ff45-f088-d866-9355-9202d0db3ee2.htm">
+        <HelpTOCNode Title="MediaInstance Field" Url="html/03de7aaa-7549-0305-1b40-69e13f1ec4a4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="MediaSubItemTreeAdded Methods" Url="html/e38ec78d-fce6-c39e-6d38-99a5476ce221.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="MediaTrackTypes Enumeration" Url="html/f85053fc-6675-93e3-b934-7c2e81bc6abb.htm" />
+    <HelpTOCNode Id="494c5516-84e6-444a-ac20-0be738c2ae6a" Title="ModuleDescription Structure" Url="html/745d4e40-0971-21d4-3176-6c0b4438722a.htm">
+      <HelpTOCNode Id="f82f1b89-0725-4e57-b697-8453d968f483" Title="ModuleDescription Fields" Url="html/5cb4d14f-d5c6-fff6-b224-2ebeb333ed5f.htm">
+        <HelpTOCNode Title="Help Field" Url="html/d1628530-9aa7-879b-84f7-359b5ccf417a.htm" />
+        <HelpTOCNode Title="LongName Field" Url="html/abef6126-7af9-78fb-d223-dcd4beb109ae.htm" />
+        <HelpTOCNode Title="Name Field" Url="html/4b576d04-598b-9ee2-2ee5-584bc3e3993f.htm" />
+        <HelpTOCNode Title="NextModule Field" Url="html/906a9290-f47d-f6a3-db99-e1fe2e7348ac.htm" />
+        <HelpTOCNode Title="ShortName Field" Url="html/f1c983ad-9fc0-0f13-260c-0208665d6e5e.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ModuleDescription Methods" Url="html/8f7c7ddd-5a31-56ef-943f-2d2170ca4dda.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f490ebd1-c3cb-41d9-8eaa-aa7d87458251" Title="VlcEventArg Structure" Url="html/104f3783-f023-a9e5-386d-815cbc360b7e.htm">
+      <HelpTOCNode Id="21355759-1d31-4eb0-802e-6d6ce9d4a936" Title="VlcEventArg Fields" Url="html/a221d785-a5a8-e73c-1c7f-93c50bae1bd7.htm">
+        <HelpTOCNode Title="MediaDurationChanged Field" Url="html/63c5d338-a355-232a-d08d-f54fab3ad39b.htm" />
+        <HelpTOCNode Title="MediaFreed Field" Url="html/475feed4-9753-5b2b-eeb4-ad53b5418438.htm" />
+        <HelpTOCNode Title="MediaListItemAdded Field" Url="html/9e6000fb-10e1-66b0-6864-f0fef43f6880.htm" />
+        <HelpTOCNode Title="MediaListItemDeleted Field" Url="html/141af01a-3947-61c9-aca3-c0aa069615d7.htm" />
+        <HelpTOCNode Title="MediaListPlayerNextItemSet Field" Url="html/d35528ca-20b3-90f9-5e9c-cae395f3080e.htm" />
+        <HelpTOCNode Title="MediaListWillAddItem Field" Url="html/faeb3510-69ed-b78c-dbc2-2e011155dd49.htm" />
+        <HelpTOCNode Title="MediaListWillDeleteItem Field" Url="html/d1b3bee1-1083-d5f6-a059-cf0fcba74696.htm" />
+        <HelpTOCNode Title="MediaMetaChanged Field" Url="html/89429d7e-6da1-d60c-eacd-b74e5d8975d1.htm" />
+        <HelpTOCNode Title="MediaParsedChanged Field" Url="html/5633e0c9-4fd0-dd86-58e2-c5d266d236c9.htm" />
+        <HelpTOCNode Title="MediaPlayerBuffering Field" Url="html/bc2d2807-9d7b-af56-c6a4-7cbc1281292d.htm" />
+        <HelpTOCNode Title="MediaPlayerLengthChanged Field" Url="html/5c8d68d5-8afb-9999-0f8a-cf1c4cbc0b0a.htm" />
+        <HelpTOCNode Title="MediaPlayerMediaChanged Field" Url="html/9f087ae6-870e-e9a2-484b-31b7fea43f90.htm" />
+        <HelpTOCNode Title="MediaPlayerPausableChanged Field" Url="html/f73dfd5d-940b-915c-a135-7a0b74dd36c5.htm" />
+        <HelpTOCNode Title="MediaPlayerPositionChanged Field" Url="html/6225cfb0-5071-4605-9ac2-fbe9634831ac.htm" />
+        <HelpTOCNode Title="MediaPlayerScrambledChanged Field" Url="html/e956a3cc-11ba-0f0a-3ec7-097a7f89705a.htm" />
+        <HelpTOCNode Title="MediaPlayerSeekableChanged Field" Url="html/0ab8788f-b510-ca39-c01e-678ecec23282.htm" />
+        <HelpTOCNode Title="MediaPlayerSnapshotTaken Field" Url="html/7ebfc36e-9c56-8001-db2d-14437c8cb1ee.htm" />
+        <HelpTOCNode Title="MediaPlayerTimeChanged Field" Url="html/b6639472-4687-0d1f-3d54-c81346adaf20.htm" />
+        <HelpTOCNode Title="MediaPlayerTitleChanged Field" Url="html/eaf891fd-434f-b4c7-7dbd-c89d156e4b85.htm" />
+        <HelpTOCNode Title="MediaPlayerVideoOutChanged Field" Url="html/84e68fee-5490-2b81-70f5-327677968911.htm" />
+        <HelpTOCNode Title="MediaStateChanged Field" Url="html/0da82507-f4b6-d9a1-b525-146f62a3cfab.htm" />
+        <HelpTOCNode Title="MediaSubItemAdded Field" Url="html/6dbafdce-c676-84a4-9faa-170769cb5f11.htm" />
+        <HelpTOCNode Title="MediaSubItemTreeAdded Field" Url="html/eaf35f68-b45f-b968-e0b5-352a58aa488a.htm" />
+        <HelpTOCNode Title="p_obj Field" Url="html/fcb64c91-396a-908f-52cf-614867aca01e.htm" />
+        <HelpTOCNode Title="type Field" Url="html/5f2df8f9-2484-f851-22a6-80e23d82a407.htm" />
+        <HelpTOCNode Title="VlmMediaEvent Field" Url="html/66c54ee6-f9f2-db6b-aabb-314ca46b5fbe.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="VlcEventArg Methods" Url="html/6d4ae8b7-f306-9e91-3114-588807fecd54.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f8e30546-4071-4a97-b664-a2b1b496af98" Title="VlmMediaEvent Structure" Url="html/7a6804f4-6407-9e80-3119-4de00484cf23.htm">
+      <HelpTOCNode Id="e9874d33-3ee1-4054-a6fc-3387286ea930" Title="VlmMediaEvent Fields" Url="html/30ac02f3-a08a-e488-6f3d-8fff985e5c6c.htm">
+        <HelpTOCNode Title="pszInstanceName Field" Url="html/4b1b280f-c3f3-f69e-9eee-9b1b4e943297.htm" />
+        <HelpTOCNode Title="pszMediaName Field" Url="html/5a7fbb3c-de87-1547-0319-5c4d8a5c4e9d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="VlmMediaEvent Methods" Url="html/ec4aa931-b03d-3f41-9617-4061563045c6.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="e08b3a74-a56d-4215-b9f1-b995fda683f7" Title="Vlc.DotNet.Forms" Url="html/f657317e-eeeb-b99f-fd72-ffecdcffb418.htm">
+    <HelpTOCNode Id="08ad42fd-9478-45f7-8d92-305d6e821d51" Title="VlcControl Class" Url="html/edd96222-823c-110d-e520-52afbda2eb11.htm">
+      <HelpTOCNode Title="VlcControl Constructor " Url="html/cf5da942-51a1-5273-bfb9-9ed031f9c7ae.htm" />
+      <HelpTOCNode Id="d41e875c-5c9a-4a86-bff6-c2bcd647d815" Title="VlcControl Methods" Url="html/4e65d0f3-e867-2067-df0d-d9545853efbc.htm">
+        <HelpTOCNode Title="BeginInit Method " Url="html/127ae10e-b1c3-5d1e-9e0d-0a7ca41d0333.htm" />
+        <HelpTOCNode Id="82f2935e-fb21-40b8-80a5-ef6b67649f4c" Title="Dispose Method " Url="html/61177785-81a8-e4d1-6334-692509b661b2.htm">
+          <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/1ce6f92d-e0c4-1ea6-fc6e-d2ce92065c5f.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="EndInit Method " Url="html/97504dc2-8138-8da9-7455-d70ae89c0f59.htm" />
+        <HelpTOCNode Title="GetCurrentMedia Method " Url="html/dc8f367d-00e2-b99b-16e1-e6937e76b268.htm" />
+        <HelpTOCNode Title="OnBackward Method " Url="html/b80a30f7-e47f-84ff-cff6-da17f5009b53.htm" />
+        <HelpTOCNode Title="OnBuffering Method " Url="html/7982c31b-a744-30c2-0417-ff29097b1d00.htm" />
+        <HelpTOCNode Title="OnEncounteredError Method " Url="html/ef42dcc8-b179-d3e4-1307-2c82eeb2064a.htm" />
+        <HelpTOCNode Title="OnEndReached Method " Url="html/64f21e38-87eb-ccba-0fd6-774bf9b87155.htm" />
+        <HelpTOCNode Title="OnForward Method " Url="html/15f4f0e7-04b4-75ed-c027-6fb7e57e37ca.htm" />
+        <HelpTOCNode Title="OnLengthChanged Method " Url="html/dcbe2316-c89b-cc3f-d30d-a696c75f5a3c.htm" />
+        <HelpTOCNode Title="OnMediaChanged Method " Url="html/e71efb83-7c4b-7fec-c210-640dce82e3a7.htm" />
+        <HelpTOCNode Title="OnOpening Method " Url="html/179f46d1-717a-8687-9794-642824a6d082.htm" />
+        <HelpTOCNode Title="OnPausableChanged Method " Url="html/77f4a73d-7b6d-56e7-d988-77d7fc69d82d.htm" />
+        <HelpTOCNode Title="OnPaused Method " Url="html/15fc6add-038a-ff4e-65e2-20adf75f55bb.htm" />
+        <HelpTOCNode Title="OnPlaying Method " Url="html/d7b62a9c-424e-a8ab-6c77-01d2e3a4f5e8.htm" />
+        <HelpTOCNode Title="OnPositionChanged Method " Url="html/a9daf658-0970-577d-617f-42944dc40225.htm" />
+        <HelpTOCNode Title="OnScrambledChanged Method " Url="html/df0d0613-5604-118d-1e2d-8b2746aee6ef.htm" />
+        <HelpTOCNode Title="OnSeekableChanged Method " Url="html/1624c684-8ee9-1037-5732-5ae63ec6a63d.htm" />
+        <HelpTOCNode Title="OnSnapshotTaken Method " Url="html/7ca5c296-380f-5106-f23a-b2b2fa720454.htm" />
+        <HelpTOCNode Title="OnStopped Method " Url="html/408796e0-91f0-5f60-0364-d6c339891e66.htm" />
+        <HelpTOCNode Title="OnTimeChanged Method " Url="html/712606b4-2266-b95f-5c13-0aff5bbe079d.htm" />
+        <HelpTOCNode Title="OnTitleChanged Method " Url="html/7872bf91-26fe-6b0b-fc02-da670869ec90.htm" />
+        <HelpTOCNode Title="OnVideoOutChanged Method " Url="html/1c23cc5f-2610-0ad4-2161-4278541b5033.htm" />
+        <HelpTOCNode Title="OnVlcLibDirectoryNeeded Method " Url="html/32d896be-78a8-eee4-e5a4-89c2538adf2a.htm" />
+        <HelpTOCNode Title="Pause Method " Url="html/608ed0fb-98f5-75c3-3307-5a156d01fd9f.htm" />
+        <HelpTOCNode Id="e9a34f41-e393-4496-8b07-169ede072c33" Title="Play Method " Url="html/d966f48d-ca27-6467-89cf-89ed07fa6996.htm">
+          <HelpTOCNode Title="Play Method " Url="html/7e928e74-a3f5-c58f-d894-3856f3983e85.htm" />
+          <HelpTOCNode Title="Play Method (FileInfo, String[])" Url="html/41eb2d38-d95b-7752-faf8-571adfd897e2.htm" />
+          <HelpTOCNode Title="Play Method (Uri, String[])" Url="html/a0eade3d-2997-57dc-bef3-4b4d31b095df.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Stop Method " Url="html/36933d70-587a-99fa-8e2c-016e26f59bb1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="225a4f12-c466-4223-bd0f-e20c3099e4b4" Title="VlcControl Properties" Url="html/57e2f7cc-e837-fdd7-5f6e-6330f1693db4.htm">
+        <HelpTOCNode Title="IsPlaying Property " Url="html/111f1e81-cdc3-2aad-d2c8-87429d4cdfe4.htm" />
+        <HelpTOCNode Title="VlcLibDirectory Property " Url="html/ad83d79e-2ec4-325c-5b8c-34ae16ba03ad.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0d9e93ea-2701-4e35-95be-1dbed1277beb" Title="VlcControl Events" Url="html/018e4774-f132-ca9a-1472-cd1964a7761a.htm">
+        <HelpTOCNode Title="Backward Event" Url="html/ffa6ef25-ab42-6f27-c99c-0812477cf846.htm" />
+        <HelpTOCNode Title="Buffering Event" Url="html/344b3fd7-b40c-5bed-8888-4629a391ca0d.htm" />
+        <HelpTOCNode Title="EncounteredError Event" Url="html/fb9a8b22-06aa-eae5-dbf4-1576d58fb991.htm" />
+        <HelpTOCNode Title="EndReached Event" Url="html/532268b8-4846-5d20-00ec-bd55cbfeeb05.htm" />
+        <HelpTOCNode Title="Forward Event" Url="html/fde913b8-2f8d-8787-2df0-cdb4bfa2de33.htm" />
+        <HelpTOCNode Title="LengthChanged Event" Url="html/955edf86-d984-8622-7483-19f4a71e7053.htm" />
+        <HelpTOCNode Title="MediaChanged Event" Url="html/51aec477-9d4d-b921-d295-e1f11b8e4104.htm" />
+        <HelpTOCNode Title="Opening Event" Url="html/51418ecc-52f7-b60b-b51f-53153febd11f.htm" />
+        <HelpTOCNode Title="PausableChanged Event" Url="html/84b2fbe9-d31b-e1cb-115f-087f246f8864.htm" />
+        <HelpTOCNode Title="Paused Event" Url="html/5fbdcef0-8849-e276-7e88-d00e68d24750.htm" />
+        <HelpTOCNode Title="Playing Event" Url="html/92972a44-aeb0-d88e-dcd2-fb2b1a1c9ee8.htm" />
+        <HelpTOCNode Title="PositionChanged Event" Url="html/e7af5a64-0235-6c20-f8bd-a846b8de8349.htm" />
+        <HelpTOCNode Title="ScrambledChanged Event" Url="html/8f334c87-3b7e-4d55-150f-346140a0a207.htm" />
+        <HelpTOCNode Title="SeekableChanged Event" Url="html/8297d103-f001-39e9-8eab-f96466043b78.htm" />
+        <HelpTOCNode Title="SnapshotTaken Event" Url="html/bfff37d4-69be-4227-ea97-cf47dae03b80.htm" />
+        <HelpTOCNode Title="Stopped Event" Url="html/8fd889be-b6f0-2e49-dd6a-562034f85bbd.htm" />
+        <HelpTOCNode Title="TimeChanged Event" Url="html/7ee5a255-1e90-f84e-189b-690d1ed0ab24.htm" />
+        <HelpTOCNode Title="TitleChanged Event" Url="html/eaacbb04-31c3-83fa-1634-1daa49ca966a.htm" />
+        <HelpTOCNode Title="VideoOutChanged Event" Url="html/16c2ec6b-d57d-110a-f57e-b6b58cda2cd2.htm" />
+        <HelpTOCNode Title="VlcLibDirectoryNeeded Event" Url="html/e0ab762d-d1eb-3218-5ba0-19e6812b7373.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9a954c93-ff2b-4188-90c0-ff933ffde13e" Title="VlcLibDirectoryNeededEventArgs Class" Url="html/3f28d670-754b-db71-abaf-a6b36df5cda7.htm">
+      <HelpTOCNode Title="VlcLibDirectoryNeededEventArgs Constructor " Url="html/a4e52494-7d5a-d521-27e1-e064a25359fc.htm" />
+      <HelpTOCNode Title="VlcLibDirectoryNeededEventArgs Methods" Url="html/35fd97e5-edf8-431b-48b4-44af1e37c236.htm" />
+      <HelpTOCNode Id="1c23183d-7476-4926-9998-e17912b45d1a" Title="VlcLibDirectoryNeededEventArgs Properties" Url="html/afbe54ee-f560-9f11-347e-ef9d291d4508.htm">
+        <HelpTOCNode Title="VlcLibDirectory Property " Url="html/5ae6f88c-9cf0-255a-6f55-a554c67d267f.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="a6a59504-620a-4d4c-b9de-75b499ce5195" Title="Vlc.DotNet.Forms.TypeEditors" Url="html/e53a525e-b96c-9843-1ed2-397e8bcd6019.htm">
+    <HelpTOCNode Id="994bc302-6e5d-42c6-8e17-40ac83879b8f" Title="DirectoryEditor Class" Url="html/700dfd66-9916-a9b0-bc8f-9d4c4c79218a.htm">
+      <HelpTOCNode Title="DirectoryEditor Constructor " Url="html/55aa2a98-cd9c-29ee-95f6-676860de87c1.htm" />
+      <HelpTOCNode Id="5f38d9ef-3519-40f4-b3cb-d0b1a0f4f6ba" Title="DirectoryEditor Methods" Url="html/1a4da582-e4bd-99cd-74d3-6a431365b777.htm">
+        <HelpTOCNode Id="1103d70f-7b4a-47cd-88ee-b1d257e843c5" Title="EditValue Method " Url="html/e81507b9-b64f-e568-5929-60c1f5bd04c4.htm">
+          <HelpTOCNode Title="EditValue Method (ITypeDescriptorContext, IServiceProvider, Object)" Url="html/7ee2b222-2b3f-757a-fdf7-be40969a05ff.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="dd46e447-f830-4b91-8b7f-352e5443fa8b" Title="GetEditStyle Method " Url="html/93ad0866-1ac2-70aa-a762-4977fec18ee4.htm">
+          <HelpTOCNode Title="GetEditStyle Method (ITypeDescriptorContext)" Url="html/eca1c964-ff2e-3a7e-ca39-36aac3110b52.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Title="DirectoryEditor Properties" Url="html/1591182f-b622-594b-d18c-effc156f2e68.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
