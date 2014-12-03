@@ -27,6 +27,11 @@ Typos And Grammatical Errors
 
 If you found a typo or a grammatical error please send us an e-mail, so we can fix it. Thank you for your support!
 
+Copyright
+----
+
+All images are property of their respectful owners
+
 License
 ----
 
