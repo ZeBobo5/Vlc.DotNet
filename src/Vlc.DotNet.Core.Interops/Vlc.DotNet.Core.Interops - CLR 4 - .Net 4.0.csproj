@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{7D7F91B9-688C-40CD-AAEF-EEBCE28BDC23}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vlc.DotNet.Core.Interops</RootNamespace>
+    <AssemblyName>Vlc.DotNet.Core.Interops</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Debug - x64 - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4;NET40;X64</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;CLR4;NET40;X64</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Debug - x86 - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4;NET40;X86</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;CLR4;NET40;X86</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Vlc.DotNet.Core\Properties\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\IntPtrExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\VlcMediaInstanceExtensions.cs" />
+    <Compile Include="LibVlcFunctionAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signatures\InteropObjectInstance.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_callback_t.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_clearerr.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_errmsg.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_event_attach.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_event_detach.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_event_type_name.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_free.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_get_compiler.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_get_version.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_module_description_t.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_new.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_release.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_video_filter_list_get.cs" />
+    <Compile Include="Signatures\libvlc_events.h\libvlc_event_e.cs" />
+    <Compile Include="Signatures\libvlc_events.h\libvlc_event_t.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_add_option.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_add_option_flag.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_duplicate.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_event_manager.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_duration.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_meta.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_mrl.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_state.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_stats.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_tracks_info.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_is_parsed.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_location.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_path.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_parse.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_parse_async.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_release.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_save_meta.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_set_meta.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_stats_t.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_track_info_t.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_meta_t.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_state_t.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_track_type_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_channel.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_delay.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_mute.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_track.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_track_count.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_track_description.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_volume.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_channel_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_count.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_id.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_longname.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_set.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_device_types_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_list_get.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_list_release.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_set.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_set_channel.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_set_delay.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_set_mute.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_set_track.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_set_volume.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_toggle_mute.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_can_pause.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_event_manager.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_chapter.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_chapter_count.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_fps.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_hwnd.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_media.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_position.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_rate.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_state.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_playing.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_seekable.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_navigate.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_new.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_new_from_media.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_next_chapter.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_next_frame.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_pause.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_play.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_previous_chapter.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_release.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_chapter.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_hwnd.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_media.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_position.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_rate.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_stop.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_will_play.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_navigate_mode_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_track_description_list_release.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_track_description_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_adjust_option_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_adjust_float.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_adjust_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_crop_geometry.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_logo_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_marquee_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_marquee_string.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_spu.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_spu_count.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_spu_delay.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_spu_description.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_teletext.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_track.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_track_count.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_track_description.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_logo_option_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_marquee_option_t.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_adjust_float.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_adjust_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_crop_geometry.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_deinterlace.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_logo_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_logo_string.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_marquee_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_marquee_string.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_spu.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_spu_delay.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_teletext.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_track.cs" />
+    <Compile Include="VlcEventManagerInstance.cs" />
+    <Compile Include="VlcIntance.cs" />
+    <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcMediaEventManagerInstance.cs" />
+    <Compile Include="VlcMediaInstance.cs" />
+    <Compile Include="VlcMediaPlayerEventManagerInstance.cs" />
+    <Compile Include="VlcMediaPlayerInstance.cs" />
+    <Compile Include="VlcInteropsManager.cs" />
+    <Compile Include="VlcManager.AddOptionFlagToMedia.cs" />
+    <Compile Include="VlcManager.AddOptionToMedia.cs" />
+    <Compile Include="VlcManager.AttachEvent.cs" />
+    <Compile Include="VlcManager.ClearLastErrorMessage.cs" />
+    <Compile Include="VlcManager.CloneMedia.cs" />
+    <Compile Include="VlcManager.CouldPlay.cs" />
+    <Compile Include="VlcManager.CreateMediaPlayer.cs" />
+    <Compile Include="VlcManager.CreateMediaPlayerFromMedia.cs" />
+    <Compile Include="VlcManager.CreateNewInstance.cs" />
+    <Compile Include="VlcManager.CreateNewMediaFromLocation.cs" />
+    <Compile Include="VlcManager.CreateNewMediaFromPath.cs" />
+    <Compile Include="VlcManager.cs" />
+    <Compile Include="VlcManager.DetachEvent.cs" />
+    <Compile Include="VlcManager.Free.cs" />
+    <Compile Include="VlcManager.GetAudioChannel.cs" />
+    <Compile Include="VlcManager.GetAudioDelay.cs" />
+    <Compile Include="VlcManager.GetAudioFilterList.cs" />
+    <Compile Include="VlcManager.GetAudioOutputDeviceCount.cs" />
+    <Compile Include="VlcManager.GetAudioOutputDeviceLongName.cs" />
+    <Compile Include="VlcManager.GetAudioOutputDeviceName.cs" />
+    <Compile Include="VlcManager.GetAudioOutputsDescriptions.cs" />
+    <Compile Include="VlcManager.GetAudioTrack.cs" />
+    <Compile Include="VlcManager.GetAudioTracksCount.cs" />
+    <Compile Include="VlcManager.GetAudioTracksDescriptions.cs" />
+    <Compile Include="VlcManager.GetChangeset.cs" />
+    <Compile Include="VlcManager.GetCompiler.cs" />
+    <Compile Include="VlcManager.GetEventTypeName.cs" />
+    <Compile Include="VlcManager.GetFramesPerSecond.cs" />
+    <Compile Include="VlcManager.GetLastErrorMessage.cs" />
+    <Compile Include="VlcManager.GetMediaChapter.cs" />
+    <Compile Include="VlcManager.GetMediaChapterCount.cs" />
+    <Compile Include="VlcManager.GetMediaDuration.cs" />
+    <Compile Include="VlcManager.GetMediaEventManager.cs" />
+    <Compile Include="VlcManager.GetMediaFromMediaPlayer.cs" />
+    <Compile Include="VlcManager.GetMediaMeta.cs" />
+    <Compile Include="VlcManager.GetMediaMrl.cs" />
+    <Compile Include="VlcManager.GetMediaPlayerEventManager.cs" />
+    <Compile Include="VlcManager.GetMediaPlayerState.cs" />
+    <Compile Include="VlcManager.GetMediaPosition.cs" />
+    <Compile Include="VlcManager.GetMediaState.cs" />
+    <Compile Include="VlcManager.GetMediaStats.cs" />
+    <Compile Include="VlcManager.GetMediaTracksInformations.cs" />
+    <Compile Include="VlcManager.GetRate.cs" />
+    <Compile Include="VlcManager.GetVideoAdjust.cs" />
+    <Compile Include="VlcManager.GetVideoCropGeometry.cs" />
+    <Compile Include="VlcManager.GetVideoFilterList.cs" />
+    <Compile Include="VlcManager.GetVideoLogo.cs" />
+    <Compile Include="VlcManager.GetVideoMarquee.cs" />
+    <Compile Include="VlcManager.GetVideoSpu.cs" />
+    <Compile Include="VlcManager.GetVideoSpuCount.cs" />
+    <Compile Include="VlcManager.GetVideoSpuDelay.cs" />
+    <Compile Include="VlcManager.GetVideoSpuDescription.cs" />
+    <Compile Include="VlcManager.GetVideoTeletext.cs" />
+    <Compile Include="VlcManager.GetVideoTrack.cs" />
+    <Compile Include="VlcManager.GetVideoTracksCount.cs" />
+    <Compile Include="VlcManager.GetVideoTracksDescriptions.cs" />
+    <Compile Include="VlcManager.GetVolume.cs" />
+    <Compile Include="VlcManager.IsMute.cs" />
+    <Compile Include="VlcManager.IsParsedMedia.cs" />
+    <Compile Include="VlcManager.IsPausable.cs" />
+    <Compile Include="VlcManager.IsPlaying.cs" />
+    <Compile Include="VlcManager.IsSeekable.cs" />
+    <Compile Include="VlcManager.Navigate.cs" />
+    <Compile Include="VlcManager.NextFrame.cs" />
+    <Compile Include="VlcManager.ParseMedia.cs" />
+    <Compile Include="VlcManager.ParseMediaAsync.cs" />
+    <Compile Include="VlcManager.Pause.cs" />
+    <Compile Include="VlcManager.Play.cs" />
+    <Compile Include="VlcManager.ReleaseAudioOutputDescription.cs" />
+    <Compile Include="VlcManager.ReleaseInstance.cs" />
+    <Compile Include="VlcManager.ReleaseMedia.cs" />
+    <Compile Include="VlcManager.ReleaseMediaPlayer.cs" />
+    <Compile Include="VlcManager.ReleaseModuleDescriptionInstance.cs" />
+    <Compile Include="VlcManager.ReleaseTrackDescription.cs" />
+    <Compile Include="VlcManager.SaveMediaMetas.cs" />
+    <Compile Include="VlcManager.SetAudioChannel.cs" />
+    <Compile Include="VlcManager.SetAudioDelay.cs" />
+    <Compile Include="VlcManager.SetAudioOutput.cs" />
+    <Compile Include="VlcManager.SetAudioOutputDevice.cs" />
+    <Compile Include="VlcManager.SetAudioTrack.cs" />
+    <Compile Include="VlcManager.SetMediaChapter.cs" />
+    <Compile Include="VlcManager.SetMediaMeta.cs" />
+    <Compile Include="VlcManager.SetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcManager.SetMediaPosition.cs" />
+    <Compile Include="VlcManager.SetMediaToMediaPlayer.cs" />
+    <Compile Include="VlcManager.SetMute.cs" />
+    <Compile Include="VlcManager.SetNextMediaChapter.cs" />
+    <Compile Include="VlcManager.SetPreviousMediaChapter.cs" />
+    <Compile Include="VlcManager.SetRate.cs" />
+    <Compile Include="VlcManager.SetVideoAdjust.cs" />
+    <Compile Include="VlcManager.SetVideoCropGeometry.cs" />
+    <Compile Include="VlcManager.SetVideoDeinterlace.cs" />
+    <Compile Include="VlcManager.SetVideoLogo.cs" />
+    <Compile Include="VlcManager.SetVideoMarquee.cs" />
+    <Compile Include="VlcManager.SetVideoSpu.cs" />
+    <Compile Include="VlcManager.SetVideoSpuDelay.cs" />
+    <Compile Include="VlcManager.SetVideoTeletext.cs" />
+    <Compile Include="VlcManager.SetVideoTrack.cs" />
+    <Compile Include="VlcManager.SetVolume.cs" />
+    <Compile Include="VlcManager.Stop.cs" />
+    <Compile Include="VlcManager.ToggleMute.cs" />
+    <Compile Include="Win32Interops.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Vlc.DotNet.pfx.snk">
+      <Link>Vlc.DotNet.pfx.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Signatures\README.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
