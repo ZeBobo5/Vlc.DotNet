@@ -31,6 +31,15 @@ namespace Vlc.DotNet.Wpf.Samples
         private void OnPlayButtonClick(object sender, RoutedEventArgs e)
         {
             myControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
+
+
+        }
+
+        private void OnForwardButtonClick(object sender, RoutedEventArgs e)
+        {
+            myControl.MediaPlayer.SetRate(2);
+
+            var rate = myControl.MediaPlayer.GetRate();
         }
     }
 }

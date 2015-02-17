@@ -13,7 +13,7 @@ namespace Vlc.DotNet.Forms
         private VlcMediaPlayer myVlcMediaPlayer;
         private readonly object myEventSyncLocker = new object();
 
-        [Editor(typeof (DirectoryEditor), typeof (UITypeEditor))]
+        [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
         public DirectoryInfo VlcLibDirectory { get; set; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -74,6 +74,25 @@ namespace Vlc.DotNet.Forms
             var filter = myVlcMediaPlayer.GetVideoFilters();
             myVlcMediaPlayer.Play();
         }
+
+        public float GetRate()
+        {
+            EndInit();
+            return myVlcMediaPlayer.GetRate();
+        }
+        public void SetRate(float rateOfVideo)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetRate(rateOfVideo);
+
+            if (rateOfVideo > 0)
+                OnForward();
+            else if (rateOfVideo < 0)
+                OnBackward();
+
+        }
+
+
 
 #if NET20
         public void Play(FileInfo file)
