@@ -7,10 +7,8 @@
 *.sln.docstates
 
 # Build results
-
 [Dd]ebug/
 [Rr]elease/
-# x64/
 build/
 [Bb]in/
 [Oo]bj/
@@ -159,3 +157,4 @@ $RECYCLE.BIN/
 *.sln.ide
 *.exe.config
 build/
+!lib/**/*.dll
