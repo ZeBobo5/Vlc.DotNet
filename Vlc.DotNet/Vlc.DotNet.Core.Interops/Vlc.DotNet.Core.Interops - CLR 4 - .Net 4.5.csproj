@@ -111,7 +111,10 @@
     <Compile Include="Signatures\libvlc_media.h\libvlc_track_type_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_duplicate.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_event_manager.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_media.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_length.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_rate.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_playing.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_new.cs" />
@@ -142,12 +145,15 @@
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
     <Compile Include="VlcManager.GetLastErrorMessage.cs" />
+    <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetMediaDuration.cs" />
     <Compile Include="VlcManager.GetMediaEventManager.cs" />
     <Compile Include="VlcManager.GetMediaFromMediaPlayer.cs" />
     <Compile Include="VlcManager.GetMediaMeta.cs" />
     <Compile Include="VlcManager.GetMediaMrl.cs" />
     <Compile Include="VlcManager.GetMediaPlayerEventManager.cs" />
+    <Compile Include="VlcManager.GetLength.cs" />
+    <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcManager.SetRate.cs" />
     <Compile Include="VlcManager.GetRate.cs" />
     <Compile Include="VlcManager.GetMediaState.cs" />

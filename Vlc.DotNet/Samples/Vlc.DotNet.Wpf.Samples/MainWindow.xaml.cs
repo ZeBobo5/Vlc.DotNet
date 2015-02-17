@@ -41,5 +41,29 @@ namespace Vlc.DotNet.Wpf.Samples
 
             var rate = myControl.MediaPlayer.GetRate();
         }
+
+        private void GetLength_Click(object sender, RoutedEventArgs e)
+        {
+            var length = myControl.MediaPlayer.GetLength();
+
+            GetLength.Content = length + " ms";
+        }
+
+        private void GetCurrentTime_Click(object sender, RoutedEventArgs e)
+        {
+            var time = myControl.MediaPlayer.GetTime();
+
+            GetCurrentTime.Content = time + " ms";
+
+        }
+
+        private void SetCurrentTime_Click(object sender, RoutedEventArgs e)
+        {
+            myControl.MediaPlayer.SetTime(5000);
+            var time = myControl.MediaPlayer.GetTime();
+
+            SetCurrentTime.Content = time + " ms";
+
+        }
     }
 }

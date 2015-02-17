@@ -7,11 +7,11 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public bool SetRate(IntPtr mediaInstance, float rate)
+        public void SetTime(IntPtr mediaInstance, long timeInMs)
         {
             if (mediaInstance == IntPtr.Zero)
                 throw new ArgumentException("Media instance is not initialized.");
-            return GetInteropDelegate<SetRate>().Invoke(mediaInstance, rate) == 0;
+            GetInteropDelegate<SetTime>().Invoke(mediaInstance, timeInMs);
 
         }
     }

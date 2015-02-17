@@ -89,9 +89,28 @@ namespace Vlc.DotNet.Forms
                 OnForward();
             else if (rateOfVideo < 0)
                 OnBackward();
-
         }
 
+
+
+        public long GetLength()
+        {
+            EndInit();
+            return myVlcMediaPlayer.GetLength();
+        }
+
+        public long GetTime()
+        {
+            EndInit();
+            return myVlcMediaPlayer.GetTime();
+        }
+
+        public void SetTime(long timeInMs)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetTime(timeInMs);
+
+        }
 
 
 #if NET20

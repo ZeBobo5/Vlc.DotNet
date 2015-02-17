@@ -99,7 +99,23 @@ namespace Vlc.DotNet.Core
 
         public void SetRate(float rate)
         {
-             Manager.SetRate(myMediaPlayer, rate);
+            Manager.SetRate(myMediaPlayer, rate);
+        }
+
+
+
+        public long GetLength()
+        {
+            return Manager.GetLength(myMediaPlayer);
+        }
+        public long GetTime()
+        {
+            return Manager.GetTime(myMediaPlayer);
+        }
+
+        public void SetTime(long timeInMs)
+        {
+            Manager.SetTime(myMediaPlayer, timeInMs);
         }
 
         public void Pause()
