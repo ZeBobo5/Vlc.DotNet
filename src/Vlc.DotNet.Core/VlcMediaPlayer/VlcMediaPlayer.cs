@@ -238,6 +238,17 @@ namespace Vlc.DotNet.Core
             get { return Manager.IsSeekable(myMediaPlayerInstance); }
         }
 
+        public long Length
+        {
+            get { return Manager.GetLength(myMediaPlayerInstance); }
+        }
+        public long Time
+        {
+            get { return Manager.GetTime(myMediaPlayerInstance); }
+            set { Manager.SetTime(myMediaPlayerInstance, value); }
+        }
+
+
         public void Navigate(NavigateModes navigateMode)
         {
             Manager.Navigate(myMediaPlayerInstance, navigateMode);
