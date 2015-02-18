@@ -148,6 +148,14 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        public IAudioManagement Audio
+        {
+            get
+            {
+                return myVlcMediaPlayer.Audio;
+            }
+        }
+
         public long Length
         {
             get { return myVlcMediaPlayer.Length; }
