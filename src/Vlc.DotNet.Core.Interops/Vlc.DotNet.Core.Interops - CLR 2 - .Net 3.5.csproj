@@ -137,6 +137,8 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_chapter.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_chapter_count.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_hwnd.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_length.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_seekable.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_fps.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_media.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_media.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_position.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_rate.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_stop.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_will_play.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_navigate_mode_t.cs" />
@@ -223,7 +226,9 @@
     <Compile Include="VlcManager.GetChangeset.cs" />
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
+    <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAdjust.cs" />
     <Compile Include="VlcManager.GetVideoCropGeometry.cs" />
     <Compile Include="VlcManager.GetVideoLogo.cs" />
@@ -286,6 +291,7 @@
     <Compile Include="VlcManager.SetNextMediaChapter.cs" />
     <Compile Include="VlcManager.SetPreviousMediaChapter.cs" />
     <Compile Include="VlcManager.SetRate.cs" />
+    <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcManager.SetVideoAdjust.cs" />
     <Compile Include="VlcManager.SetVideoCropGeometry.cs" />
     <Compile Include="VlcManager.SetVideoDeinterlace.cs" />

@@ -138,10 +138,12 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_chapter_count.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_fps.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_hwnd.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_length.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_media.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_position.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_rate.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_state.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_playing.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_is_seekable.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_navigate.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_media.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_position.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_rate.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_stop.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_will_play.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_navigate_mode_t.cs" />
@@ -195,7 +198,10 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_track.cs" />
     <Compile Include="VlcEventManagerInstance.cs" />
     <Compile Include="VlcIntance.cs" />
+    <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcManager.GetTime.cs" />
+    <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcMediaEventManagerInstance.cs" />
     <Compile Include="VlcMediaInstance.cs" />
     <Compile Include="VlcMediaPlayerEventManagerInstance.cs" />

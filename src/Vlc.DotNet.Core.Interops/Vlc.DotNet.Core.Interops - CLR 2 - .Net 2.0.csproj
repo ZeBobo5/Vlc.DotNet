@@ -93,6 +93,9 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_list_release.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_mute.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_hwnd.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_length.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_time.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_output_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_adjust_float.cs" />
@@ -167,12 +170,15 @@
     <Compile Include="VlcManager.GetAudioTracksCount.cs" />
     <Compile Include="VlcManager.GetAudioTracksDescriptions.cs" />
     <Compile Include="VlcManager.GetAudioDelay.cs" />
+    <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
+    <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.SetAudioDelay.cs" />
     <Compile Include="VlcManager.SetAudioChannel.cs" />
     <Compile Include="VlcManager.GetAudioChannel.cs" />
     <Compile Include="VlcManager.GetVolume.cs" />
     <Compile Include="VlcManager.SetAudioTrack.cs" />
+    <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcManager.SetVolume.cs" />
     <Compile Include="VlcManager.ToggleMute.cs" />
     <Compile Include="VlcManager.SetMute.cs" />

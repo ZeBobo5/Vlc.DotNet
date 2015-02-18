@@ -50,7 +50,7 @@ namespace Vlc.DotNet.Forms
                 if (IsPlaying)
                     Stop();
                 var currentMedia = GetCurrentMedia();
-                if(currentMedia != null)
+                if (currentMedia != null)
                     currentMedia.Dispose();
                 myVlcMediaPlayer.Dispose();
                 base.Dispose(disposing);
@@ -146,6 +146,17 @@ namespace Vlc.DotNet.Forms
             {
                 return myVlcMediaPlayer.Video;
             }
+        }
+
+        public long Length
+        {
+            get { return myVlcMediaPlayer.Length; }
+        }
+
+        public long Time
+        {
+            get { return myVlcMediaPlayer.Time; }
+            set { myVlcMediaPlayer.Time = value; }
         }
     }
 }

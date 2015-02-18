@@ -249,6 +249,16 @@ namespace Vlc.DotNet.Core
 
         public IAudioManagement Audio { get; private set; }
 
+        public long Length
+        {
+            get { return Manager.GetLength(myMediaPlayerInstance); }
+        }
+        public long Time
+        {
+            get { return Manager.GetTime(myMediaPlayerInstance); }
+            set { Manager.SetTime(myMediaPlayerInstance, value); }
+        }
+
         private void RegisterEvents()
         {
             var vlcEventManager = Manager.GetMediaPlayerEventManager(myMediaPlayerInstance);
