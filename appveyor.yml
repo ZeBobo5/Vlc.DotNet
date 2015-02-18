@@ -1,0 +1,40 @@
+version: 2.0.{build}
+
+branches:
+  only:
+  - 2.0-Twoflower
+
+skip_tags: true
+
+init:
+  - git config --global core.autocrlf input
+  
+clone_folder: C:\projects\vlc-dotnet-2.0\
+
+shallow_clone: true
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "2.0.{build}"
+  assembly_file_version: "2.0.0.0"
+  assembly_informational_version: "2.0.0.0"
+
+platform:
+  - x86
+  - x64
+  
+configuration: Release
+
+after_build:
+  - SET ARCHPATH=
+  - if %platform% == x86 (SET ARCHPATH=x86)
+  - if %platform% == x64 (SET ARCHPATH=x64)
+  - ps: 7z a "C:\projects\vlc-dotnet-2.0\Vlc.DotNet for Vlc 2.0.x - $env:ARCHPATH - .Net 2.0.zip" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Forms.dll" 
+  - ps: 7z a "C:\projects\vlc-dotnet-2.0\Vlc.DotNet for Vlc 2.0.x - $env:ARCHPATH - .Net 3.5.zip" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-2.0\Vlc.DotNet for Vlc 2.0.x - $env:ARCHPATH - .Net 4.0.zip" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-2.0\Vlc.DotNet for Vlc 2.0.x - $env:ARCHPATH - .Net 4.5.zip" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-2.0\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Wpf.dll"
+
+artifacts:
+  - path: "**/*.zip"
+    name: "Vlc.DotNet for Vlc 2.0.x"
