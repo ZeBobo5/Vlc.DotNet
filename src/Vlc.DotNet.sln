@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22129.1
+VisualStudioVersion = 14.0.22512.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vlc.DotNet.Core.Interops - CLR 2 - .Net 2.0", "Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 2 - .Net 2.0.csproj", "{B732133C-22F8-4033-A4D9-72BF69A2DBCB}"
 EndProject
