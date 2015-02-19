@@ -255,10 +255,20 @@ namespace Vlc.DotNet.Core
         {
             get { return Manager.GetLength(myMediaPlayerInstance); }
         }
+
         public long Time
         {
             get { return Manager.GetTime(myMediaPlayerInstance); }
             set { Manager.SetTime(myMediaPlayerInstance, value); }
+        }
+
+        public void TakeSnapshot(FileInfo file)
+        {
+            TakeSnapshot(file, 0, 0);
+        }
+        public void TakeSnapshot(FileInfo file, uint width, uint height)
+        {
+            Manager.TakeSnapshot(myMediaPlayerInstance, file, width, height);
         }
 
         private void RegisterEvents()
