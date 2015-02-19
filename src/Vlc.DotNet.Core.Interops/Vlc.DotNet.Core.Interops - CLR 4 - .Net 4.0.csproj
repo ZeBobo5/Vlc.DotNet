@@ -196,12 +196,14 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_spu_delay.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_teletext.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_track.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_take_snapshot.cs" />
     <Compile Include="VlcEventManagerInstance.cs" />
     <Compile Include="VlcIntance.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.SetTime.cs" />
+    <Compile Include="VlcManager.TakeSnapshot.cs" />
     <Compile Include="VlcMediaEventManagerInstance.cs" />
     <Compile Include="VlcMediaInstance.cs" />
     <Compile Include="VlcMediaPlayerEventManagerInstance.cs" />
