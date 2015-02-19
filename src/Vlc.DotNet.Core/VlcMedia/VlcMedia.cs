@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
@@ -9,6 +9,13 @@ namespace Vlc.DotNet.Core
     public sealed partial class VlcMedia : IDisposable
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
+
+        internal static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; private set; }
+
+        static VlcMedia()
+        {
+            LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
+        }
 
         internal VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
 #if NET20
@@ -30,9 +37,11 @@ namespace Vlc.DotNet.Core
 
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
+            if(!LoadedMedias.ContainsKey(player))
+                LoadedMedias[player] = new List<VlcMedia>();
+            LoadedMedias[player].Add(this);
             MediaInstance = mediaInstance;
             myVlcMediaPlayer = player;
-            //myVlcMediaPlayer.Medias.Add(this);
             RegisterEvents();
         }
 

@@ -9,7 +9,14 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 return;
-            GetInteropDelegate<ReleaseMediaPlayer>().Invoke(mediaPlayerInstance);
+            try
+            {
+                GetInteropDelegate<ReleaseMediaPlayer>().Invoke(mediaPlayerInstance);
+            }
+            finally
+            {
+                mediaPlayerInstance.Pointer = IntPtr.Zero;
+            }
         }
     }
 }
