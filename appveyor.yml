@@ -9,7 +9,7 @@ skip_tags: true
 init:
   - git config --global core.autocrlf input
   
-clone_folder: C:\projects\vlc-dotnet-master
+clone_folder: C:\projects\vlc-dotnet-master\
 
 shallow_clone: true
 
@@ -20,21 +20,29 @@ assembly_info:
   assembly_file_version: "2.1.0.0"
   assembly_informational_version: "2.1.0.0"
 
-platform:
-  - x86
-  - x64
+build_script:
+  - msbuild "src\Vlc.DotNet.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;Platform=x86
+  - msbuild "src\Vlc.DotNet.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;Platform=x64
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x86 - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x86 - .Net 2.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 2.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x86 - .Net 2.0\Vlc.DotNet.Forms.dll" 
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x86 - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x86 - .Net 3.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 3.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x86 - .Net 3.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x86 - .Net 3.5\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x86 - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x86 - .Net 4.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 4.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x86 - .Net 4.0\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x86 - .Net 4.0\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x86 - .Net 4.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x86 - .Net 4.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 4.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x86 - .Net 4.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x86 - .Net 4.5\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x64 - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x64 - .Net 2.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 2.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x64 - .Net 2.0\Vlc.DotNet.Forms.dll" 
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x64 - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x64 - .Net 3.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 3.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x64 - .Net 3.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x64 - .Net 3.5\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x64 - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x64 - .Net 4.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 4.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x64 - .Net 4.0\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x64 - .Net 4.0\Vlc.DotNet.Wpf.dll"
+  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - x64 - .Net 4.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - x64 - .Net 4.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 4.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - x64 - .Net 4.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - x64 - .Net 4.5\Vlc.DotNet.Wpf.dll"
+  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec'
+  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec'
+  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec'
+  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec'
+  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec
+  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec
+  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec
+  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec
+  - ps: 7z a "C:\projects\vlc-dotnet-master\nuget-packages.zip" *.nupkg 
   
-configuration: Release
-
-after_build:
-  - SET ARCHPATH=
-  - if %platform% == x86 (SET ARCHPATH=x86)
-  - if %platform% == x64 (SET ARCHPATH=x64)
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - $env:ARCHPATH - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 2.0\Vlc.DotNet.Forms.dll" 
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - $env:ARCHPATH - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 3.5\Vlc.DotNet.Wpf.dll"
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - $env:ARCHPATH - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 4.0\Vlc.DotNet.Wpf.dll"
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - $env:ARCHPATH - .Net 4.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - $env:ARCHPATH - .Net 4.5\Vlc.DotNet.Wpf.dll"
-
 artifacts:
   - path: "**/*.zip"
     name: "Vlc.DotNet for Vlc 2.1.x"
+  - path: "**/*.nupkg"
+    name: "Vlc.DotNet for Vlc 2.1.x NuGet Packages"
