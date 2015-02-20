@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Vlc.DotNet.Core.Interops</id>
+        <version>$version$</version>
+        <authors>ZeBobo5</authors>
+        <projectUrl>https://github.com/ZeBobo5/Vlc.DotNet</projectUrl>
+        <iconUrl>http://images1.videolan.org/images/largeVLC.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Wrapper to use the audio/video capabilities of the VLC libraries.</description>
+        <summary>Wrapper to use the audio/video capabilities of the VLC libraries.</summary>
+        <tags>vlc media wrapper interop interops</tags>
+    </metadata>
+    <files>
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 2.0\Vlc.DotNet.Core.Interops.dll" target="lib\net20\x64\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 2.0\Vlc.DotNet.Core.Interops.dll" target="lib\net20\x86\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 3.5\Vlc.DotNet.Core.Interops.dll" target="lib\net35\x64\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 3.5\Vlc.DotNet.Core.Interops.dll" target="lib\net35\x86\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 4.0\Vlc.DotNet.Core.Interops.dll" target="lib\net40\x64\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 4.0\Vlc.DotNet.Core.Interops.dll" target="lib\net40\x86\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net45\x64\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net45\x86\Vlc.DotNet.Core.Interops.dll" />
+    </files>
+</package>
