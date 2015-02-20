@@ -1,7 +1,8 @@
 version: 2.0.{build}
 
 branches:
-  only: 2.0-Twoflower
+  only:
+    - 2.0-Twoflower
 
 skip_tags: true
 
