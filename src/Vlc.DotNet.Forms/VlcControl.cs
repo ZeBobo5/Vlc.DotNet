@@ -138,6 +138,13 @@ namespace Vlc.DotNet.Forms
             set { myVlcMediaPlayer.Rate = value; }
         }
 
+
+        public int Volume
+        {
+            get { return myVlcMediaPlayer.Volume; }
+            set { myVlcMediaPlayer.Volume = value; }
+        }
+
         public MediaStates State
         {
             get { return myVlcMediaPlayer.State; }

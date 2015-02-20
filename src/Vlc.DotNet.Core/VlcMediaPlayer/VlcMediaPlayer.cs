@@ -223,6 +223,12 @@ namespace Vlc.DotNet.Core
             set { Manager.SetRate(myMediaPlayerInstance, value); }
         }
 
+        public int Volume
+        {
+            get { return Manager.GetVolume(myMediaPlayerInstance); }
+            set { Manager.SetVolume(myMediaPlayerInstance, value); }
+        }
+
         public MediaStates State
         {
             get { return Manager.GetMediaPlayerState(myMediaPlayerInstance); }
