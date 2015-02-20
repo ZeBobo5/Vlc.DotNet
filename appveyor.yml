@@ -1,7 +1,8 @@
 version: 2.1.{build}
 
 branches:
-  only: master
+  only: 
+    - master
 
 skip_tags: true
 
