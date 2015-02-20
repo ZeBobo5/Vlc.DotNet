@@ -18,6 +18,6 @@ Packages are available for Vlc libraries 2.0.x & 2.1.x
 
 [Vlc.DotNet.Core](https://www.nuget.org/packages/Vlc.DotNet.Core/)
 
-[Vlc.DotNet.Forms](https://www.nuget.org/packages/Vlc.DotNet.Core.Interops/)
+[Vlc.DotNet.Forms](https://www.nuget.org/packages/Vlc.DotNet.Forms/)
 
-[Vlc.DotNet.Wpf](https://www.nuget.org/packages/Vlc.DotNet.Core.Interops/)
+[Vlc.DotNet.Wpf](https://www.nuget.org/packages/Vlc.DotNet.Wpf/)
