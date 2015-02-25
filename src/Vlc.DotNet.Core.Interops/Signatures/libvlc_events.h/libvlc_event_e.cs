@@ -9,6 +9,7 @@
         MediaParsedChanged,
         MediaFreed,
         MediaStateChanged,
+        MediaSubItemTreeAdded,
 
         MediaPlayerMediaChanged = 0x100,
         MediaPlayerNothingSpecial,

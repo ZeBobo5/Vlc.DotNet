@@ -71,6 +71,7 @@
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signatures\InteropObjectInstance.cs" />
+    <Compile Include="Signatures\InteropsHelpers.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_video_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
@@ -319,7 +320,6 @@
     <None Include="..\Vlc.DotNet.pfx.snk">
       <Link>Vlc.DotNet.pfx.snk</Link>
     </None>
-    <None Include="Signatures\README.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

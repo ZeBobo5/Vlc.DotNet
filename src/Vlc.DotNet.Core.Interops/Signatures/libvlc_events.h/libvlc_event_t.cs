@@ -6,187 +6,120 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     [StructLayout(LayoutKind.Explicit)]
     public struct VlcEventArg
     {
+        private const int OFFSET_OF_EVENT_TYPE = 0;
+        private const int OFFSET_OF_SENDER = OFFSET_OF_EVENT_TYPE + InteropsHelpers.OFFSET_LENGTH_OF_POINTER;
+        private const int OFFSET_OF_MEDIA_META_CHANGED = OFFSET_OF_SENDER + InteropsHelpers.OFFSET_LENGTH_OF_POINTER;
+        private const int OFFSET_OF_MEDIA_SUBITEM_ADDED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIA_DURATION_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIA_PARSED_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIA_FREED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIA_STATE_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_BUFFERING = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_POSITION_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_TIME_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_TITLE_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_SEEKABLE_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_PAUSABLE_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_SCRAMBLED_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_VIDEO_OUT_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIALIST_ITEM_ADDED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIALIST_WILL_ADD_ITEM = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIALIST_ITEM_DELETED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIALIST_WILL_DELETE_ITEM = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIALISTPLAYER_NEXT_ITEM_SET = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_SNAPSHOT_TAKEN = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_LENGTH_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_VLM_MEDIA_EVENT = OFFSET_OF_MEDIA_META_CHANGED;
+        private const int OFFSET_OF_MEDIAPLAYER_MEDIA_CHANGED = OFFSET_OF_MEDIA_META_CHANGED;
+
         [FieldOffset(0)]
         public EventTypes type;
 
-#if X86
-        [FieldOffset(4)]
-#else
-        [FieldOffset(8)]
-#endif
+        [FieldOffset(InteropsHelpers.OFFSET_LENGTH_OF_POINTER)]
         public IntPtr p_obj;
 
         #region Media Descriptor
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIA_META_CHANGED)]
         public MediaMetaChanged MediaMetaChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
-        public MediaSubitemAdded MediaSubItemAdded;
+        [FieldOffset(OFFSET_OF_MEDIA_SUBITEM_ADDED)]
+        public MediaSubItemAdded MediaSubItemAdded;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIA_DURATION_CHANGED)]
         public MediaDurationChanged MediaDurationChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIA_PARSED_CHANGED)]
         public MediaParsedChanged MediaParsedChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIA_FREED)]
         public MediaFreed MediaFreed;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIA_STATE_CHANGED)]
         public MediaStateChanged MediaStateChanged;
+
+        [FieldOffset(OFFSET_OF_MEDIA_STATE_CHANGED)]
+        public MediaSubItemTreeAdded MediaSubItemTreeAdded;
 
         #endregion
 
         #region Media Instance
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_BUFFERING)]
         public MediaPlayerBuffering MediaPlayerBuffering;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_POSITION_CHANGED)]
         public MediaPlayerPositionChanged MediaPlayerPositionChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_TIME_CHANGED)]
         public MediaPlayerTimeChanged MediaPlayerTimeChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_TITLE_CHANGED)]
         public MediaPlayerTitleChanged MediaPlayerTitleChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_SEEKABLE_CHANGED)]
         public MediaPlayerSeekableChanged MediaPlayerSeekableChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_PAUSABLE_CHANGED)]
         public MediaPlayerPausableChanged MediaPlayerPausableChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_SCRAMBLED_CHANGED)]
         public MediaPlayerScrambledChanged MediaPlayerScrambledChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_VIDEO_OUT_CHANGED)]
         public MediaPlayerVideoOutChanged MediaPlayerVideoOutChanged;
 
         #endregion
 
         #region Media List
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIALIST_ITEM_ADDED)]
         public MediaListItemAdded MediaListItemAdded;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIALIST_WILL_ADD_ITEM)]
         public MediaListWillAddItem MediaListWillAddItem;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIALIST_ITEM_DELETED)]
         public MediaListItemDeleted MediaListItemDeleted;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIALIST_WILL_DELETE_ITEM)]
         public MediaListWillDeleteItem MediaListWillDeleteItem;
 
         #endregion
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIALISTPLAYER_NEXT_ITEM_SET)]
         public MediaListPlayerNextItemSet MediaListPlayerNextItemSet;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_SNAPSHOT_TAKEN)]
         public MediaPlayerSnapshotTaken MediaPlayerSnapshotTaken;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_LENGTH_CHANGED)]
         public MediaPlayerLengthChanged MediaPlayerLengthChanged;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_VLM_MEDIA_EVENT)]
         public VlmMediaEvent VlmMediaEvent;
 
-#if X86
-        [FieldOffset(8)]
-#else
-        [FieldOffset(16)]
-#endif
+        [FieldOffset(OFFSET_OF_MEDIAPLAYER_MEDIA_CHANGED)]
         public MediaPlayerMediaChanged MediaPlayerMediaChanged;
     }
 
@@ -197,7 +130,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct MediaSubitemAdded
+    public struct MediaSubItemAdded
     {
         public IntPtr NewChild;
     }

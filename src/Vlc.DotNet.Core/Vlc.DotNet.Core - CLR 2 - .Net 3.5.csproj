@@ -137,14 +137,15 @@
     <Compile Include="VlcMedia\VlcMedia.Events.ParsedChanged.cs" />
     <Compile Include="VlcMedia\VlcMedia.Events.StateChanged.cs" />
     <Compile Include="VlcMedia\VlcMedia.Events.SubItemAdded.cs" />
+    <Compile Include="VlcMedia\VlcMedia.Events.SubItemTreeAdded.cs" />
     <Compile Include="VlcMedia\VlcMedia.Metadatas.cs" />
     <Compile Include="VlcMedia\VlcMediaDurationChangedEventArgs.cs" />
     <Compile Include="VlcMedia\VlcMediaFreedEventArgs.cs" />
     <Compile Include="VlcMedia\VlcMediaMetaChangedEventArgs.cs" />
     <Compile Include="VlcMedia\VlcMediaParsedChangedEventArgs.cs" />
     <Compile Include="VlcMedia\VlcMediaStateChangedEventArgs.cs" />
-    <Compile Include="VlcMedia\VlcMediaSubItemAddedEventArg.cs" />
-    <Compile Include="VlcMedia\VlcMediaSubItemTreeAddedEventArg.cs" />
+    <Compile Include="VlcMedia\VlcMediaSubItemAddedEventArgs.cs" />
+    <Compile Include="VlcMedia\VlcMediaSubItemTreeAddedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 2 - .Net 3.5.csproj">
