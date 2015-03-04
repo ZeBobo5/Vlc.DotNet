@@ -29,7 +29,7 @@ namespace Vlc.DotNet.Forms
 
         public void EndInit()
         {
-            if (DesignMode || myVlcMediaPlayer != null)
+            if (IsInDesignMode() || myVlcMediaPlayer != null)
                 return;
             if (VlcLibDirectory == null && (VlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
             {
@@ -38,6 +38,12 @@ namespace Vlc.DotNet.Forms
             myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
             myVlcMediaPlayer.VideoHostControlHandle = Handle;
             RegisterEvents();
+        }
+
+        // work around http://stackoverflow.com/questions/34664/designmode-with-controls/708594
+        private static bool IsInDesignMode()
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio");
         }
 
         public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
