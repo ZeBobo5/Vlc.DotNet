@@ -170,5 +170,17 @@ namespace Vlc.DotNet.Forms
             get { return myVlcMediaPlayer.Time; }
             set { myVlcMediaPlayer.Time = value; }
         }
+
+        public void SetMedia(FileInfo file, params string[] options)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetMedia(file, options);
+        }
+
+        public void SetMedia(Uri file, params string[] options)
+        {
+            EndInit();
+            myVlcMediaPlayer.SetMedia(file, options);
+        }
     }
 }
