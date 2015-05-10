@@ -8,7 +8,7 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (args == null)
                 args = new string[0];
-            myVlcInstance = new VlcIntance(this, GetInteropDelegate<CreateNewInstance>().Invoke(args.Length, args));
+            myVlcInstance = new VlcInstance(this, GetInteropDelegate<CreateNewInstance>().Invoke(args.Length, args));
         }
     }
 }

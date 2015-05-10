@@ -203,7 +203,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_track.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_take_snapshot.cs" />
     <Compile Include="VlcEventManagerInstance.cs" />
-    <Compile Include="VlcIntance.cs" />
+    <Compile Include="VlcInstance.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />

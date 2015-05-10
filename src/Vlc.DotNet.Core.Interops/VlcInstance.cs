@@ -3,11 +3,11 @@ using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public sealed class VlcIntance : InteropObjectInstance
+    public sealed class VlcInstance : InteropObjectInstance
     {
         private readonly VlcManager myManager;
 
-        internal VlcIntance(VlcManager manager, IntPtr pointer) : base(pointer)
+        internal VlcInstance(VlcManager manager, IntPtr pointer) : base(pointer)
         {
             myManager = manager;
         }
@@ -19,7 +19,7 @@ namespace Vlc.DotNet.Core.Interops
             base.Dispose(disposing);            
         }
 
-        public static implicit operator IntPtr(VlcIntance instance)
+        public static implicit operator IntPtr(VlcInstance instance)
         {
             return instance.Pointer;
         }
