@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager : VlcInteropsManager
     {
-        private VlcIntance myVlcInstance;
+        private VlcInstance myVlcInstance;
         private static readonly Dictionary<DirectoryInfo, VlcManager> myAllInstance = new Dictionary<DirectoryInfo, VlcManager>();
 
         public string VlcVersion

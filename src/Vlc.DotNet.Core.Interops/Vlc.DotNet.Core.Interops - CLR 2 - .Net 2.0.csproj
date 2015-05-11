@@ -159,7 +159,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_track_description_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_navigate_mode_t.cs" />
     <Compile Include="VlcEventManagerInstance.cs" />
-    <Compile Include="VlcIntance.cs" />
+    <Compile Include="VlcInstance.cs" />
     <Compile Include="VlcManager.AddOptionFlagToMedia.cs" />
     <Compile Include="VlcManager.AddOptionToMedia.cs" />
     <Compile Include="VlcManager.AttachEvent.cs" />
