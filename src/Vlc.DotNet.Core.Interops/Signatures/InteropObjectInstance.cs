@@ -47,6 +47,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
         public static bool operator ==(InteropObjectInstance a, InteropObjectInstance b)
         {
+            if (Equals(a, null) || Equals(b, null))
+                return Equals(a, b);
+
             return a.Pointer.Equals(b.Pointer);
         }
 

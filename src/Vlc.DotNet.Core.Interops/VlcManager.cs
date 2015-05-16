@@ -29,7 +29,9 @@ namespace Vlc.DotNet.Core.Interops
 
         public override void Dispose(bool disposing)
         {
-            myVlcInstance.Dispose();
+            if (myVlcInstance != null)
+                myVlcInstance.Dispose();
+
             if (myAllInstance.ContainsValue(this))
             {
                 foreach (var kv in new Dictionary<DirectoryInfo, VlcManager>(myAllInstance))
