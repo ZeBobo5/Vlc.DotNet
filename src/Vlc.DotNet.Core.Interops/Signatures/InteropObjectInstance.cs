@@ -19,12 +19,13 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 return;
             myIsDisposing = true;
             Dispose(true);
+
+            GC.SuppressFinalize(this);
         }
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             Pointer = IntPtr.Zero;
-            GC.SuppressFinalize(this);
         }
 
         ~InteropObjectInstance()
