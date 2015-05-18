@@ -19,12 +19,13 @@ namespace Vlc.DotNet.Core.Interops.Signatures
                 return;
             myIsDisposing = true;
             Dispose(true);
+
+            GC.SuppressFinalize(this);
         }
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             Pointer = IntPtr.Zero;
-            GC.SuppressFinalize(this);
         }
 
         ~InteropObjectInstance()
@@ -47,6 +48,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
         public static bool operator ==(InteropObjectInstance a, InteropObjectInstance b)
         {
+            if (Equals(a, null) || Equals(b, null))
+                return Equals(a, b);
+
             return a.Pointer.Equals(b.Pointer);
         }
 

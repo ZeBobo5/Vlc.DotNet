@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Interops
             myManager = manager;
         }
 
-        public override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (Pointer != IntPtr.Zero)
                 myManager.ReleaseInstance(this);

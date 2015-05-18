@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Interops
             myManager = manager;
         }
 
-        public override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (Pointer != IntPtr.Zero)
                 myManager.ReleaseMediaPlayer(this);
@@ -21,7 +21,9 @@ namespace Vlc.DotNet.Core.Interops
 
         public static implicit operator IntPtr(VlcMediaPlayerInstance instance)
         {
-            return instance.Pointer;
+            return instance != null
+                ? instance.Pointer
+                : IntPtr.Zero;
         }
     }
 }
