@@ -13,6 +13,12 @@ namespace Vlc.DotNet.Core
     {
         private VlcMediaPlayerInstance myMediaPlayerInstance;
 
+        private Guid mGuid = Guid.NewGuid();
+
+        // media instances owned by the player
+        private Dictionary<IntPtr, VlcMedia> mMediaInstances
+            = new Dictionary<IntPtr, VlcMedia>();
+
         public VlcMediaPlayer(DirectoryInfo vlcLibDirectory)
             : this(VlcManager.GetInstance(vlcLibDirectory))
         {
@@ -78,6 +84,10 @@ namespace Vlc.DotNet.Core
             myMediaPlayerInstance.Pointer = IntPtr.Zero;
             myMediaPlayerInstance = Manager.CreateMediaPlayerFromMedia(mediaInstance);
             RegisterEvents();
+            Chapters = new ChapterManagement(Manager, myMediaPlayerInstance);
+            SubTitles = new SubTitlesManagement(Manager, myMediaPlayerInstance);
+            Video = new VideoManagement(Manager, myMediaPlayerInstance);
+            Audio = new AudioManagement(Manager, myMediaPlayerInstance);
             if (ctrl != null)
                 VideoHostControlHandle = ctrl.Handle;
         }
@@ -96,11 +106,9 @@ namespace Vlc.DotNet.Core
             if (IsPlaying())
                 Stop();
 
-            if (VlcMedia.LoadedMedias.ContainsKey(this))
-            foreach (var loadedMedia in VlcMedia.LoadedMedias[this])
-            {
-                loadedMedia.Dispose();
-            }
+            foreach (var kvp in mMediaInstances)
+                kvp.Value.Dispose();
+            mMediaInstances.Clear();
 
             myMediaPlayerInstance.Dispose();
             Manager.Dispose();
@@ -123,49 +131,72 @@ namespace Vlc.DotNet.Core
 
         private VlcMedia SetMedia(VlcMedia media)
         {
+            // dispose of current media
             var currentMedia = GetMedia();
             if (currentMedia != null && currentMedia.MediaInstance != media.MediaInstance)
-                currentMedia.Dispose();
+                RemoveMedia(currentMedia);
+
+            // add new media
+            mMediaInstances[media.MediaInstance.Pointer] = media;
+
+            // tell player about new media instance
             Manager.SetMediaToMediaPlayer(myMediaPlayerInstance, media.MediaInstance);
             return media;
+        }
+
+        void RemoveMedia(VlcMedia media)
+        {
+            if (mMediaInstances.ContainsKey(media.MediaInstance.Pointer))
+            {
+                mMediaInstances.Remove(media.MediaInstance.Pointer);
+                media.Dispose();
+            }
         }
 
         public VlcMedia GetMedia()
         {
             var mediaPtr = Manager.GetMediaFromMediaPlayer(myMediaPlayerInstance);
-            if (mediaPtr.Pointer != IntPtr.Zero)
-                return new VlcMedia(this, mediaPtr);
+            if (mediaPtr != IntPtr.Zero)
+                return mMediaInstances[mediaPtr];
             return null;
         }
 
         public void Play()
         {
-            Manager.Play(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                Manager.Play(myMediaPlayerInstance);
         }
 
         public void Pause()
         {
-            Manager.Pause(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                Manager.Pause(myMediaPlayerInstance);
         }
 
         public void Stop()
         {
-            Manager.Stop(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                Manager.Stop(myMediaPlayerInstance);
         }
 
         public bool IsPlaying()
         {
-            return Manager.IsPlaying(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                return Manager.IsPlaying(myMediaPlayerInstance);
+            return false;
         }
 
         public bool IsPausable()
         {
-            return Manager.IsPausable(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                return Manager.IsPausable(myMediaPlayerInstance);
+            return false;
         }
 
         public void NextFrame()
         {
-            Manager.NextFrame(myMediaPlayerInstance);
+            if (myMediaPlayerInstance != IntPtr.Zero)
+                Manager.NextFrame(myMediaPlayerInstance);
         }
 
         public IEnumerable<FilterModuleDescription> GetAudioFilters()
@@ -176,6 +207,15 @@ namespace Vlc.DotNet.Core
             if (module != IntPtr.Zero)
                 Manager.ReleaseModuleDescriptionInstance(module);
             return result;
+        }
+
+        internal VlcMedia GetCreateMedia(IntPtr ptr)
+        {
+            if (mMediaInstances.ContainsKey(ptr))
+                return mMediaInstances[ptr];
+            var media = new VlcMedia(this, new VlcMediaInstance(this.Manager, ptr));
+            mMediaInstances[ptr] = media;
+            return media;
         }
 
         private List<FilterModuleDescription> GetSubFilter(ModuleDescriptionStructure module)
