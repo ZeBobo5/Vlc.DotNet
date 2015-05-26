@@ -18,7 +18,7 @@ namespace Vlc.DotNet.Core.Interops
             {
                 // keep a reference count for the media instance
                 if (!sInstanceCount.ContainsKey(pointer))
-                    sInstanceCount[pointer] = 0;
+                    sInstanceCount[pointer] = 1;
                 else
                     sInstanceCount[pointer] = sInstanceCount[pointer] + 1;
             }
