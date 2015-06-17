@@ -28,7 +28,10 @@ namespace Vlc.DotNet.Core
                 "--verbose=2"
             });
 #else
-            Manager.CreateNewInstance(null);
+            Manager.CreateNewInstance(new[]
+            {
+                "--quiet"
+            });
 #endif
             myMediaPlayerInstance = manager.CreateMediaPlayer();
             RegisterEvents();
