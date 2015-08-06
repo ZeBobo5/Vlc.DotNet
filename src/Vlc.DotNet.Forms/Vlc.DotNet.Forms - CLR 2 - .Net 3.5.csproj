@@ -70,7 +70,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeEditors\DirectoryEditor.cs" />
-    <Compile Include="VlcControl.cs" />
+    <Compile Include="VlcControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VlcControl.Events.cs">
       <SubType>component</SubType>
     </Compile>
