@@ -81,6 +81,10 @@ namespace Vlc.DotNet.Core
             myMediaPlayerInstance.Pointer = IntPtr.Zero;
             myMediaPlayerInstance = Manager.CreateMediaPlayerFromMedia(mediaInstance);
             RegisterEvents();
+            Chapters = new ChapterManagement(Manager, myMediaPlayerInstance);
+            Subtitles = new SubtitlesManagement(Manager, myMediaPlayerInstance);
+            Video = new VideoManagement(Manager, myMediaPlayerInstance);
+            Audio = new AudioManagement(Manager, myMediaPlayerInstance);
             if (ctrl != null)
                 VideoHostControlHandle = ctrl.Handle;
         }
