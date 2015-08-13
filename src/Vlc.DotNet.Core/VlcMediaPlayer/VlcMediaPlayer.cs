@@ -82,7 +82,7 @@ namespace Vlc.DotNet.Core
             myMediaPlayerInstance = Manager.CreateMediaPlayerFromMedia(mediaInstance);
             RegisterEvents();
             Chapters = new ChapterManagement(Manager, myMediaPlayerInstance);
-            Subtitles = new SubtitlesManagement(Manager, myMediaPlayerInstance);
+            SubTitles = new SubTitlesManagement(Manager, myMediaPlayerInstance);
             Video = new VideoManagement(Manager, myMediaPlayerInstance);
             Audio = new AudioManagement(Manager, myMediaPlayerInstance);
             if (ctrl != null)
