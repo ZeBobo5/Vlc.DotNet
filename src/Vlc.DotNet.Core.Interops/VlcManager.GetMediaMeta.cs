@@ -13,7 +13,7 @@ namespace Vlc.DotNet.Core.Interops
             var ptr = GetInteropDelegate<GetMediaMetadata>().Invoke(mediaInstance, metadata);
             if (ptr == IntPtr.Zero)
                 return null;
-            return Marshal.PtrToStringUni(ptr);
+            return Marshal.PtrToStringAnsi(ptr);
         }
     }
 }
