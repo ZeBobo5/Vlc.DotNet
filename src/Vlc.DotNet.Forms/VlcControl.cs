@@ -13,6 +13,8 @@ namespace Vlc.DotNet.Forms
     {
         private VlcMediaPlayer myVlcMediaPlayer;
 
+        public string[] VlcMediaplayerOptions { get; set; }
+
         [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
         public DirectoryInfo VlcLibDirectory { get; set; }
 
@@ -35,7 +37,15 @@ namespace Vlc.DotNet.Forms
             {
                 throw new Exception("'VlcLibDirectory' must be set.");
             }
-            myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
+
+            if (VlcMediaplayerOptions == null)
+            {
+                myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory);
+            }
+            else
+            {
+                myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory, VlcMediaplayerOptions);
+            }
             myVlcMediaPlayer.VideoHostControlHandle = Handle;
             RegisterEvents();
         }
