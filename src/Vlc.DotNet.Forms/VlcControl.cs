@@ -56,6 +56,7 @@ namespace Vlc.DotNet.Forms
                 if (IsPlaying)
                     Stop();
                 myVlcMediaPlayer.Dispose();
+                myVlcMediaPlayer = null;
                 base.Dispose(disposing);
                 GC.SuppressFinalize(this);
             }
