@@ -56,6 +56,7 @@ namespace Vlc.DotNet.Forms
                 if (IsPlaying)
                     Stop();
                 myVlcMediaPlayer.Dispose();
+                myVlcMediaPlayer = null;
                 base.Dispose(disposing);
                 GC.SuppressFinalize(this);
             }
@@ -169,6 +170,13 @@ namespace Vlc.DotNet.Forms
         {
             get { return myVlcMediaPlayer.Time; }
             set { myVlcMediaPlayer.Time = value; }
+        }
+
+
+        public int Spu
+        {
+            get { return myVlcMediaPlayer.Spu; }
+            set { myVlcMediaPlayer.Spu = value; }
         }
 
         public void SetMedia(FileInfo file, params string[] options)
