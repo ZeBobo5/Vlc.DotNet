@@ -18,6 +18,11 @@ namespace Vlc.DotNet.Core
         {
         }
 
+        public VlcMediaPlayer(DirectoryInfo vlcLibDirectory, string[] options)
+            : this(VlcManager.GetInstance(vlcLibDirectory), options)
+        {
+        }
+
         internal VlcMediaPlayer(VlcManager manager)
         {
             Manager = manager;
@@ -33,6 +38,19 @@ namespace Vlc.DotNet.Core
                 "--quiet"
             });
 #endif
+            myMediaPlayerInstance = manager.CreateMediaPlayer();
+            RegisterEvents();
+            Chapters = new ChapterManagement(manager, myMediaPlayerInstance);
+            SubTitles = new SubTitlesManagement(manager, myMediaPlayerInstance);
+            Video = new VideoManagement(manager, myMediaPlayerInstance);
+            Audio = new AudioManagement(manager, myMediaPlayerInstance);
+        }
+
+        internal VlcMediaPlayer(VlcManager manager, string[] options)
+        {
+            Manager = manager;
+            Manager.CreateNewInstance(options);
+
             myMediaPlayerInstance = manager.CreateMediaPlayer();
             RegisterEvents();
             Chapters = new ChapterManagement(manager, myMediaPlayerInstance);
