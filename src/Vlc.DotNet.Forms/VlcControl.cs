@@ -120,6 +120,12 @@ namespace Vlc.DotNet.Forms
             EndInit();
             return myVlcMediaPlayer.GetMedia();
         }
+        
+        public void TakeSnapshot(string fileName) 
+        {
+            FileInfo fileInfo = new FileInfo(fileName);
+            myVlcMediaPlayer.TakeSnapshot(fileInfo);
+        }
 
         public float Position
         {
