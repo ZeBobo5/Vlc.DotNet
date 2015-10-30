@@ -186,6 +186,12 @@ namespace Vlc.DotNet.Forms
                 return null;
             }
         }
+        
+        public void TakeSnapshot(string fileName) 
+        {
+            FileInfo fileInfo = new FileInfo(fileName);
+            myVlcMediaPlayer.TakeSnapshot(fileInfo);
+        }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
