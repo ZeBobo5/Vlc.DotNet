@@ -88,26 +88,26 @@ namespace Vlc.DotNet.Forms
 
         protected void Dispose()
         {
-            if (!disposed)
-            {
-                Dispose(true);
-                disposed = true;
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!disposed)
             {
-                if (myVlcMediaPlayer != null)
+                if (disposing)
                 {
-                    UnregisterEvents();
-                    if (IsPlaying)
-                        Stop();
-                    myVlcMediaPlayer.Dispose();
+                    if (myVlcMediaPlayer != null)
+                    {
+                        UnregisterEvents();
+                        if (IsPlaying)
+                            Stop();
+                        myVlcMediaPlayer.Dispose();
+                    }
+                    base.Dispose(disposing);
                 }
-                base.Dispose(disposing);
-                GC.SuppressFinalize(this);
+                disposed = true;
             }
         }
 
