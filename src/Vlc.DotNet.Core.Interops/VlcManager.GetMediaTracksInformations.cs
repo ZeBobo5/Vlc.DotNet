@@ -19,7 +19,11 @@ namespace Vlc.DotNet.Core.Interops
             for (int index = 0; index < cpt; index++)
             {
                 result[index] = (MediaTrackInfosStructure)Marshal.PtrToStructure(buffer, typeof(MediaTrackInfosStructure));
+#if X86
                 buffer = new IntPtr(buffer.ToInt32() + Marshal.SizeOf(typeof(MediaTrackInfosStructure)));
+#else
+                buffer = new IntPtr(buffer.ToInt64() + Marshal.SizeOf(typeof(MediaTrackInfosStructure)));
+#endif
             }
             Free(fullBuffer);
             return result;
