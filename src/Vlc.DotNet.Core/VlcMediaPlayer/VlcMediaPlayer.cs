@@ -288,6 +288,12 @@ namespace Vlc.DotNet.Core
             set { Manager.SetTime(myMediaPlayerInstance, value); }
         }
 
+        public int Spu
+        {
+            get { return Manager.GetVideoSpu(myMediaPlayerInstance); }
+            set { Manager.SetVideoSpu(myMediaPlayerInstance, value); }
+        }
+
         public void TakeSnapshot(FileInfo file)
         {
             TakeSnapshot(file, 0, 0);

@@ -105,6 +105,7 @@ namespace Vlc.DotNet.Forms
                             Stop();
                         myVlcMediaPlayer.Dispose();
                     }
+                    myVlcMediaPlayer = null;
                     base.Dispose(disposing);
                 }
                 disposed = true;
@@ -364,6 +365,25 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        [Browsable(false)]
+        public int Spu
+        {
+            get
+            {
+                if (myVlcMediaPlayer != null)
+                {
+                    return myVlcMediaPlayer.Spu;
+                }
+                return -1;
+            }
+            set
+            {
+                if (myVlcMediaPlayer != null)
+                {
+                    myVlcMediaPlayer.Spu = value;
+                }
+            }
+        }
 
         public void SetMedia(FileInfo file, params string[] options)
         {
