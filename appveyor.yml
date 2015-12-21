@@ -46,3 +46,9 @@ artifacts:
     name: "Vlc.DotNet for Vlc 2.1.x"
   - path: "**/*.nupkg"
     name: "Vlc.DotNet for Vlc 2.1.x NuGet Packages"
+
+deploy:
+  - provider: NuGet
+    api_key:
+        secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
+    artifact: /.*\.nupkg/
