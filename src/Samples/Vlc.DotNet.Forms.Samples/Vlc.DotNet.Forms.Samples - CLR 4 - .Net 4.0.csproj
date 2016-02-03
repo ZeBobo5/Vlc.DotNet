@@ -94,7 +94,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.0.csproj">
       <Project>{7d7f91b9-688c-40cd-aaef-eebce28bdc23}</Project>
-      <Name>Vlc.DotNet.Forms.Samples - CLR 4 - .Net 4.0</Name>
+      <Name>Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.0</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Vlc.DotNet.Core\Vlc.DotNet.Core - CLR 4 - .Net 4.0.csproj">
       <Project>{6ea5d03e-bde3-4f4d-b761-f0f380ecc078}</Project>
