@@ -1,4 +1,6 @@
-﻿Imports System.IO
+﻿Option Strict On
+
+Imports System.IO
 Imports Vlc.DotNet
 
 Public Class DynamicObject
@@ -20,15 +22,15 @@ Public Class DynamicObject
         b.VlcLibDirectory = New DirectoryInfo(aP)
         b.Parent = Panel1
         b.Dock = DockStyle.Fill
-        AddHandler b.VlcLibDirectoryNeeded, AddressOf checkdir
-        AddHandler b.Playing, AddressOf onPlay2
+        AddHandler b.VlcLibDirectoryNeeded, AddressOf checkVLCDir
+        AddHandler b.Playing, AddressOf OnPlaying
 
         Panel1.Controls.Add(b)
 
         b.EndInit()
     End Sub
 
-    Private Function checkdir() As DirectoryInfo
+    Private Sub checkVLCDir(sender As Object, e As Forms.VlcLibDirectoryNeededEventArgs)
         Dim aPath As String
         Dim aTitle As String
 
@@ -50,14 +52,14 @@ Public Class DynamicObject
                 fbdDialog.SelectedPath = aPath
 
                 If fbdDialog.ShowDialog() = DialogResult.OK Then
-                    Return New DirectoryInfo(fbdDialog.SelectedPath)
+                    e.VlcLibDirectory = New DirectoryInfo(fbdDialog.SelectedPath)
                 End If
             End Using
         Else
-            Return New DirectoryInfo(Path.Combine(aPath, "VideoLAN\VLC"))
+            e.VlcLibDirectory = New DirectoryInfo(Path.Combine(aPath, "VideoLAN\VLC"))
         End If
-        Return Nothing
-    End Function
+        e.VlcLibDirectory = Nothing
+    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -80,15 +82,15 @@ Public Class DynamicObject
 
     End Sub
 
-    Private Sub onPlay2()
-        Dim aP As Vlc.DotNet.Forms.VlcControl
-        aP = CType(Panel1.Controls(0), Vlc.DotNet.Forms.VlcControl)
-        Dim aP2 As String = aP.GetCurrentMedia.URL
+    Private Sub OnPlaying(sender As Object, e As Core.VlcMediaPlayerPlayingEventArgs)
+        Dim aVlcControl As Forms.VlcControl
+        aVlcControl = CType(Panel1.Controls.Find("VlcControl", True)(0), Vlc.DotNet.Forms.VlcControl)
+        Dim aP2 As String = aVlcControl.GetCurrentMedia.URL
         If Me.InvokeRequired Then
-            Me.Invoke(Sub() onPlay2())
+            Me.Invoke(Sub() OnPlaying(sender, e))
             Return
         End If
-        For Each aM In aP.GetCurrentMedia().TracksInformations
+        For Each aM In aVlcControl.GetCurrentMedia().TracksInformations
             If aM.Type = Core.Interops.Signatures.MediaTrackTypes.Audio Then
                 Label1.Text = aM.CodecName
             Else
