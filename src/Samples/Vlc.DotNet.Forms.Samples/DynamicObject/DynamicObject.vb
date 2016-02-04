@@ -20,6 +20,7 @@ Public Class DynamicObject
             aP = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "VideoLAN\VLC")
         End If
         b.VlcLibDirectory = New DirectoryInfo(aP)
+        b.Name = "VlcControl"
         b.Parent = Panel1
         b.Dock = DockStyle.Fill
         AddHandler b.VlcLibDirectoryNeeded, AddressOf checkVLCDir
