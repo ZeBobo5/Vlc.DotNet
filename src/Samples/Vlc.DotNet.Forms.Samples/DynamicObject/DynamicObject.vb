@@ -29,28 +29,32 @@ Public Class DynamicObject
     End Sub
 
     Private Function checkdir() As DirectoryInfo
-        Dim aP As String
+        Dim aPath As String
+        Dim aTitle As String
 
         If Environment.Is64BitOperatingSystem Then
             If Environment.Is64BitProcess Then
-                aP = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "VideoLAN\VLC")
+                aPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+                aTitle = "Select VLC x64 bit Path"
             Else
-                aP = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "VideoLAN\VLC")
+                aPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+                aTitle = "Select VLC x86 bit Path"
             End If
         Else
-            aP = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "VideoLAN\VLC")
+            aPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+            aTitle = "Select VLC x86 bit Path"
         End If
-        If Not File.Exists(Path.Combine(aP, "libvlc.dll")) Then
+        If Not File.Exists(Path.Combine(Path.Combine(aPath, "VideoLAN\VLC"), "libvlc.dll")) Then
             Using fbdDialog As New FolderBrowserDialog()
-                fbdDialog.Description = "Select VLC Path"
-                fbdDialog.SelectedPath = Path.Combine(aP, "VideoLAN\VLC")
+                fbdDialog.Description = aTitle
+                fbdDialog.SelectedPath = aPath
 
                 If fbdDialog.ShowDialog() = DialogResult.OK Then
                     Return New DirectoryInfo(fbdDialog.SelectedPath)
                 End If
             End Using
         Else
-            Return New DirectoryInfo(aP)
+            Return New DirectoryInfo(Path.Combine(aPath, "VideoLAN\VLC"))
         End If
         Return Nothing
     End Function
