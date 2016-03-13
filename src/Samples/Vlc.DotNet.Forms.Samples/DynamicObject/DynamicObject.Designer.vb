@@ -23,15 +23,22 @@ Partial Class DynamicObject
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtURL = New System.Windows.Forms.TextBox()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer2.Panel1.SuspendLayout()
+        Me.SplitContainer2.Panel2.SuspendLayout()
+        Me.SplitContainer2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -42,14 +49,6 @@ Partial Class DynamicObject
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Create Object"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(781, 446)
-        Me.Panel1.TabIndex = 1
         '
         'Button3
         '
@@ -70,6 +69,7 @@ Partial Class DynamicObject
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button3)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
         '
@@ -78,17 +78,8 @@ Partial Class DynamicObject
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label1)
         Me.SplitContainer1.Size = New System.Drawing.Size(175, 446)
-        Me.SplitContainer1.SplitterDistance = 102
+        Me.SplitContainer1.SplitterDistance = 152
         Me.SplitContainer1.TabIndex = 5
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 15)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Label1"
         '
         'Label2
         '
@@ -99,28 +90,89 @@ Partial Class DynamicObject
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Label2"
         '
-        'Form1
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(14, 15)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Label1"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(4, 103)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(167, 44)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "Play URL"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'SplitContainer2
+        '
+        Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer2.IsSplitterFixed = True
+        Me.SplitContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer2.Name = "SplitContainer2"
+        Me.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal
+        '
+        'SplitContainer2.Panel1
+        '
+        Me.SplitContainer2.Panel1.Controls.Add(Me.Panel1)
+        '
+        'SplitContainer2.Panel2
+        '
+        Me.SplitContainer2.Panel2.Controls.Add(Me.txtURL)
+        Me.SplitContainer2.Size = New System.Drawing.Size(606, 446)
+        Me.SplitContainer2.SplitterDistance = 417
+        Me.SplitContainer2.TabIndex = 6
+        '
+        'Panel1
+        '
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(606, 417)
+        Me.Panel1.TabIndex = 2
+        '
+        'txtURL
+        '
+        Me.txtURL.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtURL.Location = New System.Drawing.Point(0, 0)
+        Me.txtURL.Name = "txtURL"
+        Me.txtURL.Size = New System.Drawing.Size(606, 20)
+        Me.txtURL.TabIndex = 0
+        '
+        'DynamicObject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(781, 446)
+        Me.Controls.Add(Me.SplitContainer2)
         Me.Controls.Add(Me.SplitContainer1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Name = "Form1"
+        Me.Name = "DynamicObject"
         Me.Text = "Form1"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.SplitContainer2.Panel1.ResumeLayout(False)
+        Me.SplitContainer2.Panel2.ResumeLayout(False)
+        Me.SplitContainer2.Panel2.PerformLayout()
+        CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Button1 As Button
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Button3 As Button
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents SplitContainer2 As SplitContainer
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents txtURL As TextBox
 End Class

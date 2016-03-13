@@ -1,6 +1,7 @@
 ﻿Option Strict On
 
 Imports System.IO
+Imports System.Text.RegularExpressions
 Imports Vlc.DotNet
 
 Public Class DynamicObject
@@ -100,5 +101,14 @@ Public Class DynamicObject
                 End If
             End If
         Next
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim aP As Vlc.DotNet.Forms.VlcControl
+        If Regex.IsMatch(txtURL.Text, "http:\/\/.*?") Then
+            aP = CType(Panel1.Controls(0), Vlc.DotNet.Forms.VlcControl)
+            aP.Play(New Uri(txtURL.Text))
+            '            aP.SetMedia()
+        End If
     End Sub
 End Class
