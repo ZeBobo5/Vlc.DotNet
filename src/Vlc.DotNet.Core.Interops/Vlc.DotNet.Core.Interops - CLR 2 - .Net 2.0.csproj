@@ -100,6 +100,8 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_hwnd.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_length.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_get_time.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_aspect_ratio.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_aspect_ratio.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_take_snapshot.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_media_player_set_time.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_rectangle_t.cs" />
@@ -179,6 +181,8 @@
     <Compile Include="VlcManager.GetLength.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
+    <Compile Include="VlcManager.GetVideoAspectRatio.cs" />
+    <Compile Include="VlcManager.SetVideoAspectRatio.cs" />
     <Compile Include="VlcManager.TakeSnapshot.cs" />
     <Compile Include="VlcManager.SetAudioDelay.cs" />
     <Compile Include="VlcManager.SetAudioChannel.cs" />
