@@ -46,14 +46,16 @@
             this.myLblVideoCodec = new System.Windows.Forms.Label();
             this.myLblVideoHeight = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).BeginInit();
+            this.myCbxAspectRatio = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.myGrpAudioInformations.SuspendLayout();
             this.myGrpVideoInformations.SuspendLayout();
             this.SuspendLayout();
             // 
             // myVlcControl
             // 
-            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.myVlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.myVlcControl.Location = new System.Drawing.Point(12, 12);
@@ -231,11 +233,38 @@
             this.myLblVideoHeight.TabIndex = 4;
             this.myLblVideoHeight.Text = "Height:";
             // 
+            // myCbxAspectRatio
+            // 
+            this.myCbxAspectRatio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.myCbxAspectRatio.Enabled = false;
+            this.myCbxAspectRatio.FormattingEnabled = true;
+            this.myCbxAspectRatio.Items.AddRange(new object[] {
+            "16:9",
+            "16:10",
+            "4:3"});
+            this.myCbxAspectRatio.Location = new System.Drawing.Point(680, 170);
+            this.myCbxAspectRatio.Name = "myCbxAspectRatio";
+            this.myCbxAspectRatio.Size = new System.Drawing.Size(121, 20);
+            this.myCbxAspectRatio.TabIndex = 11;
+            this.myCbxAspectRatio.TextChanged += new System.EventHandler(this.myCbxAspectRatio_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(580, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Video Aspect Ratio:";
+            // 
             // Sample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 391);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.myCbxAspectRatio);
             this.Controls.Add(this.myGrpVideoInformations);
             this.Controls.Add(this.myGrpAudioInformations);
             this.Controls.Add(this.myBtnPause);
@@ -250,6 +279,7 @@
             this.Name = "Sample";
             this.Text = "Vlc.DotNet - Winform Player Sample";
             ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).EndInit();
+            this.SizeChanged += new System.EventHandler(this.Sample_SizeChanged);
             this.myGrpAudioInformations.ResumeLayout(false);
             this.myGrpAudioInformations.PerformLayout();
             this.myGrpVideoInformations.ResumeLayout(false);
@@ -278,6 +308,8 @@
         private System.Windows.Forms.Label myLblVideoWidth;
         private System.Windows.Forms.Label myLblVideoCodec;
         private System.Windows.Forms.Label myLblVideoHeight;
+        private System.Windows.Forms.ComboBox myCbxAspectRatio;
+        private System.Windows.Forms.Label label3;
     }
 }
 

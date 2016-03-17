@@ -2,6 +2,7 @@
 {
     public interface IVideoManagement
     {
+        string AspectRatio { get; set; }
         string CropGeometry { get; set; }
         int Teletext { get; set; }
         ITracksManagement Tracks { get; }

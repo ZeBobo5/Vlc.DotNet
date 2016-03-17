@@ -17,6 +17,12 @@ namespace Vlc.DotNet.Core
             Logo = new LogoManagement(manager, mediaPlayerInstance);
             Adjustments = new AdjustmentsManagement(manager, mediaPlayerInstance);
         }
+        
+        public string AspectRatio
+        {
+            get { return myManager.GetVideoCropGeometry(myMediaPlayer); }
+            set { myManager.SetVideoCropGeometry(myMediaPlayer, value); }
+        }
 
         public string CropGeometry
         {

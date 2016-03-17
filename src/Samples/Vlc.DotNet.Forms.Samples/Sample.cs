@@ -55,7 +55,7 @@ namespace Vlc.DotNet.Forms.Samples
         private void OnVlcMediaLengthChanged(object sender, Core.VlcMediaPlayerLengthChangedEventArgs e)
         {
 #if !NET20
-            myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long) e.NewLength).Ticks).ToString("T"));
+            myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan((long)e.NewLength).Ticks).ToString("T"));
 #else
             ControlExtensions.InvokeIfRequired(myLblMediaLength, l => l.Text = new DateTime(new TimeSpan((long)e.NewLength).Ticks).ToString("T"));
 #endif
@@ -84,8 +84,20 @@ namespace Vlc.DotNet.Forms.Samples
         {
 #if !NET20
             myLblState.InvokeIfRequired(l => l.Text = "Stopped");
+
+            myCbxAspectRatio.InvokeIfRequired(c =>
+            {
+                c.Text = string.Empty;
+                c.Enabled = false;
+            });
 #else
             ControlExtensions.InvokeIfRequired(myLblState, c => c.Text = "Stopped");
+
+            ControlExtensions.InvokeIfRequired(myCbxAspectRatio, c =>
+            {
+                c.Text = string.Empty;
+                c.Enabled = false;
+            });
 #endif
             myLblAudioCodec.Text = "Codec: ";
             myLblAudioChannels.Text = "Channels: ";
@@ -93,6 +105,9 @@ namespace Vlc.DotNet.Forms.Samples
             myLblVideoCodec.Text = "Codec: ";
             myLblVideoHeight.Text = "Height: ";
             myLblVideoWidth.Text = "Width: ";
+
+
+
         }
 
         private void OnVlcPlaying(object sender, Core.VlcMediaPlayerPlayingEventArgs e)
@@ -124,6 +139,11 @@ namespace Vlc.DotNet.Forms.Samples
                 }
             }
 
+            myCbxAspectRatio.InvokeIfRequired(c =>
+            {
+                c.Text = myVlcControl.Video.AspectRatio;
+                c.Enabled = true;
+            });
 
 #else
             ControlExtensions.InvokeIfRequired(myLblState, c => c.Text = "Playing");
@@ -151,7 +171,35 @@ namespace Vlc.DotNet.Forms.Samples
                     ControlExtensions.InvokeIfRequired(myLblVideoWidth, c => c.Text += mediaInformation.Video.Width);
                 }
             }
+
+            ControlExtensions.InvokeIfRequired(myCbxAspectRatio, c =>
+            {
+                c.Text = myVlcControl.Video.AspectRatio;
+                c.Enabled = true;
+            });
 #endif
+        }
+
+        private void myCbxAspectRatio_TextChanged(object sender, EventArgs e)
+        {
+            myVlcControl.Video.AspectRatio = myCbxAspectRatio.Text;
+            ResizeVlcControl();
+        }
+
+        private void Sample_SizeChanged(object sender, EventArgs e)
+        {
+            ResizeVlcControl();
+        }
+
+        void ResizeVlcControl()
+        {
+            if (!string.IsNullOrEmpty(myCbxAspectRatio.Text))
+            {
+                var ratio = myCbxAspectRatio.Text.Split(':');
+                int width, height;
+                if (ratio.Length == 2 && int.TryParse(ratio[0], out width) && int.TryParse(ratio[1], out height))
+                    myVlcControl.Width = myVlcControl.Height * width / height;
+            }
         }
 
     }

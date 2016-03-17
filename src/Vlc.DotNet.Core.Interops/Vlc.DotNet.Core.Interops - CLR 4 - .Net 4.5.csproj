@@ -180,6 +180,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_adjust_option_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_adjust_float.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_adjust_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_aspect_ratio.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_crop_geometry.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_logo_int.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_get_marquee_int.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_marquee_option_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_adjust_float.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_adjust_int.cs" />
+    <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_aspect_ratio.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_crop_geometry.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_deinterlace.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_logo_int.cs" />
@@ -257,6 +259,7 @@
     <Compile Include="VlcManager.GetRate.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAdjust.cs" />
+    <Compile Include="VlcManager.GetVideoAspectRatio.cs" />
     <Compile Include="VlcManager.GetVideoCropGeometry.cs" />
     <Compile Include="VlcManager.GetVideoFilterList.cs" />
     <Compile Include="VlcManager.GetVideoLogo.cs" />
@@ -304,6 +307,7 @@
     <Compile Include="VlcManager.SetRate.cs" />
     <Compile Include="VlcManager.SetTime.cs" />
     <Compile Include="VlcManager.SetVideoAdjust.cs" />
+    <Compile Include="VlcManager.SetVideoAspectRatio.cs" />
     <Compile Include="VlcManager.SetVideoCropGeometry.cs" />
     <Compile Include="VlcManager.SetVideoDeinterlace.cs" />
     <Compile Include="VlcManager.SetVideoLogo.cs" />
