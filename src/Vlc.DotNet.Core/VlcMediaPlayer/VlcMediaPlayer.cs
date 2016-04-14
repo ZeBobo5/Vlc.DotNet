@@ -146,6 +146,11 @@ namespace Vlc.DotNet.Core
             return SetMedia(new VlcMedia(this, uri, options));
         }
 
+        public VlcMedia SetMedia(string mrl, params string[] options)
+        {
+            return SetMedia(new VlcMedia(this, mrl, options));
+        }
+
         private VlcMedia SetMedia(VlcMedia media)
         {
             var currentMedia = GetMedia();
