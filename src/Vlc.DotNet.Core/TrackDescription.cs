@@ -16,14 +16,14 @@ namespace Vlc.DotNet.Core
             Name = name;
         }
 
-        internal static List<TrackDescription> GetSubTrackDescription(TrackDescriptionStructure module)
+        internal static List<TrackDescription> GetSubTrackDescription(IntPtr moduleRef)
         {
             var result = new List<TrackDescription>();
-            result.Add(new TrackDescription(module.Id, module.Name));
-            if (module.NextTrackDescription != IntPtr.Zero)
+            if (moduleRef != IntPtr.Zero)
             {
-                TrackDescriptionStructure nextModule = (TrackDescriptionStructure)Marshal.PtrToStructure(module.NextTrackDescription, typeof(TrackDescriptionStructure));
-                var data = GetSubTrackDescription(nextModule);
+                var module = (TrackDescriptionStructure)Marshal.PtrToStructure(moduleRef, typeof(TrackDescriptionStructure));
+                result.Add(new TrackDescription(module.Id, module.Name));
+                var data = GetSubTrackDescription(module.NextTrackDescription);
                 result.AddRange(data);
             }
             return result;

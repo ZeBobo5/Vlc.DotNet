@@ -5,7 +5,7 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public void ReleaseTrackDescription(TrackDescriptionStructure trackDescription)
+        public void ReleaseTrackDescription(IntPtr trackDescription)
         {
             GetInteropDelegate<ReleaseTrackDescription>().Invoke(trackDescription);
         }
