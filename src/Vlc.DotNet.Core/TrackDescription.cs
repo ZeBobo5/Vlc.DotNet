@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
@@ -22,7 +23,8 @@ namespace Vlc.DotNet.Core
             if (moduleRef != IntPtr.Zero)
             {
                 var module = (TrackDescriptionStructure)Marshal.PtrToStructure(moduleRef, typeof(TrackDescriptionStructure));
-                result.Add(new TrackDescription(module.Id, module.Name));
+                var name = Encoding.UTF8.GetString(Encoding.Default.GetBytes(module.Name));
+                result.Add(new TrackDescription(module.Id, name));
                 var data = GetSubTrackDescription(module.NextTrackDescription);
                 result.AddRange(data);
             }
