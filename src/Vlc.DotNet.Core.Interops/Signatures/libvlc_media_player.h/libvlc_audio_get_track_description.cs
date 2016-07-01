@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_audio_get_track_description")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate TrackDescriptionStructure GetAudioTracksDescriptions(IntPtr mediaPlayerInstance);
+    internal delegate IntPtr GetAudioTracksDescriptions(IntPtr mediaPlayerInstance);
 }
