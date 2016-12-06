@@ -44,6 +44,15 @@ namespace Vlc.DotNet.Core
         {
         }
 
+        internal VlcMedia(VlcMediaPlayer player, Stream stream, params string[] options)
+#if NET20
+            : this(player, VlcMediaInstanceExtensions.AddOptionToMedia(player.Manager.CreateNewMediaFromStream(stream), player.Manager, options))
+#else
+            : this(player, player.Manager.CreateNewMediaFromStream(stream).AddOptionToMedia(player.Manager, options))
+#endif
+        {
+        }
+
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
             if(!LoadedMedias.ContainsKey(player))

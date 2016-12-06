@@ -38,8 +38,9 @@ namespace Vlc.DotNet.Forms.Samples
 
         private void OnButtonPlayClicked(object sender, EventArgs e)
         {
-            myVlcControl.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
+            //myVlcControl.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
             //myVlcControl.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
+            myVlcControl.Play(new FileStream(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov", FileMode.Open, FileAccess.Read));
         }
 
         private void OnButtonStopClicked(object sender, EventArgs e)

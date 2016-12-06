@@ -102,6 +102,7 @@
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_stats.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_tracks_info.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_is_parsed.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_callbacks.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_location.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_path.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_parse.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="VlcManager.CreateNewInstance.cs" />
     <Compile Include="VlcManager.CreateNewMediaFromLocation.cs" />
     <Compile Include="VlcManager.CreateNewMediaFromPath.cs" />
+    <Compile Include="VlcManager.CreateNewMediaFromStream.cs" />
     <Compile Include="VlcManager.cs" />
     <Compile Include="VlcManager.DetachEvent.cs" />
     <Compile Include="VlcManager.Free.cs" />
