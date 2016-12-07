@@ -99,12 +99,12 @@ namespace Vlc.DotNet.Forms.Samples
                 c.Enabled = false;
             });
 #endif
-            myLblAudioCodec.Text = "Codec: ";
-            myLblAudioChannels.Text = "Channels: ";
-            myLblAudioRate.Text = "Rate: ";
-            myLblVideoCodec.Text = "Codec: ";
-            myLblVideoHeight.Text = "Height: ";
-            myLblVideoWidth.Text = "Width: ";
+            ControlExtensions.InvokeIfRequired(myLblAudioCodec, c => c.Text = "Codec: ");
+            ControlExtensions.InvokeIfRequired(myLblAudioChannels, c => c.Text = "Channels: ");
+            ControlExtensions.InvokeIfRequired(myLblAudioRate, c => c.Text = "Rate: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoCodec, c => c.Text = "Codec: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoHeight, c => c.Text = "Height: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoWidth, c => c.Text = "Width: ");
 
 
 
