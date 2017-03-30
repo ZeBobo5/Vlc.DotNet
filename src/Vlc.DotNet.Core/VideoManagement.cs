@@ -20,8 +20,8 @@ namespace Vlc.DotNet.Core
         
         public string AspectRatio
         {
-            get { return myManager.GetVideoCropGeometry(myMediaPlayer); }
-            set { myManager.SetVideoCropGeometry(myMediaPlayer, value); }
+            get { return myManager.GetVideoAspectRatio(myMediaPlayer); }
+            set { myManager.SetVideoAspectRatio(myMediaPlayer, value); }
         }
 
         public string CropGeometry
