@@ -58,6 +58,26 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>..\..\build\Vlc.DotNet.Forms\Release - x86 - .Net 2.0\Vlc.DotNet.Forms.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET20;X64</DefineConstants>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Forms\Debug - x64 - .Net 2.0\Vlc.DotNet.Forms.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\build\Vlc.DotNet.Forms\Release - Any CPU - .Net 2.0\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET20;X64</DefineConstants>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Forms\Release - Any CPU - .Net 2.0\Vlc.DotNet.Forms.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
