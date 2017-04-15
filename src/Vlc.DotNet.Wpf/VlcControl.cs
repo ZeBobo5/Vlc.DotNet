@@ -316,5 +316,3 @@ namespace Vlc.DotNet.Wpf
         }
     }
 }
-
-}
