@@ -8,6 +8,8 @@ using System.ComponentModel;
 using Vlc.DotNet.Core;
 using System.IO;
 
+using Vlc.DotNet;
+
 namespace Vlc.DotNet.Wpf
 {
     public class VlcControl : WindowsFormsHost, INotifyPropertyChanged
@@ -106,14 +108,14 @@ namespace Vlc.DotNet.Wpf
         #region property
 
         #region time
-        private Time length = 0;
-        public Time Length
+        private Wpf.Time length = 0;
+        public Wpf.Time Length
         {
             get { return length; }
         }
 
-        private Time time = 0;
-        public Time Time
+        private  Wpf.Time time = 0;
+        public  Wpf.Time Time
         {
             get { return time; }
             set
