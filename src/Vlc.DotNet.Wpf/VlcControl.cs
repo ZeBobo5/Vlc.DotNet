@@ -28,7 +28,7 @@ namespace Vlc.DotNet.Wpf
         // This method is called by the Set accessor of each property.
         // The CallerMemberName attribute that is applied to the optional propertyName
         // parameter causes the property name of the caller to be substituted as an argument.
-        private void RaisePropertyChanged([CallerMemberName] String propertyName = "")
+        private void RaisePropertyChanged(String propertyName)
         {
             if (PropertyChanged != null)
             {
@@ -152,7 +152,7 @@ namespace Vlc.DotNet.Wpf
                 if (value == null) return;
                 source = value;
                 this.Open(source);
-                RaisePropertyChanged();
+                RaisePropertyChanged("Source");
             }
         }
 
@@ -173,7 +173,7 @@ namespace Vlc.DotNet.Wpf
 
                 MediaPlayer.Audio.Volume = value;
 
-                RaisePropertyChanged();
+                RaisePropertyChanged("Volume");
             }
         }
 
@@ -186,7 +186,7 @@ namespace Vlc.DotNet.Wpf
                 if (rate < 0) return;
                 rate = value;
                 MediaPlayer.Rate = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Rate");
             }
         }
 
@@ -208,7 +208,7 @@ namespace Vlc.DotNet.Wpf
                 else
                     MediaPlayer.Pause();
 
-                RaisePropertyChanged();
+                RaisePropertyChanged("IsPlay");
             }
 
         }
