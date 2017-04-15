@@ -17,12 +17,33 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <wpf:VlcControl Grid.Row="0" x:Name="myControl"/>
+        <ContentControl Grid.Row="0" Content="{Binding}"/>
 
         <Button Grid.Row="1" Click="OnPlayButtonClick">Play</Button>
-        <Button Grid.Row="2" Click="OnForwardButtonClick" x:Name="Forward">Forward</Button>
-        <Button Grid.Row="3" Click="GetLength_Click" x:Name="GetLength">Get Length</Button>
-        <Button Grid.Row="4" Click="GetCurrentTime_Click" x:Name="GetCurrentTime">Get Current Time</Button>
-        <Button Grid.Row="5" Click="SetCurrentTime_Click" x:Name="SetCurrentTime">Set Current Time to 5s</Button>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="{Binding Time}"/>
+            <TextBlock Text=" / "/>
+            <TextBlock Text="{Binding Length}"/>
+
+            <TextBlock Text="Volume" Margin="10 0 0 0"/>
+            <Slider Value="{Binding Volume}"
+                    IsMoveToPointEnabled="True"
+                    Minimum="0" Maximum="100" Width="100"/>
+
+            <TextBlock Text="Rate" Margin="10 0 0 0"/>
+            <Slider Value="{Binding Rate}"
+                    IsMoveToPointEnabled="True"
+                    Minimum="0.5" Maximum="2" Width="100"/>
+
+
+
+        </StackPanel>
+        <Slider     Value="{Binding Position}" 
+                    Grid.Row="3"
+                    HorizontalAlignment="Stretch" Orientation="Horizontal" 
+                    IsMoveToPointEnabled="True"
+                    Minimum="0" Maximum="1"/>
+        
     </Grid>
 </Window>

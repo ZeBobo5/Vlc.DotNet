@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Vlc.DotNet.Wpf.Samples
 {
@@ -10,11 +11,19 @@ namespace Vlc.DotNet.Wpf.Samples
     /// </summary>
     public partial class MainWindow : Window
     {
+        public VlcControl myControl { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            myControl = new VlcControl();
+            this.DataContext = myControl;
+
             myControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
             myControl.MediaPlayer.EndInit();
+
+            myControl.Source = "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi";
         }
 
         private void OnVlcControlNeedsLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
@@ -31,29 +40,19 @@ namespace Vlc.DotNet.Wpf.Samples
 
         private void OnPlayButtonClick(object sender, RoutedEventArgs e)
         {
-            myControl.MediaPlayer.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
+            //myControl.MediaPlayer.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
             //myControl.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
+
+            myControl.IsPlay = !myControl.IsPlay;
+
+            Button btn = sender as Button;
+
+            if (myControl.IsPlay)
+                btn.Content = "Pause";
+            else
+                btn.Content = "Play";
         }
 
-        private void OnForwardButtonClick(object sender, RoutedEventArgs e)
-        {
-            myControl.MediaPlayer.Rate = 2;
-        }
 
-        private void GetLength_Click(object sender, RoutedEventArgs e)
-        {
-            GetLength.Content = myControl.MediaPlayer.Length + " ms";
-        }
-
-        private void GetCurrentTime_Click(object sender, RoutedEventArgs e)
-        {
-            GetCurrentTime.Content = myControl.MediaPlayer.Time + " ms";
-        }
-
-        private void SetCurrentTime_Click(object sender, RoutedEventArgs e)
-        {
-            myControl.MediaPlayer.Time = 5000;
-            SetCurrentTime.Content = myControl.MediaPlayer.Time + " ms";
-        }
     }
 }
