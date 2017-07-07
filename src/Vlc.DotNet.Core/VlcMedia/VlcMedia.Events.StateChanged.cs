@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaStateChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaStateChanged(args.MediaStateChanged.NewState);
+            OnMediaStateChanged(args.eventArgsUnion.MediaStateChanged.NewState);
         }
 
         public void OnMediaStateChanged(MediaStates state)

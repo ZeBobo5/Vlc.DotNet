@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaFreedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            //OnMediaFreed(args.MediaFreed.MediaInstance);
+            //OnMediaFreed(args.eventArgsUnion.MediaFreed.MediaInstance);
             OnMediaFreed();
         }
 

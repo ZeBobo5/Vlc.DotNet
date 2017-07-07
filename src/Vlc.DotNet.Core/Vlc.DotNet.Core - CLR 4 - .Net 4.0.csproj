@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6EA5D03E-BDE3-4F4D-B761-F0F380ECC078}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,45 +19,25 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\build\Vlc.DotNet.Core\Debug - x64 - .Net 4.0\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET40;X64</DefineConstants>
+    <OutputPath>..\..\build\Vlc.DotNet.Core\Debug - AnyCPU - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4;NET40</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Debug - x64 - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Debug - AnyCPU - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\..\build\Vlc.DotNet.Core\Release - x64 - .Net 4.0\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET40;X64</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 4.0\</OutputPath>
+    <DefineConstants>TRACE;CLR4;NET40</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Release - x64 - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\build\Vlc.DotNet.Core\Debug - x86 - .Net 4.0\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4;NET40;X86</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Debug - x86 - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>..\..\build\Vlc.DotNet.Core\Release - x86 - .Net 4.0\</OutputPath>
-    <DefineConstants>TRACE;CLR4;NET40;X86</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Release - x86 - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
