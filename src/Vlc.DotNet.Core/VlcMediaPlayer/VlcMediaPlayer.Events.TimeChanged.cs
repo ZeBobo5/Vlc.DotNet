@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerTimeChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaPlayerTimeChanged(args.MediaPlayerTimeChanged.NewTime);
+            OnMediaPlayerTimeChanged(args.eventArgsUnion.MediaPlayerTimeChanged.NewTime);
         }
 
         public void OnMediaPlayerTimeChanged(long newTime)

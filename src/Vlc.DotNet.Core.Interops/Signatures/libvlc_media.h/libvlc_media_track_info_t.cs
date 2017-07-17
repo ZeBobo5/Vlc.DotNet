@@ -16,61 +16,37 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// <summary>
         /// Codec Id
         /// </summary>
-#if X86
         [FieldOffset(4)]
-#else
-        [FieldOffset(4)]
-#endif
         public int Id;
 
         /// <summary>
         /// Type of Track
         /// </summary>
-#if X86
         [FieldOffset(8)]
-#else
-        [FieldOffset(8)]
-#endif
         public MediaTrackTypes Type;
 
         /// <summary>
         /// Codec Profile
         /// </summary>
-#if X86
         [FieldOffset(12)]
-#else
-        [FieldOffset(12)]
-#endif
         public int Profile;
 
         /// <summary>
         /// Codec Level
         /// </summary>
-#if X86
         [FieldOffset(16)]
-#else
-        [FieldOffset(16)]
-#endif
         public int Level;
 
         /// <summary>
         /// Audio Track Info
         /// </summary>
-#if X86
         [FieldOffset(20)]
-#else
-        [FieldOffset(20)]
-#endif
         public AudioStructure Audio;
 
         /// <summary>
         /// Video Track Info
         /// </summary>
-#if X86
         [FieldOffset(20)]
-#else
-        [FieldOffset(20)]
-#endif
         public VideoStructure Video;
 
         /// <summary>

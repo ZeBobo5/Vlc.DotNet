@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaMetaChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaMetaChanged(args.MediaMetaChanged.MetaType);
+            OnMediaMetaChanged(args.eventArgsUnion.MediaMetaChanged.MetaType);
         }
 
         public void OnMediaMetaChanged(MediaMetadatas metaType)
