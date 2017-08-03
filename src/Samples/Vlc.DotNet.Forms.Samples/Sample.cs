@@ -18,7 +18,7 @@ namespace Vlc.DotNet.Forms.Samples
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             if (currentDirectory == null)
                 return;
-            if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
+            if (IntPtr.Size == 4)
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x86\"));
             else
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x64\"));
