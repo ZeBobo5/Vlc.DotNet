@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace Vlc.DotNet.Forms.Samples
 {
+    using System.Diagnostics;
+
     public partial class Sample : Form
     {
         public Sample()
@@ -202,5 +204,9 @@ namespace Vlc.DotNet.Forms.Samples
             }
         }
 
+        private void OnVlcMediaPlayerLog(object sender, Core.VlcMediaPlayerLogEventArgs e)
+        {
+            Debug.WriteLine("libVlc : {0} {1}", e.Level, e.Message);
+        }
     }
 }

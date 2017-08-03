@@ -78,6 +78,7 @@
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.EndReached.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.Forward.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.LengthChanged.cs" />
+    <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.Log.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.MediaChanged.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.Opening.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.PausableChanged.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerEndReachedEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerForwardEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerLengthChangedEventArgs.cs" />
+    <Compile Include="VlcMediaPlayer\VlcMediaPlayerLogEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerMediaChangedEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerOpeningEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerPausableChangedEventArgs.cs" />
@@ -140,7 +142,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

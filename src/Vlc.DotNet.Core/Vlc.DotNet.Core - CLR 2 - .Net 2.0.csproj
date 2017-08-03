@@ -86,6 +86,7 @@
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.ScrambledChanged.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.SeekableChanged.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.SnapshotTaken.cs" />
+    <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.Log.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.Stopped.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.TimeChanged.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayer.Events.TitleChanged.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerForwardEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerLengthChangedEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerMediaChangedEventArgs.cs" />
+    <Compile Include="VlcMediaPlayer\VlcMediaPlayerLogEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerOpeningEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerPausableChangedEventArgs.cs" />
     <Compile Include="VlcMediaPlayer\VlcMediaPlayerPausedEventArgs.cs" />

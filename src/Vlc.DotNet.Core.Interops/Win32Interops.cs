@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops
 {
+    using System.Text;
+
     internal static class Win32Interops
     {
         /// <summary>
@@ -46,6 +48,33 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>If the function succeeds, the return value is a handle to the previous parent window. If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        /// <summary>
+        /// Format a string using printf style markers
+        /// </summary>
+        /// <remarks>
+        /// See https://stackoverflow.com/a/37629480/2663813
+        /// </remarks>
+        /// <param name="buffer">The output buffer (should be large enough, use _vscprintf)</param>
+        /// <param name="format">The message format</param>
+        /// <param name="args">The variable arguments list pointer. We do not know what it is, but the pointer must be given as-is from C back to sprintf.</param>
+        /// <returns>A negative value on failure, the number of characters written otherwise.</returns>
+        [DllImport("msvcrt.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int vsprintf(
+            StringBuilder buffer,
+            string format,
+            IntPtr args);
+
+        /// <summary>
+        /// Compute the size required by vsprintf to print the parameters.
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="ptr"></param>
+        /// <returns></returns>
+        [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int _vscprintf(
+            string format,
+            IntPtr ptr);
 
     }
 }

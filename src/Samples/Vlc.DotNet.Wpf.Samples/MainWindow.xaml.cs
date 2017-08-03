@@ -15,6 +15,12 @@ namespace Vlc.DotNet.Wpf.Samples
             InitializeComponent();
             myControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
             myControl.MediaPlayer.EndInit();
+
+            // This can also be called before EndInit
+            this.myControl.MediaPlayer.Log += (sender, args) =>
+            {
+                System.Diagnostics.Debug.WriteLine("libVlc : {0} {1}", args.Level, args.Message);
+            };
         }
 
         private void OnVlcControlNeedsLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
