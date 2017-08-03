@@ -30,12 +30,12 @@ namespace Vlc.DotNet.Core
             {
                 lock (this._logLock)
                 {
+                    this._log += value;
                     if (!this._logAttached)
                     {
                         this.Manager.SetLog(this.OnLogInternal);
                         this._logAttached = true;
                     }
-                    this._log += value;
                 }
             }
 
