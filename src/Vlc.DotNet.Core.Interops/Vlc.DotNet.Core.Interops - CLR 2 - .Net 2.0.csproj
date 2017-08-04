@@ -51,11 +51,15 @@
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signatures\InteropObjectInstance.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_level_e.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_set.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_video_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_cb.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_t.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_get_context.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_tracks_info.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_stats.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_track_info_t.cs" />
@@ -158,6 +162,7 @@
     <Compile Include="VlcManager.GetAudioTracksDescriptions.cs" />
     <Compile Include="VlcManager.GetAudioDelay.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
+    <Compile Include="VlcManager.GetLogContext.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAspectRatio.cs" />
@@ -210,6 +215,7 @@
     <Compile Include="VlcManager.NextFrame.cs" />
     <Compile Include="VlcManager.SetRate.cs" />
     <Compile Include="VlcManager.GetRate.cs" />
+    <Compile Include="VlcManager.SetLog.cs" />
     <Compile Include="VlcManager.GetMediaPosition.cs" />
     <Compile Include="VlcManager.GetMediaChapter.cs" />
     <Compile Include="VlcManager.GetMediaChapterCount.cs" />
@@ -306,7 +312,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

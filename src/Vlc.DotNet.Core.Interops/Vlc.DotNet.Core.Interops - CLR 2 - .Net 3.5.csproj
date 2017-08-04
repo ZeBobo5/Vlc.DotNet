@@ -63,6 +63,10 @@
     <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_compiler.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_version.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_cb.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_get_context.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_level_e.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_set.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_t.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_new.cs" />
@@ -214,6 +218,7 @@
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
+    <Compile Include="VlcManager.GetLogContext.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAdjust.cs" />
@@ -270,6 +275,7 @@
     <Compile Include="VlcManager.SetAudioOutput.cs" />
     <Compile Include="VlcManager.SetAudioOutputDevice.cs" />
     <Compile Include="VlcManager.SetAudioTrack.cs" />
+    <Compile Include="VlcManager.SetLog.cs" />
     <Compile Include="VlcManager.SetMediaChapter.cs" />
     <Compile Include="VlcManager.SetMediaMeta.cs" />
     <Compile Include="VlcManager.SetMediaPlayerVideoHostHandle.cs" />
@@ -307,7 +313,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
