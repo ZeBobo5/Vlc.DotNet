@@ -3,6 +3,7 @@ using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
 {
+    using System.Runtime.InteropServices;
     using System.Text;
     using Vlc.DotNet.Core.Interops;
 
@@ -52,18 +53,30 @@ namespace Vlc.DotNet.Core
         {
             if (this._log != null)
             {
-                // Original source: https://stackoverflow.com/a/37629480/2663813
-                var sb = new StringBuilder(Win32Interops._vscprintf(format, args) + 1);
-                Win32Interops.vsprintf(sb, format, args);
+                // Original source for va_list handling: https://stackoverflow.com/a/37629480/2663813
+                var byteLength = Win32Interops._vscprintf(format, args) + 1;
+                var utf8Buffer = Marshal.AllocHGlobal(byteLength);
 
-                var formattedMessage = sb.ToString();
+                string formattedDecodedMessage;
+                try {
+                    Win32Interops.vsprintf(utf8Buffer, format, args);
+
+                    //Yeah, ok the message is formatted, but it's an UTF-8 string treated as ASCII inside an UTF-16 string. Do the conversion
+                    var sbDecoded = new StringBuilder(Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, null, 0));
+                    Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, sbDecoded, sbDecoded.Capacity);
+                    formattedDecodedMessage = sbDecoded.ToString();
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(utf8Buffer);
+                }
 
                 string module;
                 string file;
                 uint? line;
                 this.Manager.GetLogContext(ctx, out module, out file, out line);
 
-                this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedMessage, module, file, line));
+                this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line));
             }
         }
     }

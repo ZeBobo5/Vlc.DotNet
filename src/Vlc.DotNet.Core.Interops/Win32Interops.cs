@@ -61,7 +61,7 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>A negative value on failure, the number of characters written otherwise.</returns>
         [DllImport("msvcrt.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern int vsprintf(
-            StringBuilder buffer,
+            IntPtr buffer,
             string format,
             IntPtr args);
 
@@ -76,5 +76,15 @@ namespace Vlc.DotNet.Core.Interops
             string format,
             IntPtr ptr);
 
+        public const uint CP_UTF8 = 65001;
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern int MultiByteToWideChar(
+            uint CodePage,
+            uint dwFlags,
+            IntPtr lpMultiByteStr,
+            int cbMultiByte,
+            [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpWideCharStr,
+            int cchWideChar);
     }
 }
