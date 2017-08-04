@@ -206,7 +206,7 @@ namespace Vlc.DotNet.Forms.Samples
 
         private void OnVlcMediaPlayerLog(object sender, Core.VlcMediaPlayerLogEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module);
+            System.Diagnostics.Debug.WriteLine(string.Format("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module));
         }
     }
 }
