@@ -19,7 +19,7 @@ namespace Vlc.DotNet.Wpf.Samples
             // This can also be called before EndInit
             this.myControl.MediaPlayer.Log += (sender, args) =>
             {
-                System.Diagnostics.Debug.WriteLine("libVlc : {0} {1}", args.Level, args.Message);
+                System.Diagnostics.Debug.WriteLine("libVlc : {0} {1} @ {2}", args.Level, args.Message, args.Module);
             };
         }
 

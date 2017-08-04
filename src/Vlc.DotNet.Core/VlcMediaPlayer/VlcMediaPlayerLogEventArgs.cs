@@ -6,10 +6,13 @@ namespace Vlc.DotNet.Core
 
     public sealed class VlcMediaPlayerLogEventArgs : EventArgs
     {
-        public VlcMediaPlayerLogEventArgs(VlcLogLevel level, string message)
+        public VlcMediaPlayerLogEventArgs(VlcLogLevel level, string message, string module, string sourceFile, uint? sourceLine)
         {
             this.Level = level;
             this.Message = message;
+            this.Module = module;
+            this.SourceFile = sourceFile;
+            this.SourceLine = sourceLine;
         }
 
         /// <summary>
@@ -22,5 +25,20 @@ namespace Vlc.DotNet.Core
         /// The log message
         /// </summary>
         public string Message { get; }
+
+        /// <summary>
+        /// The name of the module that emitted the message
+        /// </summary>
+        public string Module { get; }
+
+        /// <summary>
+        /// The source file that emitted the message
+        /// </summary>
+        public string SourceFile { get; }
+
+        /// <summary>
+        /// The line in the <see cref="SourceFile"/> at which the message was emitted.
+        /// </summary>
+        public uint? SourceLine { get; }
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="Signatures\libvlc.h\libvlc_get_compiler.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_version.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_log_cb.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_get_context.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_log_level_e.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_log_set.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
+    <Compile Include="VlcManager.GetLogContext.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAdjust.cs" />

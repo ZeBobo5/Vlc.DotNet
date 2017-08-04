@@ -58,7 +58,12 @@ namespace Vlc.DotNet.Core
 
                 var formattedMessage = sb.ToString();
 
-                this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedMessage));
+                string module;
+                string file;
+                uint? line;
+                this.Manager.GetLogContext(ctx, out module, out file, out line);
+
+                this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedMessage, module, file, line));
             }
         }
     }
