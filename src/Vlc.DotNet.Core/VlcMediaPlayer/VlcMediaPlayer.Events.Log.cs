@@ -5,6 +5,7 @@ namespace Vlc.DotNet.Core
 {
     using System.Runtime.InteropServices;
     using System.Text;
+    using System.Threading;
     using Vlc.DotNet.Core.Interops;
 
     public sealed partial class VlcMediaPlayer
@@ -76,7 +77,11 @@ namespace Vlc.DotNet.Core
                 uint? line;
                 this.Manager.GetLogContext(ctx, out module, out file, out line);
 
-                this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line));
+                // Do the notification on another thread, so that VLC is not interrupted by the logging
+                ThreadPool.QueueUserWorkItem(eventArgs =>
+                {
+                    this._log(this.myMediaPlayerInstance, (VlcMediaPlayerLogEventArgs)eventArgs);
+                }, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line));
             }
         }
     }

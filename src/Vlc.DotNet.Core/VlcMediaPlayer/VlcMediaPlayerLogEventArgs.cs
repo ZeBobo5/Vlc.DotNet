@@ -32,12 +32,14 @@ namespace Vlc.DotNet.Core
         public string Module { get; }
 
         /// <summary>
-        /// The source file that emitted the message
+        /// The source file that emitted the message.
+        /// This may be <see langword="null"/> if that info is not available, i.e. always if you are using a release version of VLC.
         /// </summary>
         public string SourceFile { get; }
 
         /// <summary>
         /// The line in the <see cref="SourceFile"/> at which the message was emitted.
+        /// This may be <see langword="null"/> if that info is not available, i.e. always if you are using a release version of VLC.
         /// </summary>
         public uint? SourceLine { get; }
     }
