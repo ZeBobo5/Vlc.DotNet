@@ -1,6 +1,8 @@
 Vlc.DotNet
 ==========
 
+[![Join the chat at https://gitter.im/Vlc-DotNet/Lobby](https://badges.gitter.im/Vlc-DotNet/Lobby.svg)](https://gitter.im/Vlc-DotNet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 .NET control that hosts the audio/video capabilities of the VLC libraries
 
 This is the new repository for the next version of VideoLan DotNet for WinForm & WPF which is currently in dev.
