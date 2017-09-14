@@ -21,6 +21,12 @@ Packages are available for Vlc libraries
 
 [Vlc.DotNet.Wpf](https://www.nuget.org/packages/Vlc.DotNet.Wpf/)
 
+Community
+--------------
+Want to help? Have a question?
+
+Join us on [Gitter](https://gitter.im/Vlc-DotNet/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+
 Latest News
 --------------
 21-12-2015
