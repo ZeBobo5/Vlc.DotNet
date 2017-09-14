@@ -62,6 +62,7 @@
     <Compile Include="Signatures\libvlc.h\libvlc_log_get_context.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_tracks_info.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_get_stats.cs" />
+    <Compile Include="Signatures\libvlc_media.h\libvlc_media_new_callbacks.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_track_info_t.cs" />
     <Compile Include="Signatures\libvlc_media.h\libvlc_media_stats_t.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_audio_get_delay.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="VlcManager.CreateNewInstance.cs" />
     <Compile Include="VlcManager.CreateNewMediaFromLocation.cs" />
     <Compile Include="VlcManager.CreateNewMediaFromPath.cs" />
+    <Compile Include="VlcManager.CreateNewMediaFromStream.cs" />
     <Compile Include="VlcManager.DetachEvent.cs" />
     <Compile Include="VlcManager.GetAudioFilterList.cs" />
     <Compile Include="VlcManager.GetAudioTrack.cs" />
