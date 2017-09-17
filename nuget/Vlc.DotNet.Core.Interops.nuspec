@@ -16,5 +16,6 @@
         <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.dll" target="lib\net35\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
         <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.Interops.dll" target="lib\net40\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
         <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net45\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net462\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
     </files>
 </package>
