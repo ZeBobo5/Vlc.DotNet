@@ -9,5 +9,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <returns>Return the libvlc instance or NULL in case of error.</returns>
     [LibVlcFunction("libvlc_new")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate IntPtr CreateNewInstance(int argc, string[] argv);
+    internal delegate IntPtr CreateNewInstance(int argc, IntPtr[] argv);
 }
