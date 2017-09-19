@@ -10,17 +10,7 @@ namespace Vlc.DotNet.Core.Interops
         private VlcInstance myVlcInstance;
         private static readonly Dictionary<DirectoryInfo, VlcManager> myAllInstance = new Dictionary<DirectoryInfo, VlcManager>();
 
-        public string VlcVersion
-        {
-            get
-            {
-#if !NET20
-                return GetInteropDelegate<GetVersion>().Invoke().ToStringAnsi();
-#else
-                return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetVersion>().Invoke());
-#endif
-            }
-        }
+        public string VlcVersion => Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetVersion>().Invoke());
 
         internal VlcManager(DirectoryInfo dynamicLinkLibrariesPath)
             : base(dynamicLinkLibrariesPath)

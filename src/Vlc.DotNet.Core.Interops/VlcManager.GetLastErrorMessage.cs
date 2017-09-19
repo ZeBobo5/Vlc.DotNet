@@ -7,11 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public string GetLastErrorMessage()
         {
-#if !NET20
-            return GetInteropDelegate<GetLastErrorMessage>().Invoke().ToStringAnsi();
-#else
-            return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetLastErrorMessage>().Invoke());
-#endif
+            return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetLastErrorMessage>().Invoke());
         }
     }
 }

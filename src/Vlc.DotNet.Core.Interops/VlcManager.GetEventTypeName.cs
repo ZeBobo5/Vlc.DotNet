@@ -7,11 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public string GetEventTypeName(EventTypes eventType)
         {
-#if !NET20
-            return GetInteropDelegate<GetEventTypeName>().Invoke(eventType).ToStringAnsi();
-#else
-            return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetEventTypeName>().Invoke(eventType));
-#endif
+            return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetEventTypeName>().Invoke(eventType));
         }
     }
 }

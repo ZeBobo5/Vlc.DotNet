@@ -46,11 +46,10 @@
     <Compile Include="..\Vlc.DotNet.Core\Properties\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="Extensions\IntPtrExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\VlcMediaInstanceExtensions.cs" />
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeUnmanagedMemoryHandle.cs" />
     <Compile Include="Signatures\InteropObjectInstance.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_callback_t.cs" />
@@ -187,6 +186,7 @@
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_teletext.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_set_track.cs" />
     <Compile Include="Signatures\libvlc_media_player.h\libvlc_video_take_snapshot.cs" />
+    <Compile Include="Utf8InteropStringConverter.cs" />
     <Compile Include="VlcEventManagerInstance.cs" />
     <Compile Include="VlcInstance.cs" />
     <Compile Include="VlcInteropsManager.cs" />
