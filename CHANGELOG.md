@@ -1,4 +1,5 @@
 # Unreleased
+- Fixed #74 by adding support for UTF-8 in options #302
 
 # 2.1.154
 - Nothing, just a few commits to change README files
