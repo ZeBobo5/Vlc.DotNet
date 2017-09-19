@@ -74,10 +74,10 @@
 
   build_script:
     - msbuild "src\Vlc.DotNet.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;Platform=AnyCPU
-    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec -version $(APPVEYOR_BUILD_VERSION)
-    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec -version $(APPVEYOR_BUILD_VERSION)
-    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec -version $(APPVEYOR_BUILD_VERSION)
-    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec -version $(APPVEYOR_BUILD_VERSION)
+    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec -version $env:APPVEYOR_BUILD_VERSION
+    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec -version $env:APPVEYOR_BUILD_VERSION
+    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec -version $env:APPVEYOR_BUILD_VERSION
+    - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec -version $env:APPVEYOR_BUILD_VERSION
 
   artifacts:
     - path: "**/*.nupkg"
