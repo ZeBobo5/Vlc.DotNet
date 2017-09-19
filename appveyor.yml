@@ -83,8 +83,8 @@
     - path: "**/*.nupkg"
       name: "Vlc.DotNet NuGet Packages"
 
-#  deploy:
-#    - provider: NuGet
-#      api_key:
-#          secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
-#      artifact: /.*\.nupkg/
+  deploy:
+    - provider: NuGet
+      api_key:
+          secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
+      artifact: /.*\.nupkg/
