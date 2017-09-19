@@ -19,18 +19,13 @@ namespace Vlc.DotNet.Core
         {
             if (module.Name == IntPtr.Zero)
                 return null;
-            var result = new FilterModuleDescription();
-#if NET20
-            result.Name = IntPtrExtensions.ToStringAnsi(module.Name);
-            result.ShortName = IntPtrExtensions.ToStringAnsi(module.ShortName);
-            result.LongName = IntPtrExtensions.ToStringAnsi(module.LongName);
-            result.Help = IntPtrExtensions.ToStringAnsi(module.Help);
-#else
-            result.Name = module.Name.ToStringAnsi();
-            result.ShortName = module.ShortName.ToStringAnsi();
-            result.LongName = module.LongName.ToStringAnsi();
-            result.Help = module.Help.ToStringAnsi();
-#endif
+            var result = new FilterModuleDescription
+            {
+                Name = Utf8InteropStringConverter.Utf8InteropToString(module.Name),
+                ShortName = Utf8InteropStringConverter.Utf8InteropToString(module.ShortName),
+                LongName = Utf8InteropStringConverter.Utf8InteropToString(module.LongName),
+                Help = Utf8InteropStringConverter.Utf8InteropToString(module.Help)
+            };
             return result;
         }
     }

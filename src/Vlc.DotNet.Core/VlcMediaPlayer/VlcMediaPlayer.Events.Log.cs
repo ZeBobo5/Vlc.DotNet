@@ -62,10 +62,7 @@ namespace Vlc.DotNet.Core
                 try {
                     Win32Interops.vsprintf(utf8Buffer, format, args);
 
-                    //Yeah, ok the message is formatted, but it's an UTF-8 string treated as ASCII inside an UTF-16 string. Do the conversion
-                    var sbDecoded = new StringBuilder(Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, null, 0));
-                    Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, sbDecoded, sbDecoded.Capacity);
-                    formattedDecodedMessage = sbDecoded.ToString();
+                    formattedDecodedMessage = Utf8InteropStringConverter.Utf8InteropToString(utf8Buffer);
                 }
                 finally
                 {

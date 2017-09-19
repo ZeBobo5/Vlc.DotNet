@@ -4,6 +4,8 @@ using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
 {
+    using Vlc.DotNet.Core.Interops;
+
     public sealed partial class VlcMediaPlayer
     {
         private EventCallback myOnMediaPlayerSnapshotTakenInternalEventCallback;
@@ -12,7 +14,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerSnapshotTakenInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            var fileName = Marshal.PtrToStringAnsi(args.eventArgsUnion.MediaPlayerSnapshotTaken.pszFilename);
+            var fileName = Utf8InteropStringConverter.Utf8InteropToString(args.eventArgsUnion.MediaPlayerSnapshotTaken.pszFilename);
             OnMediaPlayerSnapshotTaken(fileName);
         }
 
