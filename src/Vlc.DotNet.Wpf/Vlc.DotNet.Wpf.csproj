@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
     <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
     <PackageTags>vlc media wpf</PackageTags>
+    <VersionPrefix>2.1</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
