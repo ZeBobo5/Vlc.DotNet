@@ -1,4 +1,5 @@
 -
+  image: Visual Studio 2017
   version: 2.1.{build}
 
   branches:
@@ -22,8 +23,12 @@
     assembly_informational_version: "2.1.0.0"
 
   build_script:
-    - msbuild /p:Configuration=Release "src\Vlc.DotNet.sln"
-    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.sln"
+    - msbuild /t:Restore /Verbosity:Minimal "src\Vlc.DotNet.sln"
+    - msbuild /t:Build /p:Configuration=Release "src\Vlc.DotNet.sln"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
     - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net20\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net20\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net20\Vlc.DotNet.Forms.dll"
     - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net35\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net35\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net35\Vlc.DotNet.Forms.dll"  "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net35\Vlc.DotNet.Wpf.dll"
     - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net40\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net40\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net40\Vlc.DotNet.Forms.dll"  "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net40\Vlc.DotNet.Wpf.dll"
@@ -43,6 +48,7 @@
       artifact: /.*\.nupkg/
 
 -
+  image: Visual Studio 2017
   version: 2.2.0-develop{build}
 
   branches:
@@ -66,8 +72,12 @@
     assembly_informational_version: "2.2.0.0"
 
   build_script:
-    - msbuild /p:Configuration=Release "src\Vlc.DotNet.sln"
-    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.sln"
+    - msbuild /t:Restore /Verbosity:Minimal "src\Vlc.DotNet.sln"
+    - msbuild /t:Build /p:Configuration=Release "src\Vlc.DotNet.sln"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+    - msbuild /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
 
   artifacts:
     - path: "**/*.nupkg"
