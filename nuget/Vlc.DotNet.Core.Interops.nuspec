@@ -12,9 +12,9 @@
         <tags>vlc media wrapper interop interops</tags>
     </metadata>
     <files>
-        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Core.Interops.dll" target="lib\net20\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
-        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.dll" target="lib\net35\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
-        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.Interops.dll" target="lib\net40\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
-        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net45\AnyCPU\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Core.Interops.dll" target="lib\net20\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.dll" target="lib\net35\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.Interops.dll" target="lib\net40\Vlc.DotNet.Core.Interops.dll" />
+        <file src="..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.Interops.dll" target="lib\net45\Vlc.DotNet.Core.Interops.dll" />
     </files>
 </package>
