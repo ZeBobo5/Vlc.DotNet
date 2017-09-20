@@ -1,5 +1,6 @@
 # Unreleased
 - Fixed #74 by adding support for UTF-8 in options #302
+- Fixed #305 by String interop conversions are now made in UTF-8 and avoid memory leaks #306
 
 # 2.1.154
 - Nothing, just a few commits to change README files
