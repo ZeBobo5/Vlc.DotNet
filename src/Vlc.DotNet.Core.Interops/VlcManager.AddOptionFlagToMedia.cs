@@ -11,9 +11,11 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaInstance == IntPtr.Zero)
                 throw new ArgumentException("Media instance is not initialized.");
-            var handle = GCHandle.Alloc(Encoding.UTF8.GetBytes(option), GCHandleType.Pinned);
-            GetInteropDelegate<AddOptionFlagToMedia>().Invoke(mediaInstance, handle.AddrOfPinnedObject(), flag);
-            handle.Free();
+
+            using (var handle = Utf8InteropStringConverter.ToUtf8Interop(option))
+            {
+                GetInteropDelegate<AddOptionFlagToMedia>().Invoke(mediaInstance, handle.DangerousGetHandle(), flag);
+            }
         }
     }
 }

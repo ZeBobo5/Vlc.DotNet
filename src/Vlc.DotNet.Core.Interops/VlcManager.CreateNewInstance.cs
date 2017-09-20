@@ -27,7 +27,10 @@
             {
                 foreach (var arg in utf8Args)
                 {
-                    Marshal.FreeHGlobal(arg);
+                    if (arg != IntPtr.Zero)
+                    {
+                        Marshal.FreeHGlobal(arg);
+                    }
                 }
             }
         }
