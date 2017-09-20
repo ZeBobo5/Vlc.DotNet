@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net20;net35;net40;net45;netstandard2.0</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Authors>ZeBobo5</Authors>
+    <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
+    <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
+    <PackageTags>vlc media wrapper interop interops</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Vlc.DotNet.Core\Properties\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <None Include="..\Vlc.DotNet.pfx.snk">
+      <Link>Vlc.DotNet.pfx.snk</Link>
+    </None>
+  </ItemGroup>
+
+</Project>
