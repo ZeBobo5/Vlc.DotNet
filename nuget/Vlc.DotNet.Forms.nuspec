@@ -21,9 +21,9 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Forms.dll" target="lib\net20\AnyCPU\Vlc.DotNet.Forms.dll" />
-        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Forms.dll" target="lib\net35\AnyCPU\Vlc.DotNet.Forms.dll" />
-        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Forms.dll" target="lib\net40\AnyCPU\Vlc.DotNet.Forms.dll" />
-        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Forms.dll" target="lib\net45\AnyCPU\Vlc.DotNet.Forms.dll" />
+        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Forms.dll" target="lib\net20\Vlc.DotNet.Forms.dll" />
+        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Forms.dll" target="lib\net35\Vlc.DotNet.Forms.dll" />
+        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Forms.dll" target="lib\net40\Vlc.DotNet.Forms.dll" />
+        <file src="..\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Forms.dll" target="lib\net45\Vlc.DotNet.Forms.dll" />
     </files>
 </package>
