@@ -7,6 +7,8 @@ namespace Vlc.DotNet.Core.Interops
     {
         public AudioOutputDescriptionStructure GetAudioOutputsDescriptions()
         {
+            EnsureVlcInstance();
+
             return GetInteropDelegate<GetAudioOutputsDescriptions>().Invoke(myVlcInstance);
         }
     }

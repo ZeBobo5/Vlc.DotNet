@@ -39,5 +39,12 @@ namespace Vlc.DotNet.Core.Interops
                 myAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
             return myAllInstance[dynamicLinkLibrariesPath];
         }
+
+        protected void EnsureVlcInstance()
+        {
+            if (myVlcInstance == null)
+            {
+                throw new InvalidOperationException("This VlcManager has not yet been initialized. Call CreateNewInstance to initialize it.");
+            }
     }
 }
