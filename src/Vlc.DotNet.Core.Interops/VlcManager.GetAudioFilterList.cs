@@ -7,6 +7,8 @@ namespace Vlc.DotNet.Core.Interops
     {
         public IntPtr GetAudioFilterList()
         {
+            EnsureVlcInstance();
+
             return GetInteropDelegate<GetAudioFilterList>().Invoke(myVlcInstance);
         }
     }

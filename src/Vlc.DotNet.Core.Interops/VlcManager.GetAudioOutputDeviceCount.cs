@@ -7,6 +7,8 @@ namespace Vlc.DotNet.Core.Interops
     {
         public int GetAudioOutputDeviceCount(string outputName)
         {
+            EnsureVlcInstance();
+
             return GetInteropDelegate<GetAudioOutputDeviceCount>().Invoke(myVlcInstance, outputName);
         }
     }
