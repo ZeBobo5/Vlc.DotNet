@@ -27,7 +27,7 @@ namespace Vlc.DotNet.Core.Interops
                     stream.Seek(0L, SeekOrigin.Begin);
                     return 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     szData = 0UL;
                     return -1;
@@ -102,6 +102,7 @@ namespace Vlc.DotNet.Core.Interops
                 }
                 return n;
             }
+
             public static Stream GetStream(IntPtr n)
             {
 #if NET20 || NET35
@@ -118,6 +119,7 @@ namespace Vlc.DotNet.Core.Interops
                 return result;
 #endif
             }
+
             public static void RemoveStream(IntPtr n)
             {
 #if NET20 || NET35
@@ -132,11 +134,19 @@ namespace Vlc.DotNet.Core.Interops
 #endif
             }
         }
+
         public VlcMediaInstance CreateNewMediaFromStream(Stream stream)
         {
+            if (stream == null)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
+
             IntPtr opaque = StreamData.AddStream(stream);
+
             if (opaque == IntPtr.Zero)
                 return null;
+
             var result = VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromCallbacks>().Invoke(
                 myVlcInstance,
                 StreamData.CallbackOpenMediaDelegate,
@@ -145,6 +155,7 @@ namespace Vlc.DotNet.Core.Interops
                 StreamData.CallbackCloseMediaDelegate,
                 opaque
                 ));
+
             return result;
         }
     }
