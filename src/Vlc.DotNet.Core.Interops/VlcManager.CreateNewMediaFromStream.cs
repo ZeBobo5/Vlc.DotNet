@@ -44,24 +44,12 @@ namespace Vlc.DotNet.Core.Interops
                     System.Runtime.InteropServices.Marshal.Copy(buf, 0, ipbuf, read);
                     return new IntPtr(read);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return new IntPtr(-1);
                 }
             }
-            //private static IntPtr CallbackReadMedia(IntPtr opaque, byte[] buf, UIntPtr len)
-            //{
-            //    try
-            //    {
-            //        Stream stream = GetStream(opaque);
-            //        int read = stream.Read(buf, 0, (int)len);
-            //        return new IntPtr(read);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        return new IntPtr(-1);
-            //    }
-            //}
+
             private static Int32 CallbackSeekMedia(IntPtr opaque, UInt64 offset)
             {
                 try
@@ -70,7 +58,7 @@ namespace Vlc.DotNet.Core.Interops
                     stream.Seek((long)offset, SeekOrigin.Begin);
                     return 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return -1;
                 }
@@ -81,7 +69,7 @@ namespace Vlc.DotNet.Core.Interops
                 {
                     RemoveStream(opaque);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
