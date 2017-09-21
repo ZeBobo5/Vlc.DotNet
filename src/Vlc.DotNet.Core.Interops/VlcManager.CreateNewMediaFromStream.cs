@@ -142,6 +142,16 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentNullException(nameof(stream));
             }
 
+            var versionString = this.VlcVersion;
+            versionString = versionString.Split('-', ' ')[0];
+
+            var version = new Version(versionString);
+
+            if (version.Major < 3)
+            {
+                throw new InvalidOperationException("You need VLC version 3.0 or higher to be able to use CreateNewMediaFromStream");
+            }
+
             IntPtr opaque = StreamData.AddStream(stream);
 
             if (opaque == IntPtr.Zero)
