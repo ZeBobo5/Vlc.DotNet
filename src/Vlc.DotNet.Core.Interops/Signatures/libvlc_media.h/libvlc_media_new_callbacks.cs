@@ -14,7 +14,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <param name="szData">byte length of the bitstream or UINT64_MAX if unknown [OUT]</param>
     /// <returns>0 on success, non-zero on error. In case of failure, the other callbacks will not be invoked and any value stored in <paramref name="pData"/> and <paramref name="szData"/> is discarded.</returns>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate Int32 CallbackOpenMediaDelegate(IntPtr opaque, out IntPtr pData, out UInt64 szData);
+    internal delegate int CallbackOpenMediaDelegate(IntPtr opaque, ref IntPtr pData, out ulong szData);
 
     /// <summary>
     /// Callback prototype to read data from a custom bitstream input media.
@@ -26,7 +26,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <param name="len">bytes length of the buffer</param>
     /// <returns>strictly positive number of bytes read, 0 on end-of-stream, or -1 on non-recoverable error</returns>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate IntPtr CallbackReadMediaDelegate(IntPtr opaque, IntPtr buf, UIntPtr len);
+    internal delegate int CallbackReadMediaDelegate(IntPtr opaque, IntPtr buf, uint len);
 
     /// <summary>
     /// Callback prototype to seek a custom bitstream input media.
@@ -35,7 +35,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <param name="offset">absolute byte offset to seek to</param>
     /// <returns>0 on success, -1 on error</returns>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate Int32 CallbackSeekMediaDelegate(IntPtr opaque, UInt64 offset);
+    internal delegate int CallbackSeekMediaDelegate(IntPtr opaque, ulong offset);
 
     /// <summary>
     /// Callback prototype to close a custom bitstream input media.

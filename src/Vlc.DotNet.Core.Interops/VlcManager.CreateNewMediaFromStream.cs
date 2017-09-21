@@ -4,136 +4,24 @@ using System.Collections.Concurrent;
 #endif
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        private static class StreamData
-        {
-            public static readonly CallbackOpenMediaDelegate CallbackOpenMediaDelegate = CallbackOpenMedia;
-            public static readonly CallbackReadMediaDelegate CallbackReadMediaDelegate = CallbackReadMedia;
-            public static readonly CallbackSeekMediaDelegate CallbackSeekMediaDelegate = CallbackSeekMedia;
-            public static readonly CallbackCloseMediaDelegate CallbackCloseMediaDelegate = CallbackCloseMedia;
-
-            private static int CallbackOpenMedia(IntPtr opaque, out IntPtr pData, out ulong szData)
-            {
-                pData = opaque;
-                try
-                {
-                    Stream stream = GetStream(opaque);
-                    szData = (ulong)stream.Length;
-                    stream.Seek(0L, SeekOrigin.Begin);
-                    return 0;
-                }
-                catch (Exception)
-                {
-                    szData = 0UL;
-                    return -1;
-                }
-            }
-
-            private static IntPtr CallbackReadMedia(IntPtr opaque, IntPtr ipbuf, UIntPtr len)
-            {
-                try
-                {
-                    byte[] buf = new byte[(uint)len];
-                    Stream stream = GetStream(opaque);
-                    int read = stream.Read(buf, 0, (int)len);
-                    System.Runtime.InteropServices.Marshal.Copy(buf, 0, ipbuf, read);
-                    return new IntPtr(read);
-                }
-                catch (Exception)
-                {
-                    return new IntPtr(-1);
-                }
-            }
-
-            private static Int32 CallbackSeekMedia(IntPtr opaque, UInt64 offset)
-            {
-                try
-                {
-                    Stream stream = GetStream(opaque);
-                    stream.Seek((long)offset, SeekOrigin.Begin);
-                    return 0;
-                }
-                catch (Exception)
-                {
-                    return -1;
-                }
-            }
-            private static void CallbackCloseMedia(IntPtr opaque)
-            {
-                try
-                {
-                    RemoveStream(opaque);
-                }
-                catch (Exception)
-                {
-                }
-            }
+        private static readonly CallbackOpenMediaDelegate CallbackOpenMediaDelegate = CallbackOpenMedia;
+        private static readonly CallbackReadMediaDelegate CallbackReadMediaDelegate = CallbackReadMedia;
+        private static readonly CallbackSeekMediaDelegate CallbackSeekMediaDelegate = CallbackSeekMedia;
+        private static readonly CallbackCloseMediaDelegate CallbackCloseMediaDelegate = CallbackCloseMedia;
 
 #if NET20 || NET35
-            private static readonly Dictionary<IntPtr, Stream> dicStreams = new Dictionary<IntPtr, Stream>();
+        private static readonly Dictionary<IntPtr, StreamData> dicStreams = new Dictionary<IntPtr, StreamData>();
 #else
-            private static readonly ConcurrentDictionary<IntPtr, Stream> dicStreams = new ConcurrentDictionary<IntPtr, Stream>();
+        private static readonly ConcurrentDictionary<IntPtr, StreamData> dicStreams = new ConcurrentDictionary<IntPtr, StreamData>();
 #endif
-
-            public static IntPtr AddStream(Stream stream)
-            {
-                IntPtr n = new IntPtr(1);
-                lock (dicStreams)
-                {
-                    for (; ;
-#if NET20 || NET35
-                        n = new IntPtr(n.ToInt64() + 1L)
-#else
-                        n = IntPtr.Add(n, 1)
-#endif
-                        )
-                    {
-                        if (n == IntPtr.Zero)
-                            return IntPtr.Zero;
-                        if (!dicStreams.ContainsKey(n))
-                            break;
-                    }
-                    dicStreams[n] = stream;
-                }
-                return n;
-            }
-
-            public static Stream GetStream(IntPtr n)
-            {
-#if NET20 || NET35
-                lock (dicStreams)
-                {
-                    if (!dicStreams.ContainsKey(n))
-                        return null;
-                    return dicStreams[n];
-                }
-#else
-                Stream result;
-                if (!dicStreams.TryGetValue(n, out result))
-                    return null;
-                return result;
-#endif
-            }
-
-            public static void RemoveStream(IntPtr n)
-            {
-#if NET20 || NET35
-                lock (dicStreams)
-                {
-                    if (dicStreams.ContainsKey(n))
-                        dicStreams.Remove(n);
-                }
-#else
-                Stream result;
-                dicStreams.TryRemove(n, out result);
-#endif
-            }
-        }
+        private static int streamIndex = 0;
 
         public VlcMediaInstance CreateNewMediaFromStream(Stream stream)
         {
@@ -152,21 +40,165 @@ namespace Vlc.DotNet.Core.Interops
                 throw new InvalidOperationException("You need VLC version 3.0 or higher to be able to use CreateNewMediaFromStream");
             }
 
-            IntPtr opaque = StreamData.AddStream(stream);
+            IntPtr opaque = AddStream(stream);
 
             if (opaque == IntPtr.Zero)
                 return null;
 
             var result = VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromCallbacks>().Invoke(
                 myVlcInstance,
-                StreamData.CallbackOpenMediaDelegate,
-                StreamData.CallbackReadMediaDelegate,
-                StreamData.CallbackSeekMediaDelegate,
-                StreamData.CallbackCloseMediaDelegate,
+                CallbackOpenMediaDelegate,
+                CallbackReadMediaDelegate,
+                CallbackSeekMediaDelegate,
+                CallbackCloseMediaDelegate,
                 opaque
                 ));
 
             return result;
+        }
+
+        private static int CallbackOpenMedia(IntPtr opaque, ref IntPtr pData, out ulong szData)
+        {
+            pData = opaque;
+
+            try
+            {
+                var streamData = GetStream(opaque);
+
+                try
+                {
+                    szData = (ulong)streamData.Stream.Length;
+                }
+                catch (Exception)
+                {
+                    // byte length of the bitstream or UINT64_MAX if unknown
+                    szData = ulong.MaxValue;
+                }
+
+                if (streamData.Stream.CanSeek)
+                {
+                    streamData.Stream.Seek(0L, SeekOrigin.Begin);
+                }
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                szData = 0UL;
+                return -1;
+            }
+        }
+
+        private static int CallbackReadMedia(IntPtr opaque, IntPtr ipbuf, uint len)
+        {
+            try
+            {
+                var streamData = GetStream(opaque);
+                int read = 0;
+
+                lock (streamData)
+                {
+                    var canRead = Math.Min((int)len, streamData.Buffer.Length);
+                    read = streamData.Stream.Read(streamData.Buffer, 0, canRead);
+                    Marshal.Copy(streamData.Buffer, 0, ipbuf, read);
+                }
+
+                return read;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+        private static int CallbackSeekMedia(IntPtr opaque, UInt64 offset)
+        {
+            try
+            {
+                var streamData = GetStream(opaque);
+                streamData.Stream.Seek((long)offset, SeekOrigin.Begin);
+                return 0;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+        private static void CallbackCloseMedia(IntPtr opaque)
+        {
+            try
+            {
+                RemoveStream(opaque);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private static IntPtr AddStream(Stream stream)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
+
+            IntPtr handle;
+
+            lock (dicStreams)
+            {
+                streamIndex++;
+
+                handle = new IntPtr(streamIndex);
+                dicStreams[handle] = new StreamData()
+                {
+                    Buffer = new byte[0x4000],
+                    Handle = handle,
+                    Stream = stream
+                };
+            }
+
+            return handle;
+        }
+
+        private static StreamData GetStream(IntPtr handle)
+        {
+#if NET20 || NET35
+            lock (dicStreams)
+            {
+                if (!dicStreams.ContainsKey(handle))
+                {
+                    return null;
+                }
+
+                return dicStreams[handle];
+            }
+#else
+            StreamData result;
+
+            if (!dicStreams.TryGetValue(handle, out result))
+            {
+                return null;
+            }
+
+            return result;
+#endif
+        }
+
+        private static void RemoveStream(IntPtr handle)
+        {
+#if NET20 || NET35
+            lock (dicStreams)
+            {
+                if (dicStreams.ContainsKey(handle))
+                {
+                    dicStreams.Remove(handle);
+                }
+            }
+#else
+            StreamData result;
+            dicStreams.TryRemove(handle, out result);
+#endif
         }
     }
 }
