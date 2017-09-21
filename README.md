@@ -5,7 +5,7 @@ Vlc.DotNet
 
 Vlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it's a .net wrapper around `libvlc`.
 
-It can work on any .net framework version starting from .net 2.0. (.net standard support is planned for core libraries)
+It can work on any .net framework version starting from .net 2.0. (.net standard support is currently in beta (use prerelease packages!))
 
 On the front-end side, two components are currently available to make it easy to integrate in your apps. One is for WinForms, the other for WPF.
 
