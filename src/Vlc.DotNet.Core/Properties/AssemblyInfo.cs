@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("Vlc.DotNet.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(".Net api to use the audio/video capabilities of the VLC libraries.")]
 [assembly: AssemblyProduct("Vlc.DotNet.Core")]
 [assembly:
     InternalsVisibleTo(

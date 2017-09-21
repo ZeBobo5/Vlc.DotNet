@@ -73,17 +73,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops - CLR 4 - .Net 4.5.csproj">
-      <Project>{47e251ae-a5ee-4526-bdc1-3c008936e80a}</Project>
-      <Name>Vlc.DotNet.Forms.Samples - CLR 4 - .Net 4.5</Name>
+    <ProjectReference Include="..\..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj">
+      <Project>{dcf701c3-6635-4b9f-a90f-5d71b5bce0c7}</Project>
+      <Name>Vlc.DotNet.Core.Interops</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Vlc.DotNet.Core\Vlc.DotNet.Core - CLR 4 - .Net 4.5.csproj">
-      <Project>{24860783-a729-4a14-98c0-9a34bf138bdb}</Project>
-      <Name>Vlc.DotNet.Core - CLR 4 - .Net 4.5</Name>
+    <ProjectReference Include="..\..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj">
+      <Project>{77e6622a-ce25-4571-a913-9c647f63477b}</Project>
+      <Name>Vlc.DotNet.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Vlc.DotNet.Forms\Vlc.DotNet.Forms - CLR 4 - .Net 4.5.csproj">
-      <Project>{914de831-4dfa-44f6-96c1-27cf3b89a2cd}</Project>
-      <Name>Vlc.DotNet.Forms - CLR 4 - .Net 4.5</Name>
+    <ProjectReference Include="..\..\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj">
+      <Project>{04de974c-bb77-45b3-889c-03640cffb91c}</Project>
+      <Name>Vlc.DotNet.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
