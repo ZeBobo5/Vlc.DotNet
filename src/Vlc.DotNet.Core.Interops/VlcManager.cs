@@ -46,5 +46,6 @@ namespace Vlc.DotNet.Core.Interops
             {
                 throw new InvalidOperationException("This VlcManager has not yet been initialized. Call CreateNewInstance to initialize it.");
             }
+        }
     }
 }
