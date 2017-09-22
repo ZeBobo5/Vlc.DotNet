@@ -12,6 +12,17 @@ namespace Vlc.DotNet.Core.Interops
 
         public string VlcVersion => Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetVersion>().Invoke());
 
+        public Version VlcVersionNumber
+        {
+            get
+            {
+                var versionString = this.VlcVersion;
+                versionString = versionString.Split('-', ' ')[0];
+
+                return new Version(versionString);
+            }
+        }
+
         internal VlcManager(DirectoryInfo dynamicLinkLibrariesPath)
             : base(dynamicLinkLibrariesPath)
         {
