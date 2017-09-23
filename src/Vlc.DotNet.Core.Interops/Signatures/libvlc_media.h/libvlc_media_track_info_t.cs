@@ -56,21 +56,12 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         {
             get
             {
-#if NET20
                 return string.Format(
                             "{0}{1}{2}{3}",
                             (char)(CodecFourcc & 0xff),
                             (char)(CodecFourcc >> 8 & 0xff),
                             (char)(CodecFourcc >> 16 & 0xff),
                             (char)(CodecFourcc >> 24 & 0xff));
-#else
-                return string.Format(
-                            "{0}{1}{2}{3}",
-                            (char)(CodecFourcc & 0xff),
-                            (char)(CodecFourcc >> 8 & 0xff),
-                            (char)(CodecFourcc >> 16 & 0xff),
-                            (char)(CodecFourcc >> 24 & 0xff));
-#endif
             }
         }
 
