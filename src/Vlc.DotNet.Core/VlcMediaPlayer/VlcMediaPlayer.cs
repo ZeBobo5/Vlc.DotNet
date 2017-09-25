@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
@@ -67,46 +66,6 @@ namespace Vlc.DotNet.Core
             set { Manager.SetMediaPlayerVideoHostHandle(myMediaPlayerInstance, value); }
         }
 
-        private void ResetFromMedia()
-        {
-            UnregisterEvents();
-            if (VideoHostControlHandle != IntPtr.Zero)
-            {
-                var ctrl = Control.FromHandle(VideoHostControlHandle);
-                if (ctrl != null && ctrl.InvokeRequired)
-                {
-                    ctrl.Invoke(new ResetFromMediaCoreDelegate(ResetFromMediaCore), ctrl);
-                }
-                else
-                {
-                    ResetFromMediaCore(ctrl);
-                }
-            }
-            else
-            {
-                ResetFromMediaCore(null);
-            }
-        }
-
-        private delegate void ResetFromMediaCoreDelegate(Control ctrl);
-
-        private void ResetFromMediaCore(Control ctrl)
-        {
-            VideoHostControlHandle = IntPtr.Zero;
-            var mediaInstance = GetMedia().MediaInstance;
-            if (ctrl != null)
-                ctrl.GetType().GetMethod("RecreateHandle", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(ctrl, null);
-            myMediaPlayerInstance.Pointer = IntPtr.Zero;
-            myMediaPlayerInstance = Manager.CreateMediaPlayerFromMedia(mediaInstance);
-            RegisterEvents();
-            Chapters = new ChapterManagement(Manager, myMediaPlayerInstance);
-            SubTitles = new SubTitlesManagement(Manager, myMediaPlayerInstance);
-            Video = new VideoManagement(Manager, myMediaPlayerInstance);
-            Audio = new AudioManagement(Manager, myMediaPlayerInstance);
-            if (ctrl != null)
-                VideoHostControlHandle = ctrl.Handle;
-        }
-
         public void Dispose()
         {
             Dispose(true);
@@ -150,6 +109,11 @@ namespace Vlc.DotNet.Core
         public VlcMedia SetMedia(string mrl, params string[] options)
         {
             return SetMedia(new VlcMedia(this, mrl, options));
+        }
+
+        public VlcMedia SetMedia(Stream stream, params string[] options)
+        {
+            return SetMedia(new VlcMedia(this, stream, options));
         }
 
         private VlcMedia SetMedia(VlcMedia media)

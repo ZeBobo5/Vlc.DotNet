@@ -5,15 +5,15 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public void SetVideoAspectRatio(VlcMediaPlayerInstance mediaPlayerInstance, string cropGeometry)
+        public void SetVideoAspectRatio(VlcMediaPlayerInstance mediaPlayerInstance, string aspectRatio)
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-#if NET20
-            GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, StringExtensions.ToHGlobalAnsi(cropGeometry));
-#else
-            GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, cropGeometry.ToHGlobalAnsi());
-#endif
+
+            using (var aspectRatioInterop = Utf8InteropStringConverter.ToUtf8Interop(aspectRatio))
+            {
+                GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, aspectRatioInterop.DangerousGetHandle());
+            }
         }
     }
 }

@@ -1,49 +1,90 @@
-version: 2.1.{build}
+-
+  image: Visual Studio 2017
+  version: 2.1.{build}
 
-branches:
-  only: 
-    - master
+  branches:
+    only:
+      - master
 
-skip_tags: true
+  skip_tags: true
 
-init:
-  - git config --global core.autocrlf input
-  
-clone_folder: C:\projects\vlc-dotnet-master\
+  init:
+    - git config --global core.autocrlf input
 
-shallow_clone: true
+  clone_folder: C:\projects\vlc-dotnet-master\
 
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "2.1.{build}"
-  assembly_file_version: "2.1.0.0"
-  assembly_informational_version: "2.1.0.0"
+  shallow_clone: true
 
-build_script:
-  - msbuild "src\Vlc.DotNet.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:Configuration=Release;Platform=AnyCPU
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 2.0\Vlc.DotNet.Forms.dll" 
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Wpf.dll"
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - AnyCPU - .Net 4.0\Vlc.DotNet.Wpf.dll"
-  - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 4.5.zip" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Forms\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Forms.dll" "C:\projects\vlc-dotnet-master\build\Vlc.DotNet.Wpf\Release - AnyCPU - .Net 4.5\Vlc.DotNet.Wpf.dll"
-  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec'
-  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec'
-  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec'
-  - ps: (Get-Content 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec') | Foreach-Object {$_ -replace '\$version\$',$env:APPVEYOR_BUILD_VERSION}  | Out-File 'C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec'
-  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.Interops.nuspec
-  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Core.nuspec
-  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Forms.nuspec
-  - ps: nuget pack C:\projects\vlc-dotnet-master\nuget\Vlc.DotNet.Wpf.nuspec
-  - ps: 7z a "C:\projects\vlc-dotnet-master\nuget-packages.zip" *.nupkg 
-  
-artifacts:
-  - path: "**/*.zip"
-    name: "Vlc.DotNet for Vlc 2.1.x"
-  - path: "**/*.nupkg"
-    name: "Vlc.DotNet for Vlc 2.1.x NuGet Packages"
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "2.1.{build}"
+    assembly_file_version: "2.1.0.0"
+    assembly_informational_version: "2.1.0.0"
 
-deploy:
-  - provider: NuGet
-    api_key:
-        secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
-    artifact: /.*\.nupkg/
+  build_script:
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /Verbosity:Minimal "src\Vlc.DotNet.sln"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release /p:VersionPrefix=2.1.%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.sln"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.1.%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.1.%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.1.%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.1.%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
+    - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 2.0.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net20\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net20\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net20\Vlc.DotNet.Forms.dll"
+    - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 3.5.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net35\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net35\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net35\Vlc.DotNet.Forms.dll"  "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net35\Vlc.DotNet.Wpf.dll"
+    - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 4.0.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net40\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net40\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net40\Vlc.DotNet.Forms.dll"  "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net40\Vlc.DotNet.Wpf.dll"
+    - ps: 7z a "C:\projects\vlc-dotnet-master\Vlc.DotNet for Vlc 2.1.x - AnyCPU - .Net 4.5.zip" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\net45\Vlc.DotNet.Core.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\net45\Vlc.DotNet.Core.Interops.dll" "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net45\Vlc.DotNet.Forms.dll"  "C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\net45\Vlc.DotNet.Wpf.dll"
+    - ps: 7z a "C:\projects\vlc-dotnet-master\nuget-packages.zip" C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core\bin\Release\*.nupkg C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Interops\bin\Release\*.nupkg C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Forms\bin\Release\*.nupkg C:\projects\vlc-dotnet-master\src\Vlc.DotNet.Core.Wpf\bin\Release\*.nupkg
+
+  artifacts:
+    - path: "**/*.zip"
+      name: "Vlc.DotNet for Vlc 2.1.x"
+    - path: "**/*.nupkg"
+      name: "Vlc.DotNet for Vlc 2.1.x NuGet Packages"
+
+  deploy:
+    - provider: NuGet
+      api_key:
+          secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
+      artifact: /.*\.nupkg/
+
+-
+  image: Visual Studio 2017
+  version: 2.2.0-develop{build}
+
+  branches:
+    only:
+      - develop
+
+  skip_tags: true
+
+  init:
+    - git config --global core.autocrlf input
+
+  clone_folder: C:\projects\vlc-dotnet-master\
+
+  shallow_clone: true
+
+  assembly_info:
+    patch: true
+    file: AssemblyInfo.*
+    assembly_version: "2.2.0"
+    assembly_file_version: "2.2.0.0"
+    assembly_informational_version: "2.2.0.0"
+
+  build_script:
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% /Verbosity:Minimal "src\Vlc.DotNet.sln"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.sln"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+    - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=2.2.0 /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
+
+  artifacts:
+    - path: "**/*.nupkg"
+      name: "Vlc.DotNet NuGet Packages"
+
+  deploy:
+    - provider: NuGet
+      api_key:
+          secure: OriZXhNZQOSzNsBXQsoUBOScm5K9AJ9HLZBGL+Gcsrj5VcVCAXpA1Rv3vaGHmnRE
+      artifact: /.*\.nupkg/

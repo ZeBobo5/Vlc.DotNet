@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     public struct TrackDescriptionStructure
     {
         public int Id;
-        public string Name;
+        public IntPtr Name;
         public IntPtr NextTrackDescription;
     }
 }

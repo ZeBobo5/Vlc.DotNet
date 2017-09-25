@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+#if NETSTANDARD1_3
+using System.Linq;
+#endif
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops
@@ -46,7 +50,11 @@ namespace Vlc.DotNet.Core.Interops
             string vlcFunctionName = null;
             try
             {
+#if NETSTANDARD1_3
+                var attrs = typeof(T).GetTypeInfo().GetCustomAttributes(typeof(LibVlcFunctionAttribute), false).ToArray();
+#else
                 var attrs = typeof(T).GetCustomAttributes(typeof(LibVlcFunctionAttribute), false);
+#endif
                 if (attrs.Length == 0)
                     throw new Exception("Could not find the LibVlcFunctionAttribute.");
                 var attr = (LibVlcFunctionAttribute)attrs[0];

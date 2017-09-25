@@ -10,15 +10,16 @@ namespace Vlc.DotNet.Core.Interops
         private VlcInstance myVlcInstance;
         private static readonly Dictionary<DirectoryInfo, VlcManager> myAllInstance = new Dictionary<DirectoryInfo, VlcManager>();
 
-        public string VlcVersion
+        public string VlcVersion => Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetVersion>().Invoke());
+
+        public Version VlcVersionNumber
         {
             get
             {
-#if !NET20
-                return GetInteropDelegate<GetVersion>().Invoke().ToStringAnsi();
-#else
-                return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetVersion>().Invoke());
-#endif
+                var versionString = this.VlcVersion;
+                versionString = versionString.Split('-', ' ')[0];
+
+                return new Version(versionString);
             }
         }
 
@@ -48,6 +49,14 @@ namespace Vlc.DotNet.Core.Interops
             if (!myAllInstance.ContainsKey(dynamicLinkLibrariesPath))
                 myAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
             return myAllInstance[dynamicLinkLibrariesPath];
+        }
+
+        protected void EnsureVlcInstance()
+        {
+            if (myVlcInstance == null)
+            {
+                throw new InvalidOperationException("This VlcManager has not yet been initialized. Call CreateNewInstance to initialize it.");
+            }
         }
     }
 }

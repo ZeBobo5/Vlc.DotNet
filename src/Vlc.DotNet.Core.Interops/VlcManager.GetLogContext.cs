@@ -37,8 +37,8 @@ namespace Vlc.DotNet.Core.Interops
                 line = _line.ToUInt32();
             }
 
-            module = Marshal.PtrToStringAnsi(_module);
-            file = Marshal.PtrToStringAnsi(_file);
+            module = Utf8InteropStringConverter.Utf8InteropToString(_module);
+            file = Utf8InteropStringConverter.Utf8InteropToString(_file);
         }
     }
 }
