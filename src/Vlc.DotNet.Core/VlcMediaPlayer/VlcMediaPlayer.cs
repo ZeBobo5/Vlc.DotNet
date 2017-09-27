@@ -58,7 +58,11 @@ namespace Vlc.DotNet.Core
             Audio = new AudioManagement(manager, myMediaPlayerInstance);
         }
 
-        internal VlcManager Manager { get; private set; }
+        /// <summary>
+        /// Gets the low-level interop manager that calls the methods on the libvlc library.
+        /// This is useful if a higher-level API is missing, but should be used carefully.
+        /// </summary>
+        public VlcManager Manager { get; private set; }
 
         public IntPtr VideoHostControlHandle
         {
