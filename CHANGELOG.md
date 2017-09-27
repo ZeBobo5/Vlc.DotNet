@@ -7,6 +7,7 @@
 - ADDED Playing from a Stream object #[207](https://github.com/ZeBobo5/Vlc.DotNet/pull/207) and #[315](https://github.com/ZeBobo5/Vlc.DotNet/pull/315)
 - ADDED a method `VlcManager.CreateNewMediaFromFileDescriptor` #[314](https://github.com/ZeBobo5/Vlc.DotNet/pull/314)
 - ADDED methods `VlcMediaPlayerInstance.SetVideoCallbacks` and `VlcMediaPlayerInstance.SetVideoFormatCallbacks` #[313](https://github.com/ZeBobo5/Vlc.DotNet/pull/313)
+- ADDED overload methods to `TakeSnapshot` to be able to specify the size of the snapshot (Fixes #[211](https://github.com/ZeBobo5/Vlc.DotNet/issues/211)) #[320](https://github.com/ZeBobo5/Vlc.DotNet/pull/320)
 
 # 2.1.154
 - Nothing, just a few commits to change README files
