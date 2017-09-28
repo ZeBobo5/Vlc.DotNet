@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerVideoOutChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaPlayerVideoOutChanged(args.MediaPlayerVideoOutChanged.NewCount);
+            OnMediaPlayerVideoOutChanged(args.eventArgsUnion.MediaPlayerVideoOutChanged.NewCount);
         }
 
         public void OnMediaPlayerVideoOutChanged(int newCount)

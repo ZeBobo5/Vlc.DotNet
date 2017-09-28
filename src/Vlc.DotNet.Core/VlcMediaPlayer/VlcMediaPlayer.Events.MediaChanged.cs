@@ -14,7 +14,7 @@ namespace Vlc.DotNet.Core
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
 
-            OnMediaPlayerMediaChanged(new VlcMedia(this, VlcMediaInstance.New(Manager, args.MediaPlayerMediaChanged.MediaInstance)));
+            OnMediaPlayerMediaChanged(new VlcMedia(this, VlcMediaInstance.New(Manager, args.eventArgsUnion.MediaPlayerMediaChanged.MediaInstance)));
         }
 
         public void OnMediaPlayerMediaChanged(VlcMedia media)

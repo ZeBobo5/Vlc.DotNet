@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerBufferingInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            OnMediaPlayerBuffering(args.MediaPlayerBuffering.NewCache);
+            OnMediaPlayerBuffering(args.eventArgsUnion.MediaPlayerBuffering.NewCache);
         }
 
         public void OnMediaPlayerBuffering(float newCache)

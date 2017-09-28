@@ -174,6 +174,51 @@ namespace Vlc.DotNet.Forms
         }
         #endregion
 
+        #region Log event
+        private object _logLocker = new object();
+
+        private EventHandler<VlcMediaPlayerLogEventArgs> _log;
+
+        private void OnLogInternal(object sender, VlcMediaPlayerLogEventArgs args)
+        {
+            lock(this._logLocker)
+            {
+                if (this._log != null)
+                {
+                    this._log(sender, args);
+                }
+            }
+        }
+
+        /// <summary>
+        /// The event that is triggered when a log is emitted from libVLC.
+        /// Listening to this event will discard the default logger in libvlc.
+        /// </summary>
+        [Category("Media Player")]
+        public event EventHandler<VlcMediaPlayerLogEventArgs> Log
+        {
+            add
+            {
+                lock (this._logLocker)
+                {
+                    this._log += value;
+                }
+                if (this.myVlcMediaPlayer != null)
+                {
+                    // Registers if not already done.
+                    this.RegisterLogging();
+                }
+            }
+            remove
+            {
+                lock (this._logLocker)
+                {
+                    this._log -= value;
+                }
+            }
+        }
+        #endregion
+
         #region Media Changed event
         private void OnMediaChangedInternal(object sender, VlcMediaPlayerMediaChangedEventArgs e)
         {

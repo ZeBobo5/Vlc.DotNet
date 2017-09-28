@@ -15,6 +15,12 @@ namespace Vlc.DotNet.Wpf.Samples
             InitializeComponent();
             myControl.MediaPlayer.VlcLibDirectoryNeeded += OnVlcControlNeedsLibDirectory;
             myControl.MediaPlayer.EndInit();
+
+            // This can also be called before EndInit
+            this.myControl.MediaPlayer.Log += (sender, args) =>
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("libVlc : {0} {1} @ {2}", args.Level, args.Message, args.Module));
+            };
         }
 
         private void OnVlcControlNeedsLibDirectory(object sender, Forms.VlcLibDirectoryNeededEventArgs e)
@@ -23,7 +29,7 @@ namespace Vlc.DotNet.Wpf.Samples
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             if (currentDirectory == null)
                 return;
-            if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
+            if (IntPtr.Size == 4)
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x86\"));
             else
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x64\"));

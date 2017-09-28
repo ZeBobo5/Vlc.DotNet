@@ -45,27 +45,30 @@
             this.myLblVideoWidth = new System.Windows.Forms.Label();
             this.myLblVideoCodec = new System.Windows.Forms.Label();
             this.myLblVideoHeight = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).BeginInit();
             this.myCbxAspectRatio = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).BeginInit();
             this.myGrpAudioInformations.SuspendLayout();
             this.myGrpVideoInformations.SuspendLayout();
             this.SuspendLayout();
             // 
             // myVlcControl
             // 
-            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.myVlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.myVlcControl.Location = new System.Drawing.Point(12, 12);
             this.myVlcControl.Name = "myVlcControl";
             this.myVlcControl.Size = new System.Drawing.Size(564, 338);
+            this.myVlcControl.Spu = -1;
             this.myVlcControl.TabIndex = 0;
             this.myVlcControl.Text = "vlcRincewindControl1";
             this.myVlcControl.VlcLibDirectory = null;
+            this.myVlcControl.VlcMediaplayerOptions = null;
             this.myVlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
             this.myVlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
+            this.myVlcControl.Log += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLogEventArgs>(this.OnVlcMediaPlayerLog);
             this.myVlcControl.Paused += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPausedEventArgs>(this.OnVlcPaused);
             this.myVlcControl.Playing += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs>(this.OnVlcPlaying);
             this.myVlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
@@ -244,7 +247,7 @@
             "4:3"});
             this.myCbxAspectRatio.Location = new System.Drawing.Point(680, 170);
             this.myCbxAspectRatio.Name = "myCbxAspectRatio";
-            this.myCbxAspectRatio.Size = new System.Drawing.Size(121, 20);
+            this.myCbxAspectRatio.Size = new System.Drawing.Size(121, 21);
             this.myCbxAspectRatio.TabIndex = 11;
             this.myCbxAspectRatio.TextChanged += new System.EventHandler(this.myCbxAspectRatio_TextChanged);
             // 
@@ -254,7 +257,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(580, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 12);
+            this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Video Aspect Ratio:";
             // 
@@ -278,8 +281,8 @@
             this.Controls.Add(this.myVlcControl);
             this.Name = "Sample";
             this.Text = "Vlc.DotNet - Winform Player Sample";
-            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).EndInit();
             this.SizeChanged += new System.EventHandler(this.Sample_SizeChanged);
+            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).EndInit();
             this.myGrpAudioInformations.ResumeLayout(false);
             this.myGrpAudioInformations.PerformLayout();
             this.myGrpVideoInformations.ResumeLayout(false);

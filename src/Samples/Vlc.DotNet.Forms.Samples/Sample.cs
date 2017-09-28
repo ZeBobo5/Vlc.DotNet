@@ -5,6 +5,8 @@ using System.Windows.Forms;
 
 namespace Vlc.DotNet.Forms.Samples
 {
+    using System.Diagnostics;
+
     public partial class Sample : Form
     {
         public Sample()
@@ -18,7 +20,7 @@ namespace Vlc.DotNet.Forms.Samples
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             if (currentDirectory == null)
                 return;
-            if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
+            if (IntPtr.Size == 4)
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x86\"));
             else
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x64\"));
@@ -99,12 +101,12 @@ namespace Vlc.DotNet.Forms.Samples
                 c.Enabled = false;
             });
 #endif
-            myLblAudioCodec.Text = "Codec: ";
-            myLblAudioChannels.Text = "Channels: ";
-            myLblAudioRate.Text = "Rate: ";
-            myLblVideoCodec.Text = "Codec: ";
-            myLblVideoHeight.Text = "Height: ";
-            myLblVideoWidth.Text = "Width: ";
+            ControlExtensions.InvokeIfRequired(myLblAudioCodec, c => c.Text = "Codec: ");
+            ControlExtensions.InvokeIfRequired(myLblAudioChannels, c => c.Text = "Channels: ");
+            ControlExtensions.InvokeIfRequired(myLblAudioRate, c => c.Text = "Rate: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoCodec, c => c.Text = "Codec: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoHeight, c => c.Text = "Height: ");
+            ControlExtensions.InvokeIfRequired(myLblVideoWidth, c => c.Text = "Width: ");
 
 
 
@@ -202,5 +204,9 @@ namespace Vlc.DotNet.Forms.Samples
             }
         }
 
+        private void OnVlcMediaPlayerLog(object sender, Core.VlcMediaPlayerLogEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(string.Format("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module));
+        }
     }
 }

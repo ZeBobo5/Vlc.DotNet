@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerTitleChangedInternal(IntPtr ptr)
         {
             var args = (VlcEventArg) Marshal.PtrToStructure(ptr, typeof (VlcEventArg));
-            var fileName = Marshal.PtrToStringAnsi(args.MediaPlayerTitleChanged.NewTitle);
+            var fileName = Marshal.PtrToStringAnsi(args.eventArgsUnion.MediaPlayerTitleChanged.NewTitle);
             OnMediaPlayerTitleChanged(fileName);
         }
 

@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{721245BC-9A7D-48E0-A8BF-580D2661D5FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,45 +19,25 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Debug - x64 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X64</DefineConstants>
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Debug - AnyCPU - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR2;NET35</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Debug - x64 - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Debug - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35;X64</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\</OutputPath>
+    <DefineConstants>TRACE;CLR2;NET35</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Release - x64 - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Debug - x86 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR2;NET35;X86</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Debug - x86 - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>..\..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 3.5\</OutputPath>
-    <DefineConstants>TRACE;CLR2;NET35;X86</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Release - x86 - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
+    <DocumentationFile>..\..\build\Vlc.DotNet.Core.Interops\Release - AnyCPU - .Net 3.5\Vlc.DotNet.Core.Interops.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,7 +52,6 @@
     <Compile Include="LibVlcFunctionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signatures\InteropObjectInstance.cs" />
-    <Compile Include="Signatures\InteropsHelpers.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_audio_filter_list_get.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_callback_t.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_clearerr.cs" />
@@ -84,6 +63,10 @@
     <Compile Include="Signatures\libvlc.h\libvlc_get_changeset.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_compiler.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_get_version.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_cb.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_get_context.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_level_e.cs" />
+    <Compile Include="Signatures\libvlc.h\libvlc_log_set.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_list_release.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_module_description_t.cs" />
     <Compile Include="Signatures\libvlc.h\libvlc_new.cs" />
@@ -235,6 +218,7 @@
     <Compile Include="VlcManager.GetCompiler.cs" />
     <Compile Include="VlcManager.GetEventTypeName.cs" />
     <Compile Include="VlcManager.GetLength.cs" />
+    <Compile Include="VlcManager.GetLogContext.cs" />
     <Compile Include="VlcManager.GetMediaPlayerVideoHostHandle.cs" />
     <Compile Include="VlcManager.GetTime.cs" />
     <Compile Include="VlcManager.GetVideoAdjust.cs" />
@@ -291,6 +275,7 @@
     <Compile Include="VlcManager.SetAudioOutput.cs" />
     <Compile Include="VlcManager.SetAudioOutputDevice.cs" />
     <Compile Include="VlcManager.SetAudioTrack.cs" />
+    <Compile Include="VlcManager.SetLog.cs" />
     <Compile Include="VlcManager.SetMediaChapter.cs" />
     <Compile Include="VlcManager.SetMediaMeta.cs" />
     <Compile Include="VlcManager.SetMediaPlayerVideoHostHandle.cs" />
@@ -328,7 +313,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
