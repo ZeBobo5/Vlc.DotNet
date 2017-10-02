@@ -4,7 +4,7 @@
 - FIXED #[276](https://github.com/ZeBobo5/Vlc.DotNet/issues/276) by changing NuGet package folder structure #[309](https://github.com/ZeBobo5/Vlc.DotNet/pull/309)
 - FIXED potential NullReferenceException when using an uninitialized instance #[312](https://github.com/ZeBobo5/Vlc.DotNet/pull/312)
 - ADDED support for netstandard 1.3 and 2.0 #[308](https://github.com/ZeBobo5/Vlc.DotNet/pull/308)
-- ADDED Playing from a Stream object #[207](https://github.com/ZeBobo5/Vlc.DotNet/pull/207) and #[315](https://github.com/ZeBobo5/Vlc.DotNet/pull/315)
+- ADDED Playing from a Stream object #[315](https://github.com/ZeBobo5/Vlc.DotNet/pull/315) and #[317](https://github.com/ZeBobo5/Vlc.DotNet/pull/317)
 - ADDED a method `VlcManager.CreateNewMediaFromFileDescriptor` #[314](https://github.com/ZeBobo5/Vlc.DotNet/pull/314)
 - ADDED methods `VlcMediaPlayerInstance.SetVideoCallbacks` and `VlcMediaPlayerInstance.SetVideoFormatCallbacks` #[313](https://github.com/ZeBobo5/Vlc.DotNet/pull/313)
 - ADDED overload methods to `TakeSnapshot` to be able to specify the size of the snapshot (Fixes #[211](https://github.com/ZeBobo5/Vlc.DotNet/issues/211)) #[320](https://github.com/ZeBobo5/Vlc.DotNet/pull/320)
