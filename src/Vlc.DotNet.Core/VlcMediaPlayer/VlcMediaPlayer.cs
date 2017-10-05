@@ -59,8 +59,9 @@ namespace Vlc.DotNet.Core
         }
 
         /// <summary>
+        /// WARNING : USE AT YOUR OWN RISK!
         /// Gets the low-level interop manager that calls the methods on the libvlc library.
-        /// This is useful if a higher-level API is missing, but should be used carefully.
+        /// This is useful if a higher-level API is missing.
         /// </summary>
         public VlcManager Manager { get; private set; }
 
