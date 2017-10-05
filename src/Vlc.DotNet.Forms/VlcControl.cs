@@ -13,6 +13,12 @@ namespace Vlc.DotNet.Forms
     {
         private VlcMediaPlayer myVlcMediaPlayer;
 
+        /// <summary>
+        /// Gets the media player.
+        /// It can be useful in order to achieve lower-level operations that are not available in the control.
+        /// </summary>
+        public VlcMediaPlayer VlcMediaPlayer => this.myVlcMediaPlayer;
+
         #region VlcControl Init
 
         public VlcControl()

@@ -8,6 +8,8 @@
 - ADDED a method `VlcManager.CreateNewMediaFromFileDescriptor` #[314](https://github.com/ZeBobo5/Vlc.DotNet/pull/314)
 - ADDED methods `VlcMediaPlayerInstance.SetVideoCallbacks` and `VlcMediaPlayerInstance.SetVideoFormatCallbacks` #[313](https://github.com/ZeBobo5/Vlc.DotNet/pull/313)
 - ADDED overload methods to `TakeSnapshot` to be able to specify the size of the snapshot (Fixes #[211](https://github.com/ZeBobo5/Vlc.DotNet/issues/211)) #[320](https://github.com/ZeBobo5/Vlc.DotNet/pull/320)
+- ADDED public getter `VlcMediaPlayer` on WinForms `VlcControl` #[321](https://github.com/ZeBobo5/Vlc.DotNet/pull/321)
+- CHANGED visibility of `Manager` in `VlcMediaPlayer` to make it public #[321](https://github.com/ZeBobo5/Vlc.DotNet/pull/321)
 
 # 2.1.154
 - Nothing, just a few commits to change README files
