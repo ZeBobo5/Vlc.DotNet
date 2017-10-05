@@ -1,3 +1,7 @@
+environment:
+  version_prefix: 2.2.0
+version: 2.2.0-{branch}{build}
+
 image: Visual Studio 2017
 skip_tags: true
 init:
@@ -7,8 +11,7 @@ shallow_clone: true
 dotnet_csproj:
   patch: true
   file: 'Vlc.DotNet.*\*.csproj'
-  version: "2.2.0.0"
-  version_prefix: "2.2.0"
+  version: "%version_prefix%"
 artifacts:
   - path: "**/*.nupkg"
     name: "Vlc.DotNet NuGet Packages"
@@ -20,29 +23,27 @@ deploy:
 
 for:
   -
-    version: 2.2.0-master{build}
     branches:
       only:
         - master
 
     build_script:
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /Verbosity:Minimal "src\Vlc.DotNet.sln"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release "src\Vlc.DotNet.sln"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionPrefix=%version_prefix% /Verbosity:Minimal "src\Vlc.DotNet.sln"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.sln"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
 
   -
-    version: 2.2.0-develop{build}
     branches:
       only:
         - develop
 
     build_script:
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% /Verbosity:Minimal "src\Vlc.DotNet.sln"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.sln"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% /Verbosity:Minimal "src\Vlc.DotNet.sln"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.sln"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj"
+      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
