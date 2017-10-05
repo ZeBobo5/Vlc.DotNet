@@ -10,7 +10,7 @@ clone_folder: C:\projects\vlc-dotnet-master\
 shallow_clone: true
 dotnet_csproj:
   patch: true
-  file: 'Vlc.DotNet.*\*.csproj'
+  file: 'src\Vlc.DotNet.*\*.csproj'
   version: "%version_prefix%"
 artifacts:
   - path: "**/*.nupkg"
