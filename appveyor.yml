@@ -1,5 +1,4 @@
 image: Visual Studio 2017
-version: 2.2.0-{branch}{build}
 skip_tags: true
 init:
   - git config --global core.autocrlf input
@@ -21,6 +20,7 @@ deploy:
 
 for:
   -
+    version: 2.2.0-master{build}
     branches:
       only:
         - master
@@ -34,6 +34,7 @@ for:
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
 
   -
+    version: 2.2.0-develop{build}
     branches:
       only:
         - develop
