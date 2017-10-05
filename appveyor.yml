@@ -34,8 +34,6 @@ for:
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release "src\Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj"
 
   -
-    image: Visual Studio 2017
-
     branches:
       only:
         - develop
