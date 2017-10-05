@@ -51,7 +51,7 @@ namespace Vlc.DotNet.Core.Interops
             return myAllInstance[dynamicLinkLibrariesPath];
         }
 
-        protected void EnsureVlcInstance()
+        private void EnsureVlcInstance()
         {
             if (myVlcInstance == null)
             {
