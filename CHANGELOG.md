@@ -1,4 +1,5 @@
-# Unreleased
+# 2.2.0
+- CHANGED versionning model to adopt [SEMVER 2.0](http://semver.org/)
 - FIXED #[74](https://github.com/ZeBobo5/Vlc.DotNet/issues/74) by adding support for UTF-8 in options #[302](https://github.com/ZeBobo5/Vlc.DotNet/pull/302)
 - FIXED #[305](https://github.com/ZeBobo5/Vlc.DotNet/issues/305) by String interop conversions are now made in UTF-8 and avoid memory leaks #[306](https://github.com/ZeBobo5/Vlc.DotNet/pull/306) #[310](https://github.com/ZeBobo5/Vlc.DotNet/pull/310)
 - FIXED #[276](https://github.com/ZeBobo5/Vlc.DotNet/issues/276) by changing NuGet package folder structure #[309](https://github.com/ZeBobo5/Vlc.DotNet/pull/309)
