@@ -105,12 +105,6 @@ namespace Vlc.DotNet.Forms
 
         bool disposed = false;
 
-        protected void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (!disposed)

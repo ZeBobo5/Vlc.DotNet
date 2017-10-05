@@ -166,7 +166,11 @@ namespace Vlc.DotNet.Core
         public IEnumerable<FilterModuleDescription> GetAudioFilters()
         {
             var module = Manager.GetAudioFilterList();
+#if NET20 || NET35 || NET40 || NET45
             ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module, typeof(ModuleDescriptionStructure));
+#else
+            ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module);
+#endif
             var result = GetSubFilter(nextModule);
             if (module != IntPtr.Zero)
                 Manager.ReleaseModuleDescriptionInstance(module);
@@ -184,7 +188,11 @@ namespace Vlc.DotNet.Core
             result.Add(filterModule);
             if (module.NextModule != IntPtr.Zero)
             {
+#if NET20 || NET35 || NET40 || NET45
                 ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module.NextModule, typeof(ModuleDescriptionStructure));
+#else
+                ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module.NextModule);
+#endif
                 var data = GetSubFilter(nextModule);
                 if (data.Count > 0)
                     result.AddRange(data);
@@ -195,7 +203,11 @@ namespace Vlc.DotNet.Core
         public IEnumerable<FilterModuleDescription> GetVideoFilters()
         {
             var module = Manager.GetVideoFilterList();
+#if NET20 || NET35 || NET40 || NET45
             ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module, typeof(ModuleDescriptionStructure));
+#else
+            ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module);
+#endif
             var result = GetSubFilter(nextModule);
             if (module != IntPtr.Zero)
                 Manager.ReleaseModuleDescriptionInstance(module);
