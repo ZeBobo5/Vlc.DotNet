@@ -9,6 +9,7 @@
     <Authors>ZeBobo5</Authors>
     <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
     <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
+    <Description>Wrapper to use the audio/video capabilities of the VLC libraries.</Description>
     <PackageTags>vlc media wrapper interop interops</PackageTags>
     <VersionPrefix>2.1</VersionPrefix>
   </PropertyGroup>
