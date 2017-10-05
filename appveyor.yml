@@ -1,6 +1,7 @@
 image: Visual Studio 2017
 version: 2.2.0-{branch}{build}
-skip_tags: trueinit:
+skip_tags: true
+init:
   - git config --global core.autocrlf input
 clone_folder: C:\projects\vlc-dotnet-master\
 shallow_clone: true
