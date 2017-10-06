@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net 2.0", ".Net 2.0", "{759737B6-C443-4DC5-A7E3-82C260E2308C}"
 EndProject
@@ -40,6 +40,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlc.DotNet.Forms", "Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj", "{04DE974C-BB77-45B3-889C-03640CFFB91C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlc.DotNet.Wpf", "Vlc.DotNet.Wpf\Vlc.DotNet.Wpf.csproj", "{9A066A54-318B-45C8-B3A3-2292D9DF4A33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4615FDA-A392-4C7C-BF50-73910E7D4052}"
+	ProjectSection(SolutionItems) = preProject
+		Common.Props = Common.Props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

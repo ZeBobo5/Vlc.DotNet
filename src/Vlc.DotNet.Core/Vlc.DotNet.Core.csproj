@@ -1,18 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\Vlc.DotNet.props" />
+  
   <PropertyGroup>
+    <Title>Vlc.DotNet.Core</Title>
     <TargetFrameworks>net20;net35;net40;net45;netstandard2.0;netstandard1.3</TargetFrameworks>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Authors>ZeBobo5</Authors>
-    <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
-    <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
     <Description>.Net API to use the audio/video capabilities of the VLC libraries.</Description>
     <PackageTags>vlc media api</PackageTags>
-    <Version>0.0</Version>
-    <VersionPrefix>0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
