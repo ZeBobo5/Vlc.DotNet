@@ -8,10 +8,12 @@ namespace Vlc.DotNet.Core.Interops
     {
         public VlcMediaInstance CreateNewMediaFromPath(string mrl)
         {
-            var handle = GCHandle.Alloc(Encoding.UTF8.GetBytes(mrl), GCHandleType.Pinned);
-            var result = VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromPath>().Invoke(myVlcInstance, handle.AddrOfPinnedObject()));
-            handle.Free();
-            return result;
+            EnsureVlcInstance();
+
+            using (var handle = Utf8InteropStringConverter.ToUtf8Interop(mrl))
+            {
+                return VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromPath>().Invoke(myVlcInstance, handle.DangerousGetHandle()));
+            }
         }
     }
 }

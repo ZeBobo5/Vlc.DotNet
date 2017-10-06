@@ -9,11 +9,12 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-#if NET20
-            GetInteropDelegate<SetVideoCropGeometry>().Invoke(mediaPlayerInstance, StringExtensions.ToHGlobalAnsi(cropGeometry));
-#else
-            GetInteropDelegate<SetVideoCropGeometry>().Invoke(mediaPlayerInstance, cropGeometry.ToHGlobalAnsi());
-#endif
+
+            using (var cropGeometryInterop = Utf8InteropStringConverter.ToUtf8Interop(cropGeometry))
+            {
+                GetInteropDelegate<SetVideoCropGeometry>()
+                    .Invoke(mediaPlayerInstance, cropGeometryInterop.DangerousGetHandle());
+            }
         }
     }
 }

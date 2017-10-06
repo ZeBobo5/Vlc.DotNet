@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <VersionPrefix>0.0</VersionPrefix>
+    <Product>Vlc.DotNet</Product>
+    <Copyright>Copyright © Vlc.DotNet 2014-2017</Copyright>
+    <Authors>ZeBobo5</Authors>
+    <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ZeBobo5/Vlc.DotNet</RepositoryUrl>
+    <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Vlc.DotNet.pfx.snk</AssemblyOriginatorKeyFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+</Project>

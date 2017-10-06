@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+#if NETSTANDARD1_3
+using System.Linq;
+#endif
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public abstract class VlcInteropsManager : IDisposable
     {
-        private readonly Dictionary<string, Delegate> myInteropDelegates = new Dictionary<string, Delegate>();
+        /// <summary>
+        /// Caches of the delegates that were resolved from the libvlc.
+        /// These delegates are cast to the correct delegate type when a query is made
+        /// </summary>
+        private readonly Dictionary<string, object> myInteropDelegates = new Dictionary<string, object>();
         private IntPtr myLibGccDllHandle;
         private IntPtr myLibVlcDllHandle;
         private IntPtr myLibVlcCoreDllHandle;
@@ -46,23 +54,37 @@ namespace Vlc.DotNet.Core.Interops
             string vlcFunctionName = null;
             try
             {
+#if NETSTANDARD1_3
+                var attrs = typeof(T).GetTypeInfo().GetCustomAttributes(typeof(LibVlcFunctionAttribute), false).ToArray();
+#else
                 var attrs = typeof(T).GetCustomAttributes(typeof(LibVlcFunctionAttribute), false);
+#endif
                 if (attrs.Length == 0)
                     throw new Exception("Could not find the LibVlcFunctionAttribute.");
                 var attr = (LibVlcFunctionAttribute)attrs[0];
                 vlcFunctionName = attr.FunctionName;
                 if (myInteropDelegates.ContainsKey(vlcFunctionName))
-                    return (T)Convert.ChangeType(myInteropDelegates[attr.FunctionName], typeof(T), null);
+                {
+                    return (T) myInteropDelegates[attr.FunctionName];
+                }
+
                 var procAddress = Win32Interops.GetProcAddress(myLibVlcDllHandle, attr.FunctionName);
                 if (procAddress == IntPtr.Zero)
                     throw new Win32Exception();
-                var delegateForFunctionPointer = Marshal.GetDelegateForFunctionPointer(procAddress, typeof(T));
+
+                object delegateForFunctionPointer;
+#if NET20||NET35||NET40||NET45
+                delegateForFunctionPointer = Marshal.GetDelegateForFunctionPointer(procAddress, typeof(T));
+#else
+                // The GetDelegateForFunctionPointer with two parameters is now deprecated.
+                delegateForFunctionPointer = Marshal.GetDelegateForFunctionPointer<T>(procAddress);
+#endif
                 myInteropDelegates[attr.FunctionName] = delegateForFunctionPointer;
-                return (T)Convert.ChangeType(delegateForFunctionPointer, typeof(T), null);
+                return (T)delegateForFunctionPointer;
             }
             catch (Win32Exception e)
             {
-                throw new MissingMethodException(String.Format("The address of the function '{0}' does not exist in libvlc library.", vlcFunctionName), e);
+                throw new MissingMethodException(string.Format("The address of the function '{0}' does not exist in libvlc library.", vlcFunctionName), e);
             }
         }
 

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\Vlc.DotNet.props" />
+  
+  <PropertyGroup>
+    <Title>Vlc.DotNet.Core</Title>
+    <TargetFrameworks>net20;net35;net40;net45;netstandard2.0;netstandard1.3</TargetFrameworks>
+    <Description>.Net API to use the audio/video capabilities of the VLC libraries.</Description>
+    <PackageTags>vlc media api</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj" />
+  </ItemGroup>
+
+</Project>

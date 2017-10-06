@@ -6,6 +6,9 @@ namespace Vlc.DotNet.Core
     using System.Runtime.InteropServices;
     using System.Text;
     using System.Threading;
+#if NETSTANDARD1_3
+    using System.Threading.Tasks;
+#endif
     using Vlc.DotNet.Core.Interops;
 
     public sealed partial class VlcMediaPlayer
@@ -62,10 +65,7 @@ namespace Vlc.DotNet.Core
                 try {
                     Win32Interops.vsprintf(utf8Buffer, format, args);
 
-                    //Yeah, ok the message is formatted, but it's an UTF-8 string treated as ASCII inside an UTF-16 string. Do the conversion
-                    var sbDecoded = new StringBuilder(Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, null, 0));
-                    Win32Interops.MultiByteToWideChar(Win32Interops.CP_UTF8, 0, utf8Buffer, byteLength, sbDecoded, sbDecoded.Capacity);
-                    formattedDecodedMessage = sbDecoded.ToString();
+                    formattedDecodedMessage = Utf8InteropStringConverter.Utf8InteropToString(utf8Buffer);
                 }
                 finally
                 {
@@ -78,10 +78,14 @@ namespace Vlc.DotNet.Core
                 this.Manager.GetLogContext(ctx, out module, out file, out line);
 
                 // Do the notification on another thread, so that VLC is not interrupted by the logging
+#if NETSTANDARD1_3
+                Task.Run(() => this._log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line)));
+#else
                 ThreadPool.QueueUserWorkItem(eventArgs =>
                 {
                     this._log(this.myMediaPlayerInstance, (VlcMediaPlayerLogEventArgs)eventArgs);
                 }, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line));
+#endif
             }
         }
     }

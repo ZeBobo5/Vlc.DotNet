@@ -15,11 +15,7 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-#if NET20
-            return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetVideoMarqueeString>().Invoke(mediaPlayerInstance, VideoMarqueeOptions.Text));
-#else
-            return GetInteropDelegate<GetVideoMarqueeString>().Invoke(mediaPlayerInstance, VideoMarqueeOptions.Text).ToStringAnsi();
-#endif
+            return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetVideoMarqueeString>().Invoke(mediaPlayerInstance, VideoMarqueeOptions.Text));
         }
         public int GetVideoMarqueeColor(VlcMediaPlayerInstance mediaPlayerInstance)
         {

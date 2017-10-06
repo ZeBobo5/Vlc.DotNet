@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\Vlc.DotNet.props" />
+
+  <PropertyGroup>
+    <Title>Vlc.DotNet.Wpf</Title>
+    <TargetFrameworks>net35;net40;net45</TargetFrameworks>
+    <Description>WPF control that hosts the audio/video capabilities of the VLC libraries.</Description>
+    <PackageTags>vlc media wpf</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Vlc.DotNet.pfx.snk">
+      <Link>Vlc.DotNet.pfx.snk</Link>
+    </None>
+
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj" />
+    <ProjectReference Include="..\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj" />
+  </ItemGroup>
+
+</Project>

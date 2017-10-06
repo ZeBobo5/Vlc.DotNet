@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\Vlc.DotNet.props" />
+
+  <PropertyGroup>
+    <Title>Vlc.DotNet.Core.Interops</Title>
+    <TargetFrameworks>net20;net35;net40;net45;netstandard2.0;netstandard1.3</TargetFrameworks>
+    <Description>Wrapper to use the audio/video capabilities of the VLC libraries.</Description>
+    <PackageTags>vlc media wrapper interop interops</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Vlc.DotNet.pfx.snk">
+      <Link>Vlc.DotNet.pfx.snk</Link>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -29,7 +29,11 @@ namespace Vlc.DotNet.Core
             result.Add(new AudioOutputDescription(module.Name, module.Description, manager, mediaPlayerInstance));
             if (module.NextAudioOutputDescription != IntPtr.Zero)
             {
-                AudioOutputDescriptionStructure nextModule = (AudioOutputDescriptionStructure)Marshal.PtrToStructure(module.NextAudioOutputDescription, typeof(AudioOutputDescriptionStructure));
+#if NET20 || NET35 || NET40 || NET45
+                var nextModule = (AudioOutputDescriptionStructure)Marshal.PtrToStructure(module.NextAudioOutputDescription, typeof(AudioOutputDescriptionStructure));
+#else
+                var nextModule = Marshal.PtrToStructure<AudioOutputDescriptionStructure>(module.NextAudioOutputDescription);
+#endif
                 var data = GetSubOutputDescription(nextModule, manager, mediaPlayerInstance);
                 result.AddRange(data);
             }

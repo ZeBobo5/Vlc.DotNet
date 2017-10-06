@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
@@ -59,52 +58,17 @@ namespace Vlc.DotNet.Core
             Audio = new AudioManagement(manager, myMediaPlayerInstance);
         }
 
-        internal VlcManager Manager { get; private set; }
+        /// <summary>
+        /// WARNING : USE AT YOUR OWN RISK!
+        /// Gets the low-level interop manager that calls the methods on the libvlc library.
+        /// This is useful if a higher-level API is missing.
+        /// </summary>
+        public VlcManager Manager { get; private set; }
 
         public IntPtr VideoHostControlHandle
         {
             get { return Manager.GetMediaPlayerVideoHostHandle(myMediaPlayerInstance); }
             set { Manager.SetMediaPlayerVideoHostHandle(myMediaPlayerInstance, value); }
-        }
-
-        private void ResetFromMedia()
-        {
-            UnregisterEvents();
-            if (VideoHostControlHandle != IntPtr.Zero)
-            {
-                var ctrl = Control.FromHandle(VideoHostControlHandle);
-                if (ctrl != null && ctrl.InvokeRequired)
-                {
-                    ctrl.Invoke(new ResetFromMediaCoreDelegate(ResetFromMediaCore), ctrl);
-                }
-                else
-                {
-                    ResetFromMediaCore(ctrl);
-                }
-            }
-            else
-            {
-                ResetFromMediaCore(null);
-            }
-        }
-
-        private delegate void ResetFromMediaCoreDelegate(Control ctrl);
-
-        private void ResetFromMediaCore(Control ctrl)
-        {
-            VideoHostControlHandle = IntPtr.Zero;
-            var mediaInstance = GetMedia().MediaInstance;
-            if (ctrl != null)
-                ctrl.GetType().GetMethod("RecreateHandle", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(ctrl, null);
-            myMediaPlayerInstance.Pointer = IntPtr.Zero;
-            myMediaPlayerInstance = Manager.CreateMediaPlayerFromMedia(mediaInstance);
-            RegisterEvents();
-            Chapters = new ChapterManagement(Manager, myMediaPlayerInstance);
-            SubTitles = new SubTitlesManagement(Manager, myMediaPlayerInstance);
-            Video = new VideoManagement(Manager, myMediaPlayerInstance);
-            Audio = new AudioManagement(Manager, myMediaPlayerInstance);
-            if (ctrl != null)
-                VideoHostControlHandle = ctrl.Handle;
         }
 
         public void Dispose()
@@ -150,6 +114,11 @@ namespace Vlc.DotNet.Core
         public VlcMedia SetMedia(string mrl, params string[] options)
         {
             return SetMedia(new VlcMedia(this, mrl, options));
+        }
+
+        public VlcMedia SetMedia(Stream stream, params string[] options)
+        {
+            return SetMedia(new VlcMedia(this, stream, options));
         }
 
         private VlcMedia SetMedia(VlcMedia media)
@@ -202,7 +171,11 @@ namespace Vlc.DotNet.Core
         public IEnumerable<FilterModuleDescription> GetAudioFilters()
         {
             var module = Manager.GetAudioFilterList();
+#if NET20 || NET35 || NET40 || NET45
             ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module, typeof(ModuleDescriptionStructure));
+#else
+            ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module);
+#endif
             var result = GetSubFilter(nextModule);
             if (module != IntPtr.Zero)
                 Manager.ReleaseModuleDescriptionInstance(module);
@@ -220,7 +193,11 @@ namespace Vlc.DotNet.Core
             result.Add(filterModule);
             if (module.NextModule != IntPtr.Zero)
             {
+#if NET20 || NET35 || NET40 || NET45
                 ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module.NextModule, typeof(ModuleDescriptionStructure));
+#else
+                ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module.NextModule);
+#endif
                 var data = GetSubFilter(nextModule);
                 if (data.Count > 0)
                     result.AddRange(data);
@@ -231,7 +208,11 @@ namespace Vlc.DotNet.Core
         public IEnumerable<FilterModuleDescription> GetVideoFilters()
         {
             var module = Manager.GetVideoFilterList();
+#if NET20 || NET35 || NET40 || NET45
             ModuleDescriptionStructure nextModule = (ModuleDescriptionStructure)Marshal.PtrToStructure(module, typeof(ModuleDescriptionStructure));
+#else
+            ModuleDescriptionStructure nextModule = Marshal.PtrToStructure<ModuleDescriptionStructure>(module);
+#endif
             var result = GetSubFilter(nextModule);
             if (module != IntPtr.Zero)
                 Manager.ReleaseModuleDescriptionInstance(module);

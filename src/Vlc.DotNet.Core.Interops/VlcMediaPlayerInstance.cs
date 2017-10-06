@@ -3,7 +3,7 @@ using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public sealed class VlcMediaPlayerInstance : InteropObjectInstance
+    public sealed partial class VlcMediaPlayerInstance : InteropObjectInstance
     {
         private readonly VlcManager myManager;
 

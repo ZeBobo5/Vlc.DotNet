@@ -7,11 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public string GetCompiler()
         {
-#if !NET20
-            return GetInteropDelegate<GetCompiler>().Invoke().ToStringAnsi();
-#else
-            return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetCompiler>().Invoke());
-#endif
+            return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetCompiler>().Invoke());
         }
     }
 }

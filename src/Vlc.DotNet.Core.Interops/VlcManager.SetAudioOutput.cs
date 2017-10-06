@@ -12,11 +12,12 @@ namespace Vlc.DotNet.Core.Interops
 
         public void SetAudioOutput(string outputName)
         {
-#if NET20
-            GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, StringExtensions.ToHGlobalAnsi(outputName));
-#else
-            GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, outputName.ToHGlobalAnsi());
-#endif
+            EnsureVlcInstance();
+
+            using (var outputInterop = Utf8InteropStringConverter.ToUtf8Interop(outputName))
+            {
+                GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, outputInterop.DangerousGetHandle());
+            }
         }
     }
 }

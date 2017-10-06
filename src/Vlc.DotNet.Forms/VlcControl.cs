@@ -13,6 +13,12 @@ namespace Vlc.DotNet.Forms
     {
         private VlcMediaPlayer myVlcMediaPlayer;
 
+        /// <summary>
+        /// Gets the media player.
+        /// It can be useful in order to achieve lower-level operations that are not available in the control.
+        /// </summary>
+        public VlcMediaPlayer VlcMediaPlayer => this.myVlcMediaPlayer;
+
         #region VlcControl Init
 
         public VlcControl()
@@ -105,12 +111,6 @@ namespace Vlc.DotNet.Forms
 
         bool disposed = false;
 
-        protected void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (!disposed)
@@ -185,6 +185,16 @@ namespace Vlc.DotNet.Forms
             }
         }
 
+        public void Play(Stream stream, params string[] options)
+        {
+            //EndInit();
+            if (myVlcMediaPlayer != null)
+            {
+                myVlcMediaPlayer.SetMedia(stream, options);
+                Play();
+            }
+        }
+
         public void Pause()
         {
             //EndInit();
@@ -216,11 +226,49 @@ namespace Vlc.DotNet.Forms
                 return null;
             }
         }
-        
-        public void TakeSnapshot(string fileName) 
+
+        /// <summary>
+        /// Takes a snapshot of the currently playing video and saves it to the given file
+        /// </summary>
+        /// <param name="fileName">The name of the file to be written</param>
+        public void TakeSnapshot(string fileName)
         {
-            FileInfo fileInfo = new FileInfo(fileName);
-            myVlcMediaPlayer.TakeSnapshot(fileInfo);
+            this.TakeSnapshot(fileName, 0, 0);
+        }
+
+        /// <summary>
+        /// Takes a snapshot of the currently playing video and saves it to the given file
+        /// </summary>
+        /// <remarks>If width AND height is 0, original size is used. If width XOR height is 0, original aspect-ratio is preserved.</remarks>
+        /// <param name="fileName">The name of the file to be written</param>
+        /// <param name="width">The width of the snapshot (0 means auto)</param>
+        /// <param name="height">The height of the snapshot (0 means auto)</param>
+        public void TakeSnapshot(string fileName, uint width, uint height)
+        {
+            this.TakeSnapshot(new FileInfo(fileName), 0, 0);
+        }
+
+
+        /// <summary>
+        /// Takes a snapshot of the currently playing video and saves it to the given file
+        /// </summary>
+        /// <param name="file">The file to be written</param>
+        public void TakeSnapshot(FileInfo file)
+        {
+            this.TakeSnapshot(file, 0, 0);
+        }
+
+
+        /// <summary>
+        /// Takes a snapshot of the currently playing video and saves it to the given file
+        /// </summary>
+        /// <remarks>If width AND height is 0, original size is used. If width XOR height is 0, original aspect-ratio is preserved.</remarks>
+        /// <param name="file">The file to be written</param>
+        /// <param name="width">The width of the snapshot (0 means auto)</param>
+        /// <param name="height">The height of the snapshot (0 means auto)</param>
+        public void TakeSnapshot(FileInfo file, uint width, uint height)
+        {
+            this.myVlcMediaPlayer.TakeSnapshot(file, width, height);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -430,6 +478,12 @@ namespace Vlc.DotNet.Forms
         {
             //EndInit();
             myVlcMediaPlayer.SetMedia(mrl, options);
+        }
+
+        public void SetMedia(Stream stream, params string[] options)
+        {
+            //EndInit();
+            myVlcMediaPlayer.SetMedia(stream, options);
         }
         #endregion
     }

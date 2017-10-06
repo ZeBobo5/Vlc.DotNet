@@ -6,7 +6,12 @@ namespace Vlc.DotNet.Core.Interops
     {
         public string GetAudioOutputDeviceName(string audioOutputDescriptionName, int deviceIndex)
         {
-            return IntPtrExtensions.ToStringAnsi(GetInteropDelegate<GetAudioOutputDeviceName>().Invoke(myVlcInstance, StringExtensions.ToHGlobalAnsi(audioOutputDescriptionName), deviceIndex));
+            EnsureVlcInstance();
+
+            using (var audioOutputInterop = Utf8InteropStringConverter.ToUtf8Interop(audioOutputDescriptionName))
+            {
+                return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetAudioOutputDeviceName>().Invoke(myVlcInstance, audioOutputInterop.DangerousGetHandle(), deviceIndex));
+            }
         }
     }
 }
