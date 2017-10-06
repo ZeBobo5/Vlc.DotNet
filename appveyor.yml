@@ -1,6 +1,6 @@
 environment:
-  version_prefix: 2.2.0
-version: 2.2.0-{branch}{build}
+  version_prefix: 2.2.1
+version: 2.2.1-{branch}{build}
 
 image: Visual Studio 2017
 skip_tags: true
