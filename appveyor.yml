@@ -1,6 +1,6 @@
 environment:
   version_prefix: 2.2.1
-version: 2.2.1-{branch}{build}
+version: $(version_prefix)-{branch}{build}
 
 image: Visual Studio 2017
 skip_tags: true
@@ -8,9 +8,6 @@ init:
   - git config --global core.autocrlf input
 clone_folder: C:\projects\vlc-dotnet-master\
 shallow_clone: true
-dotnet_csproj:
-  patch: true
-  file: 'src\Vlc.DotNet.*\*.csproj'
 artifacts:
   - path: "**/*.nupkg"
     name: "Vlc.DotNet NuGet Packages"

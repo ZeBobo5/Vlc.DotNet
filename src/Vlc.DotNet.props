@@ -4,7 +4,6 @@
     <Product>Vlc.DotNet</Product>
     <Copyright>Copyright © Vlc.DotNet 2014-2017</Copyright>
     <Authors>ZeBobo5</Authors>
-    <Authors>Vlc.DotNet</Authors>
     <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ZeBobo5/Vlc.DotNet</RepositoryUrl>
     <PackageIconUrl>http://images1.videolan.org/images/largeVLC.png</PackageIconUrl>
