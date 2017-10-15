@@ -79,7 +79,7 @@ namespace Vlc.DotNet.Forms
                 myVlcMediaPlayer = new VlcMediaPlayer(VlcLibDirectory, VlcMediaplayerOptions);
             }
 
-            if (this._log != null)
+            if (this.log != null)
             {
                 this.RegisterLogging();
             }
@@ -88,17 +88,17 @@ namespace Vlc.DotNet.Forms
             RegisterEvents();
         }
 
-        private bool _loggingRegistered = false;
+        private bool loggingRegistered = false;
 
         /// <summary>
         /// Connects (only the first time) the events from <see cref="myVlcMediaPlayer"/> to the event handlers registered on this instance
         /// </summary>
         private void RegisterLogging()
         {
-            if (this._loggingRegistered)
+            if (this.loggingRegistered)
                 return;
             this.myVlcMediaPlayer.Log += this.OnLogInternal;
-            this._loggingRegistered = true;
+            this.loggingRegistered = true;
         }
 
         // work around http://stackoverflow.com/questions/34664/designmode-with-controls/708594
@@ -125,7 +125,7 @@ namespace Vlc.DotNet.Forms
                         myVlcMediaPlayer.Dispose();
                     }
                     myVlcMediaPlayer = null;
-                    base.Dispose(disposing);
+                    base.Dispose(true);
                 }
                 disposed = true;
             }

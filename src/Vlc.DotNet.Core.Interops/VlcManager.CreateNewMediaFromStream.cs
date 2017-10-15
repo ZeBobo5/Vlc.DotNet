@@ -17,9 +17,9 @@ namespace Vlc.DotNet.Core.Interops
         private static readonly CallbackCloseMediaDelegate CallbackCloseMediaDelegate = CallbackCloseMedia;
 
 #if NET20 || NET35
-        private static readonly Dictionary<IntPtr, StreamData> dicStreams = new Dictionary<IntPtr, StreamData>();
+        private static readonly Dictionary<IntPtr, StreamData> DicStreams = new Dictionary<IntPtr, StreamData>();
 #else
-        private static readonly ConcurrentDictionary<IntPtr, StreamData> dicStreams = new ConcurrentDictionary<IntPtr, StreamData>();
+        private static readonly ConcurrentDictionary<IntPtr, StreamData> DicStreams = new ConcurrentDictionary<IntPtr, StreamData>();
 #endif
         private static int streamIndex = 0;
 
@@ -89,7 +89,7 @@ namespace Vlc.DotNet.Core.Interops
             try
             {
                 var streamData = GetStream(opaque);
-                int read = 0;
+                int read;
 
                 lock (streamData)
                 {
@@ -128,6 +128,7 @@ namespace Vlc.DotNet.Core.Interops
             }
             catch (Exception)
             {
+                // ignored
             }
         }
 
@@ -140,12 +141,12 @@ namespace Vlc.DotNet.Core.Interops
 
             IntPtr handle;
 
-            lock (dicStreams)
+            lock (DicStreams)
             {
                 streamIndex++;
 
                 handle = new IntPtr(streamIndex);
-                dicStreams[handle] = new StreamData()
+                DicStreams[handle] = new StreamData()
                 {
                     Buffer = new byte[0x4000],
                     Handle = handle,
@@ -159,19 +160,19 @@ namespace Vlc.DotNet.Core.Interops
         private static StreamData GetStream(IntPtr handle)
         {
 #if NET20 || NET35
-            lock (dicStreams)
+            lock (DicStreams)
             {
-                if (!dicStreams.ContainsKey(handle))
+                if (!DicStreams.ContainsKey(handle))
                 {
                     return null;
                 }
 
-                return dicStreams[handle];
+                return DicStreams[handle];
             }
 #else
             StreamData result;
 
-            if (!dicStreams.TryGetValue(handle, out result))
+            if (!DicStreams.TryGetValue(handle, out result))
             {
                 return null;
             }
@@ -183,16 +184,16 @@ namespace Vlc.DotNet.Core.Interops
         private static void RemoveStream(IntPtr handle)
         {
 #if NET20 || NET35
-            lock (dicStreams)
+            lock (DicStreams)
             {
-                if (dicStreams.ContainsKey(handle))
+                if (DicStreams.ContainsKey(handle))
                 {
-                    dicStreams.Remove(handle);
+                    DicStreams.Remove(handle);
                 }
             }
 #else
             StreamData result;
-            dicStreams.TryRemove(handle, out result);
+            DicStreams.TryRemove(handle, out result);
 #endif
         }
     }

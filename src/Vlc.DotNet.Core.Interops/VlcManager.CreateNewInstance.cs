@@ -1,10 +1,10 @@
-﻿namespace Vlc.DotNet.Core.Interops
-{
-    using System;
-    using System.Runtime.InteropServices;
-    using Vlc.DotNet.Core.Interops.Signatures;
-    using System.Text;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Text;
+using Vlc.DotNet.Core.Interops.Signatures;
 
+namespace Vlc.DotNet.Core.Interops
+{
     public sealed partial class VlcManager
     {
         public void CreateNewInstance(string[] args)

@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <wpf:VlcControl Grid.Row="0" x:Name="myControl"/>
+        <wpf:VlcControl Grid.Row="0" x:Name="MyControl"/>
 
         <Button Grid.Row="1" Click="OnPlayButtonClick">Play</Button>
         <Button Grid.Row="2" Click="OnForwardButtonClick" x:Name="Forward">Forward</Button>
