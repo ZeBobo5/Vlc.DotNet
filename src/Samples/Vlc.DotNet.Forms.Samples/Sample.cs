@@ -5,8 +5,6 @@ using System.Windows.Forms;
 
 namespace Vlc.DotNet.Forms.Samples
 {
-    using System.Diagnostics;
-
     public partial class Sample : Form
     {
         public Sample()
@@ -18,8 +16,6 @@ namespace Vlc.DotNet.Forms.Samples
         {
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
-            if (currentDirectory == null)
-                return;
             if (IntPtr.Size == 4)
                 e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x86\"));
             else
@@ -27,7 +23,7 @@ namespace Vlc.DotNet.Forms.Samples
 
             if (!e.VlcLibDirectory.Exists)
             {
-                var folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+                var folderBrowserDialog = new FolderBrowserDialog();
                 folderBrowserDialog.Description = "Select Vlc libraries folder.";
                 folderBrowserDialog.RootFolder = Environment.SpecialFolder.Desktop;
                 folderBrowserDialog.ShowNewFolderButton = true;
@@ -206,7 +202,8 @@ namespace Vlc.DotNet.Forms.Samples
 
         private void OnVlcMediaPlayerLog(object sender, Core.VlcMediaPlayerLogEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(string.Format("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module));
+            string message = string.Format("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module);
+            System.Diagnostics.Debug.WriteLine(message);
         }
     }
 }

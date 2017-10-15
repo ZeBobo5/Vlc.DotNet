@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
 {
-    using Vlc.DotNet.Core.Interops;
-
     public sealed partial class VlcMediaPlayer
     {
         private EventCallback myOnMediaPlayerSnapshotTakenInternalEventCallback;

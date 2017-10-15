@@ -1,9 +1,8 @@
 ﻿using System;
+using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
 {
-    using Vlc.DotNet.Core.Interops.Signatures;
-
     public sealed class VlcMediaPlayerLogEventArgs : EventArgs
     {
         public VlcMediaPlayerLogEventArgs(VlcLogLevel level, string message, string module, string sourceFile, uint? sourceLine)

@@ -32,7 +32,7 @@ namespace System.Windows.Forms
             {
                 if (ctrl.InvokeRequired)
                 {
-                    ctrl.Invoke(new InvokeIfRequiredDelegate<TControl>(ControlExtensions.InvokeIfRequired), ctrl, action);
+                    ctrl.Invoke(new InvokeIfRequiredDelegate<TControl>(InvokeIfRequired), ctrl, action);
                 }
                 else
                 {

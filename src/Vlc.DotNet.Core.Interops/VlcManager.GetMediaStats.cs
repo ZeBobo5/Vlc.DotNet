@@ -9,7 +9,7 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaInstance == IntPtr.Zero)
                 throw new ArgumentException("Media instance is not initialized.");
-            var result = new MediaStatsStructure();
+            MediaStatsStructure result;
             GetInteropDelegate<GetMediaStats>().Invoke(mediaInstance, out result);
             return result;
         }

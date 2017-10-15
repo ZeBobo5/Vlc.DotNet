@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// Callback prototype to open a custom bitstream input media.
     /// Note: The same media item can be opened multiple times. Each time, this callback is invoked.
     /// It should allocate and initialize any instance-specific resources, then store them in <paramref name="pData"/>.
-    /// The instance resources can be freed in the <see cref="CallbackClosemediaDelegate"/> callback.
+    /// The instance resources can be freed in the <see cref="CallbackCloseMediaDelegate"/> callback.
     /// </summary>
     /// <param name="opaque">private pointer as passed to <see cref="CallbackOpenMediaDelegate"/></param>
     /// <param name="pData">storage space for a private data pointer [OUT]</param>

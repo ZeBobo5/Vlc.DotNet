@@ -24,21 +24,21 @@ namespace Vlc.DotNet.Core.Interops
         /// <param name="line">The source code file line number storage.</param>
         public void GetLogContext(IntPtr logContext, out string module, out string file, out uint? line)
         {
-            UIntPtr _line;
-            IntPtr _module;
-            IntPtr _file;
-            GetInteropDelegate<GetLogContext>().Invoke(logContext, out _module, out _file, out _line);
-            if (_line == UIntPtr.Zero)
+            UIntPtr line2;
+            IntPtr module2;
+            IntPtr file2;
+            GetInteropDelegate<GetLogContext>().Invoke(logContext, out module2, out file2, out line2);
+            if (line2 == UIntPtr.Zero)
             {
                 line = null;
             }
             else
             {
-                line = _line.ToUInt32();
+                line = line2.ToUInt32();
             }
 
-            module = Utf8InteropStringConverter.Utf8InteropToString(_module);
-            file = Utf8InteropStringConverter.Utf8InteropToString(_file);
+            module = Utf8InteropStringConverter.Utf8InteropToString(module2);
+            file = Utf8InteropStringConverter.Utf8InteropToString(file2);
         }
     }
 }
