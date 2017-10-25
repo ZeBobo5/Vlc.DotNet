@@ -13,16 +13,16 @@
 #if !NETSTANDARD1_3
     [SecurityPermission(SecurityAction.Demand, UnmanagedCode = true)]
 #endif
-    internal sealed class SafeUnmanagedMemoryHandle : SafeHandle
+    public sealed class Utf8StringHandle : SafeHandle
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SafeUnmanagedMemoryHandle"/> class by providing the handle to be stored.
+        /// Initializes a new instance of the <see cref="Utf8StringHandle"/> class by providing the handle to be stored.
         /// </summary>
         /// <param name="preexistingHandle">The handle that is stored by this instance at initialization.</param>
-        internal SafeUnmanagedMemoryHandle(IntPtr preexistingHandle)
+        internal Utf8StringHandle(IntPtr stringHandle)
             : base(IntPtr.Zero, true)
         {
-            this.SetHandle(preexistingHandle);
+            this.SetHandle(stringHandle);
         }
 
         /// <summary>

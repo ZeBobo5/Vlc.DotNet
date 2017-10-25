@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_media_set_meta")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void SetMediaMetadata(IntPtr mediaInstance, MediaMetadatas meta, IntPtr value);
+    internal delegate void SetMediaMetadata(IntPtr mediaInstance, MediaMetadatas meta, Utf8StringHandle value);
 }

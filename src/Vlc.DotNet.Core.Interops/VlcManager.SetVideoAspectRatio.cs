@@ -10,9 +10,9 @@ namespace Vlc.DotNet.Core.Interops
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
 
-            using (var aspectRatioInterop = Utf8InteropStringConverter.ToUtf8Interop(aspectRatio))
+            using (var aspectRatioInterop = Utf8InteropStringConverter.ToUtf8StringHandle(aspectRatio))
             {
-                GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, aspectRatioInterop.DangerousGetHandle());
+                GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, aspectRatioInterop);
             }
         }
     }
