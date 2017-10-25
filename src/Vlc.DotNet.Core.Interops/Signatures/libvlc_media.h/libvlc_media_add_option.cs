@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_media_add_option")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void AddOptionToMedia(IntPtr mediaInstance, IntPtr mrl);
+    internal delegate void AddOptionToMedia(IntPtr mediaInstance, Utf8StringHandle mrl);
 }

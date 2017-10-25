@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_audio_output_device_set")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void SetAudioOutputDevice(IntPtr mediaPlayerInstance, IntPtr audioOutputName, IntPtr deviceName);
+    internal delegate void SetAudioOutputDevice(IntPtr mediaPlayerInstance, Utf8StringHandle audioOutputName, Utf8StringHandle deviceName);
 }

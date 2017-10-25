@@ -14,9 +14,9 @@ namespace Vlc.DotNet.Core.Interops
         {
             EnsureVlcInstance();
 
-            using (var outputInterop = Utf8InteropStringConverter.ToUtf8Interop(outputName))
+            using (var outputInterop = Utf8InteropStringConverter.ToUtf8StringHandle(outputName))
             {
-                GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, outputInterop.DangerousGetHandle());
+                GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, outputInterop);
             }
         }
     }
