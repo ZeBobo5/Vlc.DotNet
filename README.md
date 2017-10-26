@@ -5,7 +5,7 @@ Vlc.DotNet
 
 Vlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it's a .net wrapper around `libvlc`.
 
-It can work on any .net framework version starting from .net 2.0. (.net standard support is currently in beta (use prerelease packages!))
+It can work on any .net framework version starting from .net 2.0 and .net standard 1.3 (starting from Vlc.DotNet 2.2.1).
 
 On the front-end side, two components are currently available to make it easy to integrate in your apps. One is for WinForms, the other for WPF.
 
@@ -13,7 +13,7 @@ How to use
 ----------
 It all starts with those three steps :
 - Install one of the NuGet Packages below
-- Install `libvlc` libraries from one of the official distributions (To be improved, see #288)
+- Install `libvlc` libraries from one of the official distributions (To be improved, see [#288](https://github.com/ZeBobo5/Vlc.DotNet/issues/288))
 - Integrate it into your app
 
 See the [Getting started wiki](https://github.com/ZeBobo5/Vlc.DotNet/wiki/Getting-started)
@@ -29,7 +29,7 @@ develop | [![Build status](https://ci.appveyor.com/api/projects/status/lkx1ojkcg
 
 NuGet Packages
 --------------
-Packages are available for Vlc libraries
+Packages are available for Vlc libraries. Releases packages follow [SEMVER 2.0.0](http://semver.org/)
 
 - [Vlc.DotNet.Core.Interops](https://www.nuget.org/packages/Vlc.DotNet.Core.Interops/) : You probably don't want to use this one directly
 - [Vlc.DotNet.Core](https://www.nuget.org/packages/Vlc.DotNet.Core/) : If you don't want to have a video interface, this might be the package to use.
