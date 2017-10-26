@@ -1,5 +1,5 @@
 environment:
-  version_prefix: 2.2.1
+  version_prefix: 2.2.2
 version: $(version_prefix)-{branch}{build}
 
 image: Visual Studio 2017
