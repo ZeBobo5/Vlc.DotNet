@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Vlc.DotNet.Core.Interops.Signatures
 {
     /// <summary>
-    /// Release a list of module descriptions.
+    /// Returns a list of audio filters that are available.
     /// </summary>
     [LibVlcFunction("libvlc_audio_filter_list_get")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
