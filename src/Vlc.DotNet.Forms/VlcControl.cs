@@ -120,15 +120,13 @@ namespace Vlc.DotNet.Forms
                     if (myVlcMediaPlayer != null)
                     {
                         UnregisterEvents();
-                        if (IsPlaying)
-                            Stop();
                         myVlcMediaPlayer.Dispose();
                     }
                     myVlcMediaPlayer = null;
-                    base.Dispose(true);
                 }
                 disposed = true;
             }
+            base.Dispose(disposing);
         }
 
         public DirectoryInfo OnVlcLibDirectoryNeeded()

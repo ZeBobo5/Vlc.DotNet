@@ -90,7 +90,7 @@ namespace Vlc.DotNet.Core
             {
                 loadedMedia.Dispose();
             }
-            VlcMedia.LoadedMedias[this] = new List<VlcMedia>();
+            VlcMedia.LoadedMedias.Remove(this);
 
             myMediaPlayerInstance.Dispose();
             Manager.Dispose();
