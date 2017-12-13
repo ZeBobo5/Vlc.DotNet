@@ -1,19 +1,26 @@
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using Vlc.DotNet.Core.Interops;
 using System.Windows.Forms.Integration;
 
 namespace Vlc.DotNet.Wpf
 {
     public class VlcControl : WindowsFormsHost
     {
-        public Forms.VlcControl MediaPlayer { get; private set; }
+        public Forms.VlcControl MediaPlayer { get; }
 
         public VlcControl()
         {
             MediaPlayer = new Forms.VlcControl();
             this.Child = MediaPlayer; 
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.Child = null;
+                this.MediaPlayer.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
     }
 }
