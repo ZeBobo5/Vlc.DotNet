@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
@@ -17,15 +16,14 @@ namespace Vlc.DotNet.Core
 #else
             var args = Marshal.PtrToStructure<VlcEventArg>(ptr);
 #endif
-            var fileName = Utf8InteropStringConverter.Utf8InteropToString(args.eventArgsUnion.MediaPlayerTitleChanged.NewTitle);
-            OnMediaPlayerTitleChanged(fileName);
+            OnMediaPlayerTitleChanged(args.eventArgsUnion.MediaPlayerTitleChanged.NewTitle);
         }
 
-        public void OnMediaPlayerTitleChanged(string fileName)
+        public void OnMediaPlayerTitleChanged(int newTitle)
         {
             var del = TitleChanged;
             if (del != null)
-                del(this, new VlcMediaPlayerTitleChangedEventArgs(fileName));
+                del(this, new VlcMediaPlayerTitleChangedEventArgs(newTitle));
         }
     }
 }
