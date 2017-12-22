@@ -4,11 +4,11 @@ namespace Vlc.DotNet.Core
 {
     public sealed class VlcMediaPlayerTitleChangedEventArgs : EventArgs
     {
-        public VlcMediaPlayerTitleChangedEventArgs(string newTitle)
+        public VlcMediaPlayerTitleChangedEventArgs(int newTitle)
         {
             NewTitle = newTitle;
         }
 
-        public string NewTitle { get; private set; }
+        public int NewTitle { get; private set; }
     }
 }

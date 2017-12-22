@@ -163,9 +163,8 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
     [StructLayout(LayoutKind.Sequential)]
     public struct MediaPlayerTitleChanged
-    {
-        //todo : original was int : Check if ok
-        public IntPtr NewTitle;
+    {        
+        public int NewTitle;
     }
 
     [StructLayout(LayoutKind.Sequential)]
