@@ -1,12 +1,14 @@
-﻿using Vlc.DotNet.Core.Interops.Signatures;
+﻿using System;
+using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcMediaPlayerInstance
     {
+        [Obsolete]
         public void SetVideoFormatCallbacks(VideoFormatCallback videoFormatCallback, CleanupVideoCallback cleanupCallback)
         {
-            myManager.GetInteropDelegate<SetVideoFormatCallbacks>().Invoke(this.Pointer, videoFormatCallback, cleanupCallback);
+            myManager.SetVideoFormatCallbacks(this, videoFormatCallback, cleanupCallback);
         }
     }
 }
