@@ -29,29 +29,33 @@ namespace Vlc.DotNet.Wpf.Samples
                 vlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\lib\x64\"));
             }
         }
-        
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.control?.Dispose();
+            base.OnClosing(e);
+        }
+
         private void OnPlayButtonClick(object sender, RoutedEventArgs e)
         {
             this.control?.Dispose();
             this.control = new VlcControl();
-            this.control.MediaPlayer.VlcLibDirectory = this.vlcLibDirectory;
-            this.control.MediaPlayer.EndInit();
-
             this.ControlContainer.Content = this.control;
+            this.control.CreatePlayer(this.vlcLibDirectory);
 
             // This can also be called before EndInit
             this.control.MediaPlayer.Log += (_, args) =>
             {
-                string message = string.Format("libVlc : {0} {1} @ {2}", args.Level, args.Message, args.Module);
+                string message = $"libVlc : {args.Level} {args.Message} @ {args.Module}";
                 System.Diagnostics.Debug.WriteLine(message);
             };
+
             control.MediaPlayer.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
             //control.MediaPlayer.Play(new FileInfo(@"..\..\..\Vlc.DotNet\Samples\Videos\BBB trailer.mov"));
         }
 
         private void OnStopButtonClick(object sender, RoutedEventArgs e)
         {
-            this.control?.MediaPlayer.Stop(); // This isn't strictly needed if Dispose() is called, but this is a demo...
             this.control?.Dispose();
             this.control = null;
         }

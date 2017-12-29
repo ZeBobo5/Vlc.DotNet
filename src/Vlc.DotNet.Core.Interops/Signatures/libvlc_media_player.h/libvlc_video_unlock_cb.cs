@@ -23,8 +23,10 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <param name="planes">
     /// pixel planes as defined by the <see cref="LockVideoCallback"/>
     /// callback (this parameter is only for convenience)
+    /// 
+    /// Its size is always PICTURE_PLANE_MAX, which is 5 in my experience. Only the number of planes required by chroma are usable, which is 1 for RV32.
     /// </param>
     [LibVlcFunction("libvlc_video_lock_cb")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void UnlockVideoCallback(IntPtr userData, IntPtr picture, IntPtr planes);
+    public delegate void UnlockVideoCallback(IntPtr userData, IntPtr picture, [MarshalAs(UnmanagedType.LPArray, SizeConst = 5)]IntPtr[] planes);
 }
