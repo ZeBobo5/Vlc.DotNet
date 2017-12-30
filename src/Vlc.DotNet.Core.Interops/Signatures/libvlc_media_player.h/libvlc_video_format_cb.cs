@@ -43,5 +43,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </remarks>
     [LibVlcFunction("libvlc_video_format_cb")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate uint VideoFormatCallback(out IntPtr userData, out UInt32 chroma, out uint width, out uint height, out uint pitches, out uint lines);
+    public delegate uint VideoFormatCallback(out IntPtr userData, ref UInt32 chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines);
 }

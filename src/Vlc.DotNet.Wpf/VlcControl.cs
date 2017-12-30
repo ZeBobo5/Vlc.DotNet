@@ -1,7 +1,4 @@
 ﻿
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace Vlc.DotNet.Wpf
 {
     using System;
@@ -9,16 +6,18 @@ namespace Vlc.DotNet.Wpf
 #if NET45
     using System.IO.MemoryMappedFiles;
 #endif
-    using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Media;
     using Vlc.DotNet.Core;
     using System.Windows.Controls;
     using System.Windows.Interop;
+    using System.Windows.Data;
+
 
     public class VlcControl : UserControl, IDisposable
     {
+        private Viewbox viewBox;
         private readonly Image videoContent = new Image();
         private Size currentSize = new Size(1, 1);
 
@@ -44,13 +43,16 @@ namespace Vlc.DotNet.Wpf
 
         public VlcControl()
         {
-            this.Content = this.videoContent;
-        }
+            this.viewBox = new Viewbox()
+            {
+                Child = this.videoContent,
+                Stretch = Stretch.Uniform
+            };
 
-        protected override Size MeasureOverride(Size constraint)
-        {
-            currentSize = new Size(Math.Max(constraint.Width, 1), Math.Max(constraint.Height, 1));
-            return currentSize;
+            this.Content = this.viewBox;
+            this.Background = Brushes.Black;
+            // Binds the VideoSource to the Image.Source property
+            this.videoContent.SetBinding(Image.SourceProperty, new Binding(nameof(VideoSource)) {Source = this});
         }
 
         public VlcMediaPlayer MediaPlayer { get; private set; }
@@ -66,12 +68,10 @@ namespace Vlc.DotNet.Wpf
         }
 
 #region Vlc video callbacks
-        private uint VideoFormat(out IntPtr userdata, out UInt32 chroma, out uint width, out uint height, out uint pitches, out uint lines)
+        private uint VideoFormat(out IntPtr userdata, ref UInt32 chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
             var pixelFormat = PixelFormats.Bgr32;
             chroma = BitConverter.ToUInt32(new[] {(byte) 'R', (byte) 'V', (byte) '3', (byte) '2'}, 0);
-            width = (uint)this.currentSize.Width;
-            height = (uint)this.currentSize.Height;
             pitches = (uint)(width*pixelFormat.BitsPerPixel) / 8;
             lines = (uint)this.currentSize.Height;
 
@@ -95,7 +95,6 @@ namespace Vlc.DotNet.Wpf
             Dispatcher.Invoke((Action)(() =>
             {
                 this.VideoSource = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(handle, (int) args.width, (int) args.height, args.pixelFormat, (int) args.pitches, 0);
-                this.videoContent.Source = this.VideoSource;
             }));
 
 #if NET45
@@ -132,7 +131,6 @@ namespace Vlc.DotNet.Wpf
         private void RemoveVideo()
         {
             this.VideoSource = null;
-            this.videoContent.Source = null;
 
 #if NET45
             this.memoryMappedView?.Dispose();
