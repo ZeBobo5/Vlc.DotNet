@@ -1,4 +1,7 @@
 ﻿
+using System.Linq;
+using System.Windows.Media.Imaging;
+
 namespace Vlc.DotNet.Wpf
 {
     using System;
@@ -18,8 +21,7 @@ namespace Vlc.DotNet.Wpf
     public class VlcControl : UserControl, IDisposable
     {
         private Viewbox viewBox;
-        private readonly Image videoContent = new Image();
-        private Size currentSize = new Size(1, 1);
+        private readonly Image videoContent = new Image { ClipToBounds = true };
 
 #if NET45
         private MemoryMappedFile memoryMappedFile;
@@ -29,21 +31,21 @@ namespace Vlc.DotNet.Wpf
         private IntPtr memoryMappedView;
 #endif
 
-        public InteropBitmap VideoSource
+        public ImageSource VideoSource
         {
-            get { return (InteropBitmap)this.GetValue(VideoSourceProperty); }
+            get { return (ImageSource)this.GetValue(VideoSourceProperty); }
             private set { this.SetValue(VideoSourcePropertyKey, value); }
         }
 
         private static readonly DependencyPropertyKey VideoSourcePropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(VideoSource), typeof(InteropBitmap), typeof(VlcControl),
+            DependencyProperty.RegisterReadOnly(nameof(VideoSource), typeof(ImageSource), typeof(VlcControl),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty VideoSourceProperty = VideoSourcePropertyKey.DependencyProperty;
 
         public VlcControl()
         {
-            this.viewBox = new Viewbox()
+            this.viewBox = new Viewbox
             {
                 Child = this.videoContent,
                 Stretch = Stretch.Uniform
@@ -52,7 +54,7 @@ namespace Vlc.DotNet.Wpf
             this.Content = this.viewBox;
             this.Background = Brushes.Black;
             // Binds the VideoSource to the Image.Source property
-            this.videoContent.SetBinding(Image.SourceProperty, new Binding(nameof(VideoSource)) {Source = this});
+            this.videoContent.SetBinding(Image.SourceProperty, new Binding(nameof(VideoSource)) { Source = this });
         }
 
         public VlcMediaPlayer MediaPlayer { get; private set; }
@@ -67,15 +69,36 @@ namespace Vlc.DotNet.Wpf
             this.MediaPlayer.SetVideoCallbacks(LockVideo, null, DisplayVideo, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Aligns dimension to the next multiple of mod
+        /// </summary>
+        /// <param name="dimension">The dimension to be aligned</param>
+        /// <param name="mod">The modulus</param>
+        /// <returns>The aligned dimension</returns>
+        private uint GetAlignedDimension(uint dimension, uint mod)
+        {
+            var modResult = dimension % mod;
+            if (modResult == 0)
+            {
+                return dimension;
+            }
+
+            return dimension + mod - (dimension % mod);
+        }
+
 #region Vlc video callbacks
-        private uint VideoFormat(out IntPtr userdata, ref UInt32 chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
+        private uint VideoFormat(out IntPtr userdata, IntPtr chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
             var pixelFormat = PixelFormats.Bgr32;
-            chroma = BitConverter.ToUInt32(new[] {(byte) 'R', (byte) 'V', (byte) '3', (byte) '2'}, 0);
-            pitches = (uint)(width*pixelFormat.BitsPerPixel) / 8;
-            lines = (uint)this.currentSize.Height;
+            Marshal.WriteByte(chroma, (byte)'R');
+            Marshal.WriteByte(chroma, 1, (byte)'V');
+            Marshal.WriteByte(chroma, 2, (byte)'3');
+            Marshal.WriteByte(chroma, 3, (byte)'2');
 
-            var size = width * height * (uint)pixelFormat.BitsPerPixel / 8;
+            pitches = this.GetAlignedDimension((uint)(width*pixelFormat.BitsPerPixel) / 8, 32);
+            lines = this.GetAlignedDimension(height, 32);
+
+            var size = pitches * lines;
 #if NET45
             this.memoryMappedFile = MemoryMappedFile.CreateNew(null, size);
             var handle = this.memoryMappedFile.SafeMemoryMappedFileHandle.DangerousGetHandle();
@@ -94,7 +117,8 @@ namespace Vlc.DotNet.Wpf
 
             Dispatcher.Invoke((Action)(() =>
             {
-                this.VideoSource = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(handle, (int) args.width, (int) args.height, args.pixelFormat, (int) args.pitches, 0);
+                this.VideoSource = (InteropBitmap)Imaging.CreateBitmapSourceFromMemorySection(handle,
+                    (int)args.width, (int)args.height, args.pixelFormat, (int)args.pitches, 0);
             }));
 
 #if NET45
@@ -124,7 +148,10 @@ namespace Vlc.DotNet.Wpf
 
         private void DisplayVideo(IntPtr userdata, IntPtr picture)
         {
-            this.Dispatcher.BeginInvoke((Action) (() => this.VideoSource?.Invalidate()));
+            this.Dispatcher.BeginInvoke((Action) (() =>
+            {
+                (this.VideoSource as InteropBitmap)?.Invalidate();
+            }));
         }
         #endregion
 
