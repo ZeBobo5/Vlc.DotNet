@@ -1,7 +1,4 @@
 ﻿
-using System.Linq;
-using System.Windows.Media.Imaging;
-
 namespace Vlc.DotNet.Wpf
 {
     using System;
@@ -17,32 +14,67 @@ namespace Vlc.DotNet.Wpf
     using System.Windows.Interop;
     using System.Windows.Data;
 
-
+    /// <summary>
+    /// The Wpf component that allows to display a video in a Wpf way
+    /// </summary>
     public class VlcControl : UserControl, IDisposable
     {
+        /// <summary>
+        /// The Viewbox that contains the video image
+        /// </summary>
         private Viewbox viewBox;
+
+        /// <summary>
+        /// The image that displays the video
+        /// </summary>
         private readonly Image videoContent = new Image { ClipToBounds = true };
 
 #if NET45
+        /// <summary>
+        /// The memory mapped file that contains the picture data
+        /// </summary>
         private MemoryMappedFile memoryMappedFile;
+
+        /// <summary>
+        /// The view that contains the pointer to the buffer that contains the picture data
+        /// </summary>
         private MemoryMappedViewAccessor memoryMappedView;
 #else
+        /// <summary>
+        /// The memory mapped file handle that contains the picture data
+        /// </summary>
         private IntPtr memoryMappedFile;
+
+        /// <summary>
+        /// The pointer to the buffer that contains the picture data
+        /// </summary>
         private IntPtr memoryMappedView;
 #endif
 
+        /// <summary>
+        /// The Image source that represents the video.
+        /// </summary>
         public ImageSource VideoSource
         {
             get { return (ImageSource)this.GetValue(VideoSourceProperty); }
             private set { this.SetValue(VideoSourcePropertyKey, value); }
         }
 
+        /// <summary>
+        /// The private key used to modify the <see cref="VideoSource"/> property
+        /// </summary>
         private static readonly DependencyPropertyKey VideoSourcePropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(VideoSource), typeof(ImageSource), typeof(VlcControl),
                 new PropertyMetadata(null));
 
+        /// <summary>
+        /// The video source dependency property
+        /// </summary>
         public static readonly DependencyProperty VideoSourceProperty = VideoSourcePropertyKey.DependencyProperty;
-
+        
+        /// <summary>
+        /// The constructor
+        /// </summary>
         public VlcControl()
         {
             this.viewBox = new Viewbox
@@ -57,8 +89,15 @@ namespace Vlc.DotNet.Wpf
             this.videoContent.SetBinding(Image.SourceProperty, new Binding(nameof(VideoSource)) { Source = this });
         }
 
+        /// <summary>
+        /// The media player instance. You must call <see cref="CreatePlayer"/> before using this.
+        /// </summary>
         public VlcMediaPlayer MediaPlayer { get; private set; }
 
+        /// <summary>
+        /// Creates the player. This method must be called before using <see cref="MediaPlayer"/>
+        /// </summary>
+        /// <param name="vlcLibDirectory">The directory where to find the vlc library</param>
         public void CreatePlayer(DirectoryInfo vlcLibDirectory)
         {
             var directoryInfo = vlcLibDirectory ?? throw new ArgumentNullException(nameof(vlcLibDirectory));
@@ -87,6 +126,16 @@ namespace Vlc.DotNet.Wpf
         }
 
 #region Vlc video callbacks
+        /// <summary>
+        /// Called by vlc when the video format is needed. This method allocats the picture buffers for vlc and tells it to set the chroma to RV32
+        /// </summary>
+        /// <param name="userdata">The user data that will be given to the <see cref="LockVideo"/> callback. It contains the pointer to the buffer</param>
+        /// <param name="chroma">The chroma</param>
+        /// <param name="width">The visible width</param>
+        /// <param name="height">The visible height</param>
+        /// <param name="pitches">The buffer width</param>
+        /// <param name="lines">The buffer height</param>
+        /// <returns>The number of buffers allocated</returns>
         private uint VideoFormat(out IntPtr userdata, IntPtr chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
             var pixelFormat = PixelFormats.Bgr32;
@@ -132,22 +181,39 @@ namespace Vlc.DotNet.Wpf
             return 1;
         }
 
+        /// <summary>
+        /// Called by Vlc when it requires a cleanup
+        /// </summary>
+        /// <param name="userdata">The parameter is not used</param>
         private void CleanupVideo(ref IntPtr userdata)
         {
+            // This callback may be called by Dispose in the Dispatcher thread, in which case it deadlocks if we call RemoveVideo again in the same thread.
             if (!disposedValue)
             {
                 Dispatcher.Invoke((Action)this.RemoveVideo);
             }
         }
 
+        /// <summary>
+        /// Called by libvlc when it wants to acquire a buffer where to write
+        /// </summary>
+        /// <param name="userdata">The pointer to the buffer (the out parameter of the <see cref="VideoFormat"/> callback)</param>
+        /// <param name="planes">The pointer to the planes array. Since only one plane has been allocated, the array has only one value to be allocated.</param>
+        /// <returns>The pointer that is passed to the other callbacks as a picture identifier, this is not used</returns>
         private IntPtr LockVideo(IntPtr userdata, IntPtr planes)
         {
             Marshal.WriteIntPtr(planes, userdata);
             return userdata;
         }
 
+        /// <summary>
+        /// Called by libvlc when the picture has to be displayed.
+        /// </summary>
+        /// <param name="userdata">The pointer to the buffer (the out parameter of the <see cref="VideoFormat"/> callback)</param>
+        /// <param name="picture">The pointer returned by the <see cref="LockVideo"/> callback. This is not used.</param>
         private void DisplayVideo(IntPtr userdata, IntPtr picture)
         {
+            // Invalidates the bitmap
             this.Dispatcher.BeginInvoke((Action) (() =>
             {
                 (this.VideoSource as InteropBitmap)?.Invalidate();
@@ -155,6 +221,9 @@ namespace Vlc.DotNet.Wpf
         }
         #endregion
 
+        /// <summary>
+        /// Removes the video (must be called from the Dispatcher thread)
+        /// </summary>
         private void RemoveVideo()
         {
             this.VideoSource = null;
@@ -177,7 +246,11 @@ namespace Vlc.DotNet.Wpf
 
         #region IDisposable Support
         private bool disposedValue = false;
-
+        
+        /// <summary>
+        /// Disposes the control.
+        /// </summary>
+        /// <param name="disposing">The parameter is not used.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -189,6 +262,9 @@ namespace Vlc.DotNet.Wpf
             }
         }
 
+        /// <summary>
+        /// The destructor
+        /// </summary>
         ~VlcControl() {
            Dispose(false);
         }
