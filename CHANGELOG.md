@@ -1,4 +1,5 @@
-# 2.2.2 (prerelease)
+# 3.0.0 (prerelease)
+- BREAKING CHANGE : Created a new WPF control using ImageSource [#365](https://github.com/ZeBobo5/Vlc.DotNet/pull/365) see how to use in wiki!
 - FIXED the type of the `NewTitle` property (int -> string) in `VlcMediaPlayerTitleChangedEventArgs` [#364](https://github.com/ZeBobo5/Vlc.DotNet/pull/364)
 - FIXED Dispose() in WPF project [#358](https://github.com/ZeBobo5/Vlc.DotNet/pull/358)
 - CHANGED name of internal handle class from `SafeUnmanagedMemoryHandle` to `Utf8StringHandle` [#337](https://github.com/ZeBobo5/Vlc.DotNet/pull/337)
