@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
@@ -141,6 +140,50 @@ namespace Vlc.DotNet.Core
         public void Play()
         {
             Manager.Play(myMediaPlayerInstance);
+        }
+
+        /// <summary>
+        /// Overload, provided for convenience that calls <see cref="SetMedia(System.IO.FileInfo,string[])"/> before <see cref="Play()"/>
+        /// </summary>
+        /// <param name="file">The file to play</param>
+        /// <param name="options">The options to be given</param>
+        public void Play(FileInfo file, params string[] options)
+        {
+            this.SetMedia(file, options);
+            this.Play();
+        }
+
+        /// <summary>
+        /// Overload, provided for convenience that calls <see cref="SetMedia(System.Uri,string[])"/> before <see cref="Play()"/>
+        /// </summary>
+        /// <param name="uri">The uri to play</param>
+        /// <param name="options">The options to be given</param>
+        public void Play(Uri uri, params string[] options)
+        {
+            this.SetMedia(uri, options);
+            this.Play();
+        }
+
+        /// <summary>
+        /// Overload, provided for convenience that calls <see cref="SetMedia(string,string[])"/> before <see cref="Play()"/>
+        /// </summary>
+        /// <param name="mrl">The mrl to play</param>
+        /// <param name="options">The options to be given</param>
+        public void Play(string mrl, params string[] options)
+        {
+            this.SetMedia(mrl, options);
+            this.Play();
+        }
+
+        /// <summary>
+        /// Overload, provided for convenience that calls <see cref="SetMedia(System.IO.Stream,string[])"/> before <see cref="Play()"/>
+        /// </summary>
+        /// <param name="stream">The stream to play</param>
+        /// <param name="options">The options to be given</param>
+        public void Play(Stream stream, params string[] options)
+        {
+            this.SetMedia(stream, options);
+            this.Play();
         }
 
         public void Pause()

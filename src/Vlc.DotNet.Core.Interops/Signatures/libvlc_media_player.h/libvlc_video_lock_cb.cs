@@ -10,8 +10,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// Private pointer as passed to <see cref="SetVideoCallbacks"/>.
     /// </param>
     /// <param name="planes">
-    /// start address of the pixel planes (LibVLC allocates the array
-    /// of void pointers, this callback must initialize the array)
+    /// The pointer to the array of pointers to the pixel planes (LibVLC allocates the array
+    /// of pointers, this callback must initialize the array)
+    /// If you only need the first plane, then you have to initialize the address pointed by planes
     /// </param>
     /// <remarks>
     /// Whenever a new video frame needs to be decoded, the lock callback is
@@ -21,5 +22,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </remarks>
     [LibVlcFunction("libvlc_video_lock_cb")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate IntPtr LockVideoCallback(IntPtr userData, ref IntPtr planes);
+    public delegate IntPtr LockVideoCallback(IntPtr userData, IntPtr planes);
 }
