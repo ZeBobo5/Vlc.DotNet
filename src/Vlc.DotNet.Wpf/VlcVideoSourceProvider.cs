@@ -78,11 +78,12 @@
         /// Creates the player. This method must be called before using <see cref="MediaPlayer"/>
         /// </summary>
         /// <param name="vlcLibDirectory">The directory where to find the vlc library</param>
-        public void CreatePlayer(DirectoryInfo vlcLibDirectory)
+        /// <param name="vlcMediaPlayerOptions">The initialization options to be given to libvlc</param>
+        public void CreatePlayer(DirectoryInfo vlcLibDirectory, params string[] vlcMediaPlayerOptions)
         {
             var directoryInfo = vlcLibDirectory ?? throw new ArgumentNullException(nameof(vlcLibDirectory));
 
-            this.MediaPlayer = new VlcMediaPlayer(directoryInfo);
+            this.MediaPlayer = new VlcMediaPlayer(directoryInfo, vlcMediaPlayerOptions);
 
             this.MediaPlayer.SetVideoFormatCallbacks(this.VideoFormat, this.CleanupVideo);
             this.MediaPlayer.SetVideoCallbacks(LockVideo, null, DisplayVideo, IntPtr.Zero);
