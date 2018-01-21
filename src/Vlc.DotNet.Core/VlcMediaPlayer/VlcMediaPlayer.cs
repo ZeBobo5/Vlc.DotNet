@@ -42,6 +42,9 @@ namespace Vlc.DotNet.Core
             SubTitles = new SubTitlesManagement(manager, myMediaPlayerInstance);
             Video = new VideoManagement(manager, myMediaPlayerInstance);
             Audio = new AudioManagement(manager, myMediaPlayerInstance);
+#if !NET20 && !NET35 && !NET40
+            Dialogs = new DialogsManagement(manager, myMediaPlayerInstance);
+#endif
         }
 
         internal VlcMediaPlayer(VlcManager manager, string[] options)
@@ -55,6 +58,9 @@ namespace Vlc.DotNet.Core
             SubTitles = new SubTitlesManagement(manager, myMediaPlayerInstance);
             Video = new VideoManagement(manager, myMediaPlayerInstance);
             Audio = new AudioManagement(manager, myMediaPlayerInstance);
+#if !NET20 && !NET35 && !NET40
+            Dialogs = new DialogsManagement(manager, myMediaPlayerInstance);
+#endif
         }
 
         /// <summary>
@@ -301,11 +307,15 @@ namespace Vlc.DotNet.Core
             Manager.Navigate(myMediaPlayerInstance, navigateMode);
         }
 
-        public ISubTitlesManagement SubTitles { get; private set; }
+        public ISubTitlesManagement SubTitles { get;  }
 
-        public IVideoManagement Video { get; private set; }
+        public IVideoManagement Video { get; }
 
-        public IAudioManagement Audio { get; private set; }
+        public IAudioManagement Audio { get; }
+
+#if !NET20 && !NET35 && !NET40
+        public IDialogsManagement Dialogs { get; }
+#endif
 
         public long Length
         {

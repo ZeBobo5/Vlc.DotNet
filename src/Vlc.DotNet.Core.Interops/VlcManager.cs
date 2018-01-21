@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
@@ -41,6 +42,12 @@ namespace Vlc.DotNet.Core.Interops
                         MyAllInstance.Remove(kv.Key);
                 }
             }
+
+            if (this.dialogCallbacksPointer != IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(this.dialogCallbacksPointer);
+            }
+
             base.Dispose(disposing);
         }
 
