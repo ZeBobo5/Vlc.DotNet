@@ -1,0 +1,31 @@
+﻿<Window x:Class="Samples.Wpf.Advanced.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Samples.Wpf.Advanced"
+        xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl Grid.Row="0" Name="ControlContainer">
+        </ContentControl>
+
+        <Button Grid.Row="1" Click="OnPlayButtonClick">Play</Button>
+        <Button Grid.Row="2" Click="OnStopButtonClick">Stop</Button>
+        <Button Grid.Row="3" Click="OnForwardButtonClick" x:Name="Forward">Forward</Button>
+        <Button Grid.Row="4" Click="GetLength_Click" x:Name="GetLength">Get Length</Button>
+        <Button Grid.Row="5" Click="GetCurrentTime_Click" x:Name="GetCurrentTime">Get Current Time</Button>
+        <Button Grid.Row="6" Click="SetCurrentTime_Click" x:Name="SetCurrentTime">Set Current Time to 5s</Button>
+    </Grid>
+</Window>
