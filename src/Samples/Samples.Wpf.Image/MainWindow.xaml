@@ -1,0 +1,24 @@
+﻿<Window x:Class="Samples.Wpf.Image.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Samples.Wpf.Image"
+        xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600">
+  <Grid>
+    <Grid.Background>
+      <VisualBrush Viewbox="0.20,0.20,0.6,0.6">
+        <VisualBrush.Visual>
+          <Image x:Name="BackgroundVideo" Stretch="UniformToFill">
+            <Image.Effect>
+              <BlurEffect Radius="20"/>
+            </Image.Effect>
+          </Image>
+        </VisualBrush.Visual>
+      </VisualBrush>
+    </Grid.Background>
+    <Image x:Name="Video" Stretch="Uniform"/>
+  </Grid>
+</Window>
