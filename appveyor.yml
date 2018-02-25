@@ -9,7 +9,7 @@ init:
 clone_folder: C:\projects\vlc-dotnet-master\
 shallow_clone: true
 artifacts:
-  - path: "**/*.nupkg"
+  - path: "src/Vlc.DotNet.*/**/*.nupkg"
     name: "Vlc.DotNet NuGet Packages"
 deploy:
   - provider: NuGet
