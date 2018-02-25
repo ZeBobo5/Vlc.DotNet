@@ -23,8 +23,10 @@ for:
       only:
         - master
 
+    before_build:
+      - nuget restore "src\Vlc.DotNet.sln"
+
     build_script:
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionPrefix=%version_prefix% /Verbosity:Minimal "src\Vlc.DotNet.sln"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.sln"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:VersionPrefix=%version_prefix% /p:Configuration=Release "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
@@ -36,8 +38,10 @@ for:
       only:
         - develop
 
+    before_build:
+      - nuget restore "src\Vlc.DotNet.sln"
+
     build_script:
-      - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Restore /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% /Verbosity:Minimal "src\Vlc.DotNet.sln"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Build /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.sln"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj"
       - msbuild /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /t:Pack /p:Configuration=Release /p:VersionPrefix=%version_prefix% /p:VersionSuffix=develop%APPVEYOR_BUILD_NUMBER% "src\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj"
