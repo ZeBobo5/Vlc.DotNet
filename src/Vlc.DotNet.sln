@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlc.DotNet.Core.Interops", "Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj", "{DCF701C3-6635-4B9F-A90F-5D71B5BCE0C7}"
 EndProject
@@ -29,6 +29,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Wpf.Advanced", "Samples\Samples.Wpf.Advanced\Samples.Wpf.Advanced.csproj", "{B964BF4A-7A77-415F-A9A7-7107EA4C60B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Wpf.Image", "Samples\Samples.Wpf.Image\Samples.Wpf.Image.csproj", "{D34CD9AE-6DE3-4F14-BB10-71FA31DD1E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Wpf.Dialogs", "Samples\Samples.Wpf.Dialogs\Samples.Wpf.Dialogs.csproj", "{BB789E9A-E851-4684-9D29-8744E9C95086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +78,10 @@ Global
 		{D34CD9AE-6DE3-4F14-BB10-71FA31DD1E25}.Debug|AnyCPU.Build.0 = Debug|Any CPU
 		{D34CD9AE-6DE3-4F14-BB10-71FA31DD1E25}.Release|AnyCPU.ActiveCfg = Release|Any CPU
 		{D34CD9AE-6DE3-4F14-BB10-71FA31DD1E25}.Release|AnyCPU.Build.0 = Release|Any CPU
+		{BB789E9A-E851-4684-9D29-8744E9C95086}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
+		{BB789E9A-E851-4684-9D29-8744E9C95086}.Debug|AnyCPU.Build.0 = Debug|Any CPU
+		{BB789E9A-E851-4684-9D29-8744E9C95086}.Release|AnyCPU.ActiveCfg = Release|Any CPU
+		{BB789E9A-E851-4684-9D29-8744E9C95086}.Release|AnyCPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{329055BF-B696-429F-9970-997689A95391} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{B964BF4A-7A77-415F-A9A7-7107EA4C60B3} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{D34CD9AE-6DE3-4F14-BB10-71FA31DD1E25} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
+		{BB789E9A-E851-4684-9D29-8744E9C95086} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8200848B-5F8D-4A79-B989-3A667BE003E0}

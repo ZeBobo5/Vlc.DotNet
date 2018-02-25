@@ -34,7 +34,7 @@ namespace Vlc.DotNet.Core
         /// <param name="title">The dialog title</param>
         /// <param name="text">The dialog message</param>
         /// <returns>A task that is completed when the message is acknowledged by the user.</returns>
-        Task DisplayError(IntPtr userdata, string title, string text);
+        Task DisplayErrorAsync(IntPtr userdata, string title, string text);
 
         /// <summary>
         /// Displays a login dialog.
@@ -53,7 +53,7 @@ namespace Vlc.DotNet.Core
         /// <param name="cancellationToken">The token that is cancelled when libvlc asks to cancel the dialog.</param>
         /// <exception cref="TaskCanceledException">When the cancellation token has been cancelled, and the dialog has been closed.</exception>
         /// <returns>The login information that the user has submitted, or <c>null</c> if (s)he clicked on "cancel"</returns>
-        Task<LoginResult> DisplayLogin(IntPtr userdata, IntPtr dialogId, string title, string text, string username, bool askstore, CancellationToken cancellationToken);
+        Task<LoginResult> DisplayLoginAsync(IntPtr userdata, IntPtr dialogId, string title, string text, string username, bool askstore, CancellationToken cancellationToken);
 
         /// <summary>
         /// Displays a question dialog.
@@ -74,7 +74,7 @@ namespace Vlc.DotNet.Core
         /// <param name="cancellationToken">The token that is cancelled when libvlc asks to cancel the dialog.</param>
         /// <exception cref="TaskCanceledException">When the cancellation token has been cancelled, and the dialog has been closed.</exception>
         /// <returns>The action selected by the user, or <c>null</c> if (s)he clicked on "cancel"</returns>
-        Task<QuestionAction?> DisplayQuestion(IntPtr userdata, IntPtr dialogId, string title, string text,
+        Task<QuestionAction?> DisplayQuestionAsync(IntPtr userdata, IntPtr dialogId, string title, string text,
             DialogQuestionType questionType, string cancelButton, string action1Button, string action2Button, CancellationToken cancellationToken);
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Vlc.DotNet.Core
         /// <param name="cancellationToken">The token that is cancelled when libvlc asks to cancel the dialog.</param>
         /// <exception cref="TaskCanceledException">When the cancellation token has been cancelled, and the dialog has been closed.</exception>
         /// <returns>The task that completes when the user cancels the dialog. Be careful, you cannot cancel the dialog if <see paramref="cancelButton" /> is null.</returns>
-        Task DisplayProgress(IntPtr userdata, IntPtr dialogId, string title, string text,
+        Task DisplayProgressAsync(IntPtr userdata, IntPtr dialogId, string title, string text,
             bool indeterminate, float position, string cancelButton, CancellationToken cancellationToken);
 
         /// <summary>

@@ -58,7 +58,7 @@ namespace Vlc.DotNet.Core
         {
             string strTitle = Utf8InteropStringConverter.Utf8InteropToString(title);
             string strText = Utf8InteropStringConverter.Utf8InteropToString(text);
-            Task.Run(() => this.currentDialogManager?.DisplayError(userdata, strTitle, strText));
+            Task.Run(() => this.currentDialogManager?.DisplayErrorAsync(userdata, strTitle, strText));
         }
 
         private void OnDisplayLogin(IntPtr userdata, IntPtr dialogid, IntPtr title, IntPtr text, IntPtr defaultusername, bool askstore)
@@ -68,7 +68,7 @@ namespace Vlc.DotNet.Core
             string strUsername = Utf8InteropStringConverter.Utf8InteropToString(defaultusername);
             var cts = new CancellationTokenSource();
             this.openDialogsCancellationTokens.Add(dialogid,cts);
-            Task.Run(() => this.currentDialogManager.DisplayLogin(userdata, dialogid, strTitle, strText, strUsername, askstore, cts.Token))
+            Task.Run(() => this.currentDialogManager.DisplayLoginAsync(userdata, dialogid, strTitle, strText, strUsername, askstore, cts.Token))
                 .ContinueWith(task =>
                 {
                     if (task.IsCompleted && task.Result != null)
@@ -97,7 +97,7 @@ namespace Vlc.DotNet.Core
             string strAction2Button = Utf8InteropStringConverter.Utf8InteropToString(action2);
             var cts = new CancellationTokenSource();
             this.openDialogsCancellationTokens.Add(dialogid, cts);
-            Task.Run(() => this.currentDialogManager.DisplayQuestion(userdata, dialogid, strTitle, strText, questiontype, strCancelButton, strAction1Button, strAction2Button, cts.Token))
+            Task.Run(() => this.currentDialogManager.DisplayQuestionAsync(userdata, dialogid, strTitle, strText, questiontype, strCancelButton, strAction1Button, strAction2Button, cts.Token))
                 .ContinueWith((Action<Task<QuestionAction?>>)(task =>
                 {
                     if (task.IsCompleted && task.Result != null)
@@ -120,7 +120,7 @@ namespace Vlc.DotNet.Core
             string strCancelButton = Utf8InteropStringConverter.Utf8InteropToString(cancel);
             var cts = new CancellationTokenSource();
             this.openDialogsCancellationTokens.Add(dialogid, cts);
-            Task.Run(() => this.currentDialogManager.DisplayProgress(userdata, dialogid, strTitle, strText, indeterminate, position, strCancelButton, cts.Token))
+            Task.Run(() => this.currentDialogManager.DisplayProgressAsync(userdata, dialogid, strTitle, strText, indeterminate, position, strCancelButton, cts.Token))
                 .ContinueWith(task =>
                 {
                     if (task.IsCompleted)

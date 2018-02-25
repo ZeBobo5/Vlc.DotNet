@@ -88,7 +88,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(PostLogin)}");
             }
 
-            return GetInteropDelegate<PostLogin>().Invoke(dialogId, username.DangerousGetHandle(), password.DangerousGetHandle(), store);
+            return GetInteropDelegate<PostLogin>().Invoke(dialogId, username?.DangerousGetHandle() ?? IntPtr.Zero, password?.DangerousGetHandle() ?? IntPtr.Zero, store);
         }
 
         /// <summary>
