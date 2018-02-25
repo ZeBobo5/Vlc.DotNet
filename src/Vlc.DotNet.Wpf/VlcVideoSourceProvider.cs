@@ -239,7 +239,7 @@
                 disposedValue = true;
                 this.MediaPlayer?.Dispose();
                 this.MediaPlayer = null;
-                this.dispatcher.Invoke((Action)this.RemoveVideo);
+                this.dispatcher.BeginInvoke((Action)this.RemoveVideo);
             }
         }
 
