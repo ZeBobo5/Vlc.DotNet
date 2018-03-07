@@ -3,7 +3,7 @@ using Vlc.DotNet.Core.Interops.Signatures;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET40
 using System.Threading.Tasks;
 #endif
 using Vlc.DotNet.Core.Interops;
@@ -77,7 +77,7 @@ namespace Vlc.DotNet.Core
                 this.Manager.GetLogContext(ctx, out module, out file, out line);
 
                 // Do the notification on another thread, so that VLC is not interrupted by the logging
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET40
                 Task.Run(() => this.log(this.myMediaPlayerInstance, new VlcMediaPlayerLogEventArgs(level, formattedDecodedMessage, module, file, line)));
 #else
                 ThreadPool.QueueUserWorkItem(eventArgs =>
