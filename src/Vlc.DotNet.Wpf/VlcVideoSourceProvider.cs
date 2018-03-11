@@ -1,4 +1,8 @@
-﻿namespace Vlc.DotNet.Wpf
+﻿using System.Linq;
+using Vlc.DotNet.Core.Interops;
+using Vlc.DotNet.Core.Interops.Signatures;
+
+namespace Vlc.DotNet.Wpf
 {
     using System;
     using System.IO;
@@ -120,10 +124,7 @@
         private uint VideoFormat(out IntPtr userdata, IntPtr chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
             var pixelFormat = PixelFormats.Bgr32;
-            Marshal.WriteByte(chroma, (byte)'R');
-            Marshal.WriteByte(chroma, 1, (byte)'V');
-            Marshal.WriteByte(chroma, 2, (byte)'3');
-            Marshal.WriteByte(chroma, 3, (byte)'2');
+            FourCCConverter.ToFourCC("RV32", chroma);
 
             pitches = this.GetAlignedDimension((uint)(width*pixelFormat.BitsPerPixel) / 8, 32);
             lines = this.GetAlignedDimension(height, 32);
