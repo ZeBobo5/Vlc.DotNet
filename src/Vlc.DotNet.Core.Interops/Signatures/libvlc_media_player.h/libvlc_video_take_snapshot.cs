@@ -9,5 +9,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// <returns>Return 0 on success, -1 if the video was not found.</returns>
     [LibVlcFunction("libvlc_video_take_snapshot")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate int TakeSnapshot(IntPtr mediaPlayerInstance, uint num, string fileName, uint width, uint height);
+    internal delegate int TakeSnapshot(IntPtr mediaPlayerInstance, uint num, Utf8StringHandle fileName, uint width, uint height);
 }
