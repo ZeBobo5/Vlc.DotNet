@@ -334,13 +334,31 @@ namespace Vlc.DotNet.Core
             set { Manager.SetVideoSpu(myMediaPlayerInstance, value); }
         }
 
-        public void TakeSnapshot(FileInfo file)
+        public bool TakeSnapshot(FileInfo file)
         {
-            TakeSnapshot(file, 0, 0);
+            return TakeSnapshot(file, 0, 0);
         }
-        public void TakeSnapshot(FileInfo file, uint width, uint height)
+
+        public bool TakeSnapshot(FileInfo file, uint width, uint height)
         {
-            Manager.TakeSnapshot(myMediaPlayerInstance, file, width, height);
+            return TakeSnapshot(0, file.FullName, width, height);
+        }
+
+        /// <summary>
+        /// Take a snapshot of the current video window.
+        /// </summary>
+        /// <param name="outputNumber">The number of video output (typically 0 for the first/only one)</param>
+        /// <param name="file">The path of a file or a folder to save the screenshot into</param>
+        /// <param name="width">the snapshot's width</param>
+        /// <param name="height">the snapshot's height</param>
+        /// <returns>A boolean indicating whether the screenshot was sucessfully taken</returns>
+        /// <remarks>
+        /// If i_width AND i_height is 0, original size is used.
+        /// If i_width XOR i_height is 0, original aspect-ratio is preserved.
+        /// </remarks>
+        public bool TakeSnapshot(uint outputNumber, string file, uint width, uint height)
+        {
+            return Manager.TakeSnapshot(myMediaPlayerInstance, outputNumber, file, width, height);
         }
 
         private void RegisterEvents()
