@@ -46,6 +46,9 @@ namespace Vlc.DotNet.Core.Interops.Signatures
             public MediaPlayerBuffering MediaPlayerBuffering;
 
             [FieldOffset(0)]
+            public MediaPlayerChapterChanged MediaPlayerChapterChanged;
+
+            [FieldOffset(0)]
             public MediaPlayerPositionChanged MediaPlayerPositionChanged;
 
             [FieldOffset(0)]
@@ -98,6 +101,21 @@ namespace Vlc.DotNet.Core.Interops.Signatures
 
             [FieldOffset(0)]
             public MediaPlayerMediaChanged MediaPlayerMediaChanged;
+
+            [FieldOffset(0)]
+            public MediaPlayerEsChanged MediaPlayerEsChanged;
+
+            [FieldOffset(0)]
+            public MediaPlayerAudioVolume MediaPlayerAudioVolume;
+
+            [FieldOffset(0)]
+            public MediaPlayerAudioDevice MediaPlayerAudioDevice;
+
+            [FieldOffset(0)]
+            public RendererDiscovererItemAdded RendererDiscovererItemAdded;
+
+            [FieldOffset(0)]
+            public RendererDiscovererItemDeleted RendererDiscovererItemDeleted;
         }
     }
 
@@ -147,6 +165,12 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     public struct MediaPlayerBuffering
     {
         public float NewCache;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MediaPlayerChapterChanged
+    {
+        public int NewChapter;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -248,5 +272,36 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     public struct MediaPlayerMediaChanged
     {
         public IntPtr MediaInstance;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MediaPlayerEsChanged
+    {
+        public MediaTrackTypes TrackType;
+        public int Id;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MediaPlayerAudioVolume
+    {
+        public float volume;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MediaPlayerAudioDevice
+    {
+        public IntPtr pszDevice;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RendererDiscovererItemAdded
+    {
+        public IntPtr item;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RendererDiscovererItemDeleted
+    {
+        public IntPtr item;
     }
 }
