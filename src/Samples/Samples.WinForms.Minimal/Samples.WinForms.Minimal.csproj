@@ -44,12 +44,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vlc.DotNet.Core">
-      <HintPath>..\..\Vlc.DotNet.Core\bin\Debug\net20\Vlc.DotNet.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Vlc.DotNet.Core.Interops">
-      <HintPath>..\..\Vlc.DotNet.Core.Interops\bin\Debug\net20\Vlc.DotNet.Core.Interops.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sample.cs">
@@ -87,8 +81,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Vlc.DotNet.Core.Interops\Vlc.DotNet.Core.Interops.csproj">
+      <Project>{dcf701c3-6635-4b9f-a90f-5d71b5bce0c7}</Project>
+      <Name>Vlc.DotNet.Core.Interops</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj">
+      <Project>{77e6622a-ce25-4571-a913-9c647f63477b}</Project>
+      <Name>Vlc.DotNet.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Vlc.DotNet.Forms\Vlc.DotNet.Forms.csproj">
-      <Project>{04DE974C-BB77-45B3-889C-03640CFFB91C}</Project>
+      <Project>{04de974c-bb77-45b3-889c-03640cffb91c}</Project>
       <Name>Vlc.DotNet.Forms</Name>
     </ProjectReference>
   </ItemGroup>
