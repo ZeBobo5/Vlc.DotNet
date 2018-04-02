@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
+        [Obsolete("Use GetMediaTracks instead")]
         public MediaTrackInfosStructure[] GetMediaTracksInformations(VlcMediaInstance mediaInstance)
         {
             if (mediaInstance == IntPtr.Zero)
@@ -18,17 +18,10 @@ namespace Vlc.DotNet.Core.Interops
             var buffer = fullBuffer;
             for (int index = 0; index < cpt; index++)
             {
-#if NET20 || NET35 || NET40 || NET45
-                result[index] = (MediaTrackInfosStructure)Marshal.PtrToStructure(buffer, typeof(MediaTrackInfosStructure));
+                result[index] = MarshalHelper.PtrToStructure<MediaTrackInfosStructure>(buffer);
                 buffer = IntPtr.Size == 4
-                    ? new IntPtr(buffer.ToInt32() + Marshal.SizeOf(typeof(MediaTrackInfosStructure)))
-                    : new IntPtr(buffer.ToInt64() + Marshal.SizeOf(typeof(MediaTrackInfosStructure)));
-#else
-                result[index] = Marshal.PtrToStructure<MediaTrackInfosStructure>(buffer);
-                buffer = IntPtr.Size == 4
-                    ? new IntPtr(buffer.ToInt32() + Marshal.SizeOf<MediaTrackInfosStructure>())
-                    : new IntPtr(buffer.ToInt64() + Marshal.SizeOf<MediaTrackInfosStructure>());
-#endif
+                    ? new IntPtr(buffer.ToInt32() + MarshalHelper.SizeOf<MediaTrackInfosStructure>())
+                    : new IntPtr(buffer.ToInt64() + MarshalHelper.SizeOf<MediaTrackInfosStructure>());
             }
             Free(fullBuffer);
             return result;

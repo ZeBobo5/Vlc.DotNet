@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 using Vlc.DotNet.Forms;
 
@@ -105,20 +106,28 @@ namespace Samples.WinForms.Advanced
             myLblVideoHeight.InvokeIfRequired(l => l.Text = "Height: ");
             myLblVideoWidth.InvokeIfRequired(l => l.Text = "Width: ");
 
-            var mediaInformations = myVlcControl.GetCurrentMedia().TracksInformations;
+            var mediaInformations = myVlcControl.GetCurrentMedia().Tracks;
             foreach (var mediaInformation in mediaInformations)
             {
                 if (mediaInformation.Type == MediaTrackTypes.Audio)
                 {
-                    myLblAudioCodec.InvokeIfRequired(l => l.Text += mediaInformation.CodecName);
-                    myLblAudioChannels.InvokeIfRequired(l => l.Text += mediaInformation.Audio.Channels);
-                    myLblAudioRate.InvokeIfRequired(l => l.Text += mediaInformation.Audio.Rate);
+                    myLblAudioCodec.InvokeIfRequired(l => l.Text += FourCCConverter.FromFourCC(mediaInformation.CodecFourcc));
+                    var audioTrack = mediaInformation.TrackInfo as AudioTrack;
+                    myLblAudioChannels.InvokeIfRequired(l => l.Text += audioTrack?.Channels.ToString() ?? "null");
+                    myLblAudioRate.InvokeIfRequired(l => l.Text += audioTrack?.Rate.ToString() ?? "null");
                 }
                 else if (mediaInformation.Type == MediaTrackTypes.Video)
                 {
-                    myLblVideoCodec.InvokeIfRequired(l => l.Text += mediaInformation.CodecName);
-                    myLblVideoHeight.InvokeIfRequired(l => l.Text += mediaInformation.Video.Height);
-                    myLblVideoWidth.InvokeIfRequired(l => l.Text += mediaInformation.Video.Width);
+                    myLblVideoCodec.InvokeIfRequired(l => l.Text += FourCCConverter.FromFourCC(mediaInformation.CodecFourcc));
+                    var videoTrack = mediaInformation.TrackInfo as VideoTrack;
+                    myLblVideoHeight.InvokeIfRequired(l => l.Text += videoTrack?.Height.ToString() ?? "null");
+                    myLblVideoWidth.InvokeIfRequired(l => l.Text += videoTrack?.Width.ToString() ?? "null");
+                }
+                else if (mediaInformation.Type == MediaTrackTypes.Text)
+                {
+                    myLblVideoCodec.InvokeIfRequired(l => l.Text += FourCCConverter.FromFourCC(mediaInformation.CodecFourcc));
+                    var subtitleTrack = mediaInformation.TrackInfo as SubtitleTrack;
+                    myLblVideoHeight.InvokeIfRequired(l => l.Text += subtitleTrack?.Encoding);
                 }
             }
 

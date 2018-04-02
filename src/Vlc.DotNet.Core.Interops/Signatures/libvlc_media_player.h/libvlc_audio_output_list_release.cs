@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_audio_output_list_release")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void ReleaseAudioOutputDescription(AudioOutputDescriptionStructure audioOutput);
+    internal delegate void ReleaseAudioOutputDescription(IntPtr audioOutput);
 }
