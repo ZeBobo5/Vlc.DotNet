@@ -8,5 +8,6 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_audio_output_device_count")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate int GetAudioOutputDeviceCount(IntPtr instance, string outputName);
+    [Obsolete("Use GetAudioOutputDeviceList instead")]
+    internal delegate int GetAudioOutputDeviceCount(IntPtr instance, Utf8StringHandle outputName);
 }

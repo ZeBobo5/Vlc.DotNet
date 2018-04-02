@@ -72,15 +72,9 @@ namespace Vlc.DotNet.Core.Interops
                 if (procAddress == IntPtr.Zero)
                     throw new Win32Exception();
 
-                object delegateForFunctionPointer;
-#if NET20||NET35||NET40||NET45
-                delegateForFunctionPointer = Marshal.GetDelegateForFunctionPointer(procAddress, typeof(T));
-#else
-                // The GetDelegateForFunctionPointer with two parameters is now deprecated.
-                delegateForFunctionPointer = Marshal.GetDelegateForFunctionPointer<T>(procAddress);
-#endif
+                var delegateForFunctionPointer = MarshalHelper.GetDelegateForFunctionPointer<T>(procAddress);
                 myInteropDelegates[attr.FunctionName] = delegateForFunctionPointer;
-                return (T)delegateForFunctionPointer;
+                return delegateForFunctionPointer;
             }
             catch (Win32Exception e)
             {

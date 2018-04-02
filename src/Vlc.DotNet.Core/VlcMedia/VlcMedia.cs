@@ -113,6 +113,12 @@ namespace Vlc.DotNet.Core
             get { return myVlcMediaPlayer.Manager.GetMediaStats(MediaInstance); }
         }
 
+        public MediaTrack[] Tracks
+        {
+            get { return myVlcMediaPlayer.Manager.GetMediaTracks(MediaInstance); }
+        }
+
+        [Obsolete("Use Tracks instead")]
         public MediaTrackInfosStructure[] TracksInformations
         {
             get { return myVlcMediaPlayer.Manager.GetMediaTracksInformations(MediaInstance); }

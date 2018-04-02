@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+#if !NET20
+using System.Linq;
+#endif
 using Vlc.DotNet.Core.Interops;
-using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core
 {
@@ -20,23 +22,28 @@ namespace Vlc.DotNet.Core
         {
             get
             {
-                var module = myManager.GetAudioOutputsDescriptions();
-                var result = AudioOutputDescription.GetSubOutputDescription(module, myManager, myMediaPlayerInstance);
-                myManager.ReleaseAudioOutputDescription(module);
-                return result;
+#if NET20
+                var results = myManager.GetAudioOutputsDescriptions();
+                var resultsList = new List<AudioOutputDescription>(results.Count);
+                foreach(var x in results)
+                {
+                    resultsList.Add(new AudioOutputDescription(x.Name, x.Description, this.myManager));
+                }
+
+                return resultsList;
+#else
+                return myManager.GetAudioOutputsDescriptions().Select(x => new AudioOutputDescription(x.Name, x.Description, this.myManager));
+#endif
             }
         }
 
-        public int Count
-        {
-            get { return new List<AudioOutputDescription>(All).Count; }
-        }
+        public int Count => myManager.GetAudioOutputsDescriptions().Count;
 
         public AudioOutputDescription Current
         {
             get
             {
-                throw new NotImplementedException("Not implemented in LibVlc.");
+                throw new NotSupportedException("Not implemented in LibVlc.");
             }
             set { myManager.SetAudioOutput(value.Name); }
         }

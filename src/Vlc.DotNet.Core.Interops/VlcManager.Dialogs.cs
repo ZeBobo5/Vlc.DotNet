@@ -31,11 +31,7 @@ namespace Vlc.DotNet.Core.Interops
             this.dialogCallbacks = callbacks;
             if (this.dialogCallbacks.HasValue)
             {
-#if NET20 || NET35 || NET40 || NET45
-                this.dialogCallbacksPointer = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(DialogCallbacks)));
-#else
-                this.dialogCallbacksPointer = Marshal.AllocHGlobal(Marshal.SizeOf<DialogCallbacks>());
-#endif
+                this.dialogCallbacksPointer = Marshal.AllocHGlobal(MarshalHelper.SizeOf<DialogCallbacks>());
                 Marshal.StructureToPtr(this.dialogCallbacks.Value, this.dialogCallbacksPointer, false);
             }
 

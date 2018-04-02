@@ -1,9 +1,11 @@
-﻿using Vlc.DotNet.Core.Interops.Signatures;
+﻿using System;
+using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
+        [Obsolete("Use GetAudioOutputDeviceList instead")]
         public string GetAudioOutputDeviceLongName(string audioOutputDescriptionName, int deviceIndex)
         {
             EnsureVlcInstance();

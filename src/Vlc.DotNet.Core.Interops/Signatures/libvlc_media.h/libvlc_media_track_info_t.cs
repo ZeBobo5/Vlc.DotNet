@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops.Signatures
 {
-
+    [Obsolete("Use GetMediaTracks instead")]
     [StructLayout(LayoutKind.Explicit)]
     public struct MediaTrackInfosStructure
     {
