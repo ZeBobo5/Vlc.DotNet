@@ -16,13 +16,8 @@ namespace Samples.Wpf.Image
             InitializeComponent();
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
-            DirectoryInfo libDirectory;
-            // Default libraries are stored here, but they are old, don't use them.
-            // We need a better way to install them, see https://github.com/ZeBobo5/Vlc.DotNet/issues/288
-            if (IntPtr.Size == 4)
-                libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\..\..\lib\x86\"));
-            else
-                libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\..\..\lib\x64\"));
+            // Default installation path of VideoLAN.LibVLC.Windows
+            var libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
 
             this.sourceProvider = new VlcVideoSourceProvider(this.Dispatcher);
 

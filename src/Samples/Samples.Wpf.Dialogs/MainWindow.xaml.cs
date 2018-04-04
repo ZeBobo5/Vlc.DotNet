@@ -13,12 +13,8 @@ namespace Samples.Wpf.Dialogs
             InitializeComponent();
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
-            DirectoryInfo libDirectory;
-            // Requires the libVLC 3.0.0 or later
-            if (IntPtr.Size == 4)
-                libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\..\..\lib\x86\"));
-            else
-                libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"..\..\..\..\..\lib\x64\"));
+            // Default installation path of VideoLAN.LibVLC.Windows
+            var libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
 
             this.VlcControl.SourceProvider.CreatePlayer(libDirectory/* pass your player parameters here */);
             this.VlcControl.SourceProvider.MediaPlayer.Dialogs.UseDialogManager(new MetroDialogManager(this));
