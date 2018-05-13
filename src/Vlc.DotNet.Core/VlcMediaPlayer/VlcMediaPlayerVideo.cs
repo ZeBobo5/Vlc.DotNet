@@ -6,6 +6,12 @@ namespace Vlc.DotNet.Core
 
     public sealed partial class VlcMediaPlayer
     {
+        private LockVideoCallback _lockVideoCallbackReference;
+        private UnlockVideoCallback _unlockVideoCallbackReference;
+        private DisplayVideoCallback _displayVideoCallbackReference;
+        private VideoFormatCallback _videoFormatCallbackReference;
+        private CleanupVideoCallback _cleanupCallbackReference;
+
         /// <summary>
         /// Sets the video callbacks to render decoded video to a custom area in memory.
         /// The media player will hold a reference on the IVideoCallbacks parameter
@@ -34,7 +40,11 @@ namespace Vlc.DotNet.Core
                 throw new ArgumentNullException(nameof(lockVideo));
             }
 
-            this.Manager.SetVideoCallbacks(this.myMediaPlayerInstance, lockVideo, unlockVideo, display, userData);
+            this._lockVideoCallbackReference = lockVideo;
+            this._unlockVideoCallbackReference = unlockVideo;
+            this._displayVideoCallbackReference = display;
+
+            this.Manager.SetVideoCallbacks(this.myMediaPlayerInstance, this._lockVideoCallbackReference, this._unlockVideoCallbackReference, this._displayVideoCallbackReference, userData);
         }
 
         /// <summary>
@@ -50,7 +60,10 @@ namespace Vlc.DotNet.Core
                 throw new ArgumentNullException(nameof(videoFormat));
             }
 
-            this.Manager.SetVideoFormatCallbacks(this.myMediaPlayerInstance, videoFormat, cleanup);
+            this._videoFormatCallbackReference = videoFormat;
+            this._cleanupCallbackReference = cleanup;
+
+            this.Manager.SetVideoFormatCallbacks(this.myMediaPlayerInstance, this._videoFormatCallbackReference, this._cleanupCallbackReference);
         }
     }
 }
