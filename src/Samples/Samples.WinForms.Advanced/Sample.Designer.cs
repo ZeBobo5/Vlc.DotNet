@@ -51,9 +51,9 @@
             this.myLblMouseState = new System.Windows.Forms.Label();
             this.myLblKeyCode = new System.Windows.Forms.Label();
             this.myLblKeyDown = new System.Windows.Forms.Label();
-            this.myVlcControl = new Vlc.DotNet.Forms.VlcControl();
             this.myBtnDisableMouseEvents = new System.Windows.Forms.Button();
             this.myBtnEnableMouseEvents = new System.Windows.Forms.Button();
+            this.myVlcControl = new Vlc.DotNet.Forms.VlcControl();
             this.myGrpAudioInformations.SuspendLayout();
             this.myGrpVideoInformations.SuspendLayout();
             this.myGrpMouseInformations.SuspendLayout();
@@ -296,6 +296,26 @@
             this.myLblKeyDown.TabIndex = 0;
             this.myLblKeyDown.Text = "Key Down: false";
             // 
+            // myBtnDisableMouseEvents
+            // 
+            this.myBtnDisableMouseEvents.Location = new System.Drawing.Point(583, 309);
+            this.myBtnDisableMouseEvents.Name = "myBtnDisableMouseEvents";
+            this.myBtnDisableMouseEvents.Size = new System.Drawing.Size(159, 23);
+            this.myBtnDisableMouseEvents.TabIndex = 15;
+            this.myBtnDisableMouseEvents.Text = "Disable Player Input Events";
+            this.myBtnDisableMouseEvents.UseVisualStyleBackColor = true;
+            this.myBtnDisableMouseEvents.Click += new System.EventHandler(this.myBtnDisableMouseEvents_Click);
+            // 
+            // myBtnEnableMouseEvents
+            // 
+            this.myBtnEnableMouseEvents.Location = new System.Drawing.Point(583, 280);
+            this.myBtnEnableMouseEvents.Name = "myBtnEnableMouseEvents";
+            this.myBtnEnableMouseEvents.Size = new System.Drawing.Size(159, 23);
+            this.myBtnEnableMouseEvents.TabIndex = 16;
+            this.myBtnEnableMouseEvents.Text = "Enable Player Input Events";
+            this.myBtnEnableMouseEvents.UseVisualStyleBackColor = true;
+            this.myBtnEnableMouseEvents.Click += new System.EventHandler(this.myBtnEnableMouseEvents_Click);
+            // 
             // myVlcControl
             // 
             this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -325,26 +345,6 @@
             this.myVlcControl.MouseEnter += new System.EventHandler(this.myVlcControl_MouseEnter);
             this.myVlcControl.MouseLeave += new System.EventHandler(this.myVlcControl_MouseLeave);
             this.myVlcControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.myVlcControl_MouseUp);
-            // 
-            // myBtnDisableMouseEvents
-            // 
-            this.myBtnDisableMouseEvents.Location = new System.Drawing.Point(583, 281);
-            this.myBtnDisableMouseEvents.Name = "myBtnDisableMouseEvents";
-            this.myBtnDisableMouseEvents.Size = new System.Drawing.Size(159, 23);
-            this.myBtnDisableMouseEvents.TabIndex = 15;
-            this.myBtnDisableMouseEvents.Text = "Disable Player Mouse Events";
-            this.myBtnDisableMouseEvents.UseVisualStyleBackColor = true;
-            this.myBtnDisableMouseEvents.Click += new System.EventHandler(this.myBtnDisableMouseEvents_Click);
-            // 
-            // myBtnEnableMouseEvents
-            // 
-            this.myBtnEnableMouseEvents.Location = new System.Drawing.Point(583, 310);
-            this.myBtnEnableMouseEvents.Name = "myBtnEnableMouseEvents";
-            this.myBtnEnableMouseEvents.Size = new System.Drawing.Size(159, 23);
-            this.myBtnEnableMouseEvents.TabIndex = 16;
-            this.myBtnEnableMouseEvents.Text = "Enable Player Mouse Events";
-            this.myBtnEnableMouseEvents.UseVisualStyleBackColor = true;
-            this.myBtnEnableMouseEvents.Click += new System.EventHandler(this.myBtnEnableMouseEvents_Click);
             // 
             // Sample
             // 

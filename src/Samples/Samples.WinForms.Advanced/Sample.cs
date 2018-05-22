@@ -205,11 +205,14 @@ namespace Samples.WinForms.Advanced
         private void myBtnEnableMouseEvents_Click(object sender, EventArgs e)
         {
             myVlcControl.Video.IsMouseInputDisabled = false;
+            myVlcControl.Video.IsKeyInputDisabled = false;
+
         }
 
         private void myBtnDisableMouseEvents_Click(object sender, EventArgs e)
         {
             myVlcControl.Video.IsMouseInputDisabled= true;
+            myVlcControl.Video.IsKeyInputDisabled = true;
         }
     }
 }
