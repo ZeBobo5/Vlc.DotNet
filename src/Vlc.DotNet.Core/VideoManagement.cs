@@ -16,6 +16,8 @@ namespace Vlc.DotNet.Core
             Marquee = new MarqueeManagement(manager, mediaPlayerInstance);
             Logo = new LogoManagement(manager, mediaPlayerInstance);
             Adjustments = new AdjustmentsManagement(manager, mediaPlayerInstance);
+            IsMouseInputDisabled = false;
+            IsKeyInputDisabled = false;
         }
         
         public string AspectRatio
@@ -46,5 +48,15 @@ namespace Vlc.DotNet.Core
         public IMarqueeManagement Marquee { get; private set; }
         public ILogoManagement Logo { get; private set; }
         public IAdjustmentsManagement Adjustments { get; private set; }
+
+        public bool IsMouseInputDisabled
+        {
+            set { myManager.SetMouseInput(myMediaPlayer, value); }
+        }
+
+        public bool IsKeyInputDisabled
+        {
+            set { myManager.SetKeyInput(myMediaPlayer, value); }
+        }
     }
 }

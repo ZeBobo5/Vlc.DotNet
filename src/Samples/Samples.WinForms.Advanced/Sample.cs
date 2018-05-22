@@ -161,5 +161,55 @@ namespace Samples.WinForms.Advanced
             string message = string.Format("libVlc : {0} {1} @ {2}", e.Level, e.Message, e.Module);
             System.Diagnostics.Debug.WriteLine(message);
         }
+
+        private void myVlcControl_MouseEnter(object sender, EventArgs e)
+        {
+            myLblMouseOnCtl.Text = "Mouse On VlcControl: On";
+        }
+
+        private void myVlcControl_MouseLeave(object sender, EventArgs e)
+        {
+            myLblMouseOnCtl.Text = "Mouse On VlcControl: Off";
+        }
+
+        private void myVlcControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            myLblKeyDown.Text = "Key Down: true";
+        }
+
+        private void myVlcControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            myLblKeyDown.Text = "Key Down: false";
+        }
+
+        private void myVlcControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            myLblKeyCode.Text = "Key: " + e.KeyChar.ToString();
+        }
+
+        private void myVlcControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            myVlcControl.Focus();            
+        }
+
+        private void myVlcControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            myLblMouseState.Text = "Mouse State: Button Down";
+        }
+
+        private void myVlcControl_MouseUp(object sender, MouseEventArgs e)
+        {
+            myLblMouseState.Text = "Mouse State: Button Up";
+        }
+
+        private void myBtnEnableMouseEvents_Click(object sender, EventArgs e)
+        {
+            myVlcControl.Video.IsMouseInputDisabled = false;
+        }
+
+        private void myBtnDisableMouseEvents_Click(object sender, EventArgs e)
+        {
+            myVlcControl.Video.IsMouseInputDisabled= true;
+        }
     }
 }

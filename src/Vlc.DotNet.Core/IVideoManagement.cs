@@ -10,5 +10,7 @@
         IMarqueeManagement Marquee { get; }
         ILogoManagement Logo { get; }
         IAdjustmentsManagement Adjustments { get; }
+        bool IsMouseInputDisabled { set; }
+        bool IsKeyInputDisabled { set; }
     }
 }

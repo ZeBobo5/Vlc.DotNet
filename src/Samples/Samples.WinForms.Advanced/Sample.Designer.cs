@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.myVlcControl = new Vlc.DotNet.Forms.VlcControl();
             this.myBtnPlay = new System.Windows.Forms.Button();
             this.myBtnStop = new System.Windows.Forms.Button();
             this.myLblMediaLength = new System.Windows.Forms.Label();
@@ -47,32 +46,19 @@
             this.myLblVideoHeight = new System.Windows.Forms.Label();
             this.myCbxAspectRatio = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).BeginInit();
+            this.myGrpMouseInformations = new System.Windows.Forms.GroupBox();
+            this.myLblMouseOnCtl = new System.Windows.Forms.Label();
+            this.myLblMouseState = new System.Windows.Forms.Label();
+            this.myLblKeyCode = new System.Windows.Forms.Label();
+            this.myLblKeyDown = new System.Windows.Forms.Label();
+            this.myVlcControl = new Vlc.DotNet.Forms.VlcControl();
+            this.myBtnDisableMouseEvents = new System.Windows.Forms.Button();
+            this.myBtnEnableMouseEvents = new System.Windows.Forms.Button();
             this.myGrpAudioInformations.SuspendLayout();
             this.myGrpVideoInformations.SuspendLayout();
+            this.myGrpMouseInformations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).BeginInit();
             this.SuspendLayout();
-            // 
-            // myVlcControl
-            // 
-            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.myVlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.myVlcControl.Location = new System.Drawing.Point(12, 12);
-            this.myVlcControl.Name = "myVlcControl";
-            this.myVlcControl.Size = new System.Drawing.Size(564, 338);
-            this.myVlcControl.Spu = -1;
-            this.myVlcControl.TabIndex = 0;
-            this.myVlcControl.Text = "vlcRincewindControl1";
-            this.myVlcControl.VlcLibDirectory = null;
-            this.myVlcControl.VlcMediaplayerOptions = null;
-            this.myVlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
-            this.myVlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
-            this.myVlcControl.Log += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLogEventArgs>(this.OnVlcMediaPlayerLog);
-            this.myVlcControl.Paused += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPausedEventArgs>(this.OnVlcPaused);
-            this.myVlcControl.Playing += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs>(this.OnVlcPlaying);
-            this.myVlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
-            this.myVlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcStopped);
             // 
             // myBtnPlay
             // 
@@ -261,11 +247,113 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Video Aspect Ratio:";
             // 
+            // myGrpMouseInformations
+            // 
+            this.myGrpMouseInformations.Controls.Add(this.myLblMouseOnCtl);
+            this.myGrpMouseInformations.Controls.Add(this.myLblMouseState);
+            this.myGrpMouseInformations.Controls.Add(this.myLblKeyCode);
+            this.myGrpMouseInformations.Controls.Add(this.myLblKeyDown);
+            this.myGrpMouseInformations.Location = new System.Drawing.Point(583, 197);
+            this.myGrpMouseInformations.Name = "myGrpMouseInformations";
+            this.myGrpMouseInformations.Size = new System.Drawing.Size(218, 77);
+            this.myGrpMouseInformations.TabIndex = 14;
+            this.myGrpMouseInformations.TabStop = false;
+            this.myGrpMouseInformations.Text = "Input Informations";
+            // 
+            // myLblMouseOnCtl
+            // 
+            this.myLblMouseOnCtl.AutoSize = true;
+            this.myLblMouseOnCtl.Location = new System.Drawing.Point(6, 55);
+            this.myLblMouseOnCtl.Name = "myLblMouseOnCtl";
+            this.myLblMouseOnCtl.Size = new System.Drawing.Size(110, 13);
+            this.myLblMouseOnCtl.TabIndex = 3;
+            this.myLblMouseOnCtl.Text = "Mouse On VlcControl:";
+            // 
+            // myLblMouseState
+            // 
+            this.myLblMouseState.AutoSize = true;
+            this.myLblMouseState.Location = new System.Drawing.Point(6, 42);
+            this.myLblMouseState.Name = "myLblMouseState";
+            this.myLblMouseState.Size = new System.Drawing.Size(70, 13);
+            this.myLblMouseState.TabIndex = 2;
+            this.myLblMouseState.Text = "Mouse State:";
+            // 
+            // myLblKeyCode
+            // 
+            this.myLblKeyCode.AutoSize = true;
+            this.myLblKeyCode.Location = new System.Drawing.Point(6, 16);
+            this.myLblKeyCode.Name = "myLblKeyCode";
+            this.myLblKeyCode.Size = new System.Drawing.Size(55, 13);
+            this.myLblKeyCode.TabIndex = 1;
+            this.myLblKeyCode.Text = "Key: none";
+            // 
+            // myLblKeyDown
+            // 
+            this.myLblKeyDown.AutoSize = true;
+            this.myLblKeyDown.Location = new System.Drawing.Point(6, 29);
+            this.myLblKeyDown.Name = "myLblKeyDown";
+            this.myLblKeyDown.Size = new System.Drawing.Size(84, 13);
+            this.myLblKeyDown.TabIndex = 0;
+            this.myLblKeyDown.Text = "Key Down: false";
+            // 
+            // myVlcControl
+            // 
+            this.myVlcControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.myVlcControl.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.myVlcControl.Location = new System.Drawing.Point(12, 12);
+            this.myVlcControl.Name = "myVlcControl";
+            this.myVlcControl.Size = new System.Drawing.Size(564, 338);
+            this.myVlcControl.Spu = -1;
+            this.myVlcControl.TabIndex = 0;
+            this.myVlcControl.Text = "vlcRincewindControl1";
+            this.myVlcControl.VlcLibDirectory = null;
+            this.myVlcControl.VlcMediaplayerOptions = null;
+            this.myVlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.OnVlcControlNeedLibDirectory);
+            this.myVlcControl.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.OnVlcMediaLengthChanged);
+            this.myVlcControl.Log += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLogEventArgs>(this.OnVlcMediaPlayerLog);
+            this.myVlcControl.Paused += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPausedEventArgs>(this.OnVlcPaused);
+            this.myVlcControl.Playing += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs>(this.OnVlcPlaying);
+            this.myVlcControl.PositionChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPositionChangedEventArgs>(this.OnVlcPositionChanged);
+            this.myVlcControl.Stopped += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerStoppedEventArgs>(this.OnVlcStopped);
+            this.myVlcControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.myVlcControl_KeyDown);
+            this.myVlcControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.myVlcControl_KeyPress);
+            this.myVlcControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.myVlcControl_KeyUp);
+            this.myVlcControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.myVlcControl_MouseClick);
+            this.myVlcControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.myVlcControl_MouseDown);
+            this.myVlcControl.MouseEnter += new System.EventHandler(this.myVlcControl_MouseEnter);
+            this.myVlcControl.MouseLeave += new System.EventHandler(this.myVlcControl_MouseLeave);
+            this.myVlcControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.myVlcControl_MouseUp);
+            // 
+            // myBtnDisableMouseEvents
+            // 
+            this.myBtnDisableMouseEvents.Location = new System.Drawing.Point(583, 281);
+            this.myBtnDisableMouseEvents.Name = "myBtnDisableMouseEvents";
+            this.myBtnDisableMouseEvents.Size = new System.Drawing.Size(159, 23);
+            this.myBtnDisableMouseEvents.TabIndex = 15;
+            this.myBtnDisableMouseEvents.Text = "Disable Player Mouse Events";
+            this.myBtnDisableMouseEvents.UseVisualStyleBackColor = true;
+            this.myBtnDisableMouseEvents.Click += new System.EventHandler(this.myBtnDisableMouseEvents_Click);
+            // 
+            // myBtnEnableMouseEvents
+            // 
+            this.myBtnEnableMouseEvents.Location = new System.Drawing.Point(583, 310);
+            this.myBtnEnableMouseEvents.Name = "myBtnEnableMouseEvents";
+            this.myBtnEnableMouseEvents.Size = new System.Drawing.Size(159, 23);
+            this.myBtnEnableMouseEvents.TabIndex = 16;
+            this.myBtnEnableMouseEvents.Text = "Enable Player Mouse Events";
+            this.myBtnEnableMouseEvents.UseVisualStyleBackColor = true;
+            this.myBtnEnableMouseEvents.Click += new System.EventHandler(this.myBtnEnableMouseEvents_Click);
+            // 
             // Sample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 391);
+            this.Controls.Add(this.myBtnEnableMouseEvents);
+            this.Controls.Add(this.myBtnDisableMouseEvents);
+            this.Controls.Add(this.myGrpMouseInformations);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.myCbxAspectRatio);
             this.Controls.Add(this.myGrpVideoInformations);
@@ -282,11 +370,13 @@
             this.Name = "Sample";
             this.Text = "Vlc.DotNet - Winform Player Sample";
             this.SizeChanged += new System.EventHandler(this.Sample_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).EndInit();
             this.myGrpAudioInformations.ResumeLayout(false);
             this.myGrpAudioInformations.PerformLayout();
             this.myGrpVideoInformations.ResumeLayout(false);
             this.myGrpVideoInformations.PerformLayout();
+            this.myGrpMouseInformations.ResumeLayout(false);
+            this.myGrpMouseInformations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myVlcControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,6 +403,13 @@
         private System.Windows.Forms.Label myLblVideoHeight;
         private System.Windows.Forms.ComboBox myCbxAspectRatio;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox myGrpMouseInformations;
+        private System.Windows.Forms.Label myLblMouseOnCtl;
+        private System.Windows.Forms.Label myLblMouseState;
+        private System.Windows.Forms.Label myLblKeyCode;
+        private System.Windows.Forms.Label myLblKeyDown;
+        private System.Windows.Forms.Button myBtnDisableMouseEvents;
+        private System.Windows.Forms.Button myBtnEnableMouseEvents;
     }
 }
 
