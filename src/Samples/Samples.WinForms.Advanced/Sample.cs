@@ -202,17 +202,17 @@ namespace Samples.WinForms.Advanced
             myLblMouseState.Text = "Mouse State: Button Up";
         }
 
-        private void myBtnEnableMouseEvents_Click(object sender, EventArgs e)
+        private void myBtnDisableMouseEvents_Click(object sender, EventArgs e)
         {
-            myVlcControl.Video.IsMouseInputDisabled = false;
-            myVlcControl.Video.IsKeyInputDisabled = false;
+            myVlcControl.Video.IsMouseInputEnabled = false;
+            myVlcControl.Video.IsKeyInputEnabled = false;
 
         }
 
-        private void myBtnDisableMouseEvents_Click(object sender, EventArgs e)
+        private void myBtnEnableMouseEvents_Click(object sender, EventArgs e)
         {
-            myVlcControl.Video.IsMouseInputDisabled= true;
-            myVlcControl.Video.IsKeyInputDisabled = true;
+            myVlcControl.Video.IsMouseInputEnabled= true;
+            myVlcControl.Video.IsKeyInputEnabled = true;
         }
     }
 }
