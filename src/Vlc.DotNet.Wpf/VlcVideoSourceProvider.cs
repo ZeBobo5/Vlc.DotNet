@@ -43,7 +43,7 @@ namespace Vlc.DotNet.Wpf
         /// </summary>
         private IntPtr memoryMappedView;
 #endif
-        
+
         private ImageSource videoSource;
 
         private Dispatcher dispatcher;
@@ -79,6 +79,11 @@ namespace Vlc.DotNet.Wpf
         public VlcMediaPlayer MediaPlayer { get; private set; }
 
         /// <summary>
+        /// Defines if <see cref="VideoSource"/> pixel format is <see cref="PixelFormats.Bgr32"/> or <see cref="PixelFormats.Bgra32"/>
+        /// </summary>
+        public bool IsAlphaChannelEnabled { get; set; }
+
+        /// <summary>
         /// Creates the player. This method must be called before using <see cref="MediaPlayer"/>
         /// </summary>
         /// <param name="vlcLibDirectory">The directory where to find the vlc library</param>
@@ -110,7 +115,7 @@ namespace Vlc.DotNet.Wpf
             return dimension + mod - (dimension % mod);
         }
 
-#region Vlc video callbacks
+        #region Vlc video callbacks
         /// <summary>
         /// Called by vlc when the video format is needed. This method allocats the picture buffers for vlc and tells it to set the chroma to RV32
         /// </summary>
@@ -123,10 +128,10 @@ namespace Vlc.DotNet.Wpf
         /// <returns>The number of buffers allocated</returns>
         private uint VideoFormat(out IntPtr userdata, IntPtr chroma, ref uint width, ref uint height, ref uint pitches, ref uint lines)
         {
-            var pixelFormat = PixelFormats.Bgr32;
+            var pixelFormat = IsAlphaChannelEnabled ? PixelFormats.Bgra32 : PixelFormats.Bgr32;
             FourCCConverter.ToFourCC("RV32", chroma);
 
-            pitches = this.GetAlignedDimension((uint)(width*pixelFormat.BitsPerPixel) / 8, 32);
+            pitches = this.GetAlignedDimension((uint)(width * pixelFormat.BitsPerPixel) / 8, 32);
             lines = this.GetAlignedDimension(height, 32);
 
             var size = pitches * lines;
@@ -196,7 +201,7 @@ namespace Vlc.DotNet.Wpf
         private void DisplayVideo(IntPtr userdata, IntPtr picture)
         {
             // Invalidates the bitmap
-            this.dispatcher.BeginInvoke((Action) (() =>
+            this.dispatcher.BeginInvoke((Action)(() =>
             {
                 (this.VideoSource as InteropBitmap)?.Invalidate();
             }));
@@ -228,7 +233,7 @@ namespace Vlc.DotNet.Wpf
 
         #region IDisposable Support
         private bool disposedValue = false;
-        
+
         /// <summary>
         /// Disposes the control.
         /// </summary>
@@ -247,8 +252,9 @@ namespace Vlc.DotNet.Wpf
         /// <summary>
         /// The destructor
         /// </summary>
-        ~VlcVideoSourceProvider() {
-           Dispose(false);
+        ~VlcVideoSourceProvider()
+        {
+            Dispose(false);
         }
 
         /// <inheritdoc />
@@ -257,7 +263,7 @@ namespace Vlc.DotNet.Wpf
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-#endregion
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
