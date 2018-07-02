@@ -43,6 +43,7 @@ namespace Vlc.DotNet.Wpf
         /// </summary>
         private IntPtr memoryMappedView;
 #endif
+        private bool isAlphaChannelEnabled;
 
         private ImageSource videoSource;
 
@@ -81,7 +82,17 @@ namespace Vlc.DotNet.Wpf
         /// <summary>
         /// Defines if <see cref="VideoSource"/> pixel format is <see cref="PixelFormats.Bgr32"/> or <see cref="PixelFormats.Bgra32"/>
         /// </summary>
-        public bool IsAlphaChannelEnabled { get; set; }
+        public bool IsAlphaChannelEnabled { get
+            {
+                return this.isAlphaChannelEnabled;
+            }
+
+            set
+            {
+                this.isAlphaChannelEnabled = value;
+                this.OnPropertyChanged(nameof(IsAlphaChannelEnabled));
+            }
+        }
 
         /// <summary>
         /// Creates the player. This method must be called before using <see cref="MediaPlayer"/>
