@@ -44,6 +44,7 @@ namespace Vlc.DotNet.Wpf
         private IntPtr memoryMappedView;
 #endif
         private bool isAlphaChannelEnabled;
+        private bool playerCreated;
 
         private ImageSource videoSource;
 
@@ -89,8 +90,10 @@ namespace Vlc.DotNet.Wpf
 
             set
             {
-                this.isAlphaChannelEnabled = value;
-                this.OnPropertyChanged(nameof(IsAlphaChannelEnabled));
+                if (!playerCreated)
+                    this.isAlphaChannelEnabled = value;
+                else
+                    throw new InvalidOperationException("IsAlphaChannelEnabled property should be changed only before CreatePlayer method is called.");
             }
         }
 
@@ -107,6 +110,8 @@ namespace Vlc.DotNet.Wpf
 
             this.MediaPlayer.SetVideoFormatCallbacks(this.VideoFormat, this.CleanupVideo);
             this.MediaPlayer.SetVideoCallbacks(LockVideo, null, DisplayVideo, IntPtr.Zero);
+
+            playerCreated = true;
         }
 
         /// <summary>
