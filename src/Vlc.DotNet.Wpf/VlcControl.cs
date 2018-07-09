@@ -12,11 +12,6 @@ namespace Vlc.DotNet.Wpf
     public class VlcControl: UserControl, IDisposable
     {
         /// <summary>
-        /// Stores the previous <see cref="Control.Background"/> brush after switching IsAlphaChannelEnabled to true
-        /// </summary>
-        private Brush previousBrush;
-
-        /// <summary>
         /// The Viewbox that contains the video image
         /// </summary>
         private Viewbox viewBox;
@@ -65,31 +60,12 @@ namespace Vlc.DotNet.Wpf
             this.Background = Brushes.Black;
             // Binds the VideoSource to the Image.Source property
             this.videoContent.SetBinding(Image.SourceProperty, new Binding(nameof(VlcVideoSourceProvider.VideoSource)) { Source = sourceProvider });
-            //Listen PropertyChanged event to define if IsAlphaChannelEnabled is true or false
-            this.sourceProvider.PropertyChanged += SourceProvider_PropertyChanged;
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
             sourceProvider.Dispose();
-        }
-
-        private void SourceProvider_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if(e.PropertyName == nameof(VlcVideoSourceProvider.IsAlphaChannelEnabled))
-            {
-                if(this.sourceProvider.IsAlphaChannelEnabled)
-                {
-                    previousBrush = Background;
-                    Background = Brushes.Transparent;
-                }
-                else
-                {
-                    var _previousBrush = previousBrush == null ? Brushes.Black : previousBrush;
-                    Background = _previousBrush;
-                }
-            }
         }
     }
 }
