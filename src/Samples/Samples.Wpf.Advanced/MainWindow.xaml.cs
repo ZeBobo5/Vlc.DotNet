@@ -45,6 +45,9 @@ namespace Samples.Wpf.Advanced
             };
 
             control.SourceProvider.MediaPlayer.Play(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
+
+            //string srt = @"C:\Users\**\Videos\2012 - Dooms Days(2009)\2012.2009.BluRay.720p.x264.YIFY.srt";
+            //control.SourceProvider.MediaPlayer.SetSubtitle(srt);
         }
 
         private void OnStopButtonClick(object sender, RoutedEventArgs e)

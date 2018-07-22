@@ -192,6 +192,15 @@ namespace Vlc.DotNet.Core
             this.Play();
         }
 
+        /// <summary>
+        /// Set / Add Subtitle file to Mediaplayer
+        /// </summary>
+        /// <param name="filePath">Subtitle FilePath</param>
+        public void SetSubtitle(string filePath)
+        {
+            Manager.SetVideoSubtitle(myMediaPlayerInstance, filePath);
+        }
+
         public void Pause()
         {
             Manager.Pause(myMediaPlayerInstance);

@@ -18,5 +18,20 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Media instance is not initialized.");
             GetInteropDelegate<SetVideoSpu>().Invoke(mediaPlayerInstance, id);
         }
+
+        public void SetVideoSubtitle(VlcMediaPlayerInstance mediaPlayerInstance, string filepath)
+        {
+            var pathHandle = System.Runtime.InteropServices.GCHandle.Alloc(System.Text.Encoding.UTF8.GetBytes(filepath), System.Runtime.InteropServices.GCHandleType.Pinned);
+
+            SetVideoSubtitle(mediaPlayerInstance, pathHandle.AddrOfPinnedObject());
+            pathHandle.Free();
+        }
+
+        private void SetVideoSubtitle(VlcMediaPlayerInstance mediaPlayerInstance, IntPtr filepath)
+        {
+            if (mediaPlayerInstance == IntPtr.Zero)
+                throw new ArgumentException("Media instance is not initialized.");
+            GetInteropDelegate<SetSubtitleFile>().Invoke(mediaPlayerInstance, filepath);
+        }
     }
 }
