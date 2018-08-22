@@ -63,7 +63,7 @@ namespace Vlc.DotNet.Forms
 
         public void EndInit()
         {
-            if (IsInDesignMode() || myVlcMediaPlayer != null)
+            if (IsInDesignMode || myVlcMediaPlayer != null)
                 return;
             if (VlcLibDirectory == null && (VlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
             {
@@ -101,10 +101,23 @@ namespace Vlc.DotNet.Forms
             this.loggingRegistered = true;
         }
 
-        // work around http://stackoverflow.com/questions/34664/designmode-with-controls/708594
-        private static bool IsInDesignMode()
+        // work around https://stackoverflow.com/questions/34664/designmode-with-nested-controls/2693338#2693338
+        private bool IsInDesignMode
         {
-            return System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio");
+            get
+            {
+                if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                    return true;
+
+                Control ctrl = this;
+                while (ctrl != null)
+                {
+                    if ((ctrl.Site != null) && ctrl.Site.DesignMode)
+                        return true;
+                    ctrl = ctrl.Parent;
+                }
+                return false;
+            }
         }
 
         public event EventHandler<VlcLibDirectoryNeededEventArgs> VlcLibDirectoryNeeded;
