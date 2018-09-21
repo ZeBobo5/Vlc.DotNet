@@ -10,11 +10,21 @@ namespace Vlc.DotNet.Core
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
 
-        internal static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; private set; }
+        private static Dictionary<VlcMediaPlayer, List<VlcMedia>> _loadedMedias;
+            
+        internal static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias {
+            get
+            {
+                if (_loadedMedias == null)
+                {
+                    _loadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
+                }
+                return _loadedMedias;
+            }
+        }
 
         static VlcMedia()
         {
-            LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
         }
 
         internal VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
