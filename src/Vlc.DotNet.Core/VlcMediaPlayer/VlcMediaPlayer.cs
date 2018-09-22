@@ -332,6 +332,11 @@ namespace Vlc.DotNet.Core
             return TakeSnapshot(0, file.FullName, width, height);
         }
 
+        public void SetVideoTitleDisplay(Position position, int timeout)
+        {
+            Manager.SetVideoTitleDisplay(myMediaPlayerInstance, position, timeout);
+        }
+
         /// <summary>
         /// Take a snapshot of the current video window.
         /// </summary>
