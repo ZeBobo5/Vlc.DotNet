@@ -4,11 +4,11 @@ namespace Vlc.DotNet.Core
 {
     public sealed class VlcMediaPlayerLengthChangedEventArgs : EventArgs
     {
-        public VlcMediaPlayerLengthChangedEventArgs(float newLength)
+        public VlcMediaPlayerLengthChangedEventArgs(long newLength)
         {
             NewLength = newLength;
         }
 
-        public float NewLength { get; private set; }
+        public long NewLength { get; private set; }
     }
 }
