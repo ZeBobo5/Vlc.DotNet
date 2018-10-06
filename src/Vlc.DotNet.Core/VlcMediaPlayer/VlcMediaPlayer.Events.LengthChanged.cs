@@ -12,10 +12,10 @@ namespace Vlc.DotNet.Core
         private void OnMediaPlayerLengthChangedInternal(IntPtr ptr)
         {
             var args = MarshalHelper.PtrToStructure<VlcEventArg>(ptr);
-            OnMediaPlayerLengthChanged(args.eventArgsUnion.MediaPlayerLengthChanged.NewLength * 10000);
+            OnMediaPlayerLengthChanged(args.eventArgsUnion.MediaPlayerLengthChanged.NewLength);
         }
 
-        public void OnMediaPlayerLengthChanged(float newLength)
+        public void OnMediaPlayerLengthChanged(long newLength)
         {
             LengthChanged?.Invoke(this, new VlcMediaPlayerLengthChangedEventArgs(newLength));
         }
