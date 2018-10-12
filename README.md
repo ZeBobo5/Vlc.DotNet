@@ -34,7 +34,7 @@ How to use
 ----------
 It all starts with those three steps :
 - Install one of the NuGet Packages below
-- Install `libvlc` libraries from one of the official distributions (To be improved, see [#288](https://github.com/ZeBobo5/Vlc.DotNet/issues/288))
+- Install `libvlc` libraries manually or from the [NuGet package](https://github.com/mfkl/libvlc-nuget)(recommended)
 - Integrate it into your app
 
 See the [Getting started wiki](https://github.com/ZeBobo5/Vlc.DotNet/wiki/Getting-started)
