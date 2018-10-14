@@ -182,9 +182,21 @@ namespace Vlc.DotNet.Forms
             myVlcMediaPlayer?.Play(stream, options);
         }
 
+        /// <summary>
+        /// Toggle pause (no effect if there is no media) 
+        /// </summary>
         public void Pause()
         {
             myVlcMediaPlayer?.Pause();
+        }
+
+        /// <summary>
+        /// Pause or resume (no effect if there is no media) 
+        /// </summary>
+        /// <param name="doPause">If set to <c>true</c>, pauses the media, resumes if <c>false</c></param>
+        public void SetPause(bool doPause)
+        {
+            myVlcMediaPlayer?.SetPause(doPause);
         }
 
         public void Stop()
