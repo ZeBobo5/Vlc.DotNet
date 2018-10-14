@@ -77,7 +77,7 @@ namespace Vlc.DotNet.Core
 
         public TimeSpan Duration
         {
-            get { return new TimeSpan(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance) * 10000); }
+            get { return TimeSpan.FromMilliseconds(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance)); }
         }
 
         public void Dispose()

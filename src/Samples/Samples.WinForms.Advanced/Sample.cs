@@ -60,13 +60,12 @@ namespace Samples.WinForms.Advanced
 
         private void OnVlcMediaLengthChanged(object sender, VlcMediaPlayerLengthChangedEventArgs e)
         {
-            myLblMediaLength.InvokeIfRequired(l => l.Text = new DateTime(new TimeSpan(e.NewLength).Ticks).ToString("T"));
+            myLblMediaLength.InvokeIfRequired(l => l.Text = TimeSpan.FromMilliseconds(e.NewLength).ToString(@"hh\:mm\:ss"));
         }
 
-        private void OnVlcPositionChanged(object sender, VlcMediaPlayerPositionChangedEventArgs e)
+        private void OnVlcTimeChanged(object sender, VlcMediaPlayerTimeChangedEventArgs e)
         {
-            var position = myVlcControl.GetCurrentMedia().Duration.Ticks * e.NewPosition;
-            myLblVlcPosition.InvokeIfRequired(l => l.Text = new DateTime((long)position).ToString("T"));
+            myLblVlcPosition.InvokeIfRequired(l => l.Text = TimeSpan.FromMilliseconds(e.NewTime).ToString(@"hh\:mm\:ss"));
         }
 
         private void OnVlcPaused(object sender, VlcMediaPlayerPausedEventArgs e)
