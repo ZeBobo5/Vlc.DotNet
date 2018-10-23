@@ -7,12 +7,11 @@ namespace Vlc.DotNet.Core.Interops
     public sealed class VlcMediaInstance : InteropObjectInstance
     {
         private readonly VlcManager myManager;
-        private static readonly object Locker = new object();
         private static readonly Dictionary<IntPtr, VlcMediaInstance> AllInstances = new Dictionary<IntPtr, VlcMediaInstance>();
 
         public static VlcMediaInstance New(VlcManager manager, IntPtr pointer)
         {
-            lock (Locker)
+            lock (AllInstances)
             {
                 AllInstances.TryGetValue(pointer, out var instance);
 
@@ -33,7 +32,7 @@ namespace Vlc.DotNet.Core.Interops
 
         protected override void Dispose(bool disposing)
         {
-            lock (Locker)
+            lock (AllInstances)
             {
                 AllInstances.Remove(this);
             }

@@ -9,12 +9,10 @@ namespace Vlc.DotNet.Core
     public sealed partial class VlcMedia : IDisposable
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
-        private static readonly object Locker;
         private static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; }
 
         static VlcMedia()
-        {
-            Locker = new object();
+        {   
             LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
         }
 
@@ -56,7 +54,7 @@ namespace Vlc.DotNet.Core
 
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
-            lock(Locker)
+            lock(LoadedMedias)
             {
                 if(!LoadedMedias.ContainsKey(player))
                 {
@@ -159,7 +157,7 @@ namespace Vlc.DotNet.Core
 
         internal static void RemoveAll(VlcMediaPlayer mediaToRemove)
         {
-            lock(Locker)
+            lock(LoadedMedias)
             {
                 if (!LoadedMedias.ContainsKey(mediaToRemove)) return;
 
