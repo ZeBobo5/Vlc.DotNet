@@ -7,22 +7,19 @@ namespace Vlc.DotNet.Core.Interops
     public sealed class VlcMediaInstance : InteropObjectInstance
     {
         private readonly VlcManager myManager;
-        private static object locker = new object();
-        private static List<VlcMediaInstance> allInstances = new List<VlcMediaInstance>();
+        private static readonly object Locker = new object();
+        private static readonly Dictionary<IntPtr, VlcMediaInstance> AllInstances = new Dictionary<IntPtr, VlcMediaInstance>();
 
         public static VlcMediaInstance New(VlcManager manager, IntPtr pointer)
         {
-            lock (locker)
+            lock (Locker)
             {
-                var instance = allInstances.Find(delegate (VlcMediaInstance i)
-                {
-                    return i == pointer;
-                });
+                AllInstances.TryGetValue(pointer, out var instance);
 
                 if (null == instance)
                 {
                     instance = new VlcMediaInstance(manager, pointer);
-                    allInstances.Add(instance);
+                    AllInstances.Add(pointer, instance);
                 }
 
                 return instance;
@@ -36,9 +33,9 @@ namespace Vlc.DotNet.Core.Interops
 
         protected override void Dispose(bool disposing)
         {
-            lock (locker)
+            lock (Locker)
             {
-                allInstances.Remove(this);
+                AllInstances.Remove(this);
             }
             
             if (Pointer != IntPtr.Zero)
