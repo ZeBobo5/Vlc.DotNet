@@ -9,11 +9,10 @@ namespace Vlc.DotNet.Core
     public sealed partial class VlcMedia : IDisposable
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
-
-        internal static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; private set; }
+        private static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; }
 
         static VlcMedia()
-        {
+        {   
             LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
         }
 
@@ -55,12 +54,18 @@ namespace Vlc.DotNet.Core
 
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
-            if(!LoadedMedias.ContainsKey(player))
-                LoadedMedias[player] = new List<VlcMedia>();
-            LoadedMedias[player].Add(this);
-            MediaInstance = mediaInstance;
-            myVlcMediaPlayer = player;
-            RegisterEvents();
+            lock(LoadedMedias)
+            {
+                if(!LoadedMedias.ContainsKey(player))
+                {
+                    LoadedMedias[player] = new List<VlcMedia>(); 
+                }
+
+                LoadedMedias[player].Add(this);
+                MediaInstance = mediaInstance;
+                myVlcMediaPlayer = player;
+                RegisterEvents();
+            }
         }
 
         internal VlcMediaInstance MediaInstance { get; private set; }
@@ -148,6 +153,21 @@ namespace Vlc.DotNet.Core
             myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemAdded, myOnMediaSubItemAddedInternalEventCallback);
             myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemTreeAdded, myOnMediaSubItemTreeAddedInternalEventCallback);
             eventManager.Dispose();
+        }
+
+        internal static void RemoveAll(VlcMediaPlayer mediaToRemove)
+        {
+            lock(LoadedMedias)
+            {
+                if (!LoadedMedias.ContainsKey(mediaToRemove)) return;
+
+                foreach (var loadedMedia in LoadedMedias[mediaToRemove])
+                {
+                    loadedMedia.Dispose();
+                }
+
+                LoadedMedias.Remove(mediaToRemove);
+            }
         }
     }
 }
