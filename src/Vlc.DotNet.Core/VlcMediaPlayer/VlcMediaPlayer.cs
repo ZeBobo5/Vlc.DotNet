@@ -90,13 +90,7 @@ namespace Vlc.DotNet.Core
             if (IsPlaying())
                 Stop();
 
-            if (VlcMedia.LoadedMedias.ContainsKey(this))
-            foreach (var loadedMedia in VlcMedia.LoadedMedias[this])
-            {
-                loadedMedia.Dispose();
-            }
-            VlcMedia.LoadedMedias.Remove(this);
-
+            VlcMedia.RemoveAll(this);
             myMediaPlayerInstance.Dispose();
             Manager.Dispose();
         }
