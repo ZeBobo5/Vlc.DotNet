@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
@@ -9,12 +8,6 @@ namespace Vlc.DotNet.Core
     public sealed partial class VlcMedia : IDisposable
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
-        private static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; }
-
-        static VlcMedia()
-        {   
-            LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
-        }
 
         internal VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
 #if NET20
@@ -54,18 +47,13 @@ namespace Vlc.DotNet.Core
 
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
-            lock(LoadedMedias)
-            {
-                if(!LoadedMedias.ContainsKey(player))
-                {
-                    LoadedMedias[player] = new List<VlcMedia>(); 
-                }
+            MediaInstance = mediaInstance;
+            myVlcMediaPlayer = player;
+        }
 
-                LoadedMedias[player].Add(this);
-                MediaInstance = mediaInstance;
-                myVlcMediaPlayer = player;
-                RegisterEvents();
-            }
+        internal void Initialize()
+        {
+            RegisterEvents();
         }
 
         internal VlcMediaInstance MediaInstance { get; private set; }
@@ -92,11 +80,12 @@ namespace Vlc.DotNet.Core
 
         private void Dispose(bool disposing)
         {
-            if (MediaInstance != IntPtr.Zero)
+            if (disposing && MediaInstance != IntPtr.Zero)
             {
                 UnregisterEvents();
                 MediaInstance.Dispose();
             }
+
             GC.SuppressFinalize(this);
         }
 
@@ -153,21 +142,6 @@ namespace Vlc.DotNet.Core
             myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemAdded, myOnMediaSubItemAddedInternalEventCallback);
             myVlcMediaPlayer.Manager.DetachEvent(eventManager, EventTypes.MediaSubItemTreeAdded, myOnMediaSubItemTreeAddedInternalEventCallback);
             eventManager.Dispose();
-        }
-
-        internal static void RemoveAll(VlcMediaPlayer mediaToRemove)
-        {
-            lock(LoadedMedias)
-            {
-                if (!LoadedMedias.ContainsKey(mediaToRemove)) return;
-
-                foreach (var loadedMedia in LoadedMedias[mediaToRemove])
-                {
-                    loadedMedia.Dispose();
-                }
-
-                LoadedMedias.Remove(mediaToRemove);
-            }
         }
     }
 }

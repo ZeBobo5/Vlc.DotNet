@@ -32,11 +32,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Wpf.Image", "Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Wpf.Dialogs", "Samples\Samples.Wpf.Dialogs\Samples.Wpf.Dialogs.csproj", "{BB789E9A-E851-4684-9D29-8744E9C95086}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Core.Streaming", "Samples\Samples.Core.Streaming\Samples.Core.Streaming.csproj", "{CC3F5F5D-A74F-4DE4-86AC-07AF9C0B3B87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Core.Streaming", "Samples\Samples.Core.Streaming\Samples.Core.Streaming.csproj", "{CC3F5F5D-A74F-4DE4-86AC-07AF9C0B3B87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Core.Recording", "Samples\Samples.Core.Recording\Samples.Core.Recording.csproj", "{58B6FEE5-E2F8-4895-9147-00407C89F58E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Core.Recording", "Samples\Samples.Core.Recording\Samples.Core.Recording.csproj", "{58B6FEE5-E2F8-4895-9147-00407C89F58E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Core.Thumbnailer", "Samples\Samples.Core.Thumbnailer\Samples.Core.Thumbnailer.csproj", "{FAAE9D11-0762-43AF-91AD-DC28F275D1E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Core.Thumbnailer", "Samples\Samples.Core.Thumbnailer\Samples.Core.Thumbnailer.csproj", "{FAAE9D11-0762-43AF-91AD-DC28F275D1E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WinForms.MultiplePlayers", "Samples\Samples.WinForms.MultiplePlayers\Samples.WinForms.MultiplePlayers.csproj", "{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +102,10 @@ Global
 		{FAAE9D11-0762-43AF-91AD-DC28F275D1E6}.Debug|AnyCPU.Build.0 = Debug|Any CPU
 		{FAAE9D11-0762-43AF-91AD-DC28F275D1E6}.Release|AnyCPU.ActiveCfg = Release|Any CPU
 		{FAAE9D11-0762-43AF-91AD-DC28F275D1E6}.Release|AnyCPU.Build.0 = Release|Any CPU
+		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
+		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Debug|AnyCPU.Build.0 = Debug|Any CPU
+		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Release|AnyCPU.ActiveCfg = Release|Any CPU
+		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Release|AnyCPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{CC3F5F5D-A74F-4DE4-86AC-07AF9C0B3B87} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{58B6FEE5-E2F8-4895-9147-00407C89F58E} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{FAAE9D11-0762-43AF-91AD-DC28F275D1E6} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
+		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8200848B-5F8D-4A79-B989-3A667BE003E0}
