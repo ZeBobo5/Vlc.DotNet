@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 
@@ -9,7 +8,8 @@ namespace Vlc.DotNet.Core
 {
     public sealed partial class VlcMediaPlayer : IDisposable
     {
-        private VlcMediaPlayerInstance myMediaPlayerInstance;
+        private readonly VlcMediaPlayerInstance myMediaPlayerInstance;
+        private VlcMedia myCurrentMedia;
 
         public VlcMediaPlayer(DirectoryInfo vlcLibDirectory)
             : this(VlcManager.GetInstance(vlcLibDirectory))
@@ -90,7 +90,7 @@ namespace Vlc.DotNet.Core
             if (IsPlaying())
                 Stop();
 
-            VlcMedia.RemoveAll(this);
+            myCurrentMedia?.Dispose();
             myMediaPlayerInstance.Dispose();
             Manager.Dispose();
         }
@@ -122,19 +122,22 @@ namespace Vlc.DotNet.Core
 
         private VlcMedia SetMedia(VlcMedia media)
         {
-            var currentMedia = GetMedia();
-            if (currentMedia != null && currentMedia.MediaInstance != media.MediaInstance)
-                currentMedia.Dispose();
+            // If there is a previous media, dispose it.
+            myCurrentMedia?.Dispose();
+
+            // Set it to the media player.
             Manager.SetMediaToMediaPlayer(myMediaPlayerInstance, media.MediaInstance);
+
+            // Register Events.
+            media.Initialize();
+            myCurrentMedia = media;
+
             return media;
         }
 
         public VlcMedia GetMedia()
         {
-            var mediaPtr = Manager.GetMediaFromMediaPlayer(myMediaPlayerInstance);
-            if (mediaPtr.Pointer != IntPtr.Zero)
-                return new VlcMedia(this, mediaPtr);
-            return null;
+            return myCurrentMedia;
         }
 
         public void Play()
@@ -149,8 +152,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(FileInfo file, params string[] options)
         {
-            this.SetMedia(file, options);
-            this.Play();
+            SetMedia(file, options);
+            Play();
         }
 
         /// <summary>
@@ -160,8 +163,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(Uri uri, params string[] options)
         {
-            this.SetMedia(uri, options);
-            this.Play();
+            SetMedia(uri, options);
+            Play();
         }
 
         /// <summary>
@@ -171,8 +174,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(string mrl, params string[] options)
         {
-            this.SetMedia(mrl, options);
-            this.Play();
+            SetMedia(mrl, options);
+            Play();
         }
 
         /// <summary>
@@ -182,8 +185,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(Stream stream, params string[] options)
         {
-            this.SetMedia(stream, options);
-            this.Play();
+            SetMedia(stream, options);
+            Play();
         }
 
         /// <summary>
