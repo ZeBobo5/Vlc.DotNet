@@ -73,7 +73,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(578, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "rtsp://localhost:8554/test";
+            this.textBox1.Text = "rtmp://localhost:5119/live/video1";
             // 
             // label1
             // 

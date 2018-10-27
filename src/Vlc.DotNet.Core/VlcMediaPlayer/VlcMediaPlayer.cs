@@ -152,8 +152,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(FileInfo file, params string[] options)
         {
-            SetMedia(file, options);
-            Play();
+            this.SetMedia(file, options);
+            this.Play();
         }
 
         /// <summary>
@@ -163,8 +163,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(Uri uri, params string[] options)
         {
-            SetMedia(uri, options);
-            Play();
+            this.SetMedia(uri, options);
+            this.Play();
         }
 
         /// <summary>
@@ -174,8 +174,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(string mrl, params string[] options)
         {
-            SetMedia(mrl, options);
-            Play();
+            this.SetMedia(mrl, options);
+            this.Play();
         }
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace Vlc.DotNet.Core
         /// <param name="options">The options to be given</param>
         public void Play(Stream stream, params string[] options)
         {
-            SetMedia(stream, options);
-            Play();
+            this.SetMedia(stream, options);
+            this.Play();
         }
 
         /// <summary>
