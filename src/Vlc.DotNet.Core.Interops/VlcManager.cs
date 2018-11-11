@@ -34,12 +34,15 @@ namespace Vlc.DotNet.Core.Interops
             if (myVlcInstance != null)
                 myVlcInstance.Dispose();
 
-            if (MyAllInstance.ContainsValue(this))
+            lock (MyAllInstance)
             {
-                foreach (var kv in new Dictionary<DirectoryInfo, VlcManager>(MyAllInstance))
+                if (MyAllInstance.ContainsValue(this))
                 {
-                    if(kv.Value == this)
-                        MyAllInstance.Remove(kv.Key);
+                    foreach (var kv in new Dictionary<DirectoryInfo, VlcManager>(MyAllInstance))
+                    {
+                        if (kv.Value == this)
+                            MyAllInstance.Remove(kv.Key);
+                    }
                 }
             }
 
@@ -53,9 +56,12 @@ namespace Vlc.DotNet.Core.Interops
 
         public static VlcManager GetInstance(DirectoryInfo dynamicLinkLibrariesPath)
         {
-            if (!MyAllInstance.ContainsKey(dynamicLinkLibrariesPath))
-                MyAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
-            return MyAllInstance[dynamicLinkLibrariesPath];
+            lock (MyAllInstance)
+            {
+                if (!MyAllInstance.ContainsKey(dynamicLinkLibrariesPath))
+                    MyAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
+                return MyAllInstance[dynamicLinkLibrariesPath];
+            }
         }
 
         private void EnsureVlcInstance()
