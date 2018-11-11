@@ -70,6 +70,29 @@ namespace Vlc.DotNet.Core
         /// </summary>
         public VlcManager Manager { get; private set; }
 
+        /// <summary>
+        /// Sets some meta-information about the application. 
+        /// </summary>
+        /// <seealso cref="SetUserAgent" />
+        /// <param name="id">Java-style application identifier, e.g. "com.acme.foobar"</param>
+        /// <param name="version">application version numbers, e.g. "1.2.3"</param>
+        /// <param name="icon">application icon name, e.g. "foobar"</param>
+        public void SetAppId(string id, string version, string icon)
+        {
+            this.Manager.SetAppId(id, version, icon);
+        }
+
+        /// <summary>
+        /// Sets the application name.
+        /// LibVLC passes this as the user agent string when a protocol requires it.
+        /// </summary>
+        /// <param name="name">human-readable application name, e.g. "FooBar player 1.2.3"</param>
+        /// <param name="http">HTTP User Agent, e.g. "FooBar/1.2.3 Python/2.6.0"</param>
+        public void SetUserAgent(string name, string http)
+        {
+            this.Manager.SetUserAgent(name, http);
+        }
+
         public IntPtr VideoHostControlHandle
         {
             get { return Manager.GetMediaPlayerVideoHostHandle(myMediaPlayerInstance); }
