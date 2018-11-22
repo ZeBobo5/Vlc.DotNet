@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Event manager is not initialized.");
             if (callback == null)
                 return;
-            GetInteropDelegate<DetachEvent>().Invoke(eventManagerInstance, eventType, callback, IntPtr.Zero);
+            myLibraryLoader.GetInteropDelegate<DetachEvent>().Invoke(eventManagerInstance, eventType, callback, IntPtr.Zero);
         }
     }
 }

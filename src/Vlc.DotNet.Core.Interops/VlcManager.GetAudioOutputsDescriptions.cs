@@ -8,9 +8,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public List<AudioOutputDescriptionStructure> GetAudioOutputsDescriptions()
         {
-            EnsureVlcInstance();
-
-            var first = GetInteropDelegate<GetAudioOutputsDescriptions>().Invoke(myVlcInstance);
+            var first = myLibraryLoader.GetInteropDelegate<GetAudioOutputsDescriptions>().Invoke(myVlcInstance);
             var result = new List<AudioOutputDescriptionStructure>();
 
             if (first == IntPtr.Zero)
@@ -37,7 +35,7 @@ namespace Vlc.DotNet.Core.Interops
             }
             finally
             {
-                GetInteropDelegate<ReleaseAudioOutputDescription>().Invoke(first);
+                myLibraryLoader.GetInteropDelegate<ReleaseAudioOutputDescription>().Invoke(first);
             }
         }
     }

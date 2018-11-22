@@ -8,11 +8,9 @@ namespace Vlc.DotNet.Core.Interops
         [Obsolete("Use GetAudioOutputDeviceList instead")]
         public int GetAudioOutputDeviceCount(string outputName)
         {
-            EnsureVlcInstance();
-
             using (var outputNameHandle = Utf8InteropStringConverter.ToUtf8StringHandle(outputName))
             {
-                return GetInteropDelegate<GetAudioOutputDeviceCount>().Invoke(myVlcInstance, outputNameHandle);
+                return myLibraryLoader.GetInteropDelegate<GetAudioOutputDeviceCount>().Invoke(myVlcInstance, outputNameHandle);
             }
         }
     }

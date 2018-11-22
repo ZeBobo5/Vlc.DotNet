@@ -14,7 +14,7 @@ namespace Vlc.DotNet.Core.Interops
 
             using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(option))
             {
-                GetInteropDelegate<AddOptionToMedia>().Invoke(mediaInstance, handle);
+                myLibraryLoader.GetInteropDelegate<AddOptionToMedia>().Invoke(mediaInstance, handle);
             }
         }
 

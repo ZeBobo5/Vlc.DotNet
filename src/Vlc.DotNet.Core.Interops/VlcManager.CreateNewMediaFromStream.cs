@@ -40,7 +40,7 @@ namespace Vlc.DotNet.Core.Interops
             if (opaque == IntPtr.Zero)
                 return null;
 
-            var result = VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromCallbacks>().Invoke(
+            var result = VlcMediaInstance.New(this, myLibraryLoader.GetInteropDelegate<CreateNewMediaFromCallbacks>().Invoke(
                 myVlcInstance,
                 CallbackOpenMediaDelegate,
                 CallbackReadMediaDelegate,

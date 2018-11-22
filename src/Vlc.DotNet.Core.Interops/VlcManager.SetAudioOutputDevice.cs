@@ -9,7 +9,7 @@ namespace Vlc.DotNet.Core.Interops
             using (var audioOutputInterop = Utf8InteropStringConverter.ToUtf8StringHandle(audioOutputDescriptionName))
             using (var deviceNameInterop = Utf8InteropStringConverter.ToUtf8StringHandle(audioOutputDescriptionName))
             {
-                GetInteropDelegate<SetAudioOutputDevice>().Invoke(mediaPlayerInstance, audioOutputInterop, deviceNameInterop);
+                myLibraryLoader.GetInteropDelegate<SetAudioOutputDevice>().Invoke(mediaPlayerInstance, audioOutputInterop, deviceNameInterop);
             }
         }
     }

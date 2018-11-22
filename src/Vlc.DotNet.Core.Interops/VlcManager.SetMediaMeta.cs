@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Media instance is not initialized.");
             using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(value))
             {
-                GetInteropDelegate<SetMediaMetadata>().Invoke(mediaInstance, metadata, handle);
+                myLibraryLoader.GetInteropDelegate<SetMediaMetadata>().Invoke(mediaInstance, metadata, handle);
             }
         }
     }

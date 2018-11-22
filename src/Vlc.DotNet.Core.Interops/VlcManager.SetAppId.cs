@@ -17,7 +17,7 @@ namespace Vlc.DotNet.Core.Interops
             using (var versionInterop = Utf8InteropStringConverter.ToUtf8StringHandle(version))
             using (var iconInterop = Utf8InteropStringConverter.ToUtf8StringHandle(icon))
             {
-                GetInteropDelegate<SetAppId>().Invoke(this.myVlcInstance, idInterop, versionInterop, iconInterop);
+                myLibraryLoader.GetInteropDelegate<SetAppId>().Invoke(this.myVlcInstance, idInterop, versionInterop, iconInterop);
             }
         }
     }

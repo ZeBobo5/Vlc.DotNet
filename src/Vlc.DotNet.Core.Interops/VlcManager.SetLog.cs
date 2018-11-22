@@ -18,10 +18,8 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Callback for log is not initialized.");
             }
 
-            EnsureVlcInstance();
-
             this.logCallbackReference = callback;
-            GetInteropDelegate<SetLog>().Invoke(this.myVlcInstance, this.logCallbackReference, IntPtr.Zero);
+            myLibraryLoader.GetInteropDelegate<SetLog>().Invoke(this.myVlcInstance, this.logCallbackReference, IntPtr.Zero);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Vlc.DotNet.Core.Interops
             using (var nameInterop = Utf8InteropStringConverter.ToUtf8StringHandle(name))
             using (var httpInterop = Utf8InteropStringConverter.ToUtf8StringHandle(http))
             {
-                GetInteropDelegate<SetUserAgent>().Invoke(this.myVlcInstance, nameInterop, httpInterop);
+                myLibraryLoader.GetInteropDelegate<SetUserAgent>().Invoke(this.myVlcInstance, nameInterop, httpInterop);
             }
         }
     }
