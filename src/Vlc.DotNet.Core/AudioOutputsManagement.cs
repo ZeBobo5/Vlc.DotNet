@@ -45,7 +45,7 @@ namespace Vlc.DotNet.Core
             {
                 throw new NotSupportedException("Not implemented in LibVlc.");
             }
-            set { myManager.SetAudioOutput(value.Name); }
+            set { myManager.SetAudioOutput(myMediaPlayerInstance, value.Name); }
         }
     }
 }
