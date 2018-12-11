@@ -362,10 +362,6 @@
             // 
             this.myCbxAudioOutputs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.myCbxAudioOutputs.FormattingEnabled = true;
-            this.myCbxAudioOutputs.Items.AddRange(new object[] {
-            "16:9",
-            "16:10",
-            "4:3"});
             this.myCbxAudioOutputs.Location = new System.Drawing.Point(658, 338);
             this.myCbxAudioOutputs.Name = "myCbxAudioOutputs";
             this.myCbxAudioOutputs.Size = new System.Drawing.Size(143, 21);

@@ -18,10 +18,6 @@ namespace Samples.WinForms.Advanced
         {
             InitializeComponent();
 
-            //int result = myVlcControl.VlcMediaPlayer.SetAudioOutput("mmdevice");
-            //int result = myVlcControl.VlcMediaPlayer.SetAudioOutput("directshow");
-            //int result = myVlcControl.VlcMediaPlayer.SetAudioOutput("_sdfsdf");
-
             if (myVlcControl.Audio != null)
             {
                 var outputs = myVlcControl.Audio.Outputs;
