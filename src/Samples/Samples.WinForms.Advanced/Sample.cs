@@ -7,6 +7,9 @@ using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
 using Vlc.DotNet.Forms;
 
+using System.Linq;
+using System.Collections.Generic;
+
 namespace Samples.WinForms.Advanced
 {
     public partial class Sample : Form
@@ -14,6 +17,32 @@ namespace Samples.WinForms.Advanced
         public Sample()
         {
             InitializeComponent();
+
+            if (myVlcControl.Audio != null)
+            {
+                var outputs = myVlcControl.Audio.Outputs;
+                if (outputs != null)
+                {
+
+                    myCbxAudioOutputs.DataSource = new List<AudioOutputDescription>(outputs.All);
+                    myCbxAudioOutputs.DisplayMember = "Description";
+                    myCbxAudioOutputs.Enabled = true;
+                    myCbxAudioOutputs.SelectedIndex = -1;
+                    myCbxAudioOutputs.SelectedValueChanged += (o, a) =>
+                    {
+                        var val = myCbxAudioOutputs.SelectedValue;
+                        if (val != null)
+                        {
+                            var output = val as AudioOutputDescription;
+                            if (output != null)
+                            {
+                                outputs.Current = output;
+                            }
+                        }
+                    };
+
+                }
+            }
         }
 
         /// <summary>

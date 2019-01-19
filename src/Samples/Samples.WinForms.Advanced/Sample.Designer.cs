@@ -54,6 +54,8 @@
             this.myBtnEnableMouseEvents = new System.Windows.Forms.Button();
             this.myBtnDisableMouseEvents = new System.Windows.Forms.Button();
             this.myVlcControl = new Vlc.DotNet.Forms.VlcControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.myCbxAudioOutputs = new System.Windows.Forms.ComboBox();
             this.myGrpAudioInformations.SuspendLayout();
             this.myGrpVideoInformations.SuspendLayout();
             this.myGrpMouseInformations.SuspendLayout();
@@ -296,20 +298,20 @@
             this.myLblKeyDown.TabIndex = 0;
             this.myLblKeyDown.Text = "Key Down: false";
             // 
-            // myBtnDisableMouseEvents
+            // myBtnEnableMouseEvents
             // 
             this.myBtnEnableMouseEvents.Location = new System.Drawing.Point(583, 309);
-            this.myBtnEnableMouseEvents.Name = "myBtnDisableMouseEvents";
+            this.myBtnEnableMouseEvents.Name = "myBtnEnableMouseEvents";
             this.myBtnEnableMouseEvents.Size = new System.Drawing.Size(159, 23);
             this.myBtnEnableMouseEvents.TabIndex = 15;
             this.myBtnEnableMouseEvents.Text = "Enable Player Input Events";
             this.myBtnEnableMouseEvents.UseVisualStyleBackColor = true;
             this.myBtnEnableMouseEvents.Click += new System.EventHandler(this.myBtnEnableMouseEvents_Click);
             // 
-            // myBtnEnableMouseEvents
+            // myBtnDisableMouseEvents
             // 
             this.myBtnDisableMouseEvents.Location = new System.Drawing.Point(583, 280);
-            this.myBtnDisableMouseEvents.Name = "myBtnEnableMouseEvents";
+            this.myBtnDisableMouseEvents.Name = "myBtnDisableMouseEvents";
             this.myBtnDisableMouseEvents.Size = new System.Drawing.Size(159, 23);
             this.myBtnDisableMouseEvents.TabIndex = 16;
             this.myBtnDisableMouseEvents.Text = "Disable Player Input Events";
@@ -346,11 +348,32 @@
             this.myVlcControl.MouseLeave += new System.EventHandler(this.myVlcControl_MouseLeave);
             this.myVlcControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.myVlcControl_MouseUp);
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(580, 341);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Audio Output:";
+            // 
+            // myCbxAudioOutputs
+            // 
+            this.myCbxAudioOutputs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.myCbxAudioOutputs.FormattingEnabled = true;
+            this.myCbxAudioOutputs.Location = new System.Drawing.Point(658, 338);
+            this.myCbxAudioOutputs.Name = "myCbxAudioOutputs";
+            this.myCbxAudioOutputs.Size = new System.Drawing.Size(143, 21);
+            this.myCbxAudioOutputs.TabIndex = 17;
+            // 
             // Sample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 391);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.myCbxAudioOutputs);
             this.Controls.Add(this.myBtnDisableMouseEvents);
             this.Controls.Add(this.myBtnEnableMouseEvents);
             this.Controls.Add(this.myGrpMouseInformations);
@@ -410,6 +433,8 @@
         private System.Windows.Forms.Label myLblKeyDown;
         private System.Windows.Forms.Button myBtnEnableMouseEvents;
         private System.Windows.Forms.Button myBtnDisableMouseEvents;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox myCbxAudioOutputs;
     }
 }
 

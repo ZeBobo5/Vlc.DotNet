@@ -99,6 +99,11 @@ namespace Vlc.DotNet.Core
             set { Manager.SetMediaPlayerVideoHostHandle(myMediaPlayerInstance, value); }
         }
 
+        public int SetAudioOutput(string outputName)
+        {
+            return this.Manager.SetAudioOutput(myMediaPlayerInstance, outputName);
+        }
+
         public void Dispose()
         {
             Dispose(true);
