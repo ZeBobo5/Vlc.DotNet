@@ -40,6 +40,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Core.Thumbnailer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WinForms.MultiplePlayers", "Samples\Samples.WinForms.MultiplePlayers\Samples.WinForms.MultiplePlayers.csproj", "{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WinForms.InitWithCode", "Samples\Samples.WinForms.InitWithCode\Samples.WinForms.InitWithCode.csproj", "{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AnyCPU = Debug|AnyCPU
@@ -106,6 +108,10 @@ Global
 		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Debug|AnyCPU.Build.0 = Debug|Any CPU
 		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Release|AnyCPU.ActiveCfg = Release|Any CPU
 		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C}.Release|AnyCPU.Build.0 = Release|Any CPU
+		{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
+		{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79}.Debug|AnyCPU.Build.0 = Debug|Any CPU
+		{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79}.Release|AnyCPU.ActiveCfg = Release|Any CPU
+		{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79}.Release|AnyCPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +128,7 @@ Global
 		{58B6FEE5-E2F8-4895-9147-00407C89F58E} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{FAAE9D11-0762-43AF-91AD-DC28F275D1E6} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 		{7EA1C3C5-72EA-4721-BD78-4FACBED5920C} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
+		{A2C8DBD2-D3C5-416E-AB8E-FDED1043FE79} = {44AE198F-A3F8-45F9-85CF-605858D6BD59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8200848B-5F8D-4A79-B989-3A667BE003E0}
