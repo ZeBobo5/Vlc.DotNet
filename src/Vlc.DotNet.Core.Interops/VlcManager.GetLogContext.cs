@@ -27,7 +27,7 @@ namespace Vlc.DotNet.Core.Interops
             UIntPtr line2;
             IntPtr module2;
             IntPtr file2;
-            GetInteropDelegate<GetLogContext>().Invoke(logContext, out module2, out file2, out line2);
+            myLibraryLoader.GetInteropDelegate<GetLogContext>().Invoke(logContext, out module2, out file2, out line2);
             if (line2 == UIntPtr.Zero)
             {
                 line = null;

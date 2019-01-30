@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Media player instance is not initialized.");
             using (var deinterlaceModeInterop = Utf8InteropStringConverter.ToUtf8StringHandle(deinterlaceMode))
             {
-                GetInteropDelegate<SetVideoDeinterlace>().Invoke(mediaPlayerInstance, deinterlaceModeInterop);
+                myLibraryLoader.GetInteropDelegate<SetVideoDeinterlace>().Invoke(mediaPlayerInstance, deinterlaceModeInterop);
             }
         }
     }

@@ -15,8 +15,6 @@ namespace Vlc.DotNet.Core.Interops
         /// </summary>
         public void SetDialogCallbacks(DialogCallbacks? callbacks, IntPtr data)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(SetDialogCallbacks)}");
@@ -35,7 +33,7 @@ namespace Vlc.DotNet.Core.Interops
                 Marshal.StructureToPtr(this.dialogCallbacks.Value, this.dialogCallbacksPointer, false);
             }
 
-            GetInteropDelegate<SetDialogCallbacks>().Invoke(this.myVlcInstance, this.dialogCallbacksPointer, data);
+            myLibraryLoader.GetInteropDelegate<SetDialogCallbacks>().Invoke(this.myVlcInstance, this.dialogCallbacksPointer, data);
         }
 
         /// <summary>
@@ -43,14 +41,12 @@ namespace Vlc.DotNet.Core.Interops
         /// </summary>
         public void SetDialogContext(IntPtr dialogId, IntPtr data)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(SetDialogContext)}");
             }
 
-            GetInteropDelegate<SetDialogContext>().Invoke(dialogId, data);
+            myLibraryLoader.GetInteropDelegate<SetDialogContext>().Invoke(dialogId, data);
         }
 
 
@@ -59,14 +55,12 @@ namespace Vlc.DotNet.Core.Interops
         /// </summary>
         public IntPtr GetDialogContext(IntPtr dialogId)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(GetDialogContext)}");
             }
 
-            return GetInteropDelegate<GetDialogContext>().Invoke(dialogId);
+            return myLibraryLoader.GetInteropDelegate<GetDialogContext>().Invoke(dialogId);
         }
 
         /// <summary>
@@ -77,14 +71,12 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>0 on success, or -1 on error</returns>
         public int PostLogin(IntPtr dialogId, Utf8StringHandle username, Utf8StringHandle password, bool store)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(PostLogin)}");
             }
 
-            return GetInteropDelegate<PostLogin>().Invoke(dialogId, username?.DangerousGetHandle() ?? IntPtr.Zero, password?.DangerousGetHandle() ?? IntPtr.Zero, store);
+            return myLibraryLoader.GetInteropDelegate<PostLogin>().Invoke(dialogId, username?.DangerousGetHandle() ?? IntPtr.Zero, password?.DangerousGetHandle() ?? IntPtr.Zero, store);
         }
 
         /// <summary>
@@ -95,14 +87,12 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>0 on success, or -1 on error</returns>
         public int PostAction(IntPtr dialogId, int action)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(PostAction)}");
             }
 
-            return GetInteropDelegate<PostAction>().Invoke(dialogId, action);
+            return myLibraryLoader.GetInteropDelegate<PostAction>().Invoke(dialogId, action);
         }
 
         /// <summary>
@@ -113,14 +103,12 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>0 on success, or -1 on error</returns>
         public int DismissDialog(IntPtr dialogId)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(DismissDialog)}");
             }
 
-            return GetInteropDelegate<DismissDialog>().Invoke(dialogId);
+            return myLibraryLoader.GetInteropDelegate<DismissDialog>().Invoke(dialogId);
         }
     }
 }

@@ -10,21 +10,38 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public abstract class VlcInteropsManager : IDisposable
+    /// <summary>
+    /// This class loads the required libvlc libraries.
+    /// Only one instance per directory will be created.
+    ///
+    /// Use <see cref="GetOrCreateLoader" /> and <see cref="ReleaseLoader"/> to get a VlcLibraryLoader instance and release it properly.
+    /// Do not call Dispose() by yourself, it will be called as needed by ReleaseLoader.
+    /// </summary>
+    internal class VlcLibraryLoader: IDisposable
     {
+        private static Dictionary<string, VlcLibraryLoader> myLoaderInstances = new Dictionary<string, VlcLibraryLoader>();
+
+        private readonly DirectoryInfo myDynamicLinkLibrariesPath;
+
+        /// <summary>
+        /// Number of objects that are using this loader
+        /// </summary>
+        private int myRefCount;
+
+        private IntPtr myLibGccDllHandle;
+        private IntPtr myLibVlcDllHandle;
+        private IntPtr myLibVlcCoreDllHandle;
+
         /// <summary>
         /// Caches of the delegates that were resolved from the libvlc.
         /// These delegates are cast to the correct delegate type when a query is made
         /// </summary>
         private readonly Dictionary<string, object> myInteropDelegates = new Dictionary<string, object>();
-        private IntPtr myLibGccDllHandle;
-        private IntPtr myLibVlcDllHandle;
-        private IntPtr myLibVlcCoreDllHandle;
 
-        protected VlcInteropsManager(DirectoryInfo dynamicLinkLibrariesPath)
+        private VlcLibraryLoader(DirectoryInfo dynamicLinkLibrariesPath)
         {
-            if (!dynamicLinkLibrariesPath.Exists)
-                throw new DirectoryNotFoundException();
+            myDynamicLinkLibrariesPath = dynamicLinkLibrariesPath;
+            myRefCount = 1;
 
             var libGccDllPath = Path.Combine(dynamicLinkLibrariesPath.FullName, "libgcc_s_seh-1.dll");
             if (File.Exists(libGccDllPath))
@@ -65,7 +82,7 @@ namespace Vlc.DotNet.Core.Interops
                 vlcFunctionName = attr.FunctionName;
                 if (myInteropDelegates.ContainsKey(vlcFunctionName))
                 {
-                    return (T) myInteropDelegates[attr.FunctionName];
+                    return (T)myInteropDelegates[attr.FunctionName];
                 }
 
                 var procAddress = Win32Interops.GetProcAddress(myLibVlcDllHandle, attr.FunctionName);
@@ -82,13 +99,7 @@ namespace Vlc.DotNet.Core.Interops
             }
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public virtual void Dispose(bool disposing)
+        void IDisposable.Dispose()
         {
             if (myLibVlcDllHandle != IntPtr.Zero)
             {
@@ -107,9 +118,47 @@ namespace Vlc.DotNet.Core.Interops
             }
         }
 
-        ~VlcInteropsManager()
+        /// <summary>
+        /// Creates a new VlcLibraryLoader, or get the existing one for that folder from the dictionary (increment its reference count).
+        /// </summary>
+        /// <param name="dynamicLinkLibrariesPath">The path from the dictionary</param>
+        /// <returns>The loader</returns>
+        public static VlcLibraryLoader GetOrCreateLoader(DirectoryInfo dynamicLinkLibrariesPath)
         {
-            Dispose(false);
+            if (!dynamicLinkLibrariesPath.Exists)
+                throw new DirectoryNotFoundException();
+
+            lock (myLoaderInstances)
+            {
+                if (myLoaderInstances.ContainsKey(dynamicLinkLibrariesPath.FullName))
+                {
+                    var instance = myLoaderInstances[dynamicLinkLibrariesPath.FullName];
+                    instance.myRefCount++;
+                    return instance;
+                }
+
+                var returnedInstance = new VlcLibraryLoader(dynamicLinkLibrariesPath);
+                myLoaderInstances[dynamicLinkLibrariesPath.FullName] = returnedInstance;
+                return returnedInstance;
+            }
+        }
+
+        /// <summary>
+        /// Decrements the reference counter of the specified loader.
+        /// If this reference counter reaches 0, it is destroyed
+        /// </summary>
+        /// <param name="loader"></param>
+        public static void ReleaseLoader(VlcLibraryLoader loader)
+        {
+            lock (myLoaderInstances)
+            {
+                loader.myRefCount--;
+                if (loader.myRefCount == 0)
+                {
+                    ((IDisposable)loader).Dispose();
+                    myLoaderInstances.Remove(loader.myDynamicLinkLibrariesPath.FullName);
+                }
+            }
         }
     }
 }

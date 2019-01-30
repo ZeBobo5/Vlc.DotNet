@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public string GetCompiler()
         {
-            return Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetCompiler>().Invoke());
+            return Utf8InteropStringConverter.Utf8InteropToString(myLibraryLoader.GetInteropDelegate<GetCompiler>().Invoke());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Interops
 
             using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(option))
             {
-                GetInteropDelegate<AddOptionFlagToMedia>().Invoke(mediaInstance, handle, flag);
+                myLibraryLoader.GetInteropDelegate<AddOptionFlagToMedia>().Invoke(mediaInstance, handle, flag);
             }
         }
     }

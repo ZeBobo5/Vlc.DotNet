@@ -32,12 +32,38 @@ namespace Vlc.DotNet.Forms
             BackColor = System.Drawing.Color.Black;
         }
 
-        [Category("Media Player")]
-        public string[] VlcMediaplayerOptions { get; set; }
+        private string[] _vlcMediaPlayerOptions = null;
 
         [Category("Media Player")]
+        public string[] VlcMediaplayerOptions
+        {
+            get { return this._vlcMediaPlayerOptions; }
+            set
+            {
+                if (!(myVlcMediaPlayer is null))
+                {
+                    throw new InvalidOperationException("Cannot modify VlcMediaplayerOptions if Media player has already been initialized. Modify VlcMediaplayerOptions before calling EndInit.");
+                }
+
+                this._vlcMediaPlayerOptions = value;
+            }
+        }
+
+        private DirectoryInfo _vlcLibDirectory = null;
+        [Category("Media Player")]
         [Editor(typeof(DirectoryEditor), typeof(UITypeEditor))]
-        public DirectoryInfo VlcLibDirectory { get; set; }
+        public DirectoryInfo VlcLibDirectory {
+            get { return this._vlcLibDirectory; }
+            set
+            {
+                if (!(myVlcMediaPlayer is null))
+                {
+                    throw new InvalidOperationException("Cannot modify VlcLibDirectory if Media player has already been initialized. Modify VlcLibDirectory before calling EndInit.");
+                }
+
+                this._vlcLibDirectory = value;
+            }
+        }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -65,7 +91,7 @@ namespace Vlc.DotNet.Forms
         {
             if (IsInDesignMode || myVlcMediaPlayer != null)
                 return;
-            if (VlcLibDirectory == null && (VlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
+            if (_vlcLibDirectory == null && (_vlcLibDirectory = OnVlcLibDirectoryNeeded()) == null)
             {
                 throw new Exception("'VlcLibDirectory' must be set.");
             }

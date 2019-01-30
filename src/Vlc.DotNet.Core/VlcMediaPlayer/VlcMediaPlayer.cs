@@ -12,46 +12,18 @@ namespace Vlc.DotNet.Core
         private VlcMedia myCurrentMedia;
 
         public VlcMediaPlayer(DirectoryInfo vlcLibDirectory)
-            : this(VlcManager.GetInstance(vlcLibDirectory))
+            : this(new VlcManager(vlcLibDirectory, new string[0]))
         {
         }
 
         public VlcMediaPlayer(DirectoryInfo vlcLibDirectory, string[] options)
-            : this(VlcManager.GetInstance(vlcLibDirectory), options)
+            : this(new VlcManager(vlcLibDirectory, options))
         {
         }
 
-        internal VlcMediaPlayer(VlcManager manager)
+        public VlcMediaPlayer(VlcManager manager)
         {
             Manager = manager;
-#if DEBUG
-            Manager.CreateNewInstance(new[]
-            {
-                "--extraintf=logger",
-                "--verbose=2"
-            });
-#else
-            Manager.CreateNewInstance(new[]
-            {
-                "--quiet"
-            });
-#endif
-            myMediaPlayerInstance = manager.CreateMediaPlayer();
-            RegisterEvents();
-            Chapters = new ChapterManagement(manager, myMediaPlayerInstance);
-            SubTitles = new SubTitlesManagement(manager, myMediaPlayerInstance);
-            Video = new VideoManagement(manager, myMediaPlayerInstance);
-            Audio = new AudioManagement(manager, myMediaPlayerInstance);
-#if !NET20 && !NET35 && !NET40
-            Dialogs = new DialogsManagement(manager, myMediaPlayerInstance);
-#endif
-        }
-
-        internal VlcMediaPlayer(VlcManager manager, string[] options)
-        {
-            Manager = manager;
-            Manager.CreateNewInstance(options);
-
             myMediaPlayerInstance = manager.CreateMediaPlayer();
             RegisterEvents();
             Chapters = new ChapterManagement(manager, myMediaPlayerInstance);
@@ -68,7 +40,7 @@ namespace Vlc.DotNet.Core
         /// Gets the low-level interop manager that calls the methods on the libvlc library.
         /// This is useful if a higher-level API is missing.
         /// </summary>
-        public VlcManager Manager { get; private set; }
+        public VlcManager Manager { get; }
 
         /// <summary>
         /// Sets some meta-information about the application. 

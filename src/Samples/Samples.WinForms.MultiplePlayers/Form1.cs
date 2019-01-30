@@ -78,23 +78,23 @@ namespace Samples.WinForms.MultiplePlayers
         /// <returns></returns>
         private async Task AddPlayerAsync()
         {
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
-                AutoResetEvent uiUpdated = new AutoResetEvent(false);
                 var player = new VlcControl
                 {
                     VlcLibDirectory = new DirectoryInfo(this.vlcLibraryPath), 
                     Size = new Size(200, 200)
                 };
 
+                var uiUpdatedTask = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
                 panel.BeginInvoke( (MethodInvoker) delegate
                 {
                     panel.Controls.Add(player);
                     player.EndInit();
-                    uiUpdated.Set();
+                    uiUpdatedTask.SetResult(true);
                 });
 
-                uiUpdated.WaitOne();
+                await uiUpdatedTask.Task.ConfigureAwait(false);
                 
                 lock (listOfControls)
                 {

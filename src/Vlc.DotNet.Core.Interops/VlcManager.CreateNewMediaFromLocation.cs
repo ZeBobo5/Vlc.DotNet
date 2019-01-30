@@ -6,11 +6,9 @@ namespace Vlc.DotNet.Core.Interops
     {
         public VlcMediaInstance CreateNewMediaFromLocation(string mrl)
         {
-            EnsureVlcInstance();
-
             using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(mrl))
             {
-                return VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromLocation>().Invoke(myVlcInstance, handle));
+                return VlcMediaInstance.New(this, myLibraryLoader.GetInteropDelegate<CreateNewMediaFromLocation>().Invoke(myVlcInstance, handle));
             }
         }
     }

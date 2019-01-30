@@ -14,7 +14,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentNullException(nameof(filePath));
             using (var filePathHandle = Utf8InteropStringConverter.ToUtf8StringHandle(filePath))
             {
-                return GetInteropDelegate<TakeSnapshot>().Invoke(mediaPlayerInstance, outputNumber, filePathHandle, width, height) == 0;
+                return myLibraryLoader.GetInteropDelegate<TakeSnapshot>().Invoke(mediaPlayerInstance, outputNumber, filePathHandle, width, height) == 0;
             }
         }
     }

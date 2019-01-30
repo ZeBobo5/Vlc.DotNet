@@ -15,7 +15,7 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-            GetInteropDelegate<SetKeyInput>().Invoke(mediaPlayerInstance, on ? 1u : 0u);
+            myLibraryLoader.GetInteropDelegate<SetKeyInput>().Invoke(mediaPlayerInstance, on ? 1u : 0u);
         }
     }
 }

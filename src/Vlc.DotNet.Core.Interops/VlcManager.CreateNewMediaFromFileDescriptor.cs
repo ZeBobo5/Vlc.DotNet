@@ -6,9 +6,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public VlcMediaInstance CreateNewMediaFromFileDescriptor(int fileDescriptor)
         {
-            EnsureVlcInstance();
-
-            return VlcMediaInstance.New(this, GetInteropDelegate<CreateNewMediaFromFileDescriptor>().Invoke(myVlcInstance, fileDescriptor));
+            return VlcMediaInstance.New(this, myLibraryLoader.GetInteropDelegate<CreateNewMediaFromFileDescriptor>().Invoke(myVlcInstance, fileDescriptor));
         }
     }
 }

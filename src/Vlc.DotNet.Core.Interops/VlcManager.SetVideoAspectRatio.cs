@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Interops
 
             using (var aspectRatioInterop = Utf8InteropStringConverter.ToUtf8StringHandle(aspectRatio))
             {
-                GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, aspectRatioInterop);
+                myLibraryLoader.GetInteropDelegate<SetVideoAspectRatio>().Invoke(mediaPlayerInstance, aspectRatioInterop);
             }
         }
     }

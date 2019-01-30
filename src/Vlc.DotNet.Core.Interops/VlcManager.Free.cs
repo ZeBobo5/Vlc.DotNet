@@ -9,7 +9,7 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (instance == IntPtr.Zero)
                 return;
-            GetInteropDelegate<Free>().Invoke(instance);
+            myLibraryLoader.GetInteropDelegate<Free>().Invoke(instance);
         }
     }
 }

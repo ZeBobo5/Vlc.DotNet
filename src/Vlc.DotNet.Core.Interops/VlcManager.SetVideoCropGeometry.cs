@@ -12,7 +12,7 @@ namespace Vlc.DotNet.Core.Interops
 
             using (var cropGeometryInterop = Utf8InteropStringConverter.ToUtf8StringHandle(cropGeometry))
             {
-                GetInteropDelegate<SetVideoCropGeometry>()
+                myLibraryLoader.GetInteropDelegate<SetVideoCropGeometry>()
                     .Invoke(mediaPlayerInstance, cropGeometryInterop);
             }
         }

@@ -14,14 +14,12 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>The codec description</returns>
         public string GetCodecDescription(MediaTrackTypes type, UInt32 codec)
         {
-            EnsureVlcInstance();
-
             if (VlcVersionNumber.Major < 3)
             {
                 throw new InvalidOperationException($"You need VLC version 3.0 or higher to be able to use {nameof(GetCodecDescription)}");
             }
             
-            var ptr = GetInteropDelegate<GetCodecDescription>().Invoke(type, codec);
+            var ptr = myLibraryLoader.GetInteropDelegate<GetCodecDescription>().Invoke(type, codec);
             return Utf8InteropStringConverter.Utf8InteropToString(ptr);
         }
     }
