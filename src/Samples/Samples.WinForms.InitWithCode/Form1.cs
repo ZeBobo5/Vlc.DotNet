@@ -21,6 +21,7 @@ namespace Samples.WinForms.InitWithCode
 
             control.BeginInit();
             control.VlcLibDirectory = libDirectory;
+            control.Dock = DockStyle.Fill;
             control.EndInit();
             this.Controls.Add(control);
 
