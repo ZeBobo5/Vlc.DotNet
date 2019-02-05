@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_get_fullscreen")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate bool GetFullScreen(IntPtr mediaPlayerInstance);
+    internal delegate int GetFullScreen(IntPtr mediaPlayerInstance);
 }

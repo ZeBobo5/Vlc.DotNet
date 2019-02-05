@@ -47,7 +47,7 @@ namespace Vlc.DotNet.Core
         {
             get
             {
-                return myManager.GetFullScreen(myMediaPlayer);
+                return (myManager.GetFullScreen(myMediaPlayer) <= 0)?false:true;
             }
             set
             {
