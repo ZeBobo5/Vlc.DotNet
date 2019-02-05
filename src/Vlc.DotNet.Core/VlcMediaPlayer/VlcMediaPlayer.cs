@@ -290,6 +290,11 @@ namespace Vlc.DotNet.Core
             Manager.TakeSnapshot(myMediaPlayerInstance, file, width, height);
         }
 
+        public void FullScreen()
+        {
+            Video.FullScreen = true; //added property.
+        }
+
         private void RegisterEvents()
         {
             var vlcEventManager = Manager.GetMediaPlayerEventManager(myMediaPlayerInstance);

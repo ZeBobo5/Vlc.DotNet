@@ -43,6 +43,14 @@ namespace Vlc.DotNet.Core
             set { myManager.SetVideoDeinterlace(myMediaPlayer, value); }
         }
 
+        public bool FullScreen
+        {
+            set
+            {
+                myManager.SetFullScreen(myMediaPlayer, value); //set full screen mode
+            }
+        }
+
         public IMarqueeManagement Marquee { get; private set; }
         public ILogoManagement Logo { get; private set; }
         public IAdjustmentsManagement Adjustments { get; private set; }

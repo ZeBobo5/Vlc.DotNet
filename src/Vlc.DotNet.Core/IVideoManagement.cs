@@ -10,5 +10,6 @@
         IMarqueeManagement Marquee { get; }
         ILogoManagement Logo { get; }
         IAdjustmentsManagement Adjustments { get; }
+        bool FullScreen { set; } //could have get too if needed.
     }
 }
