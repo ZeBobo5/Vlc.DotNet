@@ -5,11 +5,11 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public void SetFullScreen(VlcMediaPlayerInstance mediaPlayerInstance, bool fullScreen)
+        public bool GetFullScreen(VlcMediaPlayerInstance mediaPlayerInstance)
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-            GetInteropDelegate<SetFullScreen>().Invoke(mediaPlayerInstance, fullScreen ? 1 : 0);
+           return GetInteropDelegate<GetFullScreen>().Invoke(mediaPlayerInstance);
         }
     }
 }

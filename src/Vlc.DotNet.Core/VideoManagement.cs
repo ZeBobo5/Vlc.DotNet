@@ -45,6 +45,10 @@ namespace Vlc.DotNet.Core
 
         public bool FullScreen
         {
+            get
+            {
+                return myManager.GetFullScreen(myMediaPlayer);
+            }
             set
             {
                 myManager.SetFullScreen(myMediaPlayer, value); //set full screen mode
