@@ -146,6 +146,19 @@ namespace Vlc.DotNet.Wpf
         {
             var pixelFormat = IsAlphaChannelEnabled ? PixelFormats.Bgra32 : PixelFormats.Bgr32;
             FourCCConverter.ToFourCC("RV32", chroma);
+            
+            //Correct video width and height according to TrackInfo
+            var md = MediaPlayer.GetMedia();
+            foreach (MediaTrack track in md.Tracks)
+            {
+                if (track.Type == MediaTrackTypes.Video)
+                {
+                    var trackInfo = track.TrackInfo as VideoTrack;
+                    width = trackInfo.Width;
+                    height = trackInfo.Height;
+                    break;
+                }
+            }
 
             pitches = this.GetAlignedDimension((uint)(width * pixelFormat.BitsPerPixel) / 8, 32);
             lines = this.GetAlignedDimension(height, 32);
