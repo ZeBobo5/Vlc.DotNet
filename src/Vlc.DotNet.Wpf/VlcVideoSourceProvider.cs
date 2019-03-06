@@ -154,12 +154,16 @@ namespace Vlc.DotNet.Wpf
                 if (track.Type == MediaTrackTypes.Video)
                 {
                     var trackInfo = (VideoTrack)track.TrackInfo;
-                    width = trackInfo.Width;
-                    height = trackInfo.Height;
-                    if (trackInfo.SarDen != 0)
+                    if (trackInfo.Width > 0 && trackInfo.Height > 0)
                     {
-                        width = width * trackInfo.SarNum / trackInfo.SarDen;
+                        width = trackInfo.Width;
+                        height = trackInfo.Height;
+                        if (trackInfo.SarDen != 0)
+                        {
+                            width = width * trackInfo.SarNum / trackInfo.SarDen;
+                        }
                     }
+
                     break;
                 }
             }
