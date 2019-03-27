@@ -120,16 +120,21 @@ namespace Vlc.DotNet.Core
             return SetMedia(new VlcMedia(this, stream, options));
         }
 
+        public void ResetMedia()
+        {
+            SetMedia((VlcMedia)null);
+        }
+
         private VlcMedia SetMedia(VlcMedia media)
         {
             // If there is a previous media, dispose it.
             myCurrentMedia?.Dispose();
 
             // Set it to the media player.
-            Manager.SetMediaToMediaPlayer(myMediaPlayerInstance, media.MediaInstance);
+            Manager.SetMediaToMediaPlayer(myMediaPlayerInstance, media?.MediaInstance);
 
             // Register Events.
-            media.Initialize();
+            media?.Initialize();
             myCurrentMedia = media;
 
             return media;
