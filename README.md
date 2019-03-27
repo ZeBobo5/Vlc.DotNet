@@ -9,8 +9,11 @@ It can work on any .net framework version starting from .net 2.0 and .net standa
 
 On the front-end side, two components are currently available to make it easy to integrate in your apps. One is for WinForms, the other for WPF.
 
-Migrating WPF control from 2.x
+Writing a WPF app / Migrating WPF control from 2.x
 ----------
+_**Please Read this if you are writing a WPF app! This is super important!**_
+
+_tl;dr : Use Vlc.DotNet.Forms in a WindowsFormsHost, unless you know what you're doing_
 
 The WPF control has been rewritten from scratch from 2.x.
 
@@ -18,12 +21,12 @@ The old WPF control was just a wrapper around the WinForms control.
 This led to some issues (Airspace issue...) and lacked some WPF-ish features.
 
 That's why a new control has been written. To be fair, first versions of Vlc.DotNet
-were built with that techique, but back then, there were issues in the .net framework
+were built with that technique, but back then, there were issues in the .net framework
 causing the memory usage to explode. As of 2018, this issue is resolved.
 
 You have in fact two options:
 - Use the new WPF control. You might notice a performance impact when reading, for example, a 4k @ 60 fps video on a low-end computer. However, you can do whatever you like, just as a normal ImageSource in WPF.
-- Wrap the Vlc.DotNet.WinForms control in a WinFormHost . It offers better performance, but you will experience Airspace issues (see [#296](https://github.com/ZeBobo5/Vlc.DotNet/issues/296)) if you need to write over the video.
+- Wrap the Vlc.DotNet.WinForms control in a WindowsFormsHost. It offers better performance, but you will experience Airspace issues (see [#296](https://github.com/ZeBobo5/Vlc.DotNet/issues/296)) if you need to write over the video.
 
 The right option to use depends on your needs.
 
