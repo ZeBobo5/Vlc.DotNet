@@ -68,3 +68,4 @@ Prereleases packages are built each time a push is made on `develop`
 - [Changelog](https://github.com/ZeBobo5/Vlc.DotNet/blob/develop/CHANGELOG.md)
 - [Wiki](https://github.com/ZeBobo5/Vlc.DotNet/wiki)
 - [Ask questions](https://gitter.im/Vlc-DotNet/Lobby)
+- [LibVLCSharp](https://github.com/videolan/libvlcsharp) : The officially supported and cross-platform libvlc to .net binding which will eventually replace this project at some point.
