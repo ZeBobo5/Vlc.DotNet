@@ -506,6 +506,11 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             myVlcMediaPlayer.SetMedia(stream, options);
         }
+
+        public void ResetMedia()
+        {
+            myVlcMediaPlayer.ResetMedia();
+        }
         #endregion
     }
 }
