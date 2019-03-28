@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Text;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
@@ -11,9 +9,9 @@ namespace Vlc.DotNet.Core.Interops
         {
             if (mediaInstance == IntPtr.Zero)
                 throw new ArgumentException("Media instance is not initialized.");
-            using (var handle = Utf8InteropStringConverter.ToUtf8Interop(value))
+            using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(value))
             {
-                GetInteropDelegate<SetMediaMetadata>().Invoke(mediaInstance, metadata, handle.DangerousGetHandle());
+                myLibraryLoader.GetInteropDelegate<SetMediaMetadata>().Invoke(mediaInstance, metadata, handle);
             }
         }
     }

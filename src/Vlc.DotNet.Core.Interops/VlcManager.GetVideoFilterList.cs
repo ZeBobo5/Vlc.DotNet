@@ -7,9 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public IntPtr GetVideoFilterList()
         {
-            EnsureVlcInstance();
-
-            return GetInteropDelegate<GetVideoFilterList>().Invoke(myVlcInstance);
+            return myLibraryLoader.GetInteropDelegate<GetVideoFilterList>().Invoke(myVlcInstance);
         }
     }
 }

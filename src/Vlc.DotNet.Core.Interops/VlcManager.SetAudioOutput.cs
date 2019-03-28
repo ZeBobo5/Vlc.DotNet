@@ -5,18 +5,16 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public void SetAudioOutput(AudioOutputDescriptionStructure output)
+        public int SetAudioOutput(VlcMediaPlayerInstance mediaPlayerInstance, AudioOutputDescriptionStructure output)
         {
-            SetAudioOutput(output.Name);
+            return SetAudioOutput(mediaPlayerInstance, output.Name);
         }
 
-        public void SetAudioOutput(string outputName)
+        public int SetAudioOutput(VlcMediaPlayerInstance mediaPlayerInstance, string outputName)
         {
-            EnsureVlcInstance();
-
-            using (var outputInterop = Utf8InteropStringConverter.ToUtf8Interop(outputName))
+            using (var outputInterop = Utf8InteropStringConverter.ToUtf8StringHandle(outputName))
             {
-                GetInteropDelegate<SetAudioOutput>().Invoke(myVlcInstance, outputInterop.DangerousGetHandle());
+                return myLibraryLoader.GetInteropDelegate<SetAudioOutput>().Invoke(mediaPlayerInstance, outputInterop);
             }
         }
     }

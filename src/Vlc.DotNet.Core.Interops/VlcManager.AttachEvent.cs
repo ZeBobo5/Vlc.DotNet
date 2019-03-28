@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops
                 throw new ArgumentException("Event manager instance is not initialized.");
             if (callback == null)
                 throw new ArgumentException("Callback for event is not initialized.");
-            return GetInteropDelegate<AttachEvent>().Invoke(eventManagerInstance, eventType, callback, IntPtr.Zero);
+            return myLibraryLoader.GetInteropDelegate<AttachEvent>().Invoke(eventManagerInstance, eventType, callback, IntPtr.Zero);
         }
     }
 }

@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public sealed partial class VlcManager : VlcInteropsManager
+    public sealed partial class VlcManager : IDisposable
     {
-        private VlcInstance myVlcInstance;
-        private static readonly Dictionary<DirectoryInfo, VlcManager> myAllInstance = new Dictionary<DirectoryInfo, VlcManager>();
+        private readonly VlcLibraryLoader myLibraryLoader;
+        private readonly VlcInstance myVlcInstance;
 
-        public string VlcVersion => Utf8InteropStringConverter.Utf8InteropToString(GetInteropDelegate<GetVersion>().Invoke());
+        public string VlcVersion => Utf8InteropStringConverter.Utf8InteropToString(myLibraryLoader.GetInteropDelegate<GetVersion>().Invoke());
 
         public Version VlcVersionNumber
         {
@@ -23,40 +24,44 @@ namespace Vlc.DotNet.Core.Interops
             }
         }
 
-        internal VlcManager(DirectoryInfo dynamicLinkLibrariesPath)
-            : base(dynamicLinkLibrariesPath)
+        public VlcManager(DirectoryInfo dynamicLinkLibrariesPath, string[] args)
         {
-        }
+            this.myLibraryLoader = VlcLibraryLoader.GetOrCreateLoader(dynamicLinkLibrariesPath);
 
-        public override void Dispose(bool disposing)
-        {
-            if (myVlcInstance != null)
-                myVlcInstance.Dispose();
-
-            if (myAllInstance.ContainsValue(this))
+            IntPtr[] utf8Args = new IntPtr[args?.Length ?? 0];
+            try
             {
-                foreach (var kv in new Dictionary<DirectoryInfo, VlcManager>(myAllInstance))
+                for (var i = 0; i < utf8Args.Length; i++)
                 {
-                    if(kv.Value == this)
-                        myAllInstance.Remove(kv.Key);
+                    byte[] bytes = Encoding.UTF8.GetBytes(args[i]);
+                    var buffer = Marshal.AllocHGlobal(bytes.Length + 1);
+                    Marshal.Copy(bytes, 0, buffer, bytes.Length);
+                    Marshal.WriteByte(buffer, bytes.Length, 0);
+                    utf8Args[i] = buffer;
+                }
+
+                myVlcInstance = new VlcInstance(this, myLibraryLoader.GetInteropDelegate<CreateNewInstance>().Invoke(utf8Args.Length, utf8Args));
+            }
+            finally
+            {
+                foreach (var arg in utf8Args)
+                {
+                    if (arg != IntPtr.Zero)
+                    {
+                        Marshal.FreeHGlobal(arg);
+                    }
                 }
             }
-            base.Dispose(disposing);
         }
 
-        public static VlcManager GetInstance(DirectoryInfo dynamicLinkLibrariesPath)
+        public void Dispose()
         {
-            if (!myAllInstance.ContainsKey(dynamicLinkLibrariesPath))
-                myAllInstance[dynamicLinkLibrariesPath] = new VlcManager(dynamicLinkLibrariesPath);
-            return myAllInstance[dynamicLinkLibrariesPath];
-        }
-
-        private void EnsureVlcInstance()
-        {
-            if (myVlcInstance == null)
+            if (this.dialogCallbacksPointer != IntPtr.Zero)
             {
-                throw new InvalidOperationException("This VlcManager has not yet been initialized. Call CreateNewInstance to initialize it.");
+                Marshal.FreeHGlobal(this.dialogCallbacksPointer);
             }
+            myVlcInstance.Dispose();
+            VlcLibraryLoader.ReleaseLoader(this.myLibraryLoader);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops
                 return;
             try
             {
-                GetInteropDelegate<ReleaseMediaPlayer>().Invoke(mediaPlayerInstance);
+                myLibraryLoader.GetInteropDelegate<ReleaseMediaPlayer>().Invoke(mediaPlayerInstance);
             }
             finally
             {

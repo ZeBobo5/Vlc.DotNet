@@ -7,7 +7,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public void ReleaseModuleDescriptionInstance(IntPtr moduleDescriptionInstance)
         {
-            GetInteropDelegate<ReleaseModuleDescription>().Invoke(moduleDescriptionInstance);
+            myLibraryLoader.GetInteropDelegate<ReleaseModuleDescription>().Invoke(moduleDescriptionInstance);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Vlc.DotNet.Core.Interops.Signatures
+﻿using System;
+
+namespace Vlc.DotNet.Core.Interops.Signatures
 {
     public enum EventTypes
       : int
@@ -31,11 +33,22 @@
         MediaPlayerLengthChanged,
         MediaPlayerVout,
         MediaPlayerScrambledChanged,
+        MediaPlayerEsAdded,
+        MediaPlayerEsDeleted,
+        MediaPlayerEsSelected,
+        MediaPlayerCorked,
+        MediaPlayerUncorked,
+        MediaPlayerMuted,
+        MediaPlayerUnmuted,
+        MediaPlayerAudioVolume,
+        MediaPlayerAudioDevice,
+        MediaPlayerChapterChanged,
 
         MediaListItemAdded = 0x200,
         MediaListWillAddItem,
         MediaListItemDeleted,
         MediaListWillDeleteItem,
+        MediaListEndReached,
 
         MediaListViewItemAdded = 0x300,
         MediaListViewWillAddItem,
@@ -46,8 +59,12 @@
         MediaListPlayerNextItemSet,
         MediaListPlayerStopped,
 
+        [Obsolete("Useless event, it will be triggered only when calling libvlc_media_discoverer_start()")]
         MediaDiscovererStarted = 0x500,
+        [Obsolete("Useless event, it will be triggered only when calling libvlc_media_discoverer_stop()")]
         MediaDiscovererEnded,
+        RendererDiscovererItemAdded,
+        RendererDiscovererItemDeleted,
 
         VlmMediaAdded = 0x600,
         VlmMediaRemoved,

@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_video_set_deinterlace")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void SetVideoDeinterlace(IntPtr mediaPlayerInstance, IntPtr mode);
+    internal delegate void SetVideoDeinterlace(IntPtr mediaPlayerInstance, Utf8StringHandle mode);
 }

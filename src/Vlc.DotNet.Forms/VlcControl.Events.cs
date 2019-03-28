@@ -163,7 +163,7 @@ namespace Vlc.DotNet.Forms
         [Category("Media Player")]
         public event EventHandler<VlcMediaPlayerLengthChangedEventArgs> LengthChanged;
 
-        public void OnLengthChanged(float newLength)
+        public void OnLengthChanged(long newLength)
         {
             lock (myEventSyncLocker)
             {
@@ -177,15 +177,15 @@ namespace Vlc.DotNet.Forms
         #region Log event
         private object _logLocker = new object();
 
-        private EventHandler<VlcMediaPlayerLogEventArgs> _log;
+        private EventHandler<VlcMediaPlayerLogEventArgs> log;
 
         private void OnLogInternal(object sender, VlcMediaPlayerLogEventArgs args)
         {
             lock(this._logLocker)
             {
-                if (this._log != null)
+                if (this.log != null)
                 {
-                    this._log(sender, args);
+                    this.log(sender, args);
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace Vlc.DotNet.Forms
             {
                 lock (this._logLocker)
                 {
-                    this._log += value;
+                    this.log += value;
                 }
                 if (this.myVlcMediaPlayer != null)
                 {
@@ -213,7 +213,7 @@ namespace Vlc.DotNet.Forms
             {
                 lock (this._logLocker)
                 {
-                    this._log -= value;
+                    this.log -= value;
                 }
             }
         }
@@ -432,7 +432,7 @@ namespace Vlc.DotNet.Forms
         [Category("Media Player")]
         public event EventHandler<VlcMediaPlayerTitleChangedEventArgs> TitleChanged;
 
-        public void OnTitleChanged(string newTitle)
+        public void OnTitleChanged(int newTitle)
         {
             lock (myEventSyncLocker)
             {

@@ -6,13 +6,16 @@ namespace Vlc.DotNet.Core.Interops
 {
     public sealed partial class VlcManager
     {
-        public void TakeSnapshot(VlcMediaPlayerInstance mediaPlayerInstance, FileInfo file, uint width, uint height)
+        public bool TakeSnapshot(VlcMediaPlayerInstance mediaPlayerInstance, uint outputNumber, string filePath, uint width, uint height)
         {
             if (mediaPlayerInstance == IntPtr.Zero)
                 throw new ArgumentException("Media player instance is not initialized.");
-            if(file == null)
-                throw new ArgumentNullException("file");
-            GetInteropDelegate<TakeSnapshot>().Invoke(mediaPlayerInstance, 0, file.FullName, width, height);
+            if(filePath == null)
+                throw new ArgumentNullException(nameof(filePath));
+            using (var filePathHandle = Utf8InteropStringConverter.ToUtf8StringHandle(filePath))
+            {
+                return myLibraryLoader.GetInteropDelegate<TakeSnapshot>().Invoke(mediaPlayerInstance, outputNumber, filePathHandle, width, height) == 0;
+            }
         }
     }
 }

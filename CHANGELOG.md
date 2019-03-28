@@ -1,3 +1,25 @@
+# 3.0.0
+- BREAKING CHANGE : Created a new WPF control using ImageSource [#365](https://github.com/ZeBobo5/Vlc.DotNet/pull/365) see how to use in wiki!
+- ADDED `SetMouseInput`/`SetKeyInput` methods [#424](https://github.com/ZeBobo5/Vlc.DotNet/pull/424). Fixes [#379](https://github.com/ZeBobo5/Vlc.DotNet/issues/379) and [#107](https://github.com/ZeBobo5/Vlc.DotNet/issues/107). Thanks @CrookedFingerGuy
+- ADDED Rendering support for alpha channel videos in WPF control [#439](https://github.com/ZeBobo5/Vlc.DotNet/pull/439)
+- ADDED Dialog management API [#373](https://github.com/ZeBobo5/Vlc.DotNet/pull/373)
+- ADDED A new ResetMedia method [#539](https://github.com/ZeBobo5/Vlc.DotNet/pull/539)
+- ADDED A binding for fullscreen functions [#516](https://github.com/ZeBobo5/Vlc.DotNet/pull/516) (This doesn't mean that fullscreen is supported by Vlc.DotNet. Handling Fullscreen in Vlc.DotNet is not as simple as setting a flag to true/false) (Thanks @LinoBarreca  and @samarthshroff)
+- ADDED A binding for user agent and app ID functions [#485](https://github.com/ZeBobo5/Vlc.DotNet/pull/485)
+- ADDED A new SetVideoTitleDisplay() binding [#466](https://github.com/ZeBobo5/Vlc.DotNet/pull/466) (Thanks @HoraceYork88)
+- ADDED A SetPause(bool) API because Pause() toggles the pause [#471](https://github.com/ZeBobo5/Vlc.DotNet/pull/471)
+- CHANGED The internal management of the libvlc instances. This fixes several memory leaks and crashes on dispose, especially when using multiple controls at the same time [#474](https://github.com/ZeBobo5/Vlc.DotNet/pull/490), [#477](https://github.com/ZeBobo5/Vlc.DotNet/pull/477) (Thanks @dilandau2001) [#490](https://github.com/ZeBobo5/Vlc.DotNet/pull/490)
+- CHANGED PR [#490](https://github.com/ZeBobo5/Vlc.DotNet/pull/490) also changed the behavior when trying to set `VlcMediaPlayerOptions` or `VlcLibDirectory` after initialization. An exception is now thrown in those cases, because this is a bad API usage.
+- CHANGED name of internal handle class from `SafeUnmanagedMemoryHandle` to `Utf8StringHandle` [#337](https://github.com/ZeBobo5/Vlc.DotNet/pull/337)
+- CHANGED Replaced the legacy API for getting audio devices and media tracks with newer API [#402](https://github.com/ZeBobo5/Vlc.DotNet/pull/402)
+- CHANGED the `IsInDesigner` detection method [#459](https://github.com/ZeBobo5/Vlc.DotNet/pull/459) (Thanks @MarcLandis)
+- FIXED invalid types for `Position` (must be a `float`) and `Length` (must be a `long`).  [#469](https://github.com/ZeBobo5/Vlc.DotNet/pull/469) (Thanks @Arashz22)
+- FIXED the type of the `NewTitle` property (int -> string) in `VlcMediaPlayerTitleChangedEventArgs` [#364](https://github.com/ZeBobo5/Vlc.DotNet/pull/364)
+- FIXED the return type of `DetachEvent` [#488](https://github.com/ZeBobo5/Vlc.DotNet/pull/488) (Thanks @mfkl)
+- FIXED the return type of `TakeSnapshot` [#449](https://github.com/ZeBobo5/Vlc.DotNet/pull/449)
+- FIXED AccessViolationException when setting Audio.Outputs.Current [#493](https://github.com/ZeBobo5/Vlc.DotNet/pull/493) (Thanks @Rukhlov)
+- FIXED Patched wrong info received from the WPF video callback [#526](https://github.com/ZeBobo5/Vlc.DotNet/pull/526) (Thanks @Sep95), [#531](https://github.com/ZeBobo5/Vlc.DotNet/pull/531)
+
 # 2.2.1
 - FIXED assembly file version that was incorrect #[326](https://github.com/ZeBobo5/Vlc.DotNet/pull/326)
 

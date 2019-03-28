@@ -6,7 +6,7 @@ namespace Vlc.DotNet.Core.Interops
     {
         public void ClearLastErrorMessage()
         {
-            GetInteropDelegate<ClearLastErrorMessage>().Invoke();
+            myLibraryLoader.GetInteropDelegate<ClearLastErrorMessage>().Invoke();
         }
     }
 }

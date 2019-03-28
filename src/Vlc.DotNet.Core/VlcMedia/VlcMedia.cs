@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Vlc.DotNet.Core.Interops;
 using Vlc.DotNet.Core.Interops.Signatures;
@@ -9,13 +8,6 @@ namespace Vlc.DotNet.Core
     public sealed partial class VlcMedia : IDisposable
     {
         private readonly VlcMediaPlayer myVlcMediaPlayer;
-
-        internal static Dictionary<VlcMediaPlayer, List<VlcMedia>> LoadedMedias { get; private set; }
-
-        static VlcMedia()
-        {
-            LoadedMedias = new Dictionary<VlcMediaPlayer, List<VlcMedia>>();
-        }
 
         internal VlcMedia(VlcMediaPlayer player, FileInfo file, params string[] options)
 #if NET20
@@ -55,11 +47,12 @@ namespace Vlc.DotNet.Core
 
         internal VlcMedia(VlcMediaPlayer player, VlcMediaInstance mediaInstance)
         {
-            if(!LoadedMedias.ContainsKey(player))
-                LoadedMedias[player] = new List<VlcMedia>();
-            LoadedMedias[player].Add(this);
             MediaInstance = mediaInstance;
             myVlcMediaPlayer = player;
+        }
+
+        internal void Initialize()
+        {
             RegisterEvents();
         }
 
@@ -77,7 +70,7 @@ namespace Vlc.DotNet.Core
 
         public TimeSpan Duration
         {
-            get { return new TimeSpan(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance) * 10000); }
+            get { return TimeSpan.FromMilliseconds(myVlcMediaPlayer.Manager.GetMediaDuration(MediaInstance)); }
         }
 
         public void Dispose()
@@ -87,11 +80,12 @@ namespace Vlc.DotNet.Core
 
         private void Dispose(bool disposing)
         {
-            if (MediaInstance != IntPtr.Zero)
+            if (disposing && MediaInstance != IntPtr.Zero)
             {
                 UnregisterEvents();
                 MediaInstance.Dispose();
             }
+
             GC.SuppressFinalize(this);
         }
 
@@ -113,6 +107,12 @@ namespace Vlc.DotNet.Core
             get { return myVlcMediaPlayer.Manager.GetMediaStats(MediaInstance); }
         }
 
+        public MediaTrack[] Tracks
+        {
+            get { return myVlcMediaPlayer.Manager.GetMediaTracks(MediaInstance); }
+        }
+
+        [Obsolete("Use Tracks instead")]
         public MediaTrackInfosStructure[] TracksInformations
         {
             get { return myVlcMediaPlayer.Manager.GetMediaTracksInformations(MediaInstance); }

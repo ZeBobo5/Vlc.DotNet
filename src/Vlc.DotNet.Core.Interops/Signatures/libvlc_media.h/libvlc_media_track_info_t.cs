@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Vlc.DotNet.Core.Interops.Signatures
 {
-
+    [Obsolete("Use GetMediaTracks instead")]
     [StructLayout(LayoutKind.Explicit)]
     public struct MediaTrackInfosStructure
     {
@@ -11,7 +11,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// Codec Value
         /// </summary>
         [FieldOffset(0)]
-        public int CodecFourcc;
+        public UInt32 CodecFourcc;
 
         /// <summary>
         /// Codec Id
@@ -52,20 +52,7 @@ namespace Vlc.DotNet.Core.Interops.Signatures
         /// <summary>
         /// Codec Abbreviation
         /// </summary>
-        public string CodecName
-        {
-            get
-            {
-                return string.Format(
-                            "{0}{1}{2}{3}",
-                            (char)(CodecFourcc & 0xff),
-                            (char)(CodecFourcc >> 8 & 0xff),
-                            (char)(CodecFourcc >> 16 & 0xff),
-                            (char)(CodecFourcc >> 24 & 0xff));
-            }
-        }
-
-
+        public string CodecName => FourCCConverter.FromFourCC(this.CodecFourcc);
     }
 
     /// <summary>

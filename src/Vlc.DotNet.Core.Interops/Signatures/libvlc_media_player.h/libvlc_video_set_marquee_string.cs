@@ -8,5 +8,5 @@ namespace Vlc.DotNet.Core.Interops.Signatures
     /// </summary>
     [LibVlcFunction("libvlc_video_set_marquee_string")]
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    internal delegate void SetVideoMarqueeString(IntPtr mediaPlayerInstance, VideoMarqueeOptions option, IntPtr value);
+    internal delegate void SetVideoMarqueeString(IntPtr mediaPlayerInstance, VideoMarqueeOptions option, Utf8StringHandle value);
 }

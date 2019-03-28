@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Text;
 using Vlc.DotNet.Core.Interops.Signatures;
 
 namespace Vlc.DotNet.Core.Interops
 {
-    public sealed partial class VlcManager
+	public sealed partial class VlcManager
     {
         public void AddOptionToMedia(VlcMediaInstance mediaInstance, string option)
         {
@@ -14,9 +12,9 @@ namespace Vlc.DotNet.Core.Interops
             if (string.IsNullOrEmpty(option))
                 return;
 
-            using (var handle = Utf8InteropStringConverter.ToUtf8Interop(option))
+            using (var handle = Utf8InteropStringConverter.ToUtf8StringHandle(option))
             {
-                GetInteropDelegate<AddOptionToMedia>().Invoke(mediaInstance, handle.DangerousGetHandle());
+                myLibraryLoader.GetInteropDelegate<AddOptionToMedia>().Invoke(mediaInstance, handle);
             }
         }
 
