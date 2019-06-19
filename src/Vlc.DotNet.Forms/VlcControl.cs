@@ -266,7 +266,7 @@ namespace Vlc.DotNet.Forms
         /// <param name="height">The height of the snapshot (0 means auto)</param>
         public bool TakeSnapshot(string fileName, uint width, uint height)
         {
-            return this.TakeSnapshot(new FileInfo(fileName), 0, 0);
+            return this.TakeSnapshot(new FileInfo(fileName), width, height);
         }
 
 
