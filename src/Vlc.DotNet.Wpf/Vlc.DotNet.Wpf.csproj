@@ -1,23 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <Import Project="..\Vlc.DotNet.props" />
 
   <PropertyGroup>
     <Title>Vlc.DotNet.Wpf</Title>
-    <TargetFrameworks>net35;net40;net45</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netcoreapp3.0</TargetFrameworks>
     <Description>WPF control that hosts the audio/video capabilities of the VLC libraries.</Description>
     <PackageTags>vlc media wpf</PackageTags>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' != 'net35'">
-    <Reference Include="System.Xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj" />
