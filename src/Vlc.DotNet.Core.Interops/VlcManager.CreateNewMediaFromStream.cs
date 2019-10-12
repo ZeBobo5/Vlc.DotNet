@@ -1,5 +1,5 @@
 ﻿using System;
-#if !(NET20 || NET35)
+#if !NET35
 using System.Collections.Concurrent;
 #endif
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Vlc.DotNet.Core.Interops
         private static readonly CallbackSeekMediaDelegate CallbackSeekMediaDelegate = CallbackSeekMedia;
         private static readonly CallbackCloseMediaDelegate CallbackCloseMediaDelegate = CallbackCloseMedia;
 
-#if NET20 || NET35
+#if NET35
         private static readonly Dictionary<IntPtr, StreamData> DicStreams = new Dictionary<IntPtr, StreamData>();
 #else
         private static readonly ConcurrentDictionary<IntPtr, StreamData> DicStreams = new ConcurrentDictionary<IntPtr, StreamData>();
@@ -159,7 +159,7 @@ namespace Vlc.DotNet.Core.Interops
 
         private static StreamData GetStream(IntPtr handle)
         {
-#if NET20 || NET35
+#if NET35
             lock (DicStreams)
             {
                 if (!DicStreams.ContainsKey(handle))
@@ -183,7 +183,7 @@ namespace Vlc.DotNet.Core.Interops
 
         private static void RemoveStream(IntPtr handle)
         {
-#if NET20 || NET35
+#if NET35
             lock (DicStreams)
             {
                 if (DicStreams.ContainsKey(handle))

@@ -30,7 +30,7 @@ namespace Vlc.DotNet.Core
             SubTitles = new SubTitlesManagement(manager, myMediaPlayerInstance);
             Video = new VideoManagement(manager, myMediaPlayerInstance);
             Audio = new AudioManagement(manager, myMediaPlayerInstance);
-#if !NET20 && !NET35 && !NET40
+#if !NET35 && !NET40
             Dialogs = new DialogsManagement(manager, myMediaPlayerInstance);
 #endif
         }
@@ -315,7 +315,7 @@ namespace Vlc.DotNet.Core
 
         public IAudioManagement Audio { get; }
 
-#if !NET20 && !NET35 && !NET40
+#if !NET35 && !NET40
         public IDialogsManagement Dialogs { get; }
 #endif
 
