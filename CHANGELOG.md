@@ -1,3 +1,7 @@
+# 3.1.0
+- ADDED support for .net core 3.0 for Vlc.DotNet.Forms and Vlc.DotNet.Wpf
+- DROPPED support for .net framework 2.0
+
 # 3.0.0
 - BREAKING CHANGE : Created a new WPF control using ImageSource [#365](https://github.com/ZeBobo5/Vlc.DotNet/pull/365) see how to use in wiki!
 - ADDED `SetMouseInput`/`SetKeyInput` methods [#424](https://github.com/ZeBobo5/Vlc.DotNet/pull/424). Fixes [#379](https://github.com/ZeBobo5/Vlc.DotNet/issues/379) and [#107](https://github.com/ZeBobo5/Vlc.DotNet/issues/107). Thanks @CrookedFingerGuy

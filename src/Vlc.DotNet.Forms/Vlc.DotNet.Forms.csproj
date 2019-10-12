@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <Import Project="..\Vlc.DotNet.props" />
   
   <PropertyGroup>
     <Title>Vlc.DotNet.Forms</Title>
-    <TargetFrameworks>net20;net35;net40;net45</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;netcoreapp3.0</TargetFrameworks>
     <Description>WinForm control that hosts the audio/video capabilities of the VLC libraries.</Description>
     <PackageTags>vlc media winform</PackageTags>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +19,10 @@
     <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Windows.Forms" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+    <PackageReference Include="System.Drawing.Common">
+      <Version>4.6.0</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
