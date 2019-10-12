@@ -17,7 +17,7 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>The converted structure</returns>
         public static T PtrToStructure<T>(IntPtr ptr) where T: struct
         {
-#if NET20 || NET35 || NET40 || NET45
+#if NET35 || NET40 || NET45
             return (T)Marshal.PtrToStructure(ptr, typeof(T));
 #else
             return Marshal.PtrToStructure<T>(ptr);
@@ -31,7 +31,7 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>The number of bytes in the structure</returns>
         public static int SizeOf<T>()
         {
-#if NET20 || NET35 || NET40 || NET45
+#if NET35 || NET40 || NET45
             return Marshal.SizeOf(typeof(T));
 #else
             return Marshal.SizeOf<T>();
@@ -46,7 +46,7 @@ namespace Vlc.DotNet.Core.Interops
         /// <returns>The delegate</returns>
         public static T GetDelegateForFunctionPointer<T>(IntPtr ptr)
         {
-#if NET20 || NET35 || NET40 || NET45
+#if NET35 || NET40 || NET45
             return (T)(object)Marshal.GetDelegateForFunctionPointer(ptr, typeof(T));
 #else
             // The GetDelegateForFunctionPointer with two parameters is now deprecated.

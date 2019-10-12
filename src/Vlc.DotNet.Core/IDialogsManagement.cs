@@ -1,4 +1,4 @@
-﻿#if !NET20 && !NET35 && !NET40
+﻿#if !NET35 && !NET40
 namespace Vlc.DotNet.Core
 {
     using System;

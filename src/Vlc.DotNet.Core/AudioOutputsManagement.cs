@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-#if !NET20
 using System.Linq;
-#endif
 using Vlc.DotNet.Core.Interops;
 
 namespace Vlc.DotNet.Core
@@ -22,18 +20,7 @@ namespace Vlc.DotNet.Core
         {
             get
             {
-#if NET20
-                var results = myManager.GetAudioOutputsDescriptions();
-                var resultsList = new List<AudioOutputDescription>(results.Count);
-                foreach(var x in results)
-                {
-                    resultsList.Add(new AudioOutputDescription(x.Name, x.Description, this.myManager));
-                }
-
-                return resultsList;
-#else
                 return myManager.GetAudioOutputsDescriptions().Select(x => new AudioOutputDescription(x.Name, x.Description, this.myManager));
-#endif
             }
         }
 
