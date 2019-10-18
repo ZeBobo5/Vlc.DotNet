@@ -6,7 +6,7 @@
     <Authors>ZeBobo5</Authors>
     <PackageProjectUrl>https://github.com/ZeBobo5/Vlc.DotNet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ZeBobo5/Vlc.DotNet</RepositoryUrl>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
