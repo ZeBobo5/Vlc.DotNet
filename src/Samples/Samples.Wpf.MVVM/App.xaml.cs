@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Samples.Wpf.Minimal
+namespace Samples.Wpf.MVVM
 {
     public partial class App : Application
     {
