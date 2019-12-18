@@ -1,4 +1,4 @@
-using GalaSoft.MvvmLight; /* Or your MVV provider of choice */
+//using GalaSoft.MvvmLight; /* Or your MVV provider of choice */
 using System;
 
 namespace Samples.Wpf.MVVM.ViewModels
@@ -9,7 +9,9 @@ namespace Samples.Wpf.MVVM.ViewModels
         public string ImageOrVideoURL
         {
             get { return imageOrVideoURL; }
-            set { Set<string>(() => this.ImageOrVideoURL, ref imageOrVideoURL, value); } /* Set is a method in MVVM Light that wires up INotifyPropertyChanged events */
+            set { Set<string>(ref imageOrVideoURL, value, "ImageOrVideoURL"); } 
+            //MVVM Light implementation
+            // set { Set<string>(() => this.ImageOrVideoURL, ref imageOrVideoURL, value); } /* Set is a method in MVVM Light that wires up INotifyPropertyChanged events */
         }
 
     }
