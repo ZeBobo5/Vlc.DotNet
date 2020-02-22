@@ -12,12 +12,7 @@ namespace Samples.WinForms.InitWithCode
         {
             InitializeComponent();
             var control = new VlcControl();
-
-
-            var currentAssembly = Assembly.GetEntryAssembly();
-            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
-            // Default installation path of VideoLAN.LibVLC.Windows
-            var libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+            var libDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + @"libvlc\" + IntPtr.Size == 4 ? "win-x86" : "win-x64");
 
             control.BeginInit();
             control.VlcLibDirectory = libDirectory;
