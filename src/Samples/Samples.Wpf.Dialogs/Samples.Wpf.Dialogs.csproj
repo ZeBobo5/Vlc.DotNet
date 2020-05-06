@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0490" />
-    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.8.1" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.10" />
   </ItemGroup>
 
   <ItemGroup>
