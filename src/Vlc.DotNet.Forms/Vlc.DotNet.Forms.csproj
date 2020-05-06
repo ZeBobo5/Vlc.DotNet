@@ -19,10 +19,4 @@
     <ProjectReference Include="..\Vlc.DotNet.Core\Vlc.DotNet.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
-    <PackageReference Include="System.Drawing.Common">
-      <Version>4.6.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
 </Project>

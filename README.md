@@ -1,6 +1,11 @@
 Vlc.DotNet
 ==========
 
+_**As more and more effort is put into [LibVLCSharp](https://code.videolan.org/videolan/LibVLCSharp), fewer evolutions are expected to be made to this project.**_
+
+_**Bugfixes will still be fixed on the maintainer's free time, but as of 2020-05-06, support for libvlc 4 is not planned. You are encouraged to migrate and create new projects with [LibVLCSharp](https://code.videolan.org/videolan/LibVLCSharp)**_
+
+
 [![Join the chat at https://gitter.im/Vlc-DotNet/Lobby](https://badges.gitter.im/Vlc-DotNet/Lobby.svg)](https://gitter.im/Vlc-DotNet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Vlc.DotNet is a .net library that hosts the audio/video capabilities of the VLC libraries. In other words, it's a .net wrapper around `libvlc`.

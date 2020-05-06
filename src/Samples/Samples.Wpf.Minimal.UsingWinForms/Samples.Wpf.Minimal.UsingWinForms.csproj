@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.8.1" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.10" />
   </ItemGroup>
 
   <ItemGroup>
