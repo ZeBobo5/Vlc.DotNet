@@ -38,6 +38,11 @@ namespace Vlc.DotNet.Core.Interops
         /// </summary>
         private readonly Dictionary<string, object> myInteropDelegates = new Dictionary<string, object>();
 
+        /// <summary>
+        /// A lock object for working with myInteropDelegates
+        /// </summary>
+        private readonly object _myInteropDelegatesLockObject = new object();
+
         private VlcLibraryLoader(DirectoryInfo dynamicLinkLibrariesPath)
         {
             myDynamicLinkLibrariesPath = dynamicLinkLibrariesPath;
@@ -80,18 +85,24 @@ namespace Vlc.DotNet.Core.Interops
                     throw new Exception("Could not find the LibVlcFunctionAttribute.");
                 var attr = (LibVlcFunctionAttribute)attrs[0];
                 vlcFunctionName = attr.FunctionName;
-                if (myInteropDelegates.ContainsKey(vlcFunctionName))
+
+                lock (this._myInteropDelegatesLockObject)
                 {
-                    return (T)myInteropDelegates[attr.FunctionName];
+                    if (myInteropDelegates.ContainsKey(vlcFunctionName))
+                    {
+                        return (T)myInteropDelegates[attr.FunctionName];
+                    }
+
+                    var procAddress = Win32Interops.GetProcAddress(myLibVlcDllHandle, attr.FunctionName);
+                    if (procAddress == IntPtr.Zero)
+                        throw new Win32Exception();
+
+                    var delegateForFunctionPointer = MarshalHelper.GetDelegateForFunctionPointer<T>(procAddress);
+
+                    myInteropDelegates[attr.FunctionName] = delegateForFunctionPointer;
+
+                    return delegateForFunctionPointer;
                 }
-
-                var procAddress = Win32Interops.GetProcAddress(myLibVlcDllHandle, attr.FunctionName);
-                if (procAddress == IntPtr.Zero)
-                    throw new Win32Exception();
-
-                var delegateForFunctionPointer = MarshalHelper.GetDelegateForFunctionPointer<T>(procAddress);
-                myInteropDelegates[attr.FunctionName] = delegateForFunctionPointer;
-                return delegateForFunctionPointer;
             }
             catch (Win32Exception e)
             {
