@@ -3,7 +3,7 @@ Vlc.DotNet
 
 _**As more and more effort is put into [LibVLCSharp](https://code.videolan.org/videolan/LibVLCSharp), fewer evolutions are expected to be made to this project.**_
 
-_**Bugfixes will still be fixed on the maintainer's free time, but as of 2020-05-06, support for libvlc 4 is not planned. You are encouraged to migrate and create new projects with [LibVLCSharp](https://code.videolan.org/videolan/LibVLCSharp)**_
+_**Bugfixes will still be fixed on the maintainer's free time, but as of 2020-05-06, support for libvlc 4 is not planned. You are encouraged to [migrate](https://code.videolan.org/videolan/LibVLCSharp/-/blob/3.x/docs/migrating_from_Vlc.DotNet.md) and create new projects with [LibVLCSharp](https://code.videolan.org/videolan/LibVLCSharp)**_
 
 
 [![Join the chat at https://gitter.im/Vlc-DotNet/Lobby](https://badges.gitter.im/Vlc-DotNet/Lobby.svg)](https://gitter.im/Vlc-DotNet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -73,4 +73,4 @@ Prereleases packages are built each time a push is made on `develop`
 - [Changelog](https://github.com/ZeBobo5/Vlc.DotNet/blob/develop/CHANGELOG.md)
 - [Wiki](https://github.com/ZeBobo5/Vlc.DotNet/wiki)
 - [Ask questions](https://gitter.im/Vlc-DotNet/Lobby)
-- [LibVLCSharp](https://github.com/videolan/libvlcsharp) : The officially supported and cross-platform libvlc to .net binding which will eventually replace this project at some point.
+- [LibVLCSharp](https://github.com/videolan/libvlcsharp) : The officially supported and cross-platform libvlc to .net binding which will eventually replace this project at some point. A [migration guide](https://code.videolan.org/videolan/LibVLCSharp/-/blob/3.x/docs/migrating_from_Vlc.DotNet.md) is available for Vlc.DotNet users migrating to LibVLCSharp.
