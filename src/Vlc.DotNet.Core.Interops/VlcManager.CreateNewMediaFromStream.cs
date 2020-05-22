@@ -44,7 +44,7 @@ namespace Vlc.DotNet.Core.Interops
                 myVlcInstance,
                 CallbackOpenMediaDelegate,
                 CallbackReadMediaDelegate,
-                CallbackSeekMediaDelegate,
+                stream.CanSeek ? CallbackSeekMediaDelegate : null,
                 CallbackCloseMediaDelegate,
                 opaque
                 ));
@@ -148,7 +148,7 @@ namespace Vlc.DotNet.Core.Interops
                 handle = new IntPtr(streamIndex);
                 DicStreams[handle] = new StreamData()
                 {
-                    Buffer = new byte[0x4000],
+                    Buffer = new byte[0x100_0000],
                     Handle = handle,
                     Stream = stream
                 };
