@@ -2,6 +2,8 @@
 - ADDED support for .net core 3.0 for Vlc.DotNet.Forms and Vlc.DotNet.Wpf
 - DROPPED support for .net framework 2.0
 - FIXED race conditions on Dispose() [#641](https://github.com/ZeBobo5/Vlc.DotNet/pull/641). Fixes [#639](https://github.com/ZeBobo5/Vlc.DotNet/issues/639) and [#640](https://github.com/ZeBobo5/Vlc.DotNet/issues/640)
+- FIXED Media created from non-seekable .NET Streams were declared as seekable for libvlc [#648](https://github.com/ZeBobo5/Vlc.DotNet/pull/648). See [#647](https://github.com/ZeBobo5/Vlc.DotNet/issues/647).
+- CHANGED The buffer size for media created from .NET Streams from 16kiB to 16MiB. It takes more memory, but allows to read more data at once. [#648](https://github.com/ZeBobo5/Vlc.DotNet/pull/648)
 
 # 3.0.0
 - BREAKING CHANGE : Created a new WPF control using ImageSource [#365](https://github.com/ZeBobo5/Vlc.DotNet/pull/365) see how to use in wiki!
